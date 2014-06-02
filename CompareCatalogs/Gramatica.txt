@@ -1,0 +1,83 @@
+Gramática final (reutilizando gramática de PLG):
+Importante: se ignorarán mayúsculas y minúsculas
+
+ program - (statement ';' )*
+ statement - filter | binding
+ binding- id ':=' Exp0
+
+
+filter - '#' Exp0 | binding
+
+Exp0 - Exp1
+Exp0 - Exp1 op_log Exp1
+
+Exp1 - Exp2
+Exp1 - Exp2 op_eq Exp1
+
+Exp2 - Exp3
+Exp2 - Exp3 op_rel Exp2
+
+Exp3 - Exp4
+Exp3 - dist ‘(’ Exp4 ‘,’ Exp4 ‘,’ Exp4 ‘,’ Exp4 ‘)’
+Exp3 - abs ‘(’ Exp4 ‘)’
+Exp3 - sind ‘(’ Exp4 ‘)’
+Exp3 - cosd ‘(’ Exp4 ‘)’
+Exp3 - sins ‘(’ Exp4 ‘)’
+Exp3 - coss ‘(’ Exp4 ‘)’
+Exp3 - tans ‘(’ Exp4 ‘)’
+Exp3 - tand ‘(’ Exp4 ‘)’
+Exp3 - arcsins ‘(’ Exp4 ‘)’
+Exp3 - arcsind‘(’ Exp4 ‘)’
+Exp3 - arccoss ‘(’ Exp4 ‘)’
+Exp3 - arccosd ‘(’ Exp4 ‘)’
+Exp3 - arctans ‘(’ Exp4 ‘)’
+Exp3 - arctand ‘(’ Exp4 ‘)’
+Exp3 - s2d ‘(’ Exp4 ‘)’
+Exp3 - d2sra‘(’ Exp4 ‘)’
+Exp3 - d2sdec'(' Exp4 ')'
+ 
+Exp4 - Exp5
+Exp4 - Exp5 op_adit Exp4
+ 
+Exp5 - Exp6
+Exp5 - Exp6 op_mult Exp5
+ 
+Exp6 - Exp7
+Exp6 - Exp7 ^ Exp6
+
+Exp7 - neg Exp5
+Exp7 - men Exp5
+Exp7 - numbers
+Exp7 - booleans 
+Exp7 - strings
+Exp7 - ( Exp0 )  
+Exp7 - QFieldName  
+Exp7 - id | binding
+Exp7 - IfExpr
+
+IFExpr- 'if' Exp0 'then'  Exp0 'else' Exp0
+
+op_adit - + | -
+op_mult - * | / | div | mod
+op_rel -   '>' | '<' | '>=' | '<='
+op_eq - = | <>
+op_log - and | or 
+neg - not
+men - -
+
+QFieldName - [ ‘p’ | ‘s’ ] ‘.’ id [‘-’]
+id  - l ( l | d | _ )
+
+numbers- integers | reals | exponentials
+integers- [ + | - ] d d* 
+reals - [ + | - ] d d* [.d d*]
+exponentials - [ + | - ] d d* [.d d*] ‘e’ ( ‘-’ | ‘+’ ) d d*
+strings - ‘“‘ [ s | l | d ]* ‘“’
+booleans - true | false
+
+s - ‘ ‘ | ‘(‘ | ‘)’ | ‘_’ | ‘+’ | ‘-’ | ‘;’ | ‘*’ | ‘/’ | ‘<’ | ‘>’| ‘=’ | ‘,’ | ‘:’  | ‘#’  | ‘“’  | ‘-’
+d  - 0 | … | 9
+l  - a | … | z | A | ... |  Z 
+
+delim - ‘ ‘ | ‘(‘ | ‘)’ | EOL | EOF | TAB | ‘+’ | ‘-’ | ‘;’ | ‘:’ | ‘*’ | ‘/’ | ‘div’ | ‘mod’ | ‘<’ | ‘>’ | ‘=’ | ‘,’ | ‘#’ | ‘“’ | ‘-’
+

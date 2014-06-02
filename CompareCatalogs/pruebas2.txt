@@ -1,0 +1,93 @@
+FUNCIONA:
+
+a:=45;
+d:=sins(a);
+
+a:=5.5;
+d:=abs(a);
+
+a:=-10;
+d:= a > 1;
+
+a:=true;
+b:= not a;
+
+a:=0;b:=0;c:=0;d:=0;
+f:=dist(a,b,c,d);
+
+d:=sins(45);
+
+a:=-10;
+n:=abs(a);
+
+n:=abs(-10);
+
+
+a:=9;
+f:=6;
+d:= a >= f;   /////funciona con todos los relacionales
+
+b:=0;
+p.mag?:=0;
+a:=p.mag?;
+
+a:=5^2;
+
+a:=0.0;
+b:=9.2;
+c:=(a - b); funciona con + - / * mod div
+
+a:=5*1.0e-2;
+n:=abs(a);
+
+b:=5;
+a:=b+1;
+# if (a)<3 then true else false;
+
+b:=5;
+a:=7;
+# if a<> 8 then c:=a+b else c:=a-b;
+
+b:=5;
+v:=7;
+# if (a:=b+1)<3 then c:=v+b else c:=v-b;
+
+a:=0.5;
+b:=9.5;
+#if (a<=b) then d:=tans(b) else g:=sins(a);
+
+a:=8;
+f:=a^5;
+
+a:=8.3;
+b:=9.2;
+f:=a^b;
+
+a:= false;
+f:= false;
+b:=  not f and a;
+
+a:=" ";
+d:= a+"5";
+
+a:="pablo";
+d:= a+"rosa";
+
+d:= "pablo"+"rosa";
+
+b:=false;
+a:= b mod false; ///No se pq fuciona//
+
+NO FUNCIONA:
+
+QUE HACEMOS CON LOS STRING?????
+String con operaciones logicas, relacionales(mas sentido), * / div mod ........????
+
+true + false;???????
+
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+************  Catalog Selection  ************
+
+Catalog P: 
+Coordinates of Catalog P: 
+Radius ("): 
+Catalog S: 
+Radius around each P star ("): 
+Catalog Description Primary and Secondary: 
+[[, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ], [, ]]
+
+************  Filters  ************
+
+Catalog P:
+
+
+Catalog S:
+
+
+************  Criterium for detecting errors  ************
+
+
