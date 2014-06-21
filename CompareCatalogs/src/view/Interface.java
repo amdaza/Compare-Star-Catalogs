@@ -416,20 +416,21 @@ public class Interface extends JFrame{
 							filFichero=sc.nextLine();			
 						}			
 						
-						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("Catalog P:"))){
+						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("Catalog S:"))){
 							textAreaFilterP.append(filFichero+"\n");
 							
 						}
-						if(sc.hasNextLine()){
+						
+						/*if(sc.hasNextLine()){
 							filFichero=sc.nextLine();		
-						}
+						}*/
 					
-						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("Catalog S:"))){
+						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("************  Criterium for detecting errors  ************"))){
 							textAreaFilterS.append(filFichero+"\n");							
 							
 						}
 						
-						
+					/*	
 						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("************  Criterium for detecting errors  ************"))){
 							textAreaCriteriumErrors.append(filFichero+"\n");
 						}
@@ -440,7 +441,10 @@ public class Interface extends JFrame{
 						if(sc.hasNextLine()){
 							filFichero=sc.nextLine();			
 						}
-						
+						*/
+						if(sc.hasNextLine()){
+							filFichero=sc.nextLine();		
+						}
 						
 						while(sc.hasNextLine()){
 							filFichero=sc.nextLine();	
@@ -456,7 +460,7 @@ public class Interface extends JFrame{
 					}
 					 
 					sc.close();
-					crearTable();
+					createTable();
 					table.update(table.getGraphics());
 				}
 				
@@ -1427,7 +1431,7 @@ public class Interface extends JFrame{
 	}
 
 
-	public void crearTable() {
+	public void createTable() {
 		table = new JTable();
 		table.setShowGrid(false);
 		table.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));

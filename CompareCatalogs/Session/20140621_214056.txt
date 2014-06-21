@@ -1,0 +1,33 @@
+************  Catalog Selection  ************
+
+Catalog P: dfhy
+Coordinates of Catalog P: fgh
+Radius ("): fh
+Catalog S: fgh
+Radius around each P star ("): fh
+
+************  Filters  ************
+
+Catalog P:
+aqui
+catalog
+
+
+p
+
+Catalog S:
+aqui 
+catalog
+
+
+S
+
+************  Criterium for detecting errors  ************
+
+e
+rr
+o
+r
+e
+s
+
