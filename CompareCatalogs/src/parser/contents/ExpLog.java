@@ -7,8 +7,19 @@ import parser.elements.Variable;
 
 public class ExpLog extends Expression {
 
+	/**
+	 * @uml.property  name="op"
+	 */
 	private String op;
+	/**
+	 * @uml.property  name="e1"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e1;
+	/**
+	 * @uml.property  name="e2"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e2;
 
 	public ExpLog (Expression e1, Expression e2, String op){

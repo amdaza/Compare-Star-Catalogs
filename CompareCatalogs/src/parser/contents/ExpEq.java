@@ -7,8 +7,19 @@ import parser.elements.Variable;
 
 public class ExpEq extends Expression {
 
+	/**
+	 * @uml.property  name="op"
+	 */
 	private String op;
+	/**
+	 * @uml.property  name="e1"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e1;
+	/**
+	 * @uml.property  name="e2"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e2;
 
 	public ExpEq (Expression e1, Expression e2, String op){

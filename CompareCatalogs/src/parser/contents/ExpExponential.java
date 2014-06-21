@@ -6,7 +6,15 @@ import parser.elements.*;
 
 public class ExpExponential extends Expression {
 
+	/**
+	 * @uml.property  name="e1"
+	 * @uml.associationEnd  
+	 */
 	private Expression e1;
+	/**
+	 * @uml.property  name="e2"
+	 * @uml.associationEnd  
+	 */
 	private Expression e2;
 
 	public ExpExponential (Expression e1, Expression e2){

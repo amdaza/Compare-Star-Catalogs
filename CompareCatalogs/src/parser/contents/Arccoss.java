@@ -7,6 +7,10 @@ import parser.elements.Variable;
 
 public class Arccoss extends Expression {
 
+	/**
+	 * @uml.property  name="e"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e;
 
 	public Arccoss(Expression e){

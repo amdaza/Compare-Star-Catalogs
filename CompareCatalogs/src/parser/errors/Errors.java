@@ -11,12 +11,14 @@ import parser.elements.*;
 public class Errors {
 
 	/**
-	 * attributes:
-	 * 
-	 * s	-
-	 * t	-
+	 * attributes: s	- t	-
+	 * @uml.property  name="s"
 	 */
 	private String s;
+	/**
+	 * @uml.property  name="t"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Token t;
 
 	/**
@@ -132,6 +134,8 @@ public class Errors {
 			this.s="exp2 expected in exp1 ^ exp2";
 		else if (id==48)
 			this.s="identificator not declared before";
+		else if (id==49)
+			this.s="expected Exp0";		
 		else if (id==100)
 			this.s="Type error";
 		else if (id==101)
@@ -208,32 +212,32 @@ public class Errors {
 	}
 
 	/**
-	 * 
 	 * @return
+	 * @uml.property  name="s"
 	 */
 	public String getS() {
 		return s;
 	}
 
 	/**
-	 * 
-	 * @param s
+	 * @param  s
+	 * @uml.property  name="s"
 	 */
 	public void setS(String s) {
 		this.s = s;
 	}
 
 	/**
-	 * 
-	 * @return Token
+	 * @return  Token
+	 * @uml.property  name="t"
 	 */
 	public Token getT() {
 		return t;
 	}
 
 	/**
-	 * 
-	 * @param t
+	 * @param  t
+	 * @uml.property  name="t"
 	 */
 	public void setT(Token t) {
 		this.t = t;

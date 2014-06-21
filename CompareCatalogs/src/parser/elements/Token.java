@@ -1,9 +1,21 @@
 package parser.elements;
 
 public class Token {
+	/**
+	 * @uml.property  name="tipo"
+	 */
 	private String tipo;
+	/**
+	 * @uml.property  name="atributo"
+	 */
 	private String atributo;
+	/**
+	 * @uml.property  name="fila"
+	 */
 	int fila;
+	/**
+	 * @uml.property  name="columna"
+	 */
 	int columna;
 
 	/**

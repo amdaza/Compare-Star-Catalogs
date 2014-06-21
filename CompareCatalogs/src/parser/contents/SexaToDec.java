@@ -7,6 +7,10 @@ import parser.elements.Variable;
 
 public class SexaToDec extends Expression {
 
+	/**
+	 * @uml.property  name="e"
+	 * @uml.associationEnd  
+	 */
 	private Expression e;
 
 	public SexaToDec(Expression e){

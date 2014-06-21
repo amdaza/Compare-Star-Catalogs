@@ -7,9 +7,25 @@ import parser.elements.Variable;
 
 public class Distance extends Expression {
 
+	/**
+	 * @uml.property  name="e1"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e1;
+	/**
+	 * @uml.property  name="e2"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e2;
+	/**
+	 * @uml.property  name="e3"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e3;
+	/**
+	 * @uml.property  name="e4"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e4;
 
 	public Distance (Expression e1, Expression e2, Expression e3, Expression e4){

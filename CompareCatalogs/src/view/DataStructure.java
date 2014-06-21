@@ -2,80 +2,169 @@ package view;
 
 // This class will save second and third column of catalog data
 public class DataStructure {
-	enum Type{A, I, F, E};
-	
-	private String mag;
-	private Type type;
-	private String description;
-	private int lenght;
-	private int decimals;
-	
-	
-	public DataStructure(){
-		description="";
-	}
+	/**
+	 * @author    Delegacion01
+	 */
+	enum Type{/**
+	 * @uml.property  name="a"
+	 * @uml.associationEnd  
+	 */
+		A, /**
+		 * @uml.property  name="i"
+		 * @uml.associationEnd  
+		 */
+		I, /**
+		 * @uml.property  name="f"
+		 * @uml.associationEnd  
+		 */
+		F, /**
+		 * @uml.property  name="e"
+		 * @uml.associationEnd  
+		 */
+		E};
 
-	public Type getType() {
-		return type;
-	}
+		/**
+		 * @uml.property  name="mag"
+		 */
+		private String mag;
+		/**
+		 * @uml.property  name="type"
+		 * @uml.associationEnd  
+		 */
+		private Type type;
+		/**
+		 * @uml.property  name="description"
+		 */
+		private String description;
+		/**
+		 * @uml.property  name="lenght"
+		 */
+		private int lenght;
+		/**
+		 * @uml.property  name="decimals"
+		 */
+		private int decimals;
 
-	public void setType(char type) {
-		switch (type) {
+
+		public DataStructure(){
+			description="";
+		}
+
+		/**
+		 * @return
+		 * @uml.property  name="type"
+		 */
+		public Type getType() {
+			return type;
+		}
+
+		public void setType(char type) {
+			switch (type) {
 			case 'a':
 			case 'A':
 				this.type = Type.A;
-			break;
+				break;
 			case 'F':
 				this.type = Type.F;
-			break;
+				break;
 			case 'I':
 				this.type = Type.I;
-			break;
+				break;
 			case 'E':
 				this.type = Type.E;
-			break;
+				break;
+			}
 		}
-	}
+		public String getParserType(DataStructure.Type type){
+			String result = null;
+			switch (type) {
+			case A:		
+				result = "string";
+			case F:
+				result = "real";
+			case I:
+				result = "integer";
+			case E:
+				result = "exponential";
+			}
+			return result;
+		}
 
-	public String getDescription() {
-		return description;
-	}
+		/**
+		 * @return
+		 * @uml.property  name="description"
+		 */
+		public String getDescription() {
+			return description;
+		}
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+		/**
+		 * @param description
+		 * @uml.property  name="description"
+		 */
+		public void setDescription(String description) {
+			this.description = description;
+		}
 
-	public String getMag() {
-		return mag;
-	}
+		/**
+		 * @return
+		 * @uml.property  name="mag"
+		 */
+		public String getMag() {
+			return mag;
+		}
 
-	public void setMag(String mag) {
-		this.mag = mag;
-	}
-	
-	public String toString() {
-		return type + description ;
-	}
+		/**
+		 * @param mag
+		 * @uml.property  name="mag"
+		 */
+		public void setMag(String mag) {
+			this.mag = mag;
+		}
 
-	public int getLenght() {
-		return lenght;
-	}
+		public String toString() {
+			return type + description ;
+		}
 
-	public void setLenght(int lenght) {
-		this.lenght = lenght;
-	}
+		/**
+		 * @return
+		 * @uml.property  name="lenght"
+		 */
+		public int getLenght() {
+			return lenght;
+		}
 
-	public int getDecimals() {
-		return decimals;
-	}
+		/**
+		 * @param lenght
+		 * @uml.property  name="lenght"
+		 */
+		public void setLenght(int lenght) {
+			this.lenght = lenght;
+		}
 
-	public void setDecimals(int decimals) {
-		this.decimals = decimals;
-	}
+		/**
+		 * @return
+		 * @uml.property  name="decimals"
+		 */
+		public int getDecimals() {
+			return decimals;
+		}
 
-	public void setType(Type type) {
-		this.type = type;
-	}
+		/**
+		 * @param decimals
+		 * @uml.property  name="decimals"
+		 */
+		public void setDecimals(int decimals) {
+			this.decimals = decimals;
+		}
+
+		/**
+		 * @param type
+		 * @uml.property  name="type"
+		 */
+		public void setType(Type type) {
+			this.type = type;
+		}
 
 
 }

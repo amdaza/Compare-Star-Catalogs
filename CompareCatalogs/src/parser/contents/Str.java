@@ -6,6 +6,9 @@ import parser.elements.Variable;
 
 
 public class Str extends Expression {
+	/**
+	 * @uml.property  name="value"
+	 */
 	private String value;
 
 	public Str(String value){
@@ -22,10 +25,18 @@ public class Str extends Expression {
 		this.value = exp.value;
 	}
 		
+	/**
+	 * @return
+	 * @uml.property  name="value"
+	 */
 	public String getValue() {
 		return value;
 	}
 	
+	/**
+	 * @param value
+	 * @uml.property  name="value"
+	 */
 	public void setValue(String value) {
 		this.value = value;
 	}

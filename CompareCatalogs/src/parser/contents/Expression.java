@@ -18,6 +18,9 @@ public abstract class Expression  {
 	 * 
 	 * - error
 	 */
+	/**
+	 * @uml.property  name="type"
+	 */
 	protected String type;
 
 	public abstract Value getValue(HashMap <Variable,Value> localVar);
@@ -106,10 +109,18 @@ public abstract class Expression  {
         throw new Error("Unknown type of expression");
     }
 	
+	/**
+	 * @return
+	 * @uml.property  name="type"
+	 */
 	public String getType() {
 		return type;
 	}
 
+	/**
+	 * @param type
+	 * @uml.property  name="type"
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}

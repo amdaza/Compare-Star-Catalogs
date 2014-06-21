@@ -7,8 +7,20 @@ import parser.elements.Variable;
 
 public class IfExpr extends Expression {
 	
+	/**
+	 * @uml.property  name="e1"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e1;
+	/**
+	 * @uml.property  name="e2"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e2;
+	/**
+	 * @uml.property  name="e3"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e3;	
 
 	public IfExpr(Expression e1, Expression e2, Expression e3) {
@@ -29,26 +41,50 @@ public class IfExpr extends Expression {
 		this.e3 = exp.e3.deepCopy();
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="e1"
+	 */
 	public Expression getE1() {
 		return e1;
 	}
 
+	/**
+	 * @param e1
+	 * @uml.property  name="e1"
+	 */
 	public void setE1(Expression e1) {
 		this.e1 = e1;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="e2"
+	 */
 	public Expression getE2() {
 		return e2;
 	}
 
+	/**
+	 * @param e2
+	 * @uml.property  name="e2"
+	 */
 	public void setE2(Expression e2) {
 		this.e2 = e2;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="e3"
+	 */
 	public Expression getE3() {
 		return e3;
 	}
 
+	/**
+	 * @param e3
+	 * @uml.property  name="e3"
+	 */
 	public void setE3(Expression e3) {
 		this.e3 = e3;
 	}
@@ -59,8 +95,7 @@ public class IfExpr extends Expression {
 		Value result=null;
 		Value v1 = e1.getValue(localVar);
 		Value v2 = e2.getValue(localVar);
-		Value v3 = e3.getValue(localVar);
-		
+		Value v3 = e3.getValue(localVar);		
 		if (v1.getType().equals("boolean") && v1.getVal().equals("true")) {
 			result= v2;
 

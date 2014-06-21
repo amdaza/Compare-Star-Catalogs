@@ -6,6 +6,9 @@ import parser.elements.Value;
 import parser.elements.Variable;
 
 public class Exponential extends Expression {
+	/**
+	 * @uml.property  name="value"
+	 */
 	private String value;
 
 	public Exponential(String value){
@@ -35,10 +38,18 @@ public class Exponential extends Expression {
 		return result;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="value"
+	 */
 	public String getValue() {
 		return value;
 	}
 	
+	/**
+	 * @param value
+	 * @uml.property  name="value"
+	 */
 	public void setValue(String value) {
 		this.value = value;
 	}

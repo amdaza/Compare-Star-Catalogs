@@ -24,8 +24,14 @@ public class Catalog{
 	 * @since 1.1.1
 	 */
 	
-	/** attributes */
+	/**
+	 * attributes
+	 * @uml.property  name="catalogPath"
+	 */
 	private String catalogPath;
+	/**
+	 * @uml.property  name="urlCatalogVizier"
+	 */
 	private String urlCatalogVizier;
 	//private String urlCatalogWds;
 	
@@ -44,12 +50,19 @@ public class Catalog{
 	}
 	
 	
-	/** Getters and setters */
+	/**
+	 * Getters and setters
+	 * @uml.property  name="catalogPath"
+	 */
 	public String getCatalogPath() {
 		return catalogPath;
 	}
 
 	
+	/**
+	 * @param catalogPath
+	 * @uml.property  name="catalogPath"
+	 */
 	public void setCatalogPath(String catalogPath) {
 		this.catalogPath = catalogPath;
 	

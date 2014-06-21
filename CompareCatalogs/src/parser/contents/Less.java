@@ -5,6 +5,10 @@ import parser.elements.*;
 
 public class Less extends Expression {
 
+	/**
+	 * @uml.property  name="e"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Expression e;
 
 	public Less(Expression e){//
@@ -18,9 +22,17 @@ public class Less extends Expression {
 		this.e = exp.e.deepCopy();
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="e"
+	 */
 	public Expression getE() {
 		return e;
 	}
+	/**
+	 * @param e
+	 * @uml.property  name="e"
+	 */
 	public void setE(Expression e) {//
 		this.e = e;
 		this.type = e.type;

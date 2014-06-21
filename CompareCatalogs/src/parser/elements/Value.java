@@ -2,7 +2,13 @@ package parser.elements;
 
 public class Value {
 	
+	/**
+	 * @uml.property  name="val"
+	 */
 	private String val;
+	/**
+	 * @uml.property  name="type"
+	 */
 	private String type;
 
 	public Value(String val, String type) {
@@ -11,6 +17,10 @@ public class Value {
 		
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="val"
+	 */
 	public String getVal() {
 		return val;
 	}
@@ -18,9 +28,17 @@ public class Value {
 	public void setval(String val) {
 		this.val = val;
 	}
+	/**
+	 * @return
+	 * @uml.property  name="type"
+	 */
 	public String getType() {
 		return type;
 	}
+	/**
+	 * @param type
+	 * @uml.property  name="type"
+	 */
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -43,7 +61,7 @@ public class Value {
 	public boolean isTypeNumeric(){
 		return //(this.type.equals("string") || this.type.equals("string")) ||
 				(this.type.equals("integer") || this.type.equals("exponential") 
-				|| this.type.equals("real"));
+				|| this.type.equals("real")) || this.type.equals("boolean");
 	}
 	
 	

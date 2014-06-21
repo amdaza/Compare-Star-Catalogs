@@ -15,22 +15,77 @@ import view.Interface;
 
 public class SyntacticAnalizer {
 
+	/**
+	 * @uml.property  name="token_act"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Token token_act;
+	/**
+	 * @uml.property  name="lexicalAnalyzer"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private Lexical lexicalAnalyzer;
+	/**
+	 * @uml.property  name="hayTipo"
+	 */
 	boolean hayTipo = false;
+	/**
+	 * @uml.property  name="hayComa"
+	 */
 	boolean hayComa = false;
+	/**
+	 * @uml.property  name="existError"
+	 */
 	boolean existError = false;
+	/**
+	 * @uml.property  name="transit"
+	 */
 	boolean transit = false;
 	//private JTextArea console= new JTextArea();
+	/**
+	 * @uml.property  name="console"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private JTextArea console;
+	/**
+	 * @uml.property  name="errors"
+	 * @uml.associationEnd  
+	 */
 	private Errors errors;
+	/**
+	 * @uml.property  name="statement"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="parser.contents.Binding"
+	 */
 	private ArrayList<Statement> statement;
+	/**
+	 * @uml.property  name="row"
+	 * @uml.associationEnd  qualifier="var:parser.elements.Variable parser.elements.Value"
+	 */
 	private HashMap<Variable,Value> row;
+	/**
+	 * @uml.property  name="program"
+	 * @uml.associationEnd  
+	 */
 	private Program program;
+
+	/**
+	 * @uml.property  name="e"
+	 * @uml.associationEnd  
+	 */
 	private Expression e;
+	/**
+	 * @uml.property  name="i"
+	 * @uml.associationEnd  readOnly="true"
+	 */
 	private Interface i;
 
+	public Program getProgram() {
+		return program;
+	}
 
+	public void setProgram(Program program) {
+		this.program = program;
+	}
 
 
 	/**
@@ -49,9 +104,8 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Mehod that returns console content
-	 * 
-	 * @return
-	 * returns console content
+	 * @return  returns console content
+	 * @uml.property  name="console"
 	 */
 	public JTextArea getConsole(){
 		return console;
@@ -193,9 +247,9 @@ public class SyntacticAnalizer {
 					if(!existError){
 						correct = result.isCorrect();
 						e = result.getExpression();
-						Value val = e.getValue(row);
+						/*Value val = e.getValue(row);
 						Variable var = new Variable(s,val);
-						row.put(var, val);
+						row.put(var, val);*/
 						Binding b = new Binding(e,s);					
 						statement.add(b);
 					}
@@ -232,9 +286,9 @@ public class SyntacticAnalizer {
 				if(!existError){
 					correct = result.isCorrect();
 					e = result.getExpression();
-					Value val = e.getValue(row);
+					/*Value val = e.getValue(row);
 					Variable var = new Variable(s,val);
-					row.put(var, val);
+					row.put(var, val);*/
 					Binding b = new Binding(e,s);					
 					statement.add(b);
 				}
@@ -259,22 +313,19 @@ public class SyntacticAnalizer {
 				program(false);
 			}
 		}
-		
-		program = new Program(statement);
-		//console.setText("");
-		
 
-		if (!existError) {
 
-			console.setForeground(Color.blue);
-			console.append("Correct lexical and syntactic analysis.");
-			System.out.println("Correct lexical and syntactic analysis.");
-			
-			
-		}
-		
+
 	}
+	public void parser(){
+		program(false);
+		program = new Program(statement);
+		if (!existError) {
+			console.setForeground(Color.blue);
+			console.append("Correct lexical and syntactic analysis.");			
 
+		}
+	}
 
 	/**
 	 * 
@@ -294,7 +345,7 @@ public class SyntacticAnalizer {
 			}
 			if(!correct){
 				if (!existError) {
-					setError(new Errors(3,token_act,true,console));
+					setError(new Errors(49,token_act,true,console));//antes error3
 					existError=true;
 				}
 			}
@@ -358,9 +409,10 @@ public class SyntacticAnalizer {
 				setError(new Errors(2,token_act,true,console));
 				existError =true;
 			}*/
-		}}}}
+					}}}}
 		return new Expression_Boolean(e,correct);
 	}
+
 
 
 
@@ -401,7 +453,7 @@ public class SyntacticAnalizer {
 								existError =true;
 							}
 						}
-						
+
 						correct = true;
 					}
 				}
@@ -411,7 +463,7 @@ public class SyntacticAnalizer {
 		return new Expression_Boolean (e,correct);
 	}
 
-	private Expression_Boolean exp8(boolean throwError) {
+	/*private Expression_Boolean exp8(boolean throwError) {
 		Token tok = token_act;
 		boolean correct = false;
 		if (!existError) {
@@ -441,7 +493,7 @@ public class SyntacticAnalizer {
 				existError=true;
 			}}
 		return new Expression_Boolean (e,correct);
-	}
+	}*/
 
 	/**
 	 * Method that evaluates the following grammar rules:
@@ -481,7 +533,7 @@ public class SyntacticAnalizer {
 								existError =true;
 							}
 						}
-						
+
 					}
 				}
 			}
@@ -528,7 +580,7 @@ public class SyntacticAnalizer {
 								existError =true;
 							}
 						}
-						
+
 					}
 				}
 
@@ -700,9 +752,9 @@ public class SyntacticAnalizer {
 				}else if (checkAtribute("sind")){
 					//Expression e1 = e.deepCopy();
 					if(checkAtribute("(")){		
-						
-							result1 = exp4(throwError);
-							boolean correct1 = result1.isCorrect();
+
+						result1 = exp4(throwError);
+						boolean correct1 = result1.isCorrect();
 						if (correct1) {
 							Expression e1 = e.deepCopy();
 							if(checkAtribute(")")){
@@ -1395,6 +1447,10 @@ public class SyntacticAnalizer {
 		Token tok = token_act;
 		if (!existError) {
 			System.out.println("***exp7***");
+			if(checkTokenType("EOF")){
+				setError(new Errors(49,tok,true,console));													
+				existError =true;
+			}
 			if (checkTokenType("integer")){	
 				System.out.println("Es un entero");
 				e = new Int(tok.leeAtributo());
@@ -1415,7 +1471,7 @@ public class SyntacticAnalizer {
 						existError =true;
 					}
 				}
-				
+
 				correct = true;
 			} else if (checkTokenType("exponential")){
 				//Expression e1 = e.deepCopy();
@@ -1444,7 +1500,7 @@ public class SyntacticAnalizer {
 					Expression_Boolean result1 = assignment();//exp8(throwError);
 					correct = result1.isCorrect();}
 				else{
-					
+
 					Variable v = new Variable(tok.leeAtributo(),"","");
 					if(!row.containsKey(v)){
 						System.out.println("No esta en la tabla");
@@ -1517,7 +1573,7 @@ public class SyntacticAnalizer {
 							existError =true;
 						}
 					}
-					
+
 				}
 				correct = true;
 			} else if (checkAtribute("not")) {

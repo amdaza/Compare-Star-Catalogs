@@ -7,8 +7,19 @@ import parser.elements.*;
 
 public class ExpRel extends Expression {
 
+	/**
+	 * @uml.property  name="op"
+	 */
 	private String op;
+	/**
+	 * @uml.property  name="e1"
+	 * @uml.associationEnd  
+	 */
 	private Expression e1;
+	/**
+	 * @uml.property  name="e2"
+	 * @uml.associationEnd  
+	 */
 	private Expression e2;
 
 	public ExpRel (Expression e1, Expression e2, String op){

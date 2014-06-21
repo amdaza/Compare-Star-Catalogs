@@ -13,12 +13,31 @@ public class DescriptionData{
 	Modificado el constructor
 	*/
 	
-	private LinkedHashMap<String, DataStructure> dt;
+	/**
+	 * @uml.property  name="dt"
+	 */
+	private LinkedHashMap<String, DataStructure> catalogStructure;
+	/**
+	 * @uml.property  name="path"
+	 */
 	private String path;
+	/**
+	 * @uml.property  name="init"
+	 */
 	private final String init = "#---Details of Columns:";
 	//private final String end = "#END#";
+	/**
+	 * @uml.property  name="stars"
+	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="view.StarRow"
+	 */
 	private Vector<StarRow> stars;
+	/**
+	 * @uml.property  name="empty"
+	 */
 	private boolean empty;
+	/**
+	 * @uml.property  name="contador"
+	 */
 	private int contador=0;
 	
 	public DescriptionData(){
@@ -43,25 +62,41 @@ public class DescriptionData{
 	}
 
 	public LinkedHashMap<String, DataStructure> getDt() {
-		return dt;
+		return catalogStructure;
 	}
 
 	public void setDt(LinkedHashMap<String, DataStructure> dt) {
-		this.dt = dt;
+		this.catalogStructure = dt;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="path"
+	 */
 	public String getPath() {
 		return path;
 	}
 
+	/**
+	 * @param path
+	 * @uml.property  name="path"
+	 */
 	public void setPath(String path) {
 		this.path = path;
 	}
 	
+	/**
+	 * @return
+	 * @uml.property  name="empty"
+	 */
 	public boolean isEmpty() {
 		return empty;
 	}
 
+	/**
+	 * @param empty
+	 * @uml.property  name="empty"
+	 */
 	public void setEmpty(boolean empty) {
 		this.empty = empty;
 	}
@@ -146,7 +181,7 @@ public class DescriptionData{
         			 //System.out.println("description: "+description);
         			 
         			 //Add new element into LinkedHashMap
-        			 dt.put(key, value);
+        			 catalogStructure.put(key, value);
 		         }
 		         //End of description
 		         
@@ -158,9 +193,9 @@ public class DescriptionData{
 		        	
 		        	
 		        	String value = "";
-				    StarRow starRow = new StarRow();
+				    StarRow starRow = new StarRow(line);
 				  
-		        	for (Map.Entry<String,DataStructure> entry : dt.entrySet()) {
+		        	for (Map.Entry<String,DataStructure> entry : catalogStructure.entrySet()) {
 					    String key = entry.getKey();
 					    DataStructure dst = entry.getValue();
 					    int lenght= dst.getLenght();
@@ -215,13 +250,17 @@ public class DescriptionData{
 	         }
 	      }
 		 
-		return dt;
+		return catalogStructure;
 		 
 	}
 
 	private int setContador(int size) {
 		return this.contador= size;
 	}
+/**
+ * @return
+ * @uml.property  name="contador"
+ */
 public int getContador(){
 	return contador;
 }

@@ -10,42 +10,206 @@ import parser.errors.Errors;
 public class Lexical {
 
 	/**
-	 * attributes:
-	 * 
-	 * 
-	 * state 	   - contains the current state in which we find ourselves.
-	 * code 	   - code has to be analyzed.
-	 * lexeme 	   - accumulate the characters read.
-	 * row 	       - keeps the row in which the character is read.
-	 * column 	   - keeps the column in which the character is read.
-	 * character   - containing the current character.
-	 * index	   - contains the order of the current character.
-	 * startRow    - row where the token begins.
-	 * startColumn - column where the token begins.
-	 *  
+	 * attributes: state 	   - contains the current state in which we find ourselves. code 	   - code has to be analyzed. lexeme 	   - accumulate the characters read. row 	       - keeps the row in which the character is read. column 	   - keeps the column in which the character is read. character   - containing the current character. index	   - contains the order of the current character. startRow    - row where the token begins. startColumn - column where the token begins.
 	 */
 
 
 	enum lexicalStatus {
-		INITIAL, IS_START_ASSIGNMENT, IS_NUMBER, IS_IDENTIFIER,
-		IS_PLUS, IS_MINUS, IS_BY, IS_DIVIDED, IS_EXPONENTIAL, IS_LESS, IS_MAJOR, 
-		IS_LESS_EQUAL, IS_MAJOR_EQUAL, IS_DIFFERENT, IS_EQUAL, IS_NEGATION, ES_CONJUNCION, 
-		IS_INITIAL_PARENTHESIS, IS_FINAL_PARENTHESIS, PART_EXPONENTIAL, PART_EXPONENTIAL_2, PART_EXPONENTIAL_3,
-		IS_COMMA, IS_POINT, IS_EOF, IS_DOUBLE_QUOTES,
-		IS_INTERROGATION, IS_ASSIGNMENT, IS_SHARP, IS_STRING, IS_STRING_END,
-	    DECIMAL_PART, DECIMAL_PART_2, IS_CATALOG_ID, IS_CATALOG_ID_2, IS_SEMICOLON
+		/**
+		 * @uml.property  name="iNITIAL"
+		 * @uml.associationEnd  
+		 */
+		INITIAL, /**
+		 * @uml.property  name="iS_START_ASSIGNMENT"
+		 * @uml.associationEnd  
+		 */
+		IS_START_ASSIGNMENT, /**
+		 * @uml.property  name="iS_NUMBER"
+		 * @uml.associationEnd  
+		 */
+		IS_NUMBER, /**
+		 * @uml.property  name="iS_IDENTIFIER"
+		 * @uml.associationEnd  
+		 */
+		IS_IDENTIFIER,
+		/**
+		 * @uml.property  name="iS_PLUS"
+		 * @uml.associationEnd  
+		 */
+		IS_PLUS, /**
+		 * @uml.property  name="iS_MINUS"
+		 * @uml.associationEnd  
+		 */
+		IS_MINUS, /**
+		 * @uml.property  name="iS_BY"
+		 * @uml.associationEnd  
+		 */
+		IS_BY, /**
+		 * @uml.property  name="iS_DIVIDED"
+		 * @uml.associationEnd  
+		 */
+		IS_DIVIDED, /**
+		 * @uml.property  name="iS_EXPONENTIAL"
+		 * @uml.associationEnd  
+		 */
+		IS_EXPONENTIAL, /**
+		 * @uml.property  name="iS_LESS"
+		 * @uml.associationEnd  
+		 */
+		IS_LESS, /**
+		 * @uml.property  name="iS_MAJOR"
+		 * @uml.associationEnd  
+		 */
+		IS_MAJOR, 
+		/**
+		 * @uml.property  name="iS_LESS_EQUAL"
+		 * @uml.associationEnd  
+		 */
+		IS_LESS_EQUAL, /**
+		 * @uml.property  name="iS_MAJOR_EQUAL"
+		 * @uml.associationEnd  
+		 */
+		IS_MAJOR_EQUAL, /**
+		 * @uml.property  name="iS_DIFFERENT"
+		 * @uml.associationEnd  
+		 */
+		IS_DIFFERENT, /**
+		 * @uml.property  name="iS_EQUAL"
+		 * @uml.associationEnd  
+		 */
+		IS_EQUAL, /**
+		 * @uml.property  name="iS_NEGATION"
+		 * @uml.associationEnd  
+		 */
+		IS_NEGATION, /**
+		 * @uml.property  name="eS_CONJUNCION"
+		 * @uml.associationEnd  
+		 */
+		ES_CONJUNCION, 
+		/**
+		 * @uml.property  name="iS_INITIAL_PARENTHESIS"
+		 * @uml.associationEnd  
+		 */
+		IS_INITIAL_PARENTHESIS, /**
+		 * @uml.property  name="iS_FINAL_PARENTHESIS"
+		 * @uml.associationEnd  
+		 */
+		IS_FINAL_PARENTHESIS, /**
+		 * @uml.property  name="pART_EXPONENTIAL"
+		 * @uml.associationEnd  
+		 */
+		PART_EXPONENTIAL, /**
+		 * @uml.property  name="pART_EXPONENTIAL_2"
+		 * @uml.associationEnd  
+		 */
+		PART_EXPONENTIAL_2, /**
+		 * @uml.property  name="pART_EXPONENTIAL_3"
+		 * @uml.associationEnd  
+		 */
+		PART_EXPONENTIAL_3,
+		/**
+		 * @uml.property  name="iS_COMMA"
+		 * @uml.associationEnd  
+		 */
+		IS_COMMA, /**
+		 * @uml.property  name="iS_POINT"
+		 * @uml.associationEnd  
+		 */
+		IS_POINT, /**
+		 * @uml.property  name="iS_EOF"
+		 * @uml.associationEnd  
+		 */
+		IS_EOF, /**
+		 * @uml.property  name="iS_DOUBLE_QUOTES"
+		 * @uml.associationEnd  
+		 */
+		IS_DOUBLE_QUOTES,
+		/**
+		 * @uml.property  name="iS_INTERROGATION"
+		 * @uml.associationEnd  
+		 */
+		IS_INTERROGATION, /**
+		 * @uml.property  name="iS_ASSIGNMENT"
+		 * @uml.associationEnd  
+		 */
+		IS_ASSIGNMENT, /**
+		 * @uml.property  name="iS_SHARP"
+		 * @uml.associationEnd  
+		 */
+		IS_SHARP, /**
+		 * @uml.property  name="iS_STRING"
+		 * @uml.associationEnd  
+		 */
+		IS_STRING, /**
+		 * @uml.property  name="iS_STRING_END"
+		 * @uml.associationEnd  
+		 */
+		IS_STRING_END,
+	    /**
+		 * @uml.property  name="dECIMAL_PART"
+		 * @uml.associationEnd  
+		 */
+	    DECIMAL_PART, /**
+		 * @uml.property  name="dECIMAL_PART_2"
+		 * @uml.associationEnd  
+		 */
+	    DECIMAL_PART_2, /**
+		 * @uml.property  name="iS_CATALOG_ID"
+		 * @uml.associationEnd  
+		 */
+	    IS_CATALOG_ID, /**
+		 * @uml.property  name="iS_CATALOG_ID_2"
+		 * @uml.associationEnd  
+		 */
+	    IS_CATALOG_ID_2, /**
+		 * @uml.property  name="iS_SEMICOLON"
+		 * @uml.associationEnd  
+		 */
+	    IS_SEMICOLON
 		
 	};
 	
+	/**
+	 * @uml.property  name="state"
+	 * @uml.associationEnd  
+	 */
 	private lexicalStatus state;
+	/**
+	 * @uml.property  name="console"
+	 * @uml.associationEnd  multiplicity="(1 1)"
+	 */
 	private JTextArea console= new JTextArea();
+	/**
+	 * @uml.property  name="code"
+	 */
 	private String code;
+	/**
+	 * @uml.property  name="lexeme"
+	 */
 	private String lexeme;
+	/**
+	 * @uml.property  name="row"
+	 */
 	private int row;
+	/**
+	 * @uml.property  name="column"
+	 */
 	private int column;
+	/**
+	 * @uml.property  name="character"
+	 */
 	private int character;
+	/**
+	 * @uml.property  name="index"
+	 */
 	private int index;
+	/**
+	 * @uml.property  name="startRow"
+	 */
 	private int startRow;
+	/**
+	 * @uml.property  name="startColumn"
+	 */
 	private int startColumn;
 
 	/**
