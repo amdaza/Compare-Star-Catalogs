@@ -127,7 +127,7 @@ public class DescriptionData{
 		        		 i++;
 		        	 }
 		        	 key = line.substring(4, i);//RAJ2000
-		        	 //System.out.println("key: "+key);
+		        	 System.out.println("key: "+key);
 		        	 
 		        	 while(line.charAt(i)== ' '){
 		        		 i++;
@@ -146,7 +146,8 @@ public class DescriptionData{
 		        	 }
 		        	 char type = line.charAt(i+1);
 		        	 value.setType(type);
-		        	 //System.out.println("type: "+type);
+		        	 System.out.println(line);
+		        	 System.out.println("type: "+ type);
 		        	 
 		        	 if (type == 'F'){
 		        		 if(line.charAt(i+3) == '.'){

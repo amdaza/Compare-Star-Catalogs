@@ -202,6 +202,10 @@ public class Errors {
 			this.s="identificator not declared before";
 		else if (id==49)
 			this.s="expected Exp0";		
+		else if (id==50)
+			this.s="error in not";	
+		else if (id==51)
+			this.s="error in '-'";
 		else if (id==100)
 			this.s="Type error";
 		else if (id==101)
