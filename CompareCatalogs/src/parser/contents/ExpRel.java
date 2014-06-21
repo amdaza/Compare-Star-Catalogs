@@ -60,7 +60,8 @@ public class ExpRel extends Expression {
 			}
 		}
 		else {
-			result = new Value("121", "error");
+			error=true;
+			result =  new Value("123","error");
 
 		}
 		return result;
@@ -137,7 +138,9 @@ public class ExpRel extends Expression {
 				result = new Value("false","boolean");
 			break; 
 		case "exponential" : 
-			if (v1.getDouble() > v2.getDouble()) 
+			double d1 = v1.getDouble();
+			double d2 = v2.getDouble();
+			if (d1 > d2) 
 				result = new Value("true","boolean");
 			else
 				result = new Value("false","boolean");

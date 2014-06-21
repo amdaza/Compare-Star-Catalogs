@@ -29,6 +29,72 @@ public class Errors {
 	 * @param throwError
 	 * @param console
 	 */
+	public Errors(int id, JTextArea console ){
+		if (id==101)
+			this.s="Negation needs an boolean expression";
+		else if (id==102)
+			this.s="Less needs an numeric expression";
+		else if (id==103)
+			this.s="abs needs an numeric expression";
+		else if (id==104)
+			this.s="sind needs an numeric expression";
+		else if (id==105)
+			this.s="cosd needs an numeric expression";
+		else if (id==106)
+			this.s="sins needs an string expression. Example '17 25 86.5'";
+		else if (id==107)
+			this.s="coss needs an numeric expression";
+		else if (id==108)
+			this.s="tans needs an sttring expression. Example '17 25 86.5'";
+		else if (id==109)
+			this.s="tand needs an numeric expression";
+		else if (id==110)
+			this.s="arcsins needs an string expression. Example '17 25 86.5'";
+		else if (id==111)
+			this.s="arcsind needs an numeric expression";
+		else if (id==112)
+			this.s="arccoss needs an string expression. Example '17 25 86.5'";
+		else if (id==113)
+			this.s="arccosd needs an numeric expression";
+		else if (id==114)
+			this.s="arctans needs an string expression. Example '17 25 86.5'";
+		else if (id==115)
+			this.s="arctand needs an numeric expression";
+		else if (id==116)
+			this.s="s2d needs an string expression. Example '17 25 86.5'";
+		else if (id==117)
+			this.s="DecToSexaDecl needs an numeric expression";
+		else if (id==118)
+			this.s="DecToSexaRa needs an numeric expression";
+		else if (id==119)
+			this.s="Distance needs an numeric expression";
+		else if (id==120)
+			this.s="Logic operation needs an boolean expression";
+		else if (id==121)
+			this.s="Operation 'mod' requies integers";
+		else if (id==122)
+			this.s="Operation 'div' requies integers";
+		else if (id==123)
+			this.s="expecting number types in expression";
+		else if (id==124)
+			this.s="";
+		else if (id==125)
+			this.s="expected an integer";
+		else if (id==126)
+			this.s="expected an real";
+		else if (id==127)
+			this.s="expecting a string";
+		else if (id==128)
+			this.s="expecting a boolean";
+		else if (id==129)
+			this.s="expected an integer";
+		
+		console.setForeground(Color.red);
+		System.out.println("Type error:\n" + s +"\n");				
+		console.append("Type error:\n" + s + "\n" );
+		
+		
+	}
 	public Errors(int id, Token t, boolean throwError, JTextArea console) {
 		this.t = new Token(t);
 		String tError="";

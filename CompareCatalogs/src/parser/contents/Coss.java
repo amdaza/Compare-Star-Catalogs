@@ -43,7 +43,8 @@ public class Coss extends Expression {
 			}
 		}
 		else {
-			result = new Value("107", "error");
+			error=true;
+			result = new Value("107","error");
 		}
 		return result;
 	}

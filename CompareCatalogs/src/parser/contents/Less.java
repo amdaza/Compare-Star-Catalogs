@@ -53,6 +53,7 @@ public class Less extends Expression {
 			}
 		}
 		else {
+			error = true;
 			result = new Value("102", "error");
 		}
 		return result;

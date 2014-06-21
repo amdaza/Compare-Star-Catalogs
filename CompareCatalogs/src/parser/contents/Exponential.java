@@ -32,8 +32,12 @@ public class Exponential extends Expression {
 		if(type.equals("exponential"))
 			
 			result =  new Value(value,getType());
-		else 
-			result = new Value("123","error");
+		else{
+			error=true;
+			result =  new Value("103","error");
+			
+		}
+			//result = new Value("123","error");
 		
 		return result;
 	}

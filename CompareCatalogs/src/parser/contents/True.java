@@ -21,8 +21,11 @@ public  class True extends Expression {
 		Value result = null;
 		if (type.equals("boolean")) 
 			result =  new Value("true",getType());
-		else
+		else{
+			error = true;
 			result = new Value("128","error");
+		}
+			
 		
 		return result;
 	}

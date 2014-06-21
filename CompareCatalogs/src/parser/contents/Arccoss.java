@@ -43,7 +43,8 @@ public class Arccoss extends Expression {
 			}
 		}
 		else {
-			result = new Value("112", "error");
+			error=true;
+			result = new Value("112","error");
 		}
 		return result;
 	}

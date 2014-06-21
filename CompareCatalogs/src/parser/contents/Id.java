@@ -44,10 +44,13 @@ public class Id extends Expression {
 	public Value getValue(HashMap<Variable,Value> localVar){
 		Value result = null;
 		if (isTypeNumeric()){
-			Variable v = new Variable(name,"","");
+			Variable v = new Variable(name,type,"");
 			result = localVar.get(v);
 		}
-		else result = new Value("129","error");
+		else{
+			error=true;
+			result = new Value("129","error");
+		}
 		return  result;
 	}
 	

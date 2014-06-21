@@ -2,7 +2,7 @@ package parser.syntactic;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Vector;
 
 import javax.swing.JTextArea;
 
@@ -61,7 +61,9 @@ public class SyntacticAnalizer {
 	 * @uml.property  name="row"
 	 * @uml.associationEnd  qualifier="var:parser.elements.Variable parser.elements.Value"
 	 */
-	private HashMap<Variable,Value> row;
+	private Vector<Variable> row;
+
+
 	/**
 	 * @uml.property  name="program"
 	 * @uml.associationEnd  
@@ -86,6 +88,14 @@ public class SyntacticAnalizer {
 	public void setProgram(Program program) {
 		this.program = program;
 	}
+	public Vector<Variable> getRow() {
+		return row;
+	}
+
+	public void setRow(Vector<Variable> row) {
+		this.row = row;
+	}
+
 
 
 	/**
@@ -98,7 +108,7 @@ public class SyntacticAnalizer {
 		this.lexicalAnalyzer = lexicalAnalyzer;
 		token_act = lexicalAnalyzer.sigToken();
 		statement = new ArrayList<Statement>();
-		row = new HashMap<Variable,Value>();
+		//row = new HashMap<Variable,Value>();
 		this.console= console;
 	}
 
@@ -123,7 +133,7 @@ public class SyntacticAnalizer {
 	 * 	
 	 */
 	private boolean atributeNull() {
-		return (token_act.leeAtributo() == null);
+		return (token_act.readAtribute() == null);
 	}
 
 	/**
@@ -179,7 +189,7 @@ public class SyntacticAnalizer {
 	 */
 	private boolean checkAtribute(String s) {
 		Token tok = token_act;
-		if (!atributeNull()	&& tok.leeAtributo().equals(s)) {
+		if (!atributeNull()	&& tok.readAtribute().equals(s)) {
 			System.out.println(token_act.toString() + " ");
 			token_act = lexicalAnalyzer.sigToken();
 			return true;
@@ -201,7 +211,7 @@ public class SyntacticAnalizer {
 	@SuppressWarnings("unused")
 	private boolean compruebaAtributoNoAvanzado(Object s) {
 		Token tok = token_act;
-		if (!atributeNull()	&& tok.leeAtributo().equals(s)) {
+		if (!atributeNull()	&& tok.readAtribute().equals(s)) {
 			System.out.println(token_act.toString() + " ");
 			return true;
 		}
@@ -239,17 +249,15 @@ public class SyntacticAnalizer {
 		System.out.println("***Principal***");
 
 		if (checkAtribute("#")) {//Begin filter
-			if (checkTokenType("identificator")) {//Begin assignment
+			/*	if (checkTokenType("identificator")) {//Begin assignment
 				sentenceDeclared = true;	
 				if (checkTypeWithoutAdvancing(":=")) {
-					String s =  tok.leeAtributo();
+					String s =  tok.readAtribute();
 					Expression_Boolean result = assignment();
 					if(!existError){
 						correct = result.isCorrect();
 						e = result.getExpression();
-						/*Value val = e.getValue(row);
-						Variable var = new Variable(s,val);
-						row.put(var, val);*/
+
 						Binding b = new Binding(e,s);					
 						statement.add(b);
 					}
@@ -264,24 +272,24 @@ public class SyntacticAnalizer {
 				setError(new Errors(1,tok,throwError,console));
 				existError=true;
 			}
-			else{
-				sentenceDeclared = true;
-				System.out.println("***#Filter***");
-				Expression_Boolean result = exp0(true);
-				correct = result.isCorrect();
-				if (!correct){
-					setError(new Errors(2,tok,throwError,console));
-					existError=true;
-				}else{
+			else{*/
+			sentenceDeclared = true;
+			System.out.println("***#Filter***");
+			Expression_Boolean result = exp0(true);
+			correct = result.isCorrect();
+			if (!correct){
+				setError(new Errors(2,tok,throwError,console));
+				existError=true;
+			}else{
 
-					Filter f = new Filter(e);
-					statement.add(f);
-				}
+				Filter f = new Filter(e);
+				statement.add(f);
 			}
+			//	}
 		} else if (checkTokenType("identificator")) {//Begin assignment
 			sentenceDeclared = true;	
 			if (checkTypeWithoutAdvancing(":=")) {
-				String s =  tok.leeAtributo();
+				String s =  tok.readAtribute();
 				Expression_Boolean result = assignment();
 				if(!existError){
 					correct = result.isCorrect();
@@ -445,14 +453,14 @@ public class SyntacticAnalizer {
 						existError = true;
 					}else{
 						Expression e2 = e.deepCopy();
-						e = new ExpLog(e1,e2, op.leeAtributo());
-						if(e.getValue(row).getType().equals("error")){
+						e = new ExpLog(e1,e2, op.readAtribute());
+						/*if(e.getValue(row).getType().equals("error")){
 							if(!existError){ 
 								int numError = Integer.parseInt(e.getValue(row).getVal());
 								setError(new Errors(numError,tok,throwError,console));													
 								existError =true;
 							}
-						}
+						}*/
 
 						correct = true;
 					}
@@ -525,14 +533,14 @@ public class SyntacticAnalizer {
 						existError =true;
 					} else {
 						Expression e2 = e.deepCopy();
-						e = new ExpEq(e1,e2,op.leeAtributo());
-						if(e.getValue(row).getType().equals("error")){
+						e = new ExpEq(e1,e2,op.readAtribute());
+						/*if(e.getValue(row).getType().equals("error")){
 							if(!existError){ 
 								int numError = Integer.parseInt(e.getValue(row).getVal());
 								setError(new Errors(numError,tok,throwError,console));													
 								existError =true;
 							}
-						}
+						}*/
 
 					}
 				}
@@ -572,14 +580,14 @@ public class SyntacticAnalizer {
 						existError = true;
 					} else{
 						Expression e2 = e.deepCopy();
-						e = new ExpRel(e1,e2,op.leeAtributo());
-						if(e.getValue(row).getType().equals("error")){
+						e = new ExpRel(e1,e2,op.readAtribute());
+						/*if(e.getValue(row).getType().equals("error")){
 							if(!existError){ 
 								int numError = Integer.parseInt(e.getValue(row).getVal());
 								setError(new Errors(numError,tok,throwError,console));													
 								existError =true;
 							}
-						}
+						}*/
 
 					}
 				}
@@ -657,13 +665,13 @@ public class SyntacticAnalizer {
 													if(checkAtribute(")")){
 														correct = true;														
 														e = new Distance(e1, e2, e3, e4);
-														if(e.getValue(row).getType().equals("error")){
+														/*if(e.getValue(row).getType().equals("error")){
 															if(!existError){ 
 																int numError = Integer.parseInt(e.getValue(row).getVal());
 																setError(new Errors(numError,tok,throwError,console));													
 																existError =true;
 															}
-														}
+														}*/
 													}else{
 														if (!existError){
 															setError(new Errors(7,tok,throwError,console));
@@ -723,13 +731,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;	
 								e = new Abs(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 
 							}else{
 								if (!existError){
@@ -760,13 +768,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Sind(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -795,13 +803,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Cosd(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -830,13 +838,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Sins(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -865,13 +873,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Coss(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -900,13 +908,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Tans(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -935,13 +943,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Tand(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -970,13 +978,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Arcsins(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -1005,13 +1013,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Arcsind(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -1040,13 +1048,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Arccoss(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -1075,14 +1083,14 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Arccosd(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
 								}
-							}else{
+							}else{*/
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
 									existError =true;
@@ -1110,13 +1118,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Arctans(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -1145,13 +1153,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new Arctand(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -1180,13 +1188,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new SexaToDec(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -1215,13 +1223,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new DecToSexaDecl(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -1250,13 +1258,13 @@ public class SyntacticAnalizer {
 							if(checkAtribute(")")){
 								correct = true;
 								e = new DecToSexaRa(e1);
-								if(e.getValue(row).getType().equals("error")){
+								/*if(e.getValue(row).getType().equals("error")){
 									if(!existError){ 
 										int numError = Integer.parseInt(e.getValue(row).getVal());
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
+								}*/
 							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
@@ -1312,14 +1320,14 @@ public class SyntacticAnalizer {
 						existError =true;
 					} else {
 						Expression e2 = e.deepCopy();										
-						e = new ExpAdit(e1,e2,op.leeAtributo());
-						if(e.getValue(row).getType().equals("error")){
+						e = new ExpAdit(e1,e2,op.readAtribute());
+						/*if(e.getValue(row).getType().equals("error")){
 							if(!existError){ 
 								int numError = Integer.parseInt(e.getValue(row).getVal());
 								setError(new Errors(numError,tok,throwError,console));													
 								existError =true;
 							}
-						}
+						}*/
 						correct = true;	
 					}
 				}
@@ -1359,14 +1367,14 @@ public class SyntacticAnalizer {
 					} else {
 						Expression e2 = e.deepCopy();
 						correct = true;
-						e = new ExpMult(e1,e2,op.leeAtributo());
-						if(e.getValue(row).getType().equals("error")){
+						e = new ExpMult(e1,e2,op.readAtribute());
+						/*if(e.getValue(row).getType().equals("error")){
 							if(!existError){ 
 								int numError = Integer.parseInt(e.getValue(row).getVal());
 								setError(new Errors(numError,tok,throwError,console));													
 								existError =true;
 							}
-						}
+						}*/
 
 					}
 				}
@@ -1408,13 +1416,13 @@ public class SyntacticAnalizer {
 						Expression e2 = e.deepCopy();
 						correct = true;
 						e = new ExpExponential(e1,e2);
-						if(e.getValue(row).getType().equals("error")){
+						/*if(e.getValue(row).getType().equals("error")){
 							if(!existError){ 
 								int numError = Integer.parseInt(e.getValue(row).getVal());
 								setError(new Errors(numError,tok,throwError,console));													
 								existError =true;
 							}
-						}
+						}*/
 					}	
 				}
 			}
@@ -1453,57 +1461,56 @@ public class SyntacticAnalizer {
 			}
 			if (checkTokenType("integer")){	
 				System.out.println("Es un entero");
-				e = new Int(tok.leeAtributo());
-				if(e.getValue(row).getType().equals("error")){
+				e = new Int(tok.readAtribute());
+				/*if(e.getValue(row).getType().equals("error")){
 					if(!existError){ 
 						int numError = Integer.parseInt(e.getValue(row).getVal());
 						setError(new Errors(numError,tok,throwError,console));													
 						existError =true;
 					}
-				}
+				}*/
 				correct = true;
 			} else if (checkTokenType("real")){
-				e = new Real(tok.leeAtributo());
-				if(e.getValue(row).getType().equals("error")){
+				e = new Real(tok.readAtribute());
+				/*if(e.getValue(row).getType().equals("error")){
 					if(!existError){ 
 						int numError = Integer.parseInt(e.getValue(row).getVal());
 						setError(new Errors(numError,tok,throwError,console));													
 						existError =true;
 					}
-				}
+				}*/
 
 				correct = true;
 			} else if (checkTokenType("exponential")){
 				//Expression e1 = e.deepCopy();
-				e = new Exponential(tok.leeAtributo());////DUDA EL ERROR
-				if(e.getValue(row).getType().equals("error")){
+				e = new Exponential(tok.readAtribute());////DUDA EL ERROR
+				/*if(e.getValue(row).getType().equals("error")){
 					if(!existError){ 
 						int numError = Integer.parseInt(e.getValue(row).getVal());
 						setError(new Errors(numError,tok,throwError,console));													
 						existError =true;
 					}
-				}
+				}*/
 				correct = true;
 			} else if (checkTokenType("string")){
-				e = new Str(tok.leeAtributo());
-				if(e.getValue(row).getType().equals("error")){
+				e = new Str(tok.readAtribute());
+				/*if(e.getValue(row).getType().equals("error")){
 					if(!existError){ 
 						int numError = Integer.parseInt(e.getValue(row).getVal());
 						setError(new Errors(numError,tok,throwError,console));													
 						existError =true;
 					}
-				}
+				}*/
 				correct = true;
 			} else if (checkTokenType("identificator") || checkTokenType("catalog_id")){
 				System.out.println("if id");
 				if (checkTypeWithoutAdvancing(":=")){
 					Expression_Boolean result1 = assignment();//exp8(throwError);
-					correct = result1.isCorrect();}
-				else{
+					correct = result1.isCorrect();
+				} else{
 
-					Variable v = new Variable(tok.leeAtributo(),"","");
-					if(!row.containsKey(v)){
-						System.out.println("No esta en la tabla");
+					Variable v = new Variable(tok.readAtribute(),"","");
+					if(!row.contains(v)){
 						correct = false;
 						if(!existError){ 
 							setError(new Errors(48,tok,throwError,console));
@@ -1511,18 +1518,29 @@ public class SyntacticAnalizer {
 						}
 					}
 					else{
-						Value v1 = row.get(v);
-						String name = tok.leeAtributo();
-						String type = v1.getType();
-						String value = v1.getString();
-						e = new Id(name,type,value);///////DUDA ID ERROR
-						if(e.getValue(row).getType().equals("error")){
+
+						//Value v1 = row.get(v);
+						String name = tok.readAtribute();
+						
+						//Get Variable
+						Variable variableRow = null;
+						for(int i=0; i<row.size(); i++){
+							if(v.equals(row.get(i))){
+								variableRow = row.get(i);
+							}
+							
+						}
+						String type = variableRow.getType();
+						String val = variableRow.getValue();
+						//String value = v.getString();
+						e = new Id(name,type,val);
+						/*if(e.getValue(row).getType().equals("error")){
 							if(!existError){ 
 								int numError = Integer.parseInt(e.getValue(row).getVal());
 								setError(new Errors(numError,tok,throwError,console));													
 								existError =true;
 							}
-						}
+						}*/
 						correct = true;
 
 					}
@@ -1530,8 +1548,8 @@ public class SyntacticAnalizer {
 
 
 			}  else if (checkTokenType("wds_id")) {///////////////////???????????????
-				Variable v = new Variable(tok.leeAtributo(),"","");
-				if(!row.containsKey(v)){
+				Variable v = new Variable(tok.readAtribute(),"","");
+				if(!row.contains(v)){
 					correct = false;
 					if(!existError){ 
 						setError(new Errors(48,tok,throwError,console));
@@ -1539,40 +1557,50 @@ public class SyntacticAnalizer {
 					}
 				}
 				else{
-					Value v1 = row.get(v);
-					String name = tok.leeAtributo();
-					String type = v1.getType();
-					String value = v1.getString();
-					e = new Id(name,type,value);
-					if(e.getValue(row).getType().equals("error")){
+					//Value v1 = row.get(v);
+					String name = tok.readAtribute();
+					
+					//Get Variable
+					Variable variableRow = null;
+					for(int i=0; i<row.size(); i++){
+						if(v.equals(row.get(i))){
+							variableRow = row.get(i);
+						}
+						
+					}
+					String type = variableRow.getType();
+					String val = variableRow.getValue();
+					//String value = v.getString();
+					e = new Id(name,type,val);
+					/*if(e.getValue(row).getType().equals("error")){
 						if(!existError){ 
 							int numError = Integer.parseInt(e.getValue(row).getVal());
 							setError(new Errors(numError,tok,throwError,console));													
 							existError =true;
 						}
-					}
-					correct=true;
+					}*/
+					correct = true;
 
 				}
 			} else if (checkAtribute("true") || checkAtribute("false")){
-				if(tok.leeAtributo().equals("true")){
+				if(tok.readAtribute().equals("true")){
 					e = new True("boolean");
-					if(e.getValue(row).getType().equals("error")){
+					/*if(e.getValue(row).getType().equals("error")){
 						if(!existError){ 
 							int numError = Integer.parseInt(e.getValue(row).getVal());
 							setError(new Errors(numError,tok,throwError,console));													
 							existError =true;
 						}
-					}
-				} else if (tok.leeAtributo().equals("false")) {
+					}*/
+				} else if (tok.readAtribute().equals("false")) {
 					e = new False("boolean");
-					if(e.getValue(row).getType().equals("error")){
+					/*if(e.getValue(row).getType().equals("error")){
 						if(!existError){ 
 							int numError = Integer.parseInt(e.getValue(row).getVal());
 							setError(new Errors(numError,tok,throwError,console));													
 							existError =true;
 						}
-					}
+					}*/
 
 				}
 				correct = true;
@@ -1583,13 +1611,13 @@ public class SyntacticAnalizer {
 					Expression e1 = e.deepCopy();
 					correct = true;
 					e = new Negation(e1);
-					if(e.getValue(row).getType().equals("error")){
+					/*if(e.getValue(row).getType().equals("error")){
 						if(!existError){ 
 							int numError = Integer.parseInt(e.getValue(row).getVal());
 							setError(new Errors(numError,tok,throwError,console));													
 							existError =true;
 						}
-					}
+					}*/
 				} else {
 					correct = false;
 					if(!existError){ 
@@ -1605,13 +1633,13 @@ public class SyntacticAnalizer {
 					Expression e1 = e.deepCopy();				
 					correct = true;
 					e = new Less(e1);
-					if(e.getValue(row).getType().equals("error")){
+					/*if(e.getValue(row).getType().equals("error")){
 						if(!existError){ 
 							int numError = Integer.parseInt(e.getValue(row).getVal());
 							setError(new Errors(numError,tok,throwError,console));													
 							existError =true;
 						}
-					}
+					}*/
 				} else {
 					correct = false;
 					if(!existError){

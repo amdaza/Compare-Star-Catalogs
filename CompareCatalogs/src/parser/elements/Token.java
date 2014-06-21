@@ -82,7 +82,7 @@ public class Token {
 	 * 
 	 * @return
 	 */
-	public String leeAtributo() {
+	public String readAtribute() {
 		return atributo;
 	}
 

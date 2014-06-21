@@ -57,7 +57,7 @@ public class ExpEq extends Expression {
 
 		}
 		else {
-
+			error=true;
 			result = new Value("121", "error");	
 		}
 		return result;

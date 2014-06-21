@@ -41,6 +41,7 @@ public class Negation extends Expression {
 			}
 		}
 		else {
+			error = true;
 			result = new Value("101", "error");
 		}
 		return result;

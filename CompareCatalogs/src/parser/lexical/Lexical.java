@@ -303,9 +303,11 @@ public class Lexical {
 				if (isLetter(character) || esDigito(character) || character == '_') {
 					transita(lexicalStatus.IS_CATALOG_ID_2);
 				} else if (character == '?'){
+					//return new Token(startRow, startColumn, "wds_id", lexeme);
 					return new Token(startRow, startColumn, "wds_id", lexeme);
 				} else {
-					return new Token(startRow, startColumn, "catalog_id", lexeme);
+					//return new Token(startRow, startColumn, "catalog_id", lexeme);
+					return new Token(startRow, startColumn, "identificator", lexeme);
 				}
 				break;
 

@@ -42,7 +42,8 @@ public class Arcsins extends Expression {
 			}
 		}
 		else {
-			result = new Value("110", "error");
+			error=true;
+			result = new Value("110","error");
 		}
 		return result;
 	}

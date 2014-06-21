@@ -72,6 +72,7 @@ public class ExpMult extends Expression {
 
 		}
 		else {
+			error = true;
 			result = new Value("121", "error");
 		}
 		return result;
@@ -88,6 +89,7 @@ public class ExpMult extends Expression {
 
 		}
 		else {
+			error = true;
 			result = new Value("122", "error");
 		}
 		return result;
@@ -119,6 +121,7 @@ public class ExpMult extends Expression {
 			}
 		}
 		else {
+			error = true;
 			result = new Value("121", "error");
 		}
 		return result;
@@ -151,6 +154,7 @@ public class ExpMult extends Expression {
 			}
 		}
 		else {
+			error = true;
 			result = new Value("121", "error");
 		}
 		return result;

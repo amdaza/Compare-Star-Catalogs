@@ -83,7 +83,8 @@ public class ExpAdit extends Expression {
 			
 		}
 		else {
-			result = new Value("121", "error");
+			error=true;
+			result = new Value("121","error");
 		}
 		return result;
 	}
@@ -118,7 +119,8 @@ public class ExpAdit extends Expression {
 			}
 		}
 		else {
-			result = new Value("121", "error");
+			error=true;
+			result = new Value("121","error");
 		}
 		return result;
 	}

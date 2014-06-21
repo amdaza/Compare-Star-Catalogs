@@ -45,6 +45,7 @@ public class Tand extends Expression {
 			}
 		}
 		else {
+			error = true;
 			result = new Value("109", "error");
 		}
 		return result;

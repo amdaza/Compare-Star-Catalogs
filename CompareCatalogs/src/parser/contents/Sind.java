@@ -45,6 +45,7 @@ public class Sind  extends Expression {
 			}
 		}
 		else {
+			error = true;
 			result = new Value("104", "error");
 		}
 		return result;

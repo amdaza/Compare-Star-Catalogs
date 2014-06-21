@@ -45,7 +45,8 @@ public class Cosd  extends Expression {
 			}
 		}
 		else {
-			result = new Value("105", "error");
+			error=true;
+			result = new Value("105","error");
 		}
 		return result;
 	}

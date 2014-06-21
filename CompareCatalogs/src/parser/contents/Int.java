@@ -28,8 +28,11 @@ public class Int  extends Expression {
 		
 		if ( type.equals("integer"))
 			result =  new Value(value,getType());
-		else
+		else{
+			error = true;
 			result = new Value("125","error");
+		}
+			
 		
 		return result;
 	}

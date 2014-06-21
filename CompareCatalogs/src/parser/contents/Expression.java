@@ -22,20 +22,34 @@ public abstract class Expression  {
 	 * @uml.property  name="type"
 	 */
 	protected String type;
+	protected boolean error;
 
 	public abstract Value getValue(HashMap <Variable,Value> localVar);
 
 
 	public Expression(){
-		type = "";
-		
+		type = "";	
+		error=false;
 	}
+	
 	public Expression(String type) {
 		this.type = type;
 	}
+	
 	public Expression (Expression e) {
 		this.type = e.getType();
-	}	
+	}
+	
+
+	public boolean isError() {
+		return error;
+	}
+
+
+	public void setError(boolean error) {
+		this.error = error;
+	}
+
 	
 	public Expression deepCopy() {
         if (this instanceof Abs) {

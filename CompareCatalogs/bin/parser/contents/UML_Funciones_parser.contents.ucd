@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="UML_Funciones_parser.contents" size="1481,738" id="parser.contents" metadata="uml2-1.0" initialized="true" tag="10" key="32303037303533312D313020436F6D70617265436174616C6F6773">
+  <children xsi:type="editmodel:ClassEditModel" name="Less" location="630,375" size="95,103" id="parser.contents/Less" runTimeClassModel="Less(Lparser.contents.Less;),getValue(Ljava.util.HashMap;),Less(Lparser.contents.Expression;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="72,54">
+      <children xsi:type="editmodel:MethodEditModel" name="Less" id="parser.contents/Less#Less(Lparser.contents.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Less" id="parser.contents/Less#Less(Lparser.contents.Less;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="parser.contents/Less#getValue(Ljava.util.HashMap;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="parser.contents/Expression&lt;-parser.contents/Less" source="//@children.0" target="//@children.1/@sourceConnections.0" targetEnd="//@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="47,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="DecToSexaDecl" location="180,375" size="142,103" id="parser.contents/DecToSexaDecl" runTimeClassModel="DecToSexaDecl(Lparser.contents.DecToSexaDecl;),getValue(Ljava.util.HashMap;),DecToSexaDecl(Lparser.contents.Expression;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="106,54">
+      <children xsi:type="editmodel:MethodEditModel" name="DecToSexaDecl" id="parser.contents/DecToSexaDecl#DecToSexaDecl(Lparser.contents.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="DecToSexaDecl" id="parser.contents/DecToSexaDecl#DecToSexaDecl(Lparser.contents.DecToSexaDecl;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="parser.contents/DecToSexaDecl#getValue(Ljava.util.HashMap;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" targetConnections="//@children.6/@sourceConnections.0 //@children.3/@sourceConnections.0 //@children.0/@sourceConnections.0 //@children.2/@sourceConnections.0 //@children.5/@sourceConnections.0 //@children.4/@sourceConnections.0" autoLocated="true" id="parser.contents/Expression&lt;-parser.contents/DecToSexaDecl" source="//@children.1" target="//@children.7" targetEnd="//@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="71,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="61,193" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Negation" location="765,375" size="99,103" id="parser.contents/Negation" runTimeClassModel="Negation(Lparser.contents.Negation;),Negation(Lparser.contents.Expression;),getValue(Ljava.util.HashMap;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="72,54">
+      <children xsi:type="editmodel:MethodEditModel" name="Negation" id="parser.contents/Negation#Negation(Lparser.contents.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Negation" id="parser.contents/Negation#Negation(Lparser.contents.Negation;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="parser.contents/Negation#getValue(Ljava.util.HashMap;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="parser.contents/Expression&lt;-parser.contents/Negation" source="//@children.2" target="//@children.1/@sourceConnections.0" targetEnd="//@children.2/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="49,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Distance" location="900,375" size="96,103" id="parser.contents/Distance" runTimeClassModel="Distance(Lparser.contents.Expression;Lparser.contents.Expression;Lparser.contents.Expression;Lparser.contents.Expression;),Distance(Lparser.contents.Distance;),getValue(Ljava.util.HashMap;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="72,54">
+      <children xsi:type="editmodel:MethodEditModel" name="Distance" id="parser.contents/Distance#Distance(Lparser.contents.Distance;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Distance" id="parser.contents/Distance#Distance(Lparser.contents.Expression;Lparser.contents.Expression;Lparser.contents.Expression;Lparser.contents.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="parser.contents/Distance#getValue(Ljava.util.HashMap;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="parser.contents/Expression&lt;-parser.contents/Distance" source="//@children.3" target="//@children.1/@sourceConnections.0" targetEnd="//@children.3/@sourceConnections.0/@children.1" sourceEnd="//@children.3/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="48,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Abs" location="502,375" size="95,103" id="parser.contents/Abs" runTimeClassModel="Abs(Lparser.contents.Expression;),Abs(Lparser.contents.Abs;),getValue(Ljava.util.HashMap;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="72,54">
+      <children xsi:type="editmodel:MethodEditModel" name="Abs" id="parser.contents/Abs#Abs(Lparser.contents.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Abs" id="parser.contents/Abs#Abs(Lparser.contents.Abs;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="parser.contents/Abs#getValue(Ljava.util.HashMap;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" id="parser.contents/Expression&lt;-parser.contents/Abs" source="//@children.4" target="//@children.1/@sourceConnections.0" targetEnd="//@children.4/@sourceConnections.0/@children.1" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="49,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" location="-3,0" anchorKind="FixedAtEdge"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="SexaToDec" location="30,375" size="128,157" id="parser.contents/SexaToDec" runTimeClassModel="sexaToDecDecl(Ljava.lang.String;),getValue(Ljava.util.HashMap;),SexaToDec(Lparser.contents.SexaToDec;),sexaToDecRa(Ljava.lang.String;),SexaToDec(Lparser.contents.Expression;),SexaToDec()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="105,108">
+      <children xsi:type="editmodel:MethodEditModel" name="SexaToDec" id="parser.contents/SexaToDec#SexaToDec(Lparser.contents.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SexaToDec" id="parser.contents/SexaToDec#SexaToDec()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="SexaToDec" id="parser.contents/SexaToDec#SexaToDec(Lparser.contents.SexaToDec;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="parser.contents/SexaToDec#getValue(Ljava.util.HashMap;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="sexaToDecDecl" id="parser.contents/SexaToDec#sexaToDecDecl(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="sexaToDecRa" id="parser.contents/SexaToDec#sexaToDecRa(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="parser.contents/Expression&lt;-parser.contents/SexaToDec" source="//@children.5" target="//@children.1/@sourceConnections.0" targetEnd="//@children.5/@sourceConnections.0/@children.1" sourceEnd="//@children.5/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="64,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="DecToSexaRa" location="330,375" size="131,103" id="parser.contents/DecToSexaRa" runTimeClassModel="DecToSexaRa(Lparser.contents.DecToSexaRa;),DecToSexaRa(Lparser.contents.Expression;),getValue(Ljava.util.HashMap;)">
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <children xsi:type="editmodel:CompartmentEditModel" size="98,54">
+      <children xsi:type="editmodel:MethodEditModel" name="DecToSexaRa" id="parser.contents/DecToSexaRa#DecToSexaRa(Lparser.contents.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="DecToSexaRa" id="parser.contents/DecToSexaRa#DecToSexaRa(Lparser.contents.DecToSexaRa;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="parser.contents/DecToSexaRa#getValue(Ljava.util.HashMap;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:GeneralizationEditModel" autoLocated="true" id="parser.contents/Expression&lt;-parser.contents/DecToSexaRa" source="//@children.6" target="//@children.1/@sourceConnections.0" targetEnd="//@children.6/@sourceConnections.0/@children.1" sourceEnd="//@children.6/@sourceConnections.0/@children.0" connectionRouterKind="GeneralizationManhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" location="65,0" anchorKind="FixedAtEdge" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.1/@sourceConnections.0" name="Expression" location="474,50" size="123,193" id="parser.contents/Expression" runTimeClassModel="Expression(Ljava.lang.String;),finalType(Ljava.lang.String;Ljava.lang.String;),deepCopy(),Expression(Lparser.contents.Expression;),getValue(Ljava.util.HashMap;),type,isTypeNumeric(),Expression()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="74,18">
+      <children xsi:type="editmodel:AttributeEditModel" name="type" id="parser.contents/Expression#type"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="100,126">
+      <children xsi:type="editmodel:MethodEditModel" name="Expression" id="parser.contents/Expression#Expression(Lparser.contents.Expression;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Expression" id="parser.contents/Expression#Expression()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Expression" id="parser.contents/Expression#Expression(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="deepCopy" id="parser.contents/Expression#deepCopy()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="finalType" id="parser.contents/Expression#finalType(Ljava.lang.String;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getValue" id="parser.contents/Expression#getValue(Ljava.util.HashMap;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="isTypeNumeric" id="parser.contents/Expression#isTypeNumeric()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" properties="wireOptions=7;Product=eUML2" autoName="false"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicAttributes="true" showPackageAttributes="true" showStaticAttributes="true" showPublicMethods="true" showPackageMethods="true" showStaticMethods="true" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3" showAttributeProperty="true"/>
+</editmodel:ClassDiagramEditModel>

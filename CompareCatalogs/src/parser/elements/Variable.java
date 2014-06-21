@@ -91,20 +91,11 @@ public class Variable {
         
         Variable var = (Variable) v1;
         
-        if(var.getName() == null /*|| getType() == null || getValue()==null*/){
-        	//if((name == null) ? (var.name != null) : !name.equals(var.name))return false;
+        if(var.getName() == null ){
+        	
         	if (var.getName() != null) return false;
-        	//if (var.getType() != null) return false;
-        	//if (var.getValue() != null) return false;
         }
-      else return var.getName().equals(var.getName());
-        		    //&& getType().equals(var.getType())
-        		   // && getValue().equals(var.getValue());
-        /*else return 
-        	Objects.equals(this.name, var.name)
-        	&& Objects.equals(this.type,var.type)
-        	&& Objects.equals(this.value,var.value);*/
-		//return this.name.equals(var.getName());
+      else return this.getName().equals(var.getName());
 	
         return true;
         	
@@ -116,9 +107,9 @@ public class Variable {
 		return hash;*/
 		int hash = 1;
 		if ( name == null /*|| type ==null || value == null*/ )
-			hash = hash * 31;
+			hash = hash * 32;
 		else{ 
-			hash = hash * 31 + getName().hashCode();
+			hash = hash * 32 + getName().hashCode();
 			//hash = hash +31 + (name != null ? name.hashCode() : 0);
 			//hash = hash * 31 + getType().hashCode();
 			//hash = hash * 31 + getValue().hashCode();

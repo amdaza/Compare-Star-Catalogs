@@ -38,6 +38,7 @@ public class ExpExponential extends Expression {
 		if (isTypeNumeric()){
 			result = exponential(v1,v2);
 		}else {
+			error = true;
 			result = new Value("124", "error");
 		}
 			

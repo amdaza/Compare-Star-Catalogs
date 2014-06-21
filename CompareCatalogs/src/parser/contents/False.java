@@ -23,8 +23,11 @@ public class False extends Expression {
 		Value result = null;
 		if (type.equals("boolean")) 
 			result =  new Value("false",getType());
-		else
+		else{
+			error = true;
 			result = new Value("128","error");
+		}
+			
 		
 		return result;
 	}

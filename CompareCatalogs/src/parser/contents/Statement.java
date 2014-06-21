@@ -10,17 +10,17 @@ public class Statement {
 	/**
 	 * @uml.property  name="binding"
 	 */
-	private boolean binding;
+	protected boolean binding;
 	/**
 	 * @uml.property  name="expr"
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
-	private Expression expr;
+	protected Expression expr;
 	
 	
 	public Statement (boolean binding, Expression expr){
 		this.expr=expr;
-		this.binding=true;
+		this.binding=binding;
 	}
 	
 	/**

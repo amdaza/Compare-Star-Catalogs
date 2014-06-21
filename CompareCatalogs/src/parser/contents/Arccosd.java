@@ -45,7 +45,8 @@ public class Arccosd extends Expression {
 			}
 		}
 		else {
-			result = new Value("113", "error");
+			error=true;
+			result = new Value("113","error");
 		}
 		return result;
 	}

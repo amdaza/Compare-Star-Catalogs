@@ -53,7 +53,8 @@ public class DecToSexaRa  extends Expression {
 			}
 		}
 		else {
-			result = new Value("118", "error");
+			error=true;
+			result = new Value("118","error");
 		}
 		return result;
 	}

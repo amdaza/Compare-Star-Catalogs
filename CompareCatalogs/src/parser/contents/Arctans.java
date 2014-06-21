@@ -42,7 +42,8 @@ public class Arctans extends Expression {
 			}
 		}
 		else {
-			result = new Value("114", "error");
+			error=true;
+			result = new Value("114","error");
 		}
 		return result;
 	}

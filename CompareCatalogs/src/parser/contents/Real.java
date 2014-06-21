@@ -45,8 +45,11 @@ public class Real extends Expression {
 		
 		if ( type.equals("real"))
 			result =  new Value(value,getType());
-		else
+		else{
+			error = true;
 			result = new Value("126","error");
+		}
+			
 		
 		return result;
 	}

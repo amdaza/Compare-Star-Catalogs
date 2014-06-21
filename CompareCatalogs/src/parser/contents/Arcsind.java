@@ -45,7 +45,8 @@ public class Arcsind extends Expression {
 			}
 		}
 		else {
-			result = new Value("111", "error");
+			error=true;
+			result = new Value("111","error");
 		}
 		return result;
 	}

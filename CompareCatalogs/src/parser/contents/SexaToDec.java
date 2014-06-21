@@ -43,6 +43,7 @@ public class SexaToDec extends Expression {
 			
 		}
 		else {
+			error = true;
 			result = new Value("116", "error");
 		}
 		return result;

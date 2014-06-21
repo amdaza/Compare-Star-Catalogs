@@ -61,7 +61,8 @@ public class Abs extends Expression {
 			}
 		}
 		else {
-			result = new Value("103", "error");
+			error=true;
+			result = new Value("103","error");
 		}
 		return result;
 	}

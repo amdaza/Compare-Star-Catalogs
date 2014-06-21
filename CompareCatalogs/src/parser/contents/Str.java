@@ -44,8 +44,11 @@ public class Str extends Expression {
 		Value result = null;
 		if(type.equals("string"))
 			result =  new Value(value,getType());
-		else 
+		else {
+			error = true;
 			result = new Value("127","error");
+		}
+			
 		return result;
 	}
 

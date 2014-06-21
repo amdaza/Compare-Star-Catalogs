@@ -7,6 +7,8 @@ import java.util.Vector;
 
 import javax.swing.JOptionPane;
 
+import parser.elements.Variable;
+
 public class DescriptionData{
 	
 	/*
@@ -257,13 +259,27 @@ public class DescriptionData{
 	private int setContador(int size) {
 		return this.contador= size;
 	}
-/**
- * @return
- * @uml.property  name="contador"
- */
-public int getContador(){
-	return contador;
-}
+	/**
+	 * @return
+	 * @uml.property  name="contador"
+	 */
+	public int getContador(){
+		return contador;
+	}
+	public Vector<Variable> variablesForParser(String catalog){
+		Vector <Variable> variables = new Vector <Variable>();
+		for (Map.Entry<String,DataStructure> entry : catalogStructure.entrySet()) {
+			 String key = entry.getKey();
+			 DataStructure dst = entry.getValue();
+			 String type = dst.getParserType(dst.getType());
+			 Variable var= new Variable(catalog + "." + key,type,"");
+			 variables.add(var);
+		}
+	
+		return variables;
+		
+		
+	}
 	
 
 }

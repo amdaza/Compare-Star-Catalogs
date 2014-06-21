@@ -44,7 +44,8 @@ public class Arctand extends Expression {
 			}
 		}
 		else {
-			result = new Value("115", "error");
+			error=true;
+			result = new Value("115","error");
 		}
 		return result;
 	}

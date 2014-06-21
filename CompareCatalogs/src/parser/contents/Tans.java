@@ -42,6 +42,7 @@ public class Tans  extends Expression {
 			}
 		}
 		else {
+			error = true;
 			result = new Value("108", "error");
 		}
 		return result;

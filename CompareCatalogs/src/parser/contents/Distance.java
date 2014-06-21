@@ -46,7 +46,7 @@ public class Distance extends Expression {
 	}
 
 	public Value getValue(HashMap<Variable,Value> localvar )  { 
-		Value result;
+		Value result = null;
 		Value v1 = e1.getValue(localvar);
 		Value v2 = e2.getValue(localvar);
 		Value v3 = e3.getValue(localvar);
@@ -61,7 +61,8 @@ public class Distance extends Expression {
 			result = new Value(String.valueOf(dist), "real");
 		}
 		else {
-			result = new Value("119", "error");
+			error=true;
+			result = new Value("119","error");
 		}
 		return result;
 	}

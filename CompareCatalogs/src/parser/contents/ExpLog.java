@@ -57,6 +57,7 @@ public class ExpLog extends Expression {
 
 		}
 		else {
+			error = true;
 			result = new Value("120", "error");
 			
 		}

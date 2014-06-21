@@ -1622,6 +1622,7 @@ public class Interface extends JFrame{
 				SyntacticAnalizer asP = new SyntacticAnalizer(lp,textAreaConsole);
 				
 				//SyntacticAnalizer asS = new SyntacticAnalizer(ls);
+				asP.setRow(primaryData.variablesForParser("p"));
 				asP.parser();				
 				parserCatalogP = asP.getProgram();
 				primaryStars = primaryData.getStars();
@@ -1647,16 +1648,20 @@ public class Interface extends JFrame{
 			        }*/
 
 				try {
-					File file = new File(pathFilteredP + "/Secondary/Filtered_Primary.txt");
+					File file = new File(pathFilteredP + "/Filtered_Primary.txt");
 					BufferedWriter output = new BufferedWriter(new FileWriter(file));
 					output.write("This is a list of star rows which passed catalog P filter\n\n");
-
+					output.flush();
 					//loop stars
 					for(int i = 0; i < primaryStars.size(); i++){
 						LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
-						boolean saveStar = parserCatalogP.eval(listForParser); //check if this star pass the filter
-						output.write(primaryStars.get(i).getLine());
+						boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
+						if (saveStar){
+							output.write(primaryStars.get(i).getLine() + "\n");
+							output.flush();
+						}
 					}
+					output.flush();
 					output.close();
 
 					//asS.program(false);

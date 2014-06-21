@@ -105,7 +105,8 @@ public class DecToSexaDecl extends Expression {
 			}
 		}
 		else {
-			result = new Value("117", "error");
+			error=true;
+			result = new Value("117","error");
 		}
 		return result;
 	}

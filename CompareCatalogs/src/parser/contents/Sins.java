@@ -43,6 +43,7 @@ public class Sins  extends Expression {
 			}
 		}
 		else {
+			error = true;
 			result = new Value("106", "error");
 		}
 		return result;
