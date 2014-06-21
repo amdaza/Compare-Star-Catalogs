@@ -356,7 +356,6 @@ public class Interface extends JFrame{
 					textRadiusS.setText(null);
 					textAreaFilterP.setText(null);
 					textAreaFilterS.setText(null);
-					//textAreaCriteriumS.setText(null);
 					textAreaCriteriumErrors.setText(null);					
 					
 					clearTable();
@@ -413,44 +412,21 @@ public class Interface extends JFrame{
 							filFichero=sc.nextLine();			
 						}
 						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();			
-						}			
-						
-						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("Catalog S:"))){
-							textAreaFilterP.append(filFichero+"\n");
-							
-						}
-						
-						/*if(sc.hasNextLine()){
-							filFichero=sc.nextLine();		
-						}*/
-					
-						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("************  Criterium for detecting errors  ************"))){
-							textAreaFilterS.append(filFichero+"\n");							
-							
-						}
-						
-					/*	
-						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("************  Criterium for detecting errors  ************"))){
-							textAreaCriteriumErrors.append(filFichero+"\n");
-						}
-
-						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();			
+							filFichero=sc.nextLine();	
 						}	
-						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();			
+						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("Catalog S:"))){
+							textAreaFilterP.append(filFichero+"\n");							
 						}
-						*/
+						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("************  Criterium for detecting errors  ************"))){
+							textAreaFilterS.append(filFichero+"\n");
+						}
 						if(sc.hasNextLine()){
 							filFichero=sc.nextLine();		
-						}
-						
+						}						
 						while(sc.hasNextLine()){
 							filFichero=sc.nextLine();	
 							textAreaCriteriumErrors.append(filFichero+"\n");
 						}
-						
 							
 					}
 					
@@ -461,7 +437,6 @@ public class Interface extends JFrame{
 					 
 					sc.close();
 					createTable();
-					table.update(table.getGraphics());
 				}
 				
 			}
