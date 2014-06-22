@@ -101,24 +101,14 @@ public class Variable {
         	
 	}
 	
-	public int hashCode() {
-		/*int hash = 7;
-		hash = 97 * hash + this.name.hashCode();
-		return hash;*/
+	public int hashCode() {		
 		int hash = 1;
-		if ( name == null /*|| type ==null || value == null*/ )
+		if ( name == null )
 			hash = hash * 32;
-		else{ 
-			//hash = hash * 32 + getName().hashCode();
-			
-			
+		else{ 	
 			hash= hash*this.name.length();
-			//hash = hash *31 + (name != null ? name.hashCode() : 0);
-			//hash = hash * 31 + getType().hashCode();
-			//hash = hash * 31 + getValue().hashCode();
-		
 		}
-        return hash;
+		return hash;
 	}
 	
 
