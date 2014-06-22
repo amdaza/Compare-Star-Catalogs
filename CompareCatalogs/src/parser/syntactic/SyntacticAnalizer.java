@@ -333,7 +333,7 @@ public class SyntacticAnalizer {
 		program = new Program(statement);
 		if (!existError) {
 			console.setForeground(Color.blue);
-			console.append("Correct lexical and syntactic analysis.");			
+			console.append("Correct lexical and syntactic analysis.\n");			
 
 		}
 	}

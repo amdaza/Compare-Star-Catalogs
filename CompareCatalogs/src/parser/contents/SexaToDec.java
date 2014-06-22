@@ -63,8 +63,8 @@ public class SexaToDec extends Expression {
 	
 	public double sexaToDecDecl(String sexa){
 		double res = 0;
-		int deg = sexaToDegreeOrHour(sexa);
-		int min = sexaToMin(sexa);
+		double deg = sexaToDegreeOrHour(sexa);
+		double min = sexaToMin(sexa);
 		double sec = sexaToSec(sexa);
 		if(deg > 0){
 			res= deg+min/60+sec/3600;
@@ -76,8 +76,8 @@ public class SexaToDec extends Expression {
 	
 	public double sexaToDecRa(String sexa){
 		double res = 0;
-		int hours = sexaToDegreeOrHour(sexa);
-		int min = sexaToMin(sexa);
+		double hours = sexaToDegreeOrHour(sexa);
+		double min = sexaToMin(sexa);
 		double sec = sexaToSec(sexa);
 			res= 15*(hours+min/60+sec/3600);
 		return res;

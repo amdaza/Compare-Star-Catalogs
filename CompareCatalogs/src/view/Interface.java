@@ -283,6 +283,8 @@ public class Interface extends JFrame{
 	private Program parserCatalogP;
 	private Program parserCatalogS;
 	private Program parserCriteriumErrors;
+	private JCheckBox chckbxOneToOne;
+	private JCheckBox chckbxShowClosestCandidate;
 	
 	
 	
@@ -1141,29 +1143,33 @@ public class Interface extends JFrame{
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("One to One");
-		chckbxNewCheckBox.addActionListener(new ActionListener() {
+		chckbxOneToOne = new JCheckBox("One to One");
+		chckbxOneToOne.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//log.info("Pin to One to One");
+				chckbxShowClosestCandidate.setSelected(false);
+				
 			}
 		});
-		chckbxNewCheckBox.setFont(new Font("Calibri", Font.PLAIN, 14));
-		chckbxNewCheckBox.setForeground(Color.WHITE);
-		chckbxNewCheckBox.setBackground(new Color(0, 102, 102));	
-		chckbxNewCheckBox.setBounds(779, 31, 146, 23);
-		panel_3.add(chckbxNewCheckBox);
+		chckbxOneToOne.setFont(new Font("Calibri", Font.PLAIN, 14));
+		chckbxOneToOne.setForeground(Color.WHITE);
+		chckbxOneToOne.setBackground(new Color(0, 102, 102));	
+		chckbxOneToOne.setBounds(779, 31, 146, 23);
+		panel_3.add(chckbxOneToOne);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Show Closest Candidate");
-		chckbxNewCheckBox_1.addActionListener(new ActionListener() {
+		chckbxShowClosestCandidate = new JCheckBox("Show Closest Candidate");
+		chckbxShowClosestCandidate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//log.info("Pin to Show Closest Candidate");
+				chckbxOneToOne.setSelected(false);
+				
 			}
 		});
-		chckbxNewCheckBox_1.setFont(new Font("Calibri", Font.PLAIN, 14));
-		chckbxNewCheckBox_1.setBounds(779, 57, 177, 26);
-		chckbxNewCheckBox_1.setForeground(Color.WHITE);
-		chckbxNewCheckBox_1.setBackground(new Color(0, 102, 102));
-		panel_3.add(chckbxNewCheckBox_1);
+		chckbxShowClosestCandidate.setFont(new Font("Calibri", Font.PLAIN, 14));
+		chckbxShowClosestCandidate.setBounds(779, 57, 177, 26);
+		chckbxShowClosestCandidate.setForeground(Color.WHITE);
+		chckbxShowClosestCandidate.setBackground(new Color(0, 102, 102));
+		panel_3.add(chckbxShowClosestCandidate);
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
 		scrollPane_3.setBounds(23, 31, 700, 100);
