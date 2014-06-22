@@ -29,10 +29,6 @@ public class ExpEq extends Expression {
 		this.type = "boolean";
 		this.op = op;
 	}
-
-	/*public ExpEq (Expression e){
-		super();
-	}*/
 	
 	public ExpEq(ExpEq exp){
 		this.type = exp.type;

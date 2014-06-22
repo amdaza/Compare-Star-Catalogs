@@ -35,11 +35,11 @@ public class DecToSexaDecl extends Expression {
 				int min;
 				int sec;
 				if(v.getInt()<0){
-					gr = v.getInt() +1; 
+					gr = v.getInt(); 
 				}else{
 					gr = v.getInt(); 
 				}
-				min = (int) Math.abs(v.getInt()-gr)*60;
+				min = (int) (Math.abs(v.getInt()-gr)*60);
 				if(v.getInt()*3600>gr*3600-(min*60)){
 					sec = v.getInt()*3600 - gr*3600-(min*60);
 				}else{
@@ -55,19 +55,19 @@ public class DecToSexaDecl extends Expression {
 				result = new Value(String.valueOf(r), "string");
 				break;
 			case "real":
-				double gr1;
-				double min1;
+				int gr1;
+				int min1;
 				double sec1;
 				if(v.getDouble()<0){
-					gr1 = (int) v.getDouble() +1; 
+					gr1 = (int) v.getDouble(); 
 				}else{
 					gr1 = (int) v.getDouble(); 
 				}
-				min1 = (int) Math.abs(v.getDouble()-gr1)*60;
+				min1 = (int) (Math.abs(v.getDouble()-gr1)*60);
 				if(v.getDouble()*3600>gr1*3600-(min1*60)){
 					sec1 = v.getDouble()*3600 - gr1*3600-(min1*60);
 				}else{
-					sec1 = v.getDouble()*3600 + gr1*3600-(min1*60);
+					sec1 = -v.getDouble()*3600 + gr1*3600-(min1*60);
 				}
 				String gr1String;
 				if(gr1>0){
@@ -79,19 +79,19 @@ public class DecToSexaDecl extends Expression {
 				result = new Value(String.valueOf(r1), "string");
 				break;
 			case "exponential":
-				double gr2;
-				double min2;
+				int gr2;
+				int min2;
 				double sec2;
 				if(v.getDouble()<0){
-					gr2 = (int) v.getDouble() +1; 
+					gr2 = (int) v.getDouble(); 
 				}else{
 					gr2 = (int) v.getDouble(); 
 				}
-				min2 = (int) Math.abs(v.getDouble()-gr2)*60;
+				min2 = (int) (Math.abs(v.getDouble()-gr2)*60);
 				if(v.getDouble()*3600>gr2*3600-(min2*60)){
 					sec2 = v.getDouble()*3600 - gr2*3600-(min2*60);
 				}else{
-					sec2 = v.getDouble()*3600 + gr2*3600-(min2*60);
+					sec2 = -v.getDouble()*3600 + gr2*3600-(min2*60);
 				}
 				String gr2String;
 				if(gr2>0){

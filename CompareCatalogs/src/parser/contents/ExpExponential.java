@@ -29,6 +29,8 @@ public class ExpExponential extends Expression {
 	}
 	public ExpExponential(ExpExponential exp){
 		this.type = exp.type;
+		this.e1 = exp.e1.deepCopy();
+		this.e2 = exp.e2.deepCopy();
 	}
 
 	public Value getValue(HashMap<Variable,Value> localvar )  { 

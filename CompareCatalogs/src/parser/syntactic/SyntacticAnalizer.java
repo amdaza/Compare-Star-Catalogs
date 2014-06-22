@@ -121,9 +121,6 @@ public class SyntacticAnalizer {
 		return console;
 	}
 
-
-
-
 	/**
 	 * Method that checks if the attribute is null Token.
 	 * 
