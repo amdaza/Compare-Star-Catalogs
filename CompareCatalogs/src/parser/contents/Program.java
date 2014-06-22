@@ -1,7 +1,6 @@
 package parser.contents;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 
@@ -22,12 +21,13 @@ public class Program {
 	public Program(ArrayList<Statement> statement){
 		this.statement=statement;
 	}
+	@SuppressWarnings("unused")
 	public boolean eval(LinkedHashMap<Variable,Value> row, JTextArea console){
 		boolean result = true;
-
 		LinkedHashMap<Variable,Value> localvar = new LinkedHashMap<Variable,Value> ( row);
 		Iterator<Statement> i = statement.iterator();
-		while (i.hasNext() && result) {			
+		while (i.hasNext() && result) {
+					
 			Statement s = i.next();
 			Value v = s.getValue(localvar);
 			if(v.getType().equals("error")){

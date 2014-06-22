@@ -51,11 +51,12 @@ public class Distance extends Expression {
 		Value v2 = e2.getValue(localvar);
 		Value v3 = e3.getValue(localvar);
 		Value v4 = e4.getValue(localvar);
-		Double d1 = v1.getDouble();
-		Double d2 = v2.getDouble();
-		Double d3 = v3.getDouble();
-		Double d4 = v4.getDouble();
+		
 		if (checkTypes(v1,v2,v3,v4)) {
+			Double d1 = v1.getDouble();
+			Double d2 = v2.getDouble();
+			Double d3 = v3.getDouble();
+			Double d4 = v4.getDouble();
 			//Calculate distance
 			double dist = distance(d1,d2,d3,d4);
 			result = new Value(String.valueOf(dist), "real");
@@ -80,10 +81,13 @@ public class Distance extends Expression {
     private boolean checkTypes(Value v1, Value v2, Value v3, Value v4){
     	boolean valid = false;
     	if((v1.getType() == v2.getType()) && (v1.getType() == v3.getType()) 
-    		&& (v1.getType() == v4.getType())){
+    			&& (v1.getType() == v4.getType())){
     		if(v1.getType() == "integer" || v1.getType() == "real" || v1.getType() == "exponential"){
     			valid = true;
     		}
+    	}
+    	else{
+    		valid = false;
     	}
     	return valid;
     }

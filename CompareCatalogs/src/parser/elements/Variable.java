@@ -95,7 +95,7 @@ public class Variable {
         	
         	if (var.getName() != null) return false;
         }
-      else return this.getName().equals(var.getName());
+      else return this.getName().equalsIgnoreCase(var.getName());
 	
         return true;
         	
@@ -109,8 +109,11 @@ public class Variable {
 		if ( name == null /*|| type ==null || value == null*/ )
 			hash = hash * 32;
 		else{ 
-			hash = hash * 32 + getName().hashCode();
-			//hash = hash +31 + (name != null ? name.hashCode() : 0);
+			//hash = hash * 32 + getName().hashCode();
+			
+			
+			hash= hash*this.name.length();
+			//hash = hash *31 + (name != null ? name.hashCode() : 0);
 			//hash = hash * 31 + getType().hashCode();
 			//hash = hash * 31 + getValue().hashCode();
 		

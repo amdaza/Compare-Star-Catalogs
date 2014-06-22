@@ -77,15 +77,19 @@ public class DataStructure {
 		}
 		public String getParserType(DataStructure.Type type){
 			String result = null;
-			switch (type) {
+			switch (type) {			
 			case A:		
 				result = "string";
+				break;
 			case F:
 				result = "real";
+				break;
 			case I:
 				result = "integer";
+				break;
 			case E:
 				result = "exponential";
+				break;
 			}
 			return result;
 		}

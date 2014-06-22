@@ -1,12 +1,12 @@
 #  
 #   VizieR Astronomical Server vizier.u-strasbg.fr
-#    Date: 2014-06-21T20:03:06 [V1.99+ (14-Oct-2013)]
+#    Date: 2014-06-22T01:08:56 [V1.99+ (14-Oct-2013)]
 #   In case of problem, please report to: cds-question@unistra.fr
 # 
 #   
 #Coosys J2000: eq_FK5 J2000 
 #INFO votable-version=1.99+ (14-Oct-2013) 
-#INFO -ref=VOTx25831 
+#INFO -ref=VOTx10034 
 #INFO MaxTuples=50000 
 #INFO queryParameters=4 
 #-oc.form=D.
@@ -53,4 +53,4 @@
 18163496+0320391  All 274.145691 +03.344195  0.513   10.5 15.039  0.230 14.546  0.000 13.783  0.226 0
 18165865+0321475  All 274.244385 +03.363215  0.640    9.0 14.835  0.187 14.121  0.210 13.667  0.198 0
 
-#END#  -ref=VOTx25831 ===============================================================================
+#END#  -ref=VOTx10034 ===============================================================================

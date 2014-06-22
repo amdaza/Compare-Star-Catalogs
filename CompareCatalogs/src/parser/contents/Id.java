@@ -45,7 +45,7 @@ public class Id extends Expression {
 		Value result = null;
 		if (isTypeNumeric()){
 			Variable v = new Variable(name,type,"");
-			result = localVar.get(v);
+			result = localVar.get(v);//parece que lo pierde aqui el type devuelve null error en el hasCode
 		}
 		else{
 			error=true;

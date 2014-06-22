@@ -146,7 +146,7 @@ public class DescriptionData{
 		        	 }
 		        	 char type = line.charAt(i+1);
 		        	 value.setType(type);
-		        	 //System.out.println("type: "+type);
+		        	// System.out.println("type: "+type);
 		        	 
 		        	 if (type == 'F'){
 		        		 if(line.charAt(i+3) == '.'){
@@ -204,15 +204,14 @@ public class DescriptionData{
 					    try{
 					    	value= line.substring(i, i+lenght);
 						    i += lenght+1;
-						    view.DataStructure.Type type = dst.getType();
+						    DataStructure.Type type = dst.getType();
 						    String_Type st = new  String_Type(value,type);
 						    starRow.getStar().put(key, st); 
-						   
 						   
 					    }
 					    catch(java.lang.StringIndexOutOfBoundsException ex){
 					    	//i += lenght+1;
-					    	view.DataStructure.Type type = dst.getType();
+					    	DataStructure.Type type = dst.getType();
 						    String_Type st = new  String_Type("",type);
 						    starRow.getStar().put(key, st); 
 					    }
@@ -270,8 +269,9 @@ public class DescriptionData{
 		Vector <Variable> variables = new Vector <Variable>();
 		for (Map.Entry<String,DataStructure> entry : catalogStructure.entrySet()) {
 			 String key = entry.getKey();
-			 DataStructure dst = entry.getValue();
+			 DataStructure dst = entry.getValue();			 
 			 String type = dst.getParserType(dst.getType());
+			 System.out.println(key+type);
 			 Variable var= new Variable(catalog + "." + key,type,"");
 			 variables.add(var);
 		}

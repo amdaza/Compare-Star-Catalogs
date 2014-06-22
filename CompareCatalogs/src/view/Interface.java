@@ -358,8 +358,7 @@ public class Interface extends JFrame{
 					textAreaFilterS.setText(null);
 					textAreaCriteriumErrors.setText(null);					
 					
-					clearTable();
-					//table.update(table.getGraphics());
+					clearTable();					
 					String fichero =seleccion.getSelectedFile().getAbsolutePath();
 					Scanner sc = null;
 					try{
@@ -428,8 +427,7 @@ public class Interface extends JFrame{
 							textAreaCriteriumErrors.append(filFichero+"\n");
 						}
 							
-					}
-					
+					}					
 					catch (FileNotFoundException ex){
 						//log.log(Level.ERROR, "File not found");
 						System.out.println("File not found");
@@ -469,17 +467,13 @@ public class Interface extends JFrame{
 				fileExit.println("Radius (\"): "+textRadiusP.getText());
 				fileExit.println("Catalog S: "+textFieldS.getText());
 				fileExit.println("Radius around each P star (\"): "+textRadiusS.getText());
-				//fileExit.println("Catalog Description Primary and Secondary: ");
-				//fileExit.println(tableModel.getDataVector());
 				
 				fileExit.println("\n************  Filters  ************\n");
 				fileExit.println("Catalog P:");
 				fileExit.println(textAreaFilterP.getText());
 				fileExit.println("\nCatalog S:");
-				fileExit.println(textAreaFilterS.getText());
+				fileExit.println(textAreaFilterS.getText());			
 				
-				//fileExit.println("\n************  Criterium for selecting S rows  ************\n");
-				//fileExit.println(textAreaCriteriumS.getText());
 				fileExit.println("\n************  Criterium for detecting errors  ************\n");
 				fileExit.println(textAreaCriteriumErrors.getText());
 				fileExit.close();
@@ -1018,14 +1012,8 @@ public class Interface extends JFrame{
 		label_6.setForeground(Color.WHITE);
 		label_6.setFont(new Font("Calibri", Font.PLAIN, 15));
 		label_6.setBounds(437, 24, 111, 14);
-		panel.add(label_6);
+		panel.add(label_6);	
 		
-		/*JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon(Interface.class.getResource("/javax/swing/plaf/metal/icons/ocean/question.png")));
-		lblNewLabel_1.setToolTipText("Example: \r\n MagA > 11 AND LAST_SEP>5");
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(111, 27, 37, 25);
-		panel.add(lblNewLabel_1);*/
 		
 		ButtonListener o = new ButtonListener();
 		
@@ -1057,44 +1045,7 @@ public class Interface extends JFrame{
 		scrollPane_5.setViewportView(textAreaFilterS);
 		
 		
-	/*	JComboBox<Object> comboBox = new JComboBox<Object>();
-		comboBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				if("comoBoxChanged".equals(event.getActionCommand())){
-					
-				}
-			}
-		});
-		comboBox.setFont(new Font("Calibri", Font.PLAIN, 14));
-		comboBox.setBackground(new Color(0,102,102));
-		comboBox.setForeground(new Color (154,200,153));
-		comboBox.setModel(new DefaultComboBoxModel<Object>(new String[] {"Funtion of filter", "Absolute", "Distance"}));
-		comboBox.setBounds(202, 27, 128, 25);
-		panel.add(comboBox);*/
-		
-		/*JPanel panel_1 = new JPanel();
-		panel_1.setBounds(5, 333, 472, 269);
-		panel_1.setForeground(new Color(146, 208,80));
-		panel_1.setBackground(new Color(0, 102, 102));
-		panel_1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51),3), "Criterium for selecting S rows", 
-				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
-				javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 0, 20), new java.awt.Color(255, 153, 51)));				
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);*/
-		
-		/*JScrollPane scrollPane_2 = new JScrollPane();
-		scrollPane_2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane_2.setBounds(23, 86, 426, 123);
-		panel_1.add(scrollPane_2);*/
-		
-		/*textAreaCriteriumS = new JTextArea();
-		scrollPane_2.setViewportView(textAreaCriteriumS);*/
-		
-		/*JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setToolTipText("aqui ponemos un ejemplo ;)");
-		lblNewLabel_2.setIcon(new ImageIcon(Interface.class.getResource("/javax/swing/plaf/metal/icons/ocean/question.png")));
-		lblNewLabel_2.setBounds(23, 35, 37, 25);
-		panel_1.add(lblNewLabel_2);*/
+	
 		
 		panel_2 = new JPanel();
 		panel_2.setBounds(5, 11, 967, 133);		
@@ -1213,7 +1164,6 @@ public class Interface extends JFrame{
 		panel_3.add(chckbxNewCheckBox_1);
 		
 		JScrollPane scrollPane_3 = new JScrollPane();
-		//scrollPane_3.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane_3.setBounds(23, 31, 700, 100);
 		panel_3.add(scrollPane_3);
 		
@@ -1222,7 +1172,6 @@ public class Interface extends JFrame{
 		textAreaCriteriumErrors.setBounds(23, 31, 733, 216);		
 		textAreaCriteriumErrors.setLineWrap(true);
 		scrollPane_3.setViewportView(textAreaCriteriumErrors);
-		//panel_3.add(textAreaCriteriumErrors);
 		
 		btnStart = new JButton("Start");
 		btnStart.setBounds(779, 103, 89, 23);
@@ -1363,23 +1312,16 @@ public class Interface extends JFrame{
 
 	public  void clearTable() {
 		 try{
-			/*while(table != null){
-				tableModel = (DefaultTableModel) table.getModel();
-				tableModel.removeRow(tableModel.getRowCount()-1);
-			}*/
+			
 		
 			  tableModel=(DefaultTableModel) table.getModel();
 			 int fila=table.getRowCount();
 			 for (int i = 0;fila>i; i++) {
-			 tableModel.removeRow(0);}
-			 //table.update(table.getGraphics());	 
+			 tableModel.removeRow(0);}	 
 		 
 		}catch(ArrayIndexOutOfBoundsException e){
 			e.printStackTrace();
 		}
-		/*int numrows = tableModel.getRowCount();
-		for(int i = numrows - 1; i >=0; i--){
-		tableModel.removeRow(i);}*/
 		
 	}
 
@@ -1450,7 +1392,7 @@ public class Interface extends JFrame{
 		table.setBounds(10, 85, 173, 480);
 		table.setBackground(new Color(154, 200, 153));
 		panel_4.add(table);	
-		// table.update(table.getGraphics());	 
+			 
 		
 	}
 
@@ -1572,7 +1514,7 @@ public class Interface extends JFrame{
 					   // log.info("Catalog Description Primary: ");					 
 					    insertNames(primaryData.getDt(),0);
 					    saveSData(selecFile, primaryData.getDt(),folderSecond,pathName);					    
-					    //table.update(table.getGraphics());						   
+					    					   
 					}	
 					    
 					}
@@ -1616,15 +1558,7 @@ public class Interface extends JFrame{
 				File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");	
 				folderSecondaryFilteredP.mkdir();
 				
-				//Create file for filtered stars of catalog P
-				/*   try {
-			          File file = new File("example.txt");
-			          BufferedWriter output = new BufferedWriter(new FileWriter(file));
-			          output.write(text);
-			          output.close();
-			        } catch ( IOException e ) {
-			           e.printStackTrace();
-			        }*/
+				
 
 				try {
 					File file = new File(pathFilteredP + "/Filtered_Primary.txt");
@@ -1645,7 +1579,7 @@ public class Interface extends JFrame{
 
 					//asS.program(false);
 				} catch (IOException e1) {
-					// TODO Auto-generated catch block
+					
 					e1.printStackTrace();
 				}
 
@@ -1791,7 +1725,7 @@ public class Interface extends JFrame{
 		    	//Message??
 		    }
 		  
-		   // table.update(table.getGraphics());
+		  
 			
 		}
 

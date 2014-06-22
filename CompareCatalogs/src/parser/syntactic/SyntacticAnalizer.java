@@ -2,6 +2,7 @@ package parser.syntactic;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.JTextArea;
@@ -62,7 +63,6 @@ public class SyntacticAnalizer {
 	 * @uml.associationEnd  qualifier="var:parser.elements.Variable parser.elements.Value"
 	 */
 	private Vector<Variable> row;
-
 
 	/**
 	 * @uml.property  name="program"
@@ -634,34 +634,34 @@ public class SyntacticAnalizer {
 				//e = result1.getExpression();
 			}else
 				if (checkAtribute("dist")){
-					Expression e1 = e.deepCopy();
-					Expression e2 = e.deepCopy();
-					Expression e3= e.deepCopy();
-					Expression e4 = e.deepCopy();
+					//Expression e1 = e.deepCopy();
+					//Expression e2 = e.deepCopy();
+					//Expression e3= e.deepCopy();
+					//Expression e4 = e.deepCopy();
 					if(checkAtribute("(")){
 						result1 = exp4(true);
 						boolean correct1 = result1.isCorrect();
 						if (correct1) {
-							//Expression e1 = e.deepCopy();
+							Expression e1 = e.deepCopy();
 
 							if(checkAtribute(",")){
 								//Expression e2 = e.deepCopy();
 								Expression_Boolean result2 = exp4(true);
 								boolean correct2 = result2.isCorrect();
 								if (correct2) {
-									//Expression e2 = e.deepCopy();
+									Expression e2 = e.deepCopy();
 									if(checkAtribute(",")){
 										//Expression e3 = e.deepCopy();
 										Expression_Boolean result3 = exp4(true);
 										boolean correct3 = result3.isCorrect();
 										if (correct3) {
-											//Expression e3 = e.deepCopy();
+											Expression e3 = e.deepCopy();
 											if(checkAtribute(",")){
 												//Expression e4 = e.deepCopy();
 												Expression_Boolean result4 = exp4(true);
 												boolean correct4 = result4.isCorrect();
 												if (correct4) {
-													//Expression e4 = e.deepCopy();
+													Expression e4 = e.deepCopy();
 													if(checkAtribute(")")){
 														correct = true;														
 														e = new Distance(e1, e2, e3, e4);
@@ -1089,8 +1089,8 @@ public class SyntacticAnalizer {
 										setError(new Errors(numError,tok,throwError,console));													
 										existError =true;
 									}
-								}
-							}else{*/
+								}*/
+							}else{
 								if (!existError){
 									setError(new Errors(7,tok,throwError,console));
 									existError =true;
