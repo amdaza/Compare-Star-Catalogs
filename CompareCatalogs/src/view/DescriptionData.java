@@ -209,13 +209,16 @@ public class DescriptionData{
 		         }
 		         //End of description
 		         
-		         //Stars
+		         //Header
+		         header += line + "\n";
 		         while(!(line=br.readLine()).substring(0, 1).equals("-")){
 		        	 header += line + "\n";
 		         }
+		         header += line + "\n";
 		         //System.out.println("/////////////////////////////////////////////////////");
 		         //System.out.println(header);
 		         
+		         //Stars
 		         while((line=br.readLine()).length()!=0){
 		        	int i=0;
 		        	
@@ -231,6 +234,10 @@ public class DescriptionData{
 					    	value= line.substring(i, i+lenght);
 						    i += lenght+1;
 						    DataStructure.Type type = dst.getType();
+						    
+					    	if(type != DataStructure.Type.A){//To supress white spaces in numbers
+						    	value.replaceAll("\\s+","");
+					    	}
 						    String_Type st = new  String_Type(value,type);
 						    starRow.getStar().put(key, st); 
 						   

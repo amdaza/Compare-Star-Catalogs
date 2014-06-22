@@ -1582,14 +1582,12 @@ public class Interface extends JFrame{
 		//Crete directory for secondary stars around filtered P
 		File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");	
 		folderSecondaryFilteredP.mkdir();
-		
-		
 
 		try {
 			File file = new File(pathFilteredP + "/Filtered_Primary.txt");
 			BufferedWriter output = new BufferedWriter(new FileWriter(file));
 			output.write("This is a list of star rows which passed catalog P filter\n\n");
-			
+			output.write(primaryData.getHeader());
 			output.flush();
 			//loop stars
 			try{
@@ -1599,6 +1597,10 @@ public class Interface extends JFrame{
 					if (saveStar){
 						output.write(primaryStars.get(i).getLine() + "\n");
 						output.flush();
+					} else {
+						DescriptionData remove = arraySecondaryData.get(i);
+						primaryStars.remove(i);
+						arraySecondaryData.remove(i);
 					}
 				}
 			}catch (TypeException te){
@@ -1613,6 +1615,7 @@ public class Interface extends JFrame{
 			e1.printStackTrace();
 		}
 	}
+	
 	private void filterS(){
 		String filterS= textAreaFilterS.getText();
 		Vector<StarRow> primaryStars;
