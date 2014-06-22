@@ -15,7 +15,7 @@ public class Negation extends Expression {
 
 	public Negation(Expression e){
 		super();
-		this.e=e;
+		this.e=e.deepCopy();
 		this.type = e.type;
 	}
 	
