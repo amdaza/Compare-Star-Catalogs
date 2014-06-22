@@ -31,21 +31,21 @@ public class DecToSexaRa  extends Expression {
 			switch (type){
 				case "integer":
 					int h = (int) v.getInt()*24/360;
-					int min = (int) (v.getInt()-15*h)*4;
+					int min = (int) ((v.getInt()-15*h)*4);
 					double s = (v.getInt()-(h*60+min)/4)*240;
 					String r = String.valueOf(h) + " " + String.valueOf(min) + " " + String.valueOf(s); 
 					result = new Value(String.valueOf(r), "string");
 				break;
 				case "real":
-					double h1 = (int) v.getDouble()*24/360;
-					double min1 = (int) (v.getDouble()-15*h1)*4;
+					int h1 = (int) v.getDouble()*24/360;
+					int min1 = (int) ((v.getDouble()-15*h1)*4);
 					double s1 = (v.getDouble()-(h1*60+min1)/4)*240;
 					String r1 = String.valueOf(h1) + " " + String.valueOf(min1) + " " + String.valueOf(s1); 
 					result = new Value(String.valueOf(r1), "string");
 				break;
 				case "exponential":
 					double h2 = (int) v.getDouble()*24/360;
-					double min2 = (int) (v.getDouble()-15*h2)*4;
+					double min2 = (int) ((v.getDouble()-15*h2)*4);
 					double s2 = (v.getDouble()-(h2*60+min2)/4)*240;
 					String r2 = String.valueOf(h2) + " " + String.valueOf(min2) + " " + String.valueOf(s2); 
 					result = new Value(String.valueOf(r2), "string");
