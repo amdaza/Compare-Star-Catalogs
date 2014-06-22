@@ -39,8 +39,9 @@ public class Program {
 			else if (s.isBinding ())  {		
 
 				String vname = ((Binding) s).getName(); 
-				Variable x = new Variable(vname, v.getType(), v.getVal());
-				localvar.put(x, null);  
+				Variable var = new Variable(vname, v.getType(), v.getVal());
+				Value val = new Value(v.getVal(),v.getType() );
+				localvar.put(var, val);  
 			} else {  				
 				if (v.getType() != "boolean") {
 					result =  false; 

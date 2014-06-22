@@ -297,6 +297,9 @@ public class SyntacticAnalizer {
 					/*Value val = e.getValue(row);
 					Variable var = new Variable(s,val);
 					row.put(var, val);*/
+					Value val = new Value("",e.getType());
+					Variable var = new Variable(s,val);
+					row.add(var);
 					Binding b = new Binding(e,s);					
 					statement.add(b);
 				}
