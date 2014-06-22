@@ -1539,61 +1539,13 @@ public class Interface extends JFrame{
 			}
 			else if (o == btnButtonFilter){	
 				
-				textAreaConsole.setText(null);				
-				String filterP= textAreaFilterP.getText();
-				String filterS= textAreaFilterS.getText();
+				textAreaConsole.setText(null);		
+				
 				//log.info("Filter P: "+filterP);				
-				//log.info("Filter S: "+filterS);	
-				Vector<StarRow> primaryStars;
+				//log.info("Filter S: "+filterS);
 				
-				Lexical lp= new Lexical(filterP);
-				//Lexical ls = new Lexical(filterS);
-				SyntacticAnalizer asP = new SyntacticAnalizer(lp,textAreaConsole);
-				
-				//SyntacticAnalizer asS = new SyntacticAnalizer(ls);
-				asP.setRow(primaryData.variablesForParser("p"));
-				asP.parser();				
-				parserCatalogP = asP.getProgram();
-				primaryStars = primaryData.getStars();
-				
-				//Filter Catalog P
-				String pathFilteredP = path + path2 + "/Filtered_CatalogP";
-				//create directory for filtered P
-				File folderFilteredP= new File(pathFilteredP);	
-				folderFilteredP.mkdir();
-				
-				//Crete directory for secondary stars around filtered P
-				File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");	
-				folderSecondaryFilteredP.mkdir();
-				
-				
-
-				try {
-					File file = new File(pathFilteredP + "/Filtered_Primary.txt");
-					BufferedWriter output = new BufferedWriter(new FileWriter(file));
-					output.write("This is a list of star rows which passed catalog P filter\n\n");
-					output.flush();
-					//loop stars
-					try{
-						for(int i = 0; i < primaryStars.size(); i++){
-							LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
-							boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
-							if (saveStar){
-								output.write(primaryStars.get(i).getLine() + "\n");
-								output.flush();
-							}
-						}
-					}catch (TypeException te){
-						//
-					}
-					output.flush();
-					output.close();
-
-					//asS.program(false);
-				} catch (IOException e1) {
-					
-					e1.printStackTrace();
-				}
+				filterP();
+				filterS();
 
 				
 				
@@ -1610,6 +1562,109 @@ public class Interface extends JFrame{
 	
 		}
 	
+	private void filterP(){
+		String filterP= textAreaFilterP.getText();
+		Vector<StarRow> primaryStars;
+		Lexical lp= new Lexical(filterP);				
+		SyntacticAnalizer asP = new SyntacticAnalizer(lp,textAreaConsole);				
+		
+		asP.setRow(primaryData.variablesForParser("p"));
+		asP.parser();				
+		parserCatalogP = asP.getProgram();
+		primaryStars = primaryData.getStars();
+		
+		//Filter Catalog P
+		String pathFilteredP = path + path2 + "/Filtered_CatalogP";
+		//create directory for filtered P
+		File folderFilteredP= new File(pathFilteredP);	
+		folderFilteredP.mkdir();
+		
+		//Crete directory for secondary stars around filtered P
+		File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");	
+		folderSecondaryFilteredP.mkdir();
+		
+		
+
+		try {
+			File file = new File(pathFilteredP + "/Filtered_Primary.txt");
+			BufferedWriter output = new BufferedWriter(new FileWriter(file));
+			output.write("This is a list of star rows which passed catalog P filter\n\n");
+			
+			output.flush();
+			//loop stars
+			try{
+				for(int i = 0; i < primaryStars.size(); i++){
+					LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
+					boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
+					if (saveStar){
+						output.write(primaryStars.get(i).getLine() + "\n");
+						output.flush();
+					}
+				}
+			}catch (TypeException te){
+				//
+			}
+			output.flush();
+			output.close();
+
+			//asS.program(false);
+		} catch (IOException e1) {
+			
+			e1.printStackTrace();
+		}
+	}
+	private void filterS(){
+		String filterS= textAreaFilterS.getText();
+		Vector<StarRow> primaryStars;
+		Lexical lp= new Lexical(filterS);				
+		SyntacticAnalizer asS = new SyntacticAnalizer(lp,textAreaConsole);				
+		
+		asS.setRow(primaryData.variablesForParser("s"));
+		asS.parser();				
+		parserCatalogP = asS.getProgram();
+		primaryStars = primaryData.getStars();
+		
+		//Filter Catalog S
+		String pathFilteredS = path + path2 + "/Filtered_CatalogS";
+		//create directory for filtered S
+		File folderFilteredS= new File(pathFilteredS);	
+		folderFilteredS.mkdir();
+		String fileName = folderFilteredS+ "\\Stars_of_S_around_"+".txt";//+ coordS + aux +".txt";
+		// DescriptionData secondaryData = new DescriptionData(fileName);
+		//Crete directory for secondary stars around filtered S
+		//File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");	
+		//folderSecondaryFilteredP.mkdir();
+		
+		
+
+		/*try {
+			File file = new File(pathFilteredS + path2+"/Filtered_Primary.txt");
+			BufferedWriter output = new BufferedWriter(new FileWriter(file));
+			output.write("This is a list of star rows which passed catalog P filter\n\n");
+			
+			output.flush();
+			//loop stars
+			try{
+				for(int i = 0; i < primaryStars.size(); i++){
+					LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
+					boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
+					if (saveStar){
+						output.write(primaryStars.get(i).getLine() + "\n");
+						output.flush();
+					}
+				}
+			}catch (TypeException te){
+				//
+			}
+			output.flush();
+			output.close();
+
+			//asS.program(false);
+		} catch (IOException e1) {
+			
+			e1.printStackTrace();
+		}*/
+	}
 	
 
 		private void saveSData(JFileChooser selectedFile, LinkedHashMap<String, DataStructure> dt,File folder,String pathName) {
