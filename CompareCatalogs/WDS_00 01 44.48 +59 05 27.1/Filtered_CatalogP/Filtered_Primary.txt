@@ -1,0 +1,2 @@
+This is a list of star rows which passed catalog P filter
+

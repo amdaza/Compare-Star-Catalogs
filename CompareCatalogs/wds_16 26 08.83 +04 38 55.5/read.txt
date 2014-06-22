@@ -1,0 +1,14 @@
+In the directory wds_16 26 08.83 +04 38 55.5 have generated the following files 
+
+ - File Created ->   primary.txt ===> Number of stars : 0 
+
+In the directory Secondary have generated the following files 
+
+In the directory wds_16 26 08.83 +04 38 55.5 have generated the following files 
+
+ - File Created ->   primary.txt ===> Number of stars : 0 
+
+ - File Created ->   read.txt ===> Number of stars : 0 
+
+In the directory Secondary have generated the following files 
+

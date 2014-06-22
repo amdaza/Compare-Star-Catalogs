@@ -48,9 +48,11 @@ import org.apache.log4j.Logger;
 
 
 
+
 import parser.contents.Program;
 import parser.elements.Value;
 import parser.elements.Variable;
+import parser.errors.TypeException;
 import parser.lexical.Lexical;
 import parser.syntactic.SyntacticAnalizer;
 import view.Catalog;
@@ -1566,13 +1568,17 @@ public class Interface extends JFrame{
 					output.write("This is a list of star rows which passed catalog P filter\n\n");
 					output.flush();
 					//loop stars
-					for(int i = 0; i < primaryStars.size(); i++){
-						LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
-						boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
-						if (saveStar){
-							output.write(primaryStars.get(i).getLine() + "\n");
-							output.flush();
+					try{
+						for(int i = 0; i < primaryStars.size(); i++){
+							LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
+							boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
+							if (saveStar){
+								output.write(primaryStars.get(i).getLine() + "\n");
+								output.flush();
+							}
 						}
+					}catch (TypeException te){
+						//
 					}
 					output.flush();
 					output.close();

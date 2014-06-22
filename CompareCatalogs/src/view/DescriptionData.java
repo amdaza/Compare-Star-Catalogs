@@ -232,7 +232,7 @@ public class DescriptionData{
 	   			 throw e= new Exception();*/	   			
 	   			 JOptionPane.showMessageDialog(null,ex.getMessage());
 	         }catch (java.lang.NullPointerException ex){
-	        	 //There�s no stars for this 
+	        	 //There's no stars for this 
 	        	 empty = true;
 	         }
 		 }

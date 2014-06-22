@@ -8,6 +8,7 @@ import javax.swing.JTextArea;
 
 import parser.elements.*;
 import parser.errors.Errors;
+import parser.errors.TypeException;
 
 
 public class Program {
@@ -22,7 +23,7 @@ public class Program {
 		this.statement=statement;
 	}
 	@SuppressWarnings("unused")
-	public boolean eval(LinkedHashMap<Variable,Value> row, JTextArea console){
+	public boolean eval(LinkedHashMap<Variable,Value> row, JTextArea console) throws TypeException{
 		boolean result = true;
 		LinkedHashMap<Variable,Value> localvar = new LinkedHashMap<Variable,Value> ( row);
 		Iterator<Statement> i = statement.iterator();
@@ -34,6 +35,7 @@ public class Program {
 
 				int numError = Integer.parseInt(v.getVal());
 				Errors e = new Errors(numError, console);
+				throw new TypeException();
 			}
 
 			else if (s.isBinding ())  {		
