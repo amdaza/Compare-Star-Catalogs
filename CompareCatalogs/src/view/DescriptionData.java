@@ -41,11 +41,16 @@ public class DescriptionData{
 	 * @uml.property  name="contador"
 	 */
 	private int contador=0;
+	/**
+	 * @uml.property  name="header"
+	 */
+	private String header;
 	
 	public DescriptionData(){
 
 		this.setDt(new LinkedHashMap<String, DataStructure>());
 		this.stars = new Vector<StarRow>(); 
+		header = "";
 	}
 	
 	public DescriptionData(String path){
@@ -53,6 +58,7 @@ public class DescriptionData{
 		this.setDt(new LinkedHashMap<String, DataStructure>());
 		this.stars = new Vector<StarRow>(); 
 		empty = true;
+		header = "";
 	}
 
 	public Vector<StarRow> getStars() {
@@ -103,6 +109,22 @@ public class DescriptionData{
 		this.empty = empty;
 	}
 
+	/**
+	 * @return
+	 * @uml.property  name="header"
+	 */
+	public String getHeader() {
+		return header;
+	}
+
+	/**
+	 * @param header
+	 * @uml.property  name="header"
+	 */
+	public void setHeader(String header) {
+		this.header = header;
+	}
+	
 	public LinkedHashMap<String, DataStructure> parser(){
 		
 		File archive = null;
@@ -188,7 +210,11 @@ public class DescriptionData{
 		         //End of description
 		         
 		         //Stars
-		         while(!(line=br.readLine()).substring(0, 1).equals("-"));
+		         while(!(line=br.readLine()).substring(0, 1).equals("-")){
+		        	 header += line + "\n";
+		         }
+		         //System.out.println("/////////////////////////////////////////////////////");
+		         //System.out.println(header);
 		         
 		         while((line=br.readLine()).length()!=0){
 		        	int i=0;
