@@ -1,12 +1,12 @@
 #  
 #   VizieR Astronomical Server vizier.u-strasbg.fr
-#    Date: 2014-06-22T09:23:45 [V1.99+ (14-Oct-2013)]
+#    Date: 2014-06-22T09:48:30 [V1.99+ (14-Oct-2013)]
 #   In case of problem, please report to: cds-question@unistra.fr
 # 
 #   
 #Coosys J2000: eq_FK5 J2000 
 #INFO votable-version=1.99+ (14-Oct-2013) 
-#INFO -ref=VOTx25452 
+#INFO -ref=VOTx25003 
 #INFO MaxTuples=50000 
 #INFO queryParameters=4 
 #-oc.form=D.
@@ -59,4 +59,4 @@ WDS        Disc    Comp  (yr) (yr) eg) eg) csec) rcsec) (mag) (mag) DM        ot
 00017+5905 STI3083 AB    1910 2011 241 243   9.5  10.20 10.89 13.00                  00 01 44.48 +59 05 27.1
 00030+5908 TDS1271       1991 1991 255 255   0.6   0.60 10.93 11.19                  00 03 02.62 +59 07 59.8
 
-#END#  -ref=VOTx25452 ======================================================================================
+#END#  -ref=VOTx25003 ======================================================================================
