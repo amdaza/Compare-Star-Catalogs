@@ -1621,7 +1621,7 @@ public class SyntacticAnalizer {
 				} else {
 					correct = false;
 					if(!existError){ 
-						setError(new Errors(46,tok,throwError,console));
+						setError(new Errors(50,tok,throwError,console));
 						existError =true;
 					}
 				}
@@ -1643,7 +1643,7 @@ public class SyntacticAnalizer {
 				} else {
 					correct = false;
 					if(!existError){
-						setError(new Errors(46,tok,throwError,console));
+						setError(new Errors(51,tok,throwError,console));
 						existError =true;
 					}
 				}
