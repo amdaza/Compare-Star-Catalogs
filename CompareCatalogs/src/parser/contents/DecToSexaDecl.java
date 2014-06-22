@@ -59,7 +59,7 @@ public class DecToSexaDecl extends Expression {
 				int min1;
 				double sec1;
 				if(v.getDouble()<0){
-					gr1 = (int) v.getDouble() +1; 
+					gr1 = (int) v.getDouble(); 
 				}else{
 					gr1 = (int) v.getDouble(); 
 				}
@@ -67,7 +67,7 @@ public class DecToSexaDecl extends Expression {
 				if(v.getDouble()*3600>gr1*3600-(min1*60)){
 					sec1 = v.getDouble()*3600 - gr1*3600-(min1*60);
 				}else{
-					sec1 = v.getDouble()*3600 + gr1*3600-(min1*60);
+					sec1 = -v.getDouble()*3600 + gr1*3600-(min1*60);
 				}
 				String gr1String;
 				if(gr1>0){
@@ -83,7 +83,7 @@ public class DecToSexaDecl extends Expression {
 				int min2;
 				double sec2;
 				if(v.getDouble()<0){
-					gr2 = (int) v.getDouble() +1; 
+					gr2 = (int) v.getDouble(); 
 				}else{
 					gr2 = (int) v.getDouble(); 
 				}
@@ -91,7 +91,7 @@ public class DecToSexaDecl extends Expression {
 				if(v.getDouble()*3600>gr2*3600-(min2*60)){
 					sec2 = v.getDouble()*3600 - gr2*3600-(min2*60);
 				}else{
-					sec2 = v.getDouble()*3600 + gr2*3600-(min2*60);
+					sec2 = -v.getDouble()*3600 + gr2*3600-(min2*60);
 				}
 				String gr2String;
 				if(gr2>0){
