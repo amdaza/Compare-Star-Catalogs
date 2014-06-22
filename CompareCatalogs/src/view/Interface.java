@@ -1763,7 +1763,7 @@ public class Interface extends JFrame{
 				coordSAnt8 = coordSAnt7;
 				coordSAnt7 = coordSAnt6;
 				coordSAnt6 = coordSAnt5;
-				coordSAnt5= coordSAnt4;
+				coordSAnt5 = coordSAnt4;
 				coordSAnt4 = coordSAnt3;
 				coordSAnt3 = coordSAnt2;
 				coordSAnt2 = coordSAnt;
