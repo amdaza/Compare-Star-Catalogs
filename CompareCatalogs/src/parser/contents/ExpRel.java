@@ -36,7 +36,10 @@ public class ExpRel extends Expression {
 	}
 	
 	public ExpRel (ExpRel exp){
-		this.type = exp.type;
+		this.e1 = exp.e1.deepCopy();
+		this.e2 = exp.e2.deepCopy();
+		this.type = "boolean";
+		this.op = exp.op;
 	}
 
 	public Value getValue(HashMap<Variable,Value> localvar )  { 
