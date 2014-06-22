@@ -96,7 +96,7 @@ public class SyntacticAnalizer {
 		this.row = row;
 	}
 
-
+/* ESTO ES UNA PRUEBA*/
 
 	/**
 	 * constructor of the class
