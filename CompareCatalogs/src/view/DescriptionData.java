@@ -302,9 +302,7 @@ public class DescriptionData{
 			 variables.add(var);
 		}
 	
-		return variables;
-		
-		
+		return variables;		
 	}
 	
 
