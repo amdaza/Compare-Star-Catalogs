@@ -35,7 +35,7 @@ public class DecToSexaDecl extends Expression {
 				int min;
 				int sec;
 				if(v.getInt()<0){
-					gr = v.getInt() +1; 
+					gr = v.getInt(); 
 				}else{
 					gr = v.getInt(); 
 				}
