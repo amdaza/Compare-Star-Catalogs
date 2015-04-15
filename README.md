@@ -1,6 +1,6 @@
-                          # Compare-Star-Catalogs
+# Compare-Star-Catalogs
 
-  ## Synopsis
+## Synopsis
 
   This project is a software tool aimed at the extraction and combination 
   of data obtained from the astronomical catalogs available online. Allows 
@@ -9,20 +9,20 @@
   combining one-to-one the data representing each individual astronomical 
   object.
 
-  ## Motivation
+## Motivation
 
   The purpose of the project is to constitute an useful tool for 
   the permanent updates carried out by the professional astronomers in 
   charge of the WDS.
 
-  ## Installation
+## Installation
   
   Download and execute .jar file. Generated files will be stored in this jar container folder.
   
-  ## API Reference
+## API
   
   You can find explanations and usage cases at Documentation folder.
   
-  ## License
+## License
   
   Please see the file called LICENSE.
