@@ -2,7 +2,7 @@ package parser.elements;
 
 import java.util.LinkedList;
 
-public class ContenidoTS {
+public class TSContent {
 	private String Tipo;
 	private String TipoBase;
 	private int posIni;
@@ -14,13 +14,13 @@ public class ContenidoTS {
 	private LinkedList<String> retorno; // linkedlist por si es una funcion que
 										// devuelve mas de un argumento
 	private int tamanio;
-	private TablaSimbolo TablaHija;
-	private LinkedList<ContenidoTS> puntero; // linkedlist por si es una puntero
+	private SymbolTable TablaHija;
+	private LinkedList<TSContent> puntero; // linkedlist por si es una puntero
 
-	public ContenidoTS(String tipo, String tipoBase, int posIni, int posFin,
+	public TSContent(String tipo, String tipoBase, int posIni, int posFin,
 			int NumArgs, LinkedList<String> TipoArgs, int pasoArgs,
-			LinkedList<String> retorno, int tamanio, TablaSimbolo th,
-			LinkedList<ContenidoTS> puntero) {
+			LinkedList<String> retorno, int tamanio, SymbolTable th,
+			LinkedList<TSContent> puntero) {
 		this.setTipo(tipo);
 		this.setTipoBase(tipoBase);
 		this.setPosIni(posIni);
@@ -106,19 +106,19 @@ public class ContenidoTS {
 		this.retorno = retorno;
 	}
 
-	public TablaSimbolo getTablaHija() {
+	public SymbolTable getTablaHija() {
 		return TablaHija;
 	}
 
-	public void setTablaHija(TablaSimbolo tablaHija) {
+	public void setTablaHija(SymbolTable tablaHija) {
 		TablaHija = tablaHija;
 	}
 
-	public void setPuntero(LinkedList<ContenidoTS> puntero) {
+	public void setPuntero(LinkedList<TSContent> puntero) {
 		this.puntero = puntero;
 	}
 
-	public LinkedList<ContenidoTS> getPuntero() {
+	public LinkedList<TSContent> getPuntero() {
 		return puntero;
 	}
 }

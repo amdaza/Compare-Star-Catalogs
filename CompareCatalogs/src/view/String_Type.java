@@ -10,9 +10,9 @@ public class String_Type {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private DataStructure.Type t;
-	
-	
-	
+
+
+
 	public String_Type(String s, DataStructure.Type t) {
 		this.s = s;
 		this.t = t;
@@ -46,5 +46,5 @@ public class String_Type {
 		this.t = t;
 	}
 
-	
+
 }

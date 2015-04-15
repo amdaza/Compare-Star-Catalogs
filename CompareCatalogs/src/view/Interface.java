@@ -1,75 +1,19 @@
 package view;
 
-import javax.swing.AbstractButton;
-import javax.swing.Icon;
-import javax.swing.JDialog;
-import javax.swing.JFileChooser;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import javax.swing.JTextArea;
-import javax.swing.JScrollPane;
-import javax.swing.JCheckBox;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableColumnModel;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
-import javax.swing.border.BevelBorder;
-import javax.swing.ScrollPaneConstants;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
-import javax.swing.JSeparator;
-import javax.swing.ImageIcon;
-import javax.swing.SwingConstants;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-
-import org.apache.log4j.Appender;
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Level;
-import org.apache.log4j.PatternLayout;
-import org.apache.log4j.PropertyConfigurator;
-import org.apache.log4j.RollingFileAppender;
-import org.apache.log4j.helpers.Loader;
-import org.apache.log4j.PropertyConfigurator;
-import org.apache.log4j.Logger;
-
-
-
-
-
-
-
-
-import parser.contents.Program;
-import parser.elements.Value;
-import parser.elements.Variable;
-import parser.errors.TypeException;
-import parser.lexical.Lexical;
-import parser.syntactic.SyntacticAnalizer;
-import view.Catalog;
-
-import java.awt.Component;
-import java.awt.Dialog;
-import java.awt.Font;
 import java.awt.Color;
-import java.awt.Graphics;
+import java.awt.Component;
+import java.awt.Cursor;
+import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.Cursor;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.font.TextAttribute;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Toolkit;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -77,33 +21,83 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
+
 import java.net.URL;
+
 import java.text.AttributedString;
 import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.logging.FileHandler;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TimeZone;
 import java.util.Vector;
-import java.util.logging.FileHandler;
 
-import javax.swing.event.MenuKeyListener;
+import javax.swing.AbstractButton;
+import javax.swing.border.BevelBorder;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.event.MenuKeyEvent;
+import javax.swing.event.MenuKeyListener;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableColumnModel;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
+import javax.swing.text.Style;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
+import org.apache.log4j.Appender;
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.helpers.Loader;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.PropertyConfigurator;
+import org.apache.log4j.RollingFileAppender;
+
+import parser.contents.Program;
+import parser.elements.Value;
+import parser.elements.Variable;
+import parser.errors.TypeException;
+import parser.lexical.Lexical;
+import parser.syntactic.SyntacticAnalizer;
+
+import view.Catalog;
 
 
 @SuppressWarnings("unused")
 public class Interface extends JFrame{
-
-
 
 	private static final long serialVersionUID = 1L;
 
@@ -240,19 +234,19 @@ public class Interface extends JFrame{
 	 */
 	private String timeStamp=new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 	/**
-	 * @uml.property  name="botones" multiplicity="(0 -1)" dimension="1"
+	 * @uml.property  name="buttons" multiplicity="(0 -1)" dimension="1"
 	 */
-	private String [] botones = { " Catalog P", " Catalog S", " Criterium for detecting errors "};
+	private String [] buttons = { " Catalog P", " Catalog S", " Criterium for detecting errors "};
 	/**
-	 * @uml.property  name="botones2" multiplicity="(0 -1)" dimension="1"
+	 * @uml.property  name="buttons2" multiplicity="(0 -1)" dimension="1"
 	 */
-	private String [] botones2 = {"Example", "Aceptar"};
-	private String [] botones1 = { "Aceptar"};
-	private static Catalog Info;	
+	private String [] buttons2 = {"Example", "Aceptar"};
+	private String [] buttons1 = { "Aceptar"};
+	private static Catalog Info;
 
 	/**
 	 * @uml.property  name="primaryData"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 	private DescriptionData primaryData;
 	/**
@@ -306,14 +300,15 @@ public class Interface extends JFrame{
 		load=false;
 		validate();
 		setLocationRelativeTo(null);
-		Info = new Catalog();	
+
+		Info = new Catalog();
 		//log=  Logger.getLogger("");
 		/*try {
 			//URL url = Loader.getResource("log4j.properties");
 			//PropertyConfigurator.configure(url);
 			//"[%p] [%c] %d{dd.MM.yyyy/HH:mm:ss} ===> %m%n"
-			//String ruta="C:/Users/Delegacion01/Desktop/Rosa";	
-			PatternLayout defaultLayout = new PatternLayout("%n%d{yyyy-MM-dd HH:mm:ss} [%-5p]  ===> %m%n");					
+			//String ruta="C:/Users/Delegacion01/Desktop/Rosa";
+			PatternLayout defaultLayout = new PatternLayout("%n%d{yyyy-MM-dd HH:mm:ss} [%-5p]  ===> %m%n");
 			RollingFileAppender rollingFileAppender = new RollingFileAppender();
 			try {
 				rollingFileAppender.setFile("fileLog.log",true, false, 0);
@@ -326,7 +321,7 @@ public class Interface extends JFrame{
 			//log.addAppender(rollingFileAppender);
 			//log.info("Log created");
 
-		} catch (SecurityException e2) {			
+		} catch (SecurityException e2) {
 			e2.printStackTrace();
 		} */
 
@@ -349,14 +344,14 @@ public class Interface extends JFrame{
 
 		JMenuItem mntmOpenSession = new JMenuItem("Open");
 		mntmOpenSession.setIcon(new ImageIcon(Interface.class.getResource("/images/open.png")));
-		mntmOpenSession.addActionListener(new ActionListener() {			
+		mntmOpenSession.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent arg0) {
 				folderSession = new File (path);
-				folderSession.mkdir();	
+				folderSession.mkdir();
 
-				JFileChooser seleccion = new JFileChooser(folderSession);
-				int i = seleccion.showOpenDialog(Interface.this);
+				JFileChooser selection = new JFileChooser(folderSession);
+				int i = selection.showOpenDialog(Interface.this);
 				int k=0;
 				if (i == 0){
 					textFieldP.setText(null);
@@ -366,26 +361,26 @@ public class Interface extends JFrame{
 					textRadiusS.setText(null);
 					textAreaFilterP.setText(null);
 					textAreaFilterS.setText(null);
-					textAreaCriteriumErrors.setText(null);					
+					textAreaCriteriumErrors.setText(null);
 
-					//createTable();		
-					String fichero =seleccion.getSelectedFile().getAbsolutePath();
+					//createTable();
+					String fichero =selection.getSelectedFile().getAbsolutePath();
 					Scanner sc = null;
 					try{
 
-						
+
 						sc = new Scanner(new File(fichero));
 						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();			
+							filFichero=sc.nextLine();
 						}
 						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();			
+							filFichero=sc.nextLine();
 						}
 						if(sc.hasNextLine()){
 							filFichero=sc.nextLine();
 							String[] array = filFichero.split(":");
 							String s = array[1].substring(1);
-							textFieldP.setText(s);	
+							textFieldP.setText(s);
 						}
 						if(sc.hasNextLine()){
 							filFichero=sc.nextLine();
@@ -397,7 +392,7 @@ public class Interface extends JFrame{
 							filFichero=sc.nextLine();
 							String[] array = filFichero.split(":");
 							String s = array[1].substring(1);
-							textRadiusP.setText(s);	
+							textRadiusP.setText(s);
 						}
 						if(sc.hasNextLine()){
 							filFichero=sc.nextLine();
@@ -412,32 +407,32 @@ public class Interface extends JFrame{
 							textRadiusS.setText(s);
 						}
 						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();			
+							filFichero=sc.nextLine();
 						}
 						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();			
+							filFichero=sc.nextLine();
 						}
 						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();			
+							filFichero=sc.nextLine();
 						}
 						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();	
-						}	
+							filFichero=sc.nextLine();
+						}
 						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("Catalog S:"))){
-							textAreaFilterP.append(filFichero+"\n");							
+							textAreaFilterP.append(filFichero+"\n");
 						}
 						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("************  Criterium for detecting errors  ************"))){
 							textAreaFilterS.append(filFichero+"\n");
 						}
 						if(sc.hasNextLine()){
-							filFichero=sc.nextLine();		
-						}						
+							filFichero=sc.nextLine();
+						}
 						while(sc.hasNextLine()){
-							filFichero=sc.nextLine();	
+							filFichero=sc.nextLine();
 							textAreaCriteriumErrors.append(filFichero+"\n");
 						}
 
-					}					
+					}
 					catch (FileNotFoundException ex){
 						//log.log(Level.ERROR, "File not found");
 						System.out.println("File not found");
@@ -471,7 +466,7 @@ public class Interface extends JFrame{
 
 					e1.printStackTrace();
 				}
-				PrintWriter fileExit =null;	
+				PrintWriter fileExit =null;
 				fileExit = new PrintWriter(f);
 				fileExit.println("************  Catalog Selection  ************\n");
 				fileExit.println("Catalog P: "+textFieldP.getText());
@@ -484,7 +479,7 @@ public class Interface extends JFrame{
 				fileExit.println("Catalog P:");
 				fileExit.println(textAreaFilterP.getText());
 				fileExit.println("\nCatalog S:");
-				fileExit.println(textAreaFilterS.getText());			
+				fileExit.println(textAreaFilterS.getText());
 
 				fileExit.println("\n************  Criterium for detecting errors  ************\n");
 				fileExit.println(textAreaCriteriumErrors.getText());
@@ -524,9 +519,9 @@ public class Interface extends JFrame{
 		mntmAbsolute.setToolTipText("Calculates the absolute value of a number");
 		mntmAbsolute.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("abs", textAreaFilterP.getCaretPosition());
 				else if (response == JOptionPane.NO_OPTION)
@@ -543,12 +538,12 @@ public class Interface extends JFrame{
 		mntmArccosd.setToolTipText("Calculates the arccosine of a decimal number");
 		mntmArccosd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("arccosd", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)					
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("arccosd", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("arccosd", textAreaCriteriumErrors.getCaretPosition());
@@ -562,12 +557,12 @@ public class Interface extends JFrame{
 		mntmArccoss.setToolTipText("Calculates the arccosine of a sexagesimal number");
 		mntmArccoss.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("arccoss", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)					
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("arccoss", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("arccoss", textAreaCriteriumErrors.getCaretPosition());
@@ -581,12 +576,12 @@ public class Interface extends JFrame{
 		mntmArcsind.setToolTipText("Calculates the arcsine of a decimal number");
 		mntmArcsind.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("arcsind", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)					
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("arcsind", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("arcsind", textAreaCriteriumErrors.getCaretPosition());
@@ -600,12 +595,12 @@ public class Interface extends JFrame{
 		mntmArcsins.setToolTipText("Calculates the arcsine of a sexagesimal number");
 		mntmArcsins.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("arcsins", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)					
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("arcsins", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("arcsins", textAreaCriteriumErrors.getCaretPosition());
@@ -619,12 +614,12 @@ public class Interface extends JFrame{
 		mntmArctand.setToolTipText("Calculates the arctangent of a decimal number");
 		mntmArctand.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("arctand", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)					
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("arctand", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("arctand", textAreaCriteriumErrors.getCaretPosition());
@@ -638,12 +633,12 @@ public class Interface extends JFrame{
 		mntmArctans.setToolTipText("Calculates the arctangent of a sexagesimal number");
 		mntmArctans.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("arctans", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)							
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("arctans", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("arctans", textAreaCriteriumErrors.getCaretPosition());
@@ -657,12 +652,12 @@ public class Interface extends JFrame{
 		mntmCosd.setToolTipText("Calculates the cosine of a decimal number");
 		mntmCosd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("cosd", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("cosd", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("cosd", textAreaCriteriumErrors.getCaretPosition());
@@ -676,12 +671,12 @@ public class Interface extends JFrame{
 		mntmCoss.setToolTipText("Calculates the cosine of a sexagesimal number");
 		mntmCoss.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("coss", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("coss", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("coss", textAreaCriteriumErrors.getCaretPosition());
@@ -695,12 +690,12 @@ public class Interface extends JFrame{
 		mntmDist.setToolTipText("Calculate distance between two stars");
 		mntmDist.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("dist", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("dist", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("dist", textAreaCriteriumErrors.getCaretPosition());
@@ -714,12 +709,12 @@ public class Interface extends JFrame{
 		mntmDecToSexaDecl.setToolTipText("Pass a decimal number to sexagesimal (declination)");
 		mntmDecToSexaDecl.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("d2sdec", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("d2sdec", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("d2sdec", textAreaCriteriumErrors.getCaretPosition());
@@ -734,12 +729,12 @@ public class Interface extends JFrame{
 		mntmDectosexara.setToolTipText("Pass a decimal number to sexagesimal (right ascension)");
 		mntmDectosexara.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("d2sra", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("d2sra", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("d2sra", textAreaCriteriumErrors.getCaretPosition());
@@ -747,19 +742,19 @@ public class Interface extends JFrame{
 			}
 		});
 		mntmDectosexara.setFont(new Font("Calibri", Font.PLAIN, 14));
-		mnFu.add(mntmDectosexara);		
+		mnFu.add(mntmDectosexara);
 
 
 		JMenuItem mntmSexaToDec = new JMenuItem("SexaToDec");
 		mntmSexaToDec.setToolTipText("Pass a sexagesimal number to decimal");
 		mntmSexaToDec.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("s2d", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("s2d", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("s2d", textAreaCriteriumErrors.getCaretPosition());
@@ -773,12 +768,12 @@ public class Interface extends JFrame{
 		mntmSind.setToolTipText("Calculates the sine of a decimal number");
 		mntmSind.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("sind", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("sind", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("sind", textAreaCriteriumErrors.getCaretPosition());
@@ -792,12 +787,12 @@ public class Interface extends JFrame{
 		mntmSins.setToolTipText("Calculates the sine of a sexagesimal number");
 		mntmSins.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("sins", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("sins", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("sins", textAreaCriteriumErrors.getCaretPosition());
@@ -811,12 +806,12 @@ public class Interface extends JFrame{
 		mntmTand.setToolTipText("Calculates the tangent of a decimal number");
 		mntmTand.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("tand", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("tand", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("tand", textAreaCriteriumErrors.getCaretPosition());
@@ -830,12 +825,12 @@ public class Interface extends JFrame{
 		mntmTans.setToolTipText("Calculates the tangent of a sexagesimal number");
 		mntmTans.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int response = JOptionPane.showOptionDialog (null, 
+				int response = JOptionPane.showOptionDialog (null,
 						"Choose to insert a TextArea", "", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE,
-						null, botones, botones[0]);
+						null, buttons, buttons[0]);
 				if (response == JOptionPane.YES_OPTION)
 					textAreaFilterP.insert("tans", textAreaFilterP.getCaretPosition());
-				else if (response == JOptionPane.NO_OPTION)						
+				else if (response == JOptionPane.NO_OPTION)
 					textAreaFilterS.insert("tans", textAreaFilterS.getCaretPosition());
 				else if( response==JOptionPane.CANCEL_OPTION)
 					textAreaCriteriumErrors.insert("tans", textAreaCriteriumErrors.getCaretPosition());
@@ -845,12 +840,12 @@ public class Interface extends JFrame{
 		mntmTans.setFont(new Font("Calibri", Font.PLAIN, 14));
 		mnFu.add(mntmTans);
 
-		JMenu mnNewMenu = new JMenu("Parser");					
+		JMenu mnNewMenu = new JMenu("Parser");
 		mnNewMenu.setFont(new Font("Calibri", Font.BOLD, 14));
 		mnNewMenu.setMnemonic(KeyEvent.VK_P);
 		menuBar.add(mnNewMenu);
 
-		JMenuItem mntmGrammar = new JMenuItem("Grammar");		
+		JMenuItem mntmGrammar = new JMenuItem("Grammar");
 		mntmGrammar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = new JFrame();
@@ -871,11 +866,11 @@ public class Interface extends JFrame{
 						"            	| sind ‘(’ Exp4 ‘)’ | cosd ‘(’ Exp4 ‘)’ | sins ‘(’ Exp4 ‘)’|coss ‘(’ Exp4 ‘)’\n"+
 						"           	| tans ‘(’ Exp4 ‘)’ | tand ‘(’ Exp4 ‘)’ | arcsins ‘(’ Exp4 ‘)’ |\n"+
 						"            	| arcsind‘(’ Exp4 ‘)’ | arccoss ‘(’ Exp4 ‘)’ | arccosd ‘(’ Exp4 ‘)’ | arctans ‘(’ Exp4 ‘)’ | arctand ‘(’ Exp4 ‘)’\n"+
-						"            	| s2d ‘(’ Exp4 ‘)’ | d2sra‘(’ Exp4 ‘)’ | d2sdec'(' Exp4 ')' \n"+																 
+						"            	| s2d ‘(’ Exp4 ‘)’ | d2sra‘(’ Exp4 ‘)’ | d2sdec'(' Exp4 ')' \n"+
 						"Rule 10:	Exp4 → Exp5 | Exp5 op_adit Exp4\n"+
 						"Rule 11:	Exp5 → Exp6 | Exp6 op_mult Exp5 \n"+
 						"Rule 12:	Exp6 → Exp7 | Exp7 ^ Exp6\n"+
-						"Rule 13:	Exp7 → neg Exp5 | men Exp5 | numbers | booleans | strings | ( Exp0 ) | QFieldName | id | binding | IfExpr \n"+						
+						"Rule 13:	Exp7 → neg Exp5 | men Exp5 | numbers | booleans | strings | ( Exp0 ) | QFieldName | id | binding | IfExpr \n"+
 						"Rule 14:	IFExpr→ 'if' Exp0 'then'  Exp0 'else' Exp0\n"+
 						"Rule 15:	op_adit → + | -\n"+
 						"Rule 16:	op_mult → * | / | div | mod\n"+
@@ -891,7 +886,7 @@ public class Interface extends JFrame{
 						"Rule 26:	reals → [ + | - ] d d* [.d d*]\n"+
 						"Rule 27:	exponentials → [ + | - ] d d* [.d d*] ‘e’ ( ‘-’ | ‘+’ ) d d*\n"+
 						"Rule 28:	strings → ‘“‘ [ s | l | d ]* ‘“’\n"+
-						"Rule 29:	booleans → true | false\n");				
+						"Rule 29:	booleans → true | false\n");
 
 				f.setBounds(100, 100, 700, 570);
 				f.setVisible(true);
@@ -908,7 +903,7 @@ public class Interface extends JFrame{
 		mntmNewMenuItem_14.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				JFrame f = new JFrame();	
+				JFrame f = new JFrame();
 				f.setForeground(new Color(154,200,153));
 				JTextArea text = new JTextArea();
 				text.setEditable(false);
@@ -951,11 +946,11 @@ public class Interface extends JFrame{
 						"           In the case of WDS we consider that each WDS row contains in fact two stars: the primary and the secondary.\n"+
 						"           Therefore, the system will look for S stars around the primary, and also for S stars around the secondary. \n"+
 						"e) The button load consults VizieR loading internally the data","Information Catalog Selection",
-						JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,botones2,botones[0]);
+						JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,buttons2,buttons[0]);
 				if (reponse == JOptionPane.YES_OPTION){
 					JOptionPane.showMessageDialog(null,"","Example Catalog Selection",JOptionPane.PLAIN_MESSAGE,new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/Selection.jpg"))));
-					if(reponse==JOptionPane.YES_OPTION){						
-					}	
+					if(reponse==JOptionPane.YES_OPTION){
+					}
 				}
 				if (reponse == JOptionPane.CLOSED_OPTION) {  }
 			}
@@ -974,11 +969,11 @@ public class Interface extends JFrame{
 						+ "     (except the coordinates of the secondary star in the case of WDS,\n"
 						+ "     which are computed from the primary coordinates, the last separation and the last PA in the catalog).\n"+
 						"     The names of the fields are used in the rest of the application.\n","Information Catalog Description",
-						JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,botones2,botones[0]);
+						JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,buttons2,buttons[0]);
 				if (response == JOptionPane.YES_OPTION){
 					JOptionPane.showMessageDialog(null,"","Example Catalog Description",JOptionPane.PLAIN_MESSAGE,new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/Description.jpg"))));
-					if(response==JOptionPane.YES_OPTION){						
-					}	
+					if(response==JOptionPane.YES_OPTION){
+					}
 				}
 				if (response == JOptionPane.CLOSED_OPTION) {  }
 
@@ -996,13 +991,13 @@ public class Interface extends JFrame{
 								+  "          In this field, you can apply filters for selecting P rows (before comparing).\n"
 								+   "b) Catalog S: \n"
 								+   "         In this one, you can apply filters for selecting S rows (before comparing too). \n","Information Filters",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,botones2,botones[0]);
+								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,buttons2,buttons[0]);
 				if (response == JOptionPane.YES_OPTION){
 					JOptionPane.showMessageDialog(null,"","Example Filters",JOptionPane.PLAIN_MESSAGE,new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/Filter.jpg"))));
-					if(response==JOptionPane.YES_OPTION){						
-					}	
+					if(response==JOptionPane.YES_OPTION){
+					}
 				}
-				if (response == JOptionPane.CLOSED_OPTION) {  }	
+				if (response == JOptionPane.CLOSED_OPTION) {  }
 
 			}
 
@@ -1014,17 +1009,17 @@ public class Interface extends JFrame{
 		mntmCriterionForDetecting.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int response = JOptionPane.showOptionDialog(null,
-						" Here, you can define in which case you want the program to detect some error. \n"					
+						" Here, you can define in which case you want the program to detect some error. \n"
 								+   " The One to One check-box indicates that the WDS star must be selected only if after the previous criterium\n"
 								+   " (the selection of S rows) only one row remains for the star.\n"
 								+   " The second check-box 'Show Closest Candidate' is used when the previous check-box is not selected,\n"
 								+   " that is several S candidates are allowed, but we only want to select the closest one (in terms of distance).\n","Information Criterium for detecting errors",
-								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,botones2,botones[0]);
+								JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,buttons2,buttons[0]);
 				if (response == JOptionPane.YES_OPTION){
 					JOptionPane.showMessageDialog(null,"","Example Criterium for detecting errors",JOptionPane.PLAIN_MESSAGE,new ImageIcon(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/CriteriumErrors.jpg"))));
-					if(response==JOptionPane.YES_OPTION){}	
+					if(response==JOptionPane.YES_OPTION){}
 				}
-				if (response == JOptionPane.CLOSED_OPTION) {}	
+				if (response == JOptionPane.CLOSED_OPTION) {}
 
 			}
 		});
@@ -1043,8 +1038,8 @@ public class Interface extends JFrame{
 		panel.setBounds(5, 144, 967, 167);
 		panel.setForeground(new Color(146, 208,80));
 		panel.setBackground(new Color(0, 102, 102));
-		panel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51),3), "Filters", 
-				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+		panel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51),3), "Filters",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 				javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 0, 20), new java.awt.Color(255, 153, 51)));
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -1059,7 +1054,7 @@ public class Interface extends JFrame{
 		label_6.setForeground(Color.WHITE);
 		label_6.setFont(new Font("Verdana", Font.PLAIN, 12));
 		label_6.setBounds(437, 24, 111, 14);
-		panel.add(label_6);	
+		panel.add(label_6);
 
 
 		ButtonListener o = new ButtonListener();
@@ -1075,7 +1070,7 @@ public class Interface extends JFrame{
 		scrollPane_4.setBounds(41, 47, 360, 100);
 		panel.add(scrollPane_4);
 
-		textAreaFilterP = new JTextArea();		
+		textAreaFilterP = new JTextArea();
 		textAreaFilterP.setBounds(41, 47, 360, 100);
 		textAreaFilterP.setFont(new Font("Monospaced", Font.PLAIN, 16));
 		textAreaFilterP.setLineWrap(true);
@@ -1095,11 +1090,11 @@ public class Interface extends JFrame{
 
 
 		panel_2 = new JPanel();
-		panel_2.setBounds(5, 11, 967, 133);		
+		panel_2.setBounds(5, 11, 967, 133);
 		panel_2.setForeground(new Color(146, 208,80));
 		panel_2.setBackground(new Color(0, 102, 102));
-		panel_2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51),3), "Catalog Selection", 
-				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+		panel_2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51),3), "Catalog Selection",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 				javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 0, 20), new java.awt.Color(255, 153, 51)));
 		panel_2.setLayout(null);
 		contentPane.add(panel_2);
@@ -1114,7 +1109,7 @@ public class Interface extends JFrame{
 		textFieldP.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		textFieldP.setColumns(10);
 		textFieldP.setBounds(20, 75, 86, 20);
-		panel_2.add(textFieldP);	
+		panel_2.add(textFieldP);
 
 
 		textCoorP = new JTextField();
@@ -1156,12 +1151,12 @@ public class Interface extends JFrame{
 
 
 		btnButtonLoad = new JButton("Load");
-		btnButtonLoad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));				
+		btnButtonLoad.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnButtonLoad.setFont(new Font("Calibri", Font.BOLD, 15));
 		btnButtonLoad.addActionListener(o);
 		btnButtonLoad.setBorderPainted(true);
 		btnButtonLoad.setBounds(852, 74, 89, 23);
-		panel_2.add(btnButtonLoad);		
+		panel_2.add(btnButtonLoad);
 
 
 		textFieldS = new JTextField();
@@ -1180,8 +1175,8 @@ public class Interface extends JFrame{
 		panel_3.setBounds(5, 312, 967, 150);
 		panel_3.setForeground(new Color(146, 208,80));
 		panel_3.setBackground(new Color(0, 102, 102));
-		panel_3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51),3), "Criterium for detecting errors", 
-				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+		panel_3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51),3), "Criterium for detecting errors",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 				javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 0, 20), new java.awt.Color(255, 153, 51)));
 		contentPane.add(panel_3);
 		panel_3.setLayout(null);
@@ -1196,7 +1191,7 @@ public class Interface extends JFrame{
 		});
 		chckbxOneToOne.setFont(new Font("Verdana", Font.PLAIN, 12));
 		chckbxOneToOne.setForeground(Color.WHITE);
-		chckbxOneToOne.setBackground(new Color(0, 102, 102));	
+		chckbxOneToOne.setBackground(new Color(0, 102, 102));
 		chckbxOneToOne.setBounds(766, 31, 146, 23);
 		panel_3.add(chckbxOneToOne);
 
@@ -1220,7 +1215,7 @@ public class Interface extends JFrame{
 
 		textAreaCriteriumErrors = new JTextArea();
 		textAreaCriteriumErrors.setFont(new Font("Monospaced", Font.PLAIN, 16));
-		textAreaCriteriumErrors.setBounds(23, 31, 733, 216);		
+		textAreaCriteriumErrors.setBounds(23, 31, 733, 216);
 		textAreaCriteriumErrors.setLineWrap(true);
 		scrollPane_3.setViewportView(textAreaCriteriumErrors);
 
@@ -1236,7 +1231,7 @@ public class Interface extends JFrame{
 		panel_4.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_4.setBounds(980, 0, 193, 600);
 		panel_4.setForeground(new Color(153, 200,153));
-		panel_4.setBackground(new Color(153, 200, 153));	
+		panel_4.setBackground(new Color(153, 200, 153));
 		contentPane.add(panel_4);
 		panel_4.setLayout(null);
 
@@ -1299,7 +1294,7 @@ public class Interface extends JFrame{
 				},
 				new String [] {
 						"New column", "New column"
-				});	
+				});
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{"", ""},
@@ -1340,16 +1335,16 @@ public class Interface extends JFrame{
 		table.setModel(tableModel);
 		table.setBounds(10, 85, 173, 480);
 		table.setBackground(new Color(154, 200, 153));
-		panel_4.add(table);		
+		panel_4.add(table);
 
 		console = new JPanel();
 		console.setBounds(5, 461, 967, 139);
 		console.setForeground(new Color(146, 208,80));
 		console.setBackground(new Color(0, 102, 102));
-		console.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51),3), "Console", 
-				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, 
+		console.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 51),3), "Console",
+				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
 				javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Calibri", 0, 20), new java.awt.Color(255, 153, 51)));
-		contentPane.add(console);		
+		contentPane.add(console);
 		console.setLayout(null);
 
 		JScrollPane scrollPaneConsole = new JScrollPane();
@@ -1359,7 +1354,7 @@ public class Interface extends JFrame{
 
 		textAreaConsole = new JTextArea();
 		textAreaConsole.setFont(new Font("Monospaced", Font.PLAIN, 16));
-		textAreaConsole.setBounds(23, 31, 850, 90);		
+		textAreaConsole.setBounds(23, 31, 850, 90);
 		textAreaConsole.setLineWrap(true);
 		textAreaConsole.setEditable(true);
 
@@ -1405,7 +1400,7 @@ public class Interface extends JFrame{
 			tableModel=(DefaultTableModel) table.getModel();
 			int fila=table.getRowCount();
 			for (int i = 0;fila>i; i++) {
-				tableModel.removeRow(0);}	 
+				tableModel.removeRow(0);}
 
 		}catch(ArrayIndexOutOfBoundsException e){
 			e.printStackTrace();
@@ -1427,10 +1422,10 @@ public class Interface extends JFrame{
 						" Rosa Rodríguez Navarro \n"+
 						" date: 05/30/2014 \n"+
 						" version 2.2.1","About",
-						JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,botones1,botones[0]);
+						JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,buttons1,buttons[0]);
 			}
 
-		});	
+		});
 		return mntmAbout;
 	}
 
@@ -1474,47 +1469,47 @@ public class Interface extends JFrame{
 				},
 				new String [] {
 						"New column", "New column"
-				});	
+				});
 		table.setModel(tableModel);
 		table.setBounds(10, 85, 173, 480);
 		table.setBackground(new Color(154, 200, 153));
-		panel_4.add(table);	
+		panel_4.add(table);
 
-		
+
 	}
 
 	/**
-	 * 
+	 *
 	 * class ButtonGroupListener
 	 *
 	 */
 	public class ButtonGroupListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-			//Do whatever with e.getActionCommand() 
+			//Do whatever with e.getActionCommand()
 		}
-	}	
+	}
 
 	/**
-	 * 
+	 *
 	 * class ButtonListener LOAD/STAR
 	 *
 	 */
 	public class ButtonListener implements ActionListener{
 		String path2;
-		
+
 		public void actionPerformed(ActionEvent e) {
 			Object o = e.getSource();
 			String sourceP = textFieldP.getText();
-			String coordP = textCoorP.getText();		
+			String coordP = textCoorP.getText();
 			String radP = textRadiusP.getText();
 			String sourceS = textFieldS.getText();
 			String radiusS = textRadiusS.getText();
-			
+
 			/*Button Load*/
 			if (o == btnButtonLoad){
 				btnButtonFilter.setEnabled(true);
-				textAreaConsole.setText(null);	
-	
+				textAreaConsole.setText(null);
+
 				if(textFieldP.getText().equals("") || textCoorP.getText().equals("") ||
 						textRadiusP.getText().equals("") || textFieldS.getText().equals("") ||
 						textRadiusS.getText().equals("")){
@@ -1525,35 +1520,35 @@ public class Interface extends JFrame{
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
 					Map<String,DescriptionData> mp=new LinkedHashMap<String,DescriptionData>();
-					
 
-					/*log.info("Pin down load");				
+
+					/*log.info("Pin down load");
 				log.info("Catalog P: "+sourceP);
 				log.info("Coord P: "+coordP);
 				log.info("rad P: "+radP);
 				log.info("Catalog S:" +sourceS);
-				log.info("Radius around each P star :"+ radiusS);				
+				log.info("Radius around each P star :"+ radiusS);
 					 */
 
 					path2= "\\"+sourceP+"_"+coordP;
-					
-					File folder = new File(path.concat(path2));				
-					File folderSecond = new File(path.concat(path2+"/Secondary"));				
+
+					File folder = new File(path.concat(path2));
+					File folderSecond = new File(path.concat(path2+"/Secondary"));
 
 					if(folder.exists()){
-						boolean value=false;						
+						boolean value=false;
 						File folder1 = new File(path.concat(path2));
 						folder1.mkdir();
 						//log.info("Created directory "+folder1);
 
 					}
-					else{ 
-						folder.mkdir();				
+					else{
+						folder.mkdir();
 						//log.info(folder);
 
 						if(folderSecond.exists()){
-							
-							folderSecond = new File(path.concat("/Secondary"+"_"+coordP));											
+
+							folderSecond = new File(path.concat("/Secondary"+"_"+coordP));
 							folderSecond.mkdir();
 							//log.info("Created directory "+folderSecond);
 
@@ -1563,15 +1558,15 @@ public class Interface extends JFrame{
 							folderSecond.mkdir();
 							//log.info("Created directory "+folderSecond);
 
-						}	
+						}
 					}
 
-					
+
 					String path3= path + path2 + "/Primary.txt";
 					File file = new File(path3);
 
-					try{							
-							
+					try{
+
 						String pathName = path.concat(path2);
 						Info.saveCatalogFile(path3, sourceP, coordP, radP);
 						Info.setCatalogPath(path3);
@@ -1585,8 +1580,8 @@ public class Interface extends JFrame{
 						insertNames(primaryData.getDt(), 0);
 						saveSData(file, primaryData.getDt(), folderSecond,pathName);
 
-						
-					}catch(Exception e2){ 
+
+					}catch(Exception e2){
 
 						//log.log(Level.WARN,e2.toString());
 						e2.printStackTrace();
@@ -1596,12 +1591,12 @@ public class Interface extends JFrame{
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 					textAreaConsole.setText("Files created correctly");
 				}
-				
-			
+
+
 			}
 			/*Button Filter*/
-			else if (o == btnButtonFilter){	
-				textAreaConsole.setText(null);	
+			else if (o == btnButtonFilter){
+				textAreaConsole.setText(null);
 				btnButtonFilter.setEnabled(false);
 				if(textAreaFilterP.getText().equals("") || textAreaFilterS.equals("") ||
 						textAreaFilterP.getText().equals("\n") || textAreaFilterS.equals("\n") ||
@@ -1610,11 +1605,11 @@ public class Interface extends JFrame{
 					JOptionPane.showMessageDialog(null,"Some fields are empty","",JOptionPane.ERROR_MESSAGE);
 				}
 				else{
-					//log.info("Filter P: "+filterP);				
+					//log.info("Filter P: "+filterP);
 					//log.info("Filter S: "+filterS);
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 					String path3=path.concat(path2);
-					filterP(path3);					
+					filterP(path3);
 					filterS(path3);
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 					textAreaConsole.setText("Files created correctly");
@@ -1626,11 +1621,11 @@ public class Interface extends JFrame{
 					JOptionPane.showMessageDialog(null,"Some fields are empty","",JOptionPane.ERROR_MESSAGE);
 				}
 				else{
-					
+
 					String path3=path.concat(path2);
 					startError(path3);
-					//log.info("Criterium for selecting S rows: "+criteriumS);				
-					//log.info("Criterium for detecting errors : "+criteriumError);	
+					//log.info("Criterium for selecting S rows: "+criteriumS);
+					//log.info("Criterium for detecting errors : "+criteriumError);
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 					textAreaConsole.setText("Files created correctly");
 				}
@@ -1639,70 +1634,70 @@ public class Interface extends JFrame{
 
 
 		}
-		
 
-		private void startError(String path3) {			
-			
+
+		private void startError(String path3) {
+
 			String read=path3+"\\read.txt";
 			String pathErrors = path + path2 + "/Errors";
-			
-			File folderErrors= new File(pathErrors);	
+
+			File folderErrors= new File(pathErrors);
 			folderErrors.mkdir();
-			
-			File folderError= new File(folderErrors + "/Error");	
-			folderError.mkdir();	
-			
-			File folderWithoutError= new File(folderErrors + "/Without_Error");	
+
+			File folderError= new File(folderErrors + "/Error");
+			folderError.mkdir();
+
+			File folderWithoutError= new File(folderErrors + "/Without_Error");
 			folderWithoutError.mkdir();
-			
+
 			try {
-				
-				bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));	
-				bw.write("In the directory " +folderErrors.getName().toUpperCase()+" have generated the following files \n\n" );				
+
+				bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+				bw.write("In the directory " +folderErrors.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.close();
-				 
-			}catch (IOException e) {			
+
+			}catch (IOException e) {
 				e.printStackTrace();
 			}
 			/*Star One to one: */
-			
+
 			if(chckbxOneToOne.isSelected()==true){
-				
-				
-				
-				
+
+
+
+
 			}
 			/* Star ShowClosestCandidate: */
-			
+
 			else if(chckbxShowClosestCandidate.isSelected()==true){
-				
-				
-				
+
+
+
 			}
-			
+
 			/*Star criterium*/
 			String criteriumError= textAreaCriteriumErrors.getText();
-			Lexical lp= new Lexical(criteriumError);				
-			SyntacticAnalizer asE = new SyntacticAnalizer(lp,textAreaConsole);	
+			Lexical lp= new Lexical(criteriumError);
+			SyntacticAnalizer asE = new SyntacticAnalizer(lp,textAreaConsole);
 			asE.setRow(primaryData.variablesForParser("p"));
-			asE.addToRow(arraySecondaryData.get(0).variablesForParser("s"));				
-			asE.parser();				
+			asE.addToRow(arraySecondaryData.get(0).variablesForParser("s"));
+			asE.parser();
 			parserCatalogS = asE.getProgram();
-		
-			
-			
+
+
+
 			/*try {
 
-				
+
 				bw = new BufferedWriter(new FileWriter(read,true));
-				
+
 				bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + ".txt"+
 						" ===> "+"Number of stars : "+linesNumber+" \n\n");
 				bw.flush();
 				bw.close();
-				//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}			
-			} 
-			catch (IOException e) {						
+				//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+			}
+			catch (IOException e) {
 				e.printStackTrace();
 			}
 			*/
@@ -1710,37 +1705,37 @@ public class Interface extends JFrame{
 
 
 		private void filterP(String path3){
-			
+
 			String filterP= textAreaFilterP.getText();
 			Vector<StarRow> primaryStars;
-			Lexical lp= new Lexical(filterP);				
-			SyntacticAnalizer asP = new SyntacticAnalizer(lp,textAreaConsole);				
+			Lexical lp= new Lexical(filterP);
+			SyntacticAnalizer asP = new SyntacticAnalizer(lp,textAreaConsole);
 
 			asP.setRow(primaryData.variablesForParser("p"));
-			asP.parser();			
-			parserCatalogP = asP.getProgram();			
+			asP.parser();
+			parserCatalogP = asP.getProgram();
 			primaryStars = primaryData.getStars();
-			
+
 			//Filter Catalog P
 			String pathFilteredP = path + path2 + "/Filtered_CatalogP";
 			//create directory for filtered P
-			File folderFilteredP= new File(pathFilteredP);	
+			File folderFilteredP= new File(pathFilteredP);
 			folderFilteredP.mkdir();
-			
-			
-			
+
+
+
 			//Create directory for secondary stars around filtered P
-			File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");	
-			folderSecondaryFilteredP.mkdir();	
+			File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");
+			folderSecondaryFilteredP.mkdir();
 			String read=path3+"\\read.txt";
-		
+
 			try {
-				
-				bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));	
-				bw.write("In the directory " +folderFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );				
+
+				bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+				bw.write("In the directory " +folderFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.close();
-				 
-			}catch (IOException e) {			
+
+			}catch (IOException e) {
 				e.printStackTrace();
 			}
 			try {
@@ -1754,36 +1749,36 @@ public class Interface extends JFrame{
 				boolean[] deleteStars = new boolean[primaryStars.size()];
 				for(int i = 0; i < primaryStars.size(); i++){
 					deleteStars[i] = false;
-				}				
-				linesNumber = primaryStars.size();				
-				
+				}
+				linesNumber = primaryStars.size();
+
 				try {
 
-					
+
 					bw = new BufferedWriter(new FileWriter(read,true));
 					bw.write(" - File Created -> "+file.getName()+
 							" ===> "+"Number of stars : "+linesNumber+" \n\n");
 					bw.flush();
 					bw.close();
-					//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}			
-				} 
-				catch (IOException e) {						
+					//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+				}
+				catch (IOException e) {
 					e.printStackTrace();
-				}				
-				
-				
+				}
+
+
 				try {
-					
-					bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));	
-					bw.write("In the directory " +folderFilteredP.getName()+"/"+folderSecondaryFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );				
-					
+
+					bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+					bw.write("In the directory " +folderFilteredP.getName()+"/"+folderSecondaryFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
+
 					bw.close();
-					 
-				}catch (IOException e) {			
+
+				}catch (IOException e) {
 					e.printStackTrace();
 				}
 				try{
-				
+
 					for(int i = 0; i < primaryStars.size(); i++){
 						//de prueba
 						String coordS = "";
@@ -1795,34 +1790,34 @@ public class Interface extends JFrame{
 						boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
 						if (saveStar){
 							output.write(primaryStars.get(i).getLine() + "\n");
-							filterPResultS(folderSecondaryFilteredP, i,pathFilteredP);	
+							filterPResultS(folderSecondaryFilteredP, i,pathFilteredP);
 							try {
 
-								
+
 								bw = new BufferedWriter(new FileWriter(read,true));
-								bw.write(" - File Created -> "+i + "_" 
+								bw.write(" - File Created -> "+i + "_"
 									+ "Stars_of_S_around_"+coordS + ".txt"+
 										" ===> "+"Number of stars : "+linesNumber+" \n\n");
 								bw.flush();
 								bw.close();
-								//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}			
-							} 
-							catch (IOException e) {						
+								//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+							}
+							catch (IOException e) {
 								e.printStackTrace();
 							}
 							output.flush();
 						} else {
 							deleteStars[i]= true;
 						}
-												
-					}	
+
+					}
 					//Delete stars
 					for(int i = primaryStars.size()-1; i >= 0 ; i--){
 						if(deleteStars[i]){
 							primaryStars.remove(i);
 							arraySecondaryData.remove(i);
 						}
-					}					
+					}
 				}catch (TypeException te){
 					//
 				}
@@ -1832,71 +1827,71 @@ public class Interface extends JFrame{
 				//asS.program(false);
 			} catch (IOException e1) {
 				e1.printStackTrace();
-			}			
-			
+			}
+
 		}
 
 		private void filterPResultS(File folderSecondaryFilteredP, int primaryStarIndex, String pathFilteredP){
 
 			String filterS= textAreaFilterP.getText();
 			Vector<StarRow> primaryStars;
-			Vector<StarRow> starsS = arraySecondaryData.get(primaryStarIndex).getStars();			
-			
+			Vector<StarRow> starsS = arraySecondaryData.get(primaryStarIndex).getStars();
+
 			String coordS = "";
 			coordS = primaryData.getStars().get(primaryStarIndex).getStar().get("RAJ2000").getValue();
 			coordS += " ";
 			coordS += primaryData.getStars().get(primaryStarIndex).getStar().get("DEJ2000").getValue();
 
-			String fileName = folderSecondaryFilteredP + "\\" + primaryStarIndex + "_" 
+			String fileName = folderSecondaryFilteredP + "\\" + primaryStarIndex + "_"
 					+ "Stars_of_S_around_" + coordS + ".txt";
-			
+
 			File file = new File(fileName);
 			try {
-				
+
 				BufferedWriter output = new BufferedWriter(new FileWriter(file));
 				output.write("This is a list of star rows around " + coordS+ " which passed catalog P filter\n\n");
 				output.write(arraySecondaryData.get(primaryStarIndex).getHeader());
 				output.flush();
-				linesNumber = starsS.size();	
-				
+				linesNumber = starsS.size();
+
 				//loop stars
 				for(int j = 0; j < starsS.size(); j++){
 					output.write(starsS.get(j).getLine() + "\n");
-					output.flush();	
-					
+					output.flush();
+
 				}
 				output.close();
-				
-				
+
+
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-					
+
 		}
-		
+
 		private void filterS(String path3){
 
 			String filterS= textAreaFilterS.getText();
-			Lexical lp= new Lexical(filterS);		
+			Lexical lp= new Lexical(filterS);
 			SyntacticAnalizer asS = new SyntacticAnalizer(lp,textAreaConsole);
 			asS.setRow(primaryData.variablesForParser("p"));
 			if(arraySecondaryData.size()==0){
 				JOptionPane.showMessageDialog(null,"There is no secondary filter in the catalog p","",JOptionPane.INFORMATION_MESSAGE);
 			}
 			else{
-			asS.addToRow(arraySecondaryData.get(0).variablesForParser("s"));				
-			asS.parser();				
+			asS.addToRow(arraySecondaryData.get(0).variablesForParser("s"));
+			asS.parser();
 			parserCatalogS = asS.getProgram();
-		
+
 			/*boolean[] deleteStars = new boolean[arraySecondaryData.size()];
 			for(int i = 0; i < arraySecondaryData.size(); i++){
 				deleteStars[i] = false;
 			}*/
 			String pathFilteredS = path + path2 + "/Filtered_CatalogS";
-			File folderFilteredS= new File(pathFilteredS);			
+			File folderFilteredS= new File(pathFilteredS);
 			folderFilteredS.mkdir();
-			
-			
+
+
 			String coordSAnt = "x";
 			String coordSAnt2 = "y";
 			String coordSAnt3 = "z";
@@ -1905,18 +1900,18 @@ public class Interface extends JFrame{
 			String coordSAnt6 = "z";
 			String coordSAnt7 = "x";
 			String coordSAnt8 = "y";
-			String coordSAnt9 = "z";			
-		
+			String coordSAnt9 = "z";
+
 			String read=path3+"\\read.txt";
 			try {
-				
-				bw = new BufferedWriter(new FileWriter(read,true));	
-				bw.write("In the directory " +folderFilteredS.getName().toUpperCase()+" have generated the following files \n\n" );				
+
+				bw = new BufferedWriter(new FileWriter(read,true));
+				bw.write("In the directory " +folderFilteredS.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.close();
-				 
-			}catch (IOException e) {			
+
+			}catch (IOException e) {
 				e.printStackTrace();
-			}		
+			}
 
 			for(int i=0; i < arraySecondaryData.size();i++){
 				/*coordS = primaryData.getStars().get(primaryStarIndex).getStar().get("RAJ2000").getValue();
@@ -1958,13 +1953,13 @@ public class Interface extends JFrame{
 
 				String fileName = folderFilteredS+ "\\Stars_of_S_around_"+coordS+aux+".txt";
 
-				//DescriptionData secondaryData = new DescriptionData(fileName);	
+				//DescriptionData secondaryData = new DescriptionData(fileName);
 
 				try {
 					File file = new File(fileName);
 					BufferedWriter output = new BufferedWriter(new FileWriter(file));
 					output.write("This is a list of star rows around " + coordS+aux+ " which passed catalog S filter\n\n");
-					output.write(arraySecondaryData.get(i).getHeader());					
+					output.write(arraySecondaryData.get(i).getHeader());
 					output.flush();
 					//loop stars
 					try{
@@ -1975,42 +1970,42 @@ public class Interface extends JFrame{
 							listForParserS.putAll(listForParserP);
 							boolean saveStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter
 							if (saveStar){
-								output.write(starsS.get(j).getLine() + "\n");								
-								output.flush();									
-								deleteSecondaryArray = false;				
-								
-							}							
-							else {//delete Star								
-								starsS.remove(j);								
-							}							
-							
+								output.write(starsS.get(j).getLine() + "\n");
+								output.flush();
+								deleteSecondaryArray = false;
+
+							}
+							else {//delete Star
+								starsS.remove(j);
+							}
+
 						}
 						if(deleteSecondaryArray){
-							arraySecondaryData.remove(i);	
+							arraySecondaryData.remove(i);
 						}
 						linesNumber=(starsS.size()-arraySecondaryData.size())-1;
 						try {
-							
-							
+
+
 							bw = new BufferedWriter(new FileWriter(read,true));
-							
+
 							bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
 									" ===> "+"Number of stars : "+linesNumber+" \n\n");
 							bw.flush();
 							bw.close();
-							//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}			
-						} 
-						catch (IOException e) {						
+							//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+						}
+						catch (IOException e) {
 							e.printStackTrace();
 						}
-						
+
 					}catch (TypeException te){
-						
+
 					}
 					output.flush();
-					output.close();		
-					
-				
+					output.close();
+
+
 				}catch (Exception e1) {
 
 					e1.printStackTrace();
@@ -2024,7 +2019,7 @@ public class Interface extends JFrame{
 				coordSAnt3 = coordSAnt2;
 				coordSAnt2 = coordSAnt;
 				coordSAnt = coordS;
-				
+
 			}
 			}
 		}
@@ -2048,12 +2043,12 @@ public class Interface extends JFrame{
 			String coordSAnt9 = "z";
 			String read=pathName+"\\read.txt";
 			try {
-				
+
 				bw = new BufferedWriter(new FileWriter(pathName+"\\read.txt",true));
 				bw.write("In the directory " +folder.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.close();
-				 
-			}catch (IOException e) {			
+
+			}catch (IOException e) {
 				e.printStackTrace();
 			}
 			for (StarRow row : starsP){
@@ -2093,26 +2088,26 @@ public class Interface extends JFrame{
 					}
 					String fileName = folder+ "\\Stars_of_S_around_"+ coordS + aux +".txt";
 					Info.saveCatalogFile(fileName,sourceS,coordS,radS);
-					Info.setCatalogPath(fileName);					    
-					open2=true;					   
+					Info.setCatalogPath(fileName);
+					open2=true;
 					DescriptionData secondaryData = new DescriptionData(fileName);
 					secondaryData.parser();
-					linesNumber2=secondaryData.getContador();					   
-					arraySecondaryData.add(secondaryData);	
-				
+					linesNumber2=secondaryData.getContador();
+					arraySecondaryData.add(secondaryData);
+
 					try {
-						
-						bw = new BufferedWriter(new FileWriter(read,true));	
+
+						bw = new BufferedWriter(new FileWriter(read,true));
 						bw.write(" - File Created ->  "+" "+ "Stars_of_S_around_"+ coordS + aux +".txt"+
 								" ===> "+"Number of stars : "+linesNumber2+" \n\n");
 						bw.flush();
 						bw.close();
-						//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}			
-					} 
-					catch (IOException e) {						
+						//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+					}
+					catch (IOException e) {
 						e.printStackTrace();
 					}
-					
+
 
 				}catch(Exception e2){
 					e2.printStackTrace();
@@ -2127,7 +2122,7 @@ public class Interface extends JFrame{
 				coordSAnt2 = coordSAnt;
 				coordSAnt = coordS;
 
-			}		
+			}
 
 			//Get column names from some secondary data not empty
 			boolean found = false;
@@ -2141,10 +2136,10 @@ public class Interface extends JFrame{
 				}
 			}
 			if (found){
-				//log.info("Catalog Description Secondary: ");		    	
-				insertNames(ref.getDt(),1); 
+				//log.info("Catalog Description Secondary: ");
+				insertNames(ref.getDt(),1);
 			}else{
-				//No data for catalog S 
+				//No data for catalog S
 				//Message??
 			}
 
@@ -2152,13 +2147,13 @@ public class Interface extends JFrame{
 		}
 
 		private void insertNames(LinkedHashMap<String, DataStructure> dt, int column) {
-			int row = 0;			
+			int row = 0;
 			for (Map.Entry<String,DataStructure> entry : dt.entrySet()) {
-				String key = entry.getKey();			 
-				tableModel.setValueAt(key, row, column);			  
+				String key = entry.getKey();
+				tableModel.setValueAt(key, row, column);
 				// log.info(key);
-				row++;			   
-			}	
+				row++;
+			}
 
 		}
 
@@ -2166,14 +2161,14 @@ public class Interface extends JFrame{
 
 	private  boolean alreadyexists(String file ) {
 		boolean value = true;
-		File f = new File(file);		
+		File f = new File(file);
 		if (f.exists()) {
-			int result = JOptionPane.showConfirmDialog(Interface.this, 
+			int result = JOptionPane.showConfirmDialog(Interface.this,
 					new String("The file \n"+file+"\n exists, overwrite?"),
 					"Existing file", JOptionPane.YES_NO_CANCEL_OPTION);
 			if (result == JOptionPane.YES_OPTION)  value = true;
 			else if(result == JOptionPane.CANCEL_OPTION) value = false;
-			else if (result == JOptionPane.NO_OPTION) value = false;    
+			else if (result == JOptionPane.NO_OPTION) value = false;
 
 		}
 		return value;
@@ -2218,11 +2213,11 @@ public class Interface extends JFrame{
 
 		String read=path+"\\read.txt";
 		String hour=new SimpleDateFormat("EEE, MMM d, yyyy hh:mm:ss a z").format(new Date());
-	
+
 		try {
 
 			bw = new BufferedWriter(new FileWriter(read, true));
-			bw.write("-------------------------------- " + hour + " ---------------------------------\n\n");			
+			bw.write("-------------------------------- " + hour + " ---------------------------------\n\n");
 			bw.write("In the directory " + directory.getName().toUpperCase() + " have generated the following files \n\n");
 			bw.flush();
 			bw.close();
@@ -2232,7 +2227,7 @@ public class Interface extends JFrame{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		//walking the directory and files are listed first
 
 
@@ -2241,24 +2236,24 @@ public class Interface extends JFrame{
 
 				try {
 					if (s.getName().equals("read.txt")) {}
-					
+
 					else{
-						bw = new BufferedWriter(new FileWriter(path+"\\read.txt",true));						
+						bw = new BufferedWriter(new FileWriter(path+"\\read.txt",true));
 						bw.write(" - File Created ->  "+" "+ s.getName()+
-								" ===> "+"Number of stars : "+linesNumber+" \n\n");					
+								" ===> "+"Number of stars : "+linesNumber+" \n\n");
 						bw.flush();
 						bw.close();
 					}
-					//log.info("Created File "+s.getName());				
-				} 
-				catch (IOException e) {						
+					//log.info("Created File "+s.getName());
+				}
+				catch (IOException e) {
 					e.printStackTrace();
 				}
 
-			}	
+			}
 
-		}   
-		
+		}
+
 	}
 
 }

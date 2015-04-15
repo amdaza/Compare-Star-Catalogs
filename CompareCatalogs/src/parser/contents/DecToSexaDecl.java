@@ -18,13 +18,13 @@ public class DecToSexaDecl extends Expression {
 		this.e=e;
 		this.type = e.type;
 	}
-	
+
 	public DecToSexaDecl(DecToSexaDecl exp){
-		this.type = exp.type;	
+		this.type = exp.type;
 		this.e = exp.e.deepCopy();
 	}
 
-	public Value getValue(HashMap<Variable,Value> localvar )  { 
+	public Value getValue(HashMap<Variable,Value> localvar )  {
 		Value result=null;
 		type = e.getType();
 		Value v = e.getValue(localvar);
@@ -35,9 +35,9 @@ public class DecToSexaDecl extends Expression {
 				int min;
 				int sec;
 				if(v.getInt()<0){
-					gr = v.getInt(); 
+					gr = v.getInt();
 				}else{
-					gr = v.getInt(); 
+					gr = v.getInt();
 				}
 				min = (int) (Math.abs(v.getInt()-gr)*60);
 				if(v.getInt()*3600>gr*3600-(min*60)){
@@ -51,7 +51,7 @@ public class DecToSexaDecl extends Expression {
 				}else{
 					grString= String.valueOf(gr);
 				}
-				String r = grString + " " + String.valueOf(min) + " " + String.valueOf(sec); 
+				String r = grString + " " + String.valueOf(min) + " " + String.valueOf(sec);
 				result = new Value(String.valueOf(r), "string");
 				break;
 			case "real":
@@ -59,9 +59,9 @@ public class DecToSexaDecl extends Expression {
 				int min1;
 				double sec1;
 				if(v.getDouble()<0){
-					gr1 = (int) v.getDouble(); 
+					gr1 = (int) v.getDouble();
 				}else{
-					gr1 = (int) v.getDouble(); 
+					gr1 = (int) v.getDouble();
 				}
 				min1 = (int) (Math.abs(v.getDouble()-gr1)*60);
 				if(v.getDouble()*3600>gr1*3600-(min1*60)){
@@ -75,7 +75,7 @@ public class DecToSexaDecl extends Expression {
 				}else{
 					gr1String= String.valueOf(gr1);
 				}
-				String r1 = gr1String + " " + String.valueOf(min1) + " " + String.valueOf(sec1); 
+				String r1 = gr1String + " " + String.valueOf(min1) + " " + String.valueOf(sec1);
 				result = new Value(String.valueOf(r1), "string");
 				break;
 			case "exponential":
@@ -83,9 +83,9 @@ public class DecToSexaDecl extends Expression {
 				int min2;
 				double sec2;
 				if(v.getDouble()<0){
-					gr2 = (int) v.getDouble(); 
+					gr2 = (int) v.getDouble();
 				}else{
-					gr2 = (int) v.getDouble(); 
+					gr2 = (int) v.getDouble();
 				}
 				min2 = (int) (Math.abs(v.getDouble()-gr2)*60);
 				if(v.getDouble()*3600>gr2*3600-(min2*60)){
@@ -99,7 +99,7 @@ public class DecToSexaDecl extends Expression {
 				}else{
 					gr2String= String.valueOf(gr2);
 				}
-				String r2 = gr2String + " " + String.valueOf(min2) + " " + String.valueOf(sec2); 
+				String r2 = gr2String + " " + String.valueOf(min2) + " " + String.valueOf(sec2);
 				result = new Value(String.valueOf(r2), "string");
 				break;
 			}

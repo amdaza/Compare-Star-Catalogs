@@ -19,7 +19,7 @@ public class Token {
 	int columna;
 
 	/**
-	 * 
+	 *
 	 * @param fila
 	 * @param col
 	 * @param tipo
@@ -34,7 +34,7 @@ public class Token {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param fila
 	 * @param col
 	 * @param tipo
@@ -44,7 +44,7 @@ public class Token {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param t
 	 */
 	public Token(Token t) {
@@ -55,7 +55,7 @@ public class Token {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public String leeTipo() {
@@ -63,7 +63,7 @@ public class Token {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public int leeFila() {
@@ -71,7 +71,7 @@ public class Token {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public int leeColumna() {
@@ -79,7 +79,7 @@ public class Token {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public String readAtribute() {
@@ -87,7 +87,7 @@ public class Token {
 	}
 
 	/**
-	 * 
+	 *
 	 */
 	public String toString() {
 		if (atributo == null)
@@ -97,6 +97,6 @@ public class Token {
 					+ atributo.toString() + ">";
 	}
 
-	
-	
+
+
 }

@@ -15,16 +15,16 @@ public class Str extends Expression {
 		type = "string";
 		this.setValue(value);
 	}
-	
+
 /*	public Str (Expression e){
 		super();
 	}*/
-	
+
 	public Str(Str exp){
 		this.type = exp.type;
 		this.value = exp.value;
 	}
-		
+
 	/**
 	 * @return
 	 * @uml.property  name="value"
@@ -32,7 +32,7 @@ public class Str extends Expression {
 	public String getValue() {
 		return value;
 	}
-	
+
 	/**
 	 * @param value
 	 * @uml.property  name="value"
@@ -48,7 +48,7 @@ public class Str extends Expression {
 			error = true;
 			result = new Value("127","error");
 		}
-			
+
 		return result;
 	}
 

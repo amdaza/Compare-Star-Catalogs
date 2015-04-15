@@ -18,28 +18,28 @@ public class Negation extends Expression {
 		this.e=e.deepCopy();
 		this.type = e.type;
 	}
-	
+
 	public Negation(Negation exp){
-		this.type = exp.type;	
+		this.type = exp.type;
 		this.e = exp.e.deepCopy();
-		
+
 	}
 
-	public Value getValue(HashMap<Variable,Value> localvar )  { 
+	public Value getValue(HashMap<Variable,Value> localvar )  {
 		Value result = null;
-		type = "boolean";	
+		type = "boolean";
 		type = e.getType();
 		Value v = e.getValue(localvar);
 		if (type.equals("boolean")) {
-		
+
 			switch (v.getString()){
-				case "true":					
+				case "true":
 					result = new Value("false", type);
 				break;
 				case "false":
 					result = new Value("true", type);
 				break;
-				
+
 			}
 		}
 		else {

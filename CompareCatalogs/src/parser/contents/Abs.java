@@ -19,10 +19,10 @@ public class Abs extends Expression {
 		this.type = e.type;
 	}
 	public Abs (Abs exp){
-		this.type = exp.type;	
-		this.e = exp.e.deepCopy();	
+		this.type = exp.type;
+		this.e = exp.e.deepCopy();
 	}
-	
+
 	/**
 	 * @return
 	 * @uml.property  name="e"
@@ -38,8 +38,8 @@ public class Abs extends Expression {
 		this.e = e;
 		this.type = e.type;
 	}
-	
-	public Value getValue(HashMap<Variable,Value> localvar )  { 
+
+	public Value getValue(HashMap<Variable,Value> localvar )  {
 		Value result=null;
 		type = e.getType();
 		Value v = e.getValue(localvar);
@@ -57,7 +57,7 @@ public class Abs extends Expression {
 					double abs3 = Math.abs(v.getDouble());
 					result = new Value(String.valueOf(abs3), type);
 				break;
-				
+
 			}
 		}
 		else {

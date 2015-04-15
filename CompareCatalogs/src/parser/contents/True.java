@@ -19,14 +19,14 @@ public  class True extends Expression {
 	}
 	public Value getValue(HashMap<Variable,Value> localVar){
 		Value result = null;
-		if (type.equals("boolean")) 
+		if (type.equals("boolean"))
 			result =  new Value("true",getType());
 		else{
 			error = true;
 			result = new Value("128","error");
 		}
-			
-		
+
+
 		return result;
 	}
 

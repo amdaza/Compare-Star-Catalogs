@@ -15,33 +15,33 @@ public class Exponential extends Expression {
 		type = "exponential";
 		this.setValue(value);
 	}
-	
+
 	public Exponential (Expression e){
-		super();		
-		this.type = e.type;	
-		
+		super();
+		this.type = e.type;
+
 	}
-	
+
 	public Exponential(Exponential exp){
 		this.type = exp.type;
 		this.value = exp.value;
 	}
-	
+
 	public Value getValue(HashMap<Variable,Value> localVar){
 		Value result = null;
 		if(type.equals("exponential"))
-			
+
 			result =  new Value(value,getType());
 		else{
 			error=true;
 			result =  new Value("103","error");
-			
+
 		}
 			//result = new Value("123","error");
-		
+
 		return result;
 	}
-	
+
 	/**
 	 * @return
 	 * @uml.property  name="value"
@@ -49,7 +49,7 @@ public class Exponential extends Expression {
 	public String getValue() {
 		return value;
 	}
-	
+
 	/**
 	 * @param value
 	 * @uml.property  name="value"

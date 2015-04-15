@@ -13,12 +13,12 @@ public class ExpRel extends Expression {
 	private String op;
 	/**
 	 * @uml.property  name="e1"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 	private Expression e1;
 	/**
 	 * @uml.property  name="e2"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 	private Expression e2;
 
@@ -29,12 +29,12 @@ public class ExpRel extends Expression {
 		this.type = "boolean";
 		this.op = op;
 	}
-	
+
 	public ExpRel(Expression e){
 		super();
-				
+
 	}
-	
+
 	public ExpRel (ExpRel exp){
 		this.e1 = exp.e1.deepCopy();
 		this.e2 = exp.e2.deepCopy();
@@ -42,19 +42,19 @@ public class ExpRel extends Expression {
 		this.op = exp.op;
 	}
 
-	public Value getValue(HashMap<Variable,Value> localvar )  { 
+	public Value getValue(HashMap<Variable,Value> localvar )  {
 		Value result=null;
 		Value v1 = e1.getValue(localvar);
 		Value v2 = e2.getValue(localvar);
 		if (v1.isTypeNumeric() && v2.isTypeNumeric()) {
 			switch(op) {
-			case "<": 
+			case "<":
 				result = lessThan(v1,v2);
 				break;
 			case ">":
 				result = moreThan(v1,v2);
 				break;
-			case "<=": 
+			case "<=":
 				result = lessOrEqual(v1,v2);
 				break;
 			case ">=":
@@ -74,7 +74,7 @@ public class ExpRel extends Expression {
 		Value result = null;
 		String t1 = (String) v1.getType();
 		String t2 = (String) v2.getType();
-		
+
 		if(t1.equals("integer") && t2.equals("integer")){
 			if(v1.getInt() >= v2.getInt())
 				result = new Value("true","boolean");
@@ -93,7 +93,7 @@ public class ExpRel extends Expression {
 		Value result = null;
 		String t1 = (String) v1.getType();
 		String t2 = (String) v2.getType();
-		
+
 		if(t1.equals("integer") && t2.equals("integer")){
 			if(v1.getInt() <= v2.getInt())
 				result = new Value("true","boolean");
@@ -107,12 +107,12 @@ public class ExpRel extends Expression {
 		}
 		return result;
 	}
-	
+
 	private Value moreThan(Value v1, Value v2) {
 		Value result = null;
 		String t1 = (String) v1.getType();
 		String t2 = (String) v2.getType();
-		
+
 		if(t1.equals("integer") && t2.equals("integer")){
 			if(v1.getInt() > v2.getInt())
 				result = new Value("true","boolean");
@@ -132,7 +132,7 @@ public class ExpRel extends Expression {
 		Value result = null;
 		String t1 = (String) v1.getType();
 		String t2 = (String) v2.getType();
-		
+
 		if(t1.equals("integer") && t2.equals("integer")){
 			if(v1.getInt() < v2.getInt())
 				result = new Value("true","boolean");

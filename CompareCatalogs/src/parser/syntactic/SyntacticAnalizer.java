@@ -1,6 +1,7 @@
 package parser.syntactic;
 
 import java.awt.Color;
+
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -9,6 +10,7 @@ import javax.swing.JTextArea;
 import parser.contents.*;
 import parser.elements.*;
 import parser.errors.*;
+
 import parser.lexical.Lexical;
 import view.Interface;
 
@@ -49,7 +51,7 @@ public class SyntacticAnalizer {
 	private JTextArea console;
 	/**
 	 * @uml.property  name="errors"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 	private Errors errors;
 	/**
@@ -65,13 +67,13 @@ public class SyntacticAnalizer {
 
 	/**
 	 * @uml.property  name="program"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 	private Program program;
 
 	/**
 	 * @uml.property  name="e"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 	private Expression e;
 	/**
@@ -104,8 +106,8 @@ public class SyntacticAnalizer {
 
 	/**
 	 * constructor of the class
-	 * 
-	 * @param lexicalAnalyzer 
+	 *
+	 * @param lexicalAnalyzer
 	 * Tokens provides language processing.
 	 */
 	public SyntacticAnalizer(Lexical lexicalAnalyzer, JTextArea console) {
@@ -127,23 +129,23 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Method that checks if the attribute is null Token.
-	 * 
+	 *
 	 * @return
-	 * returns true if the attribute is null token, if 
+	 * returns true if the attribute is null token, if
 	 * otherwise it returns false.
-	 * 	
+	 *
 	 */
 	private boolean atributeNull() {
 		return (token_act.readAtribute() == null);
 	}
 
 	/**
-	 * Method that checks Token type.   
-	 * 
-	 * @param s 
+	 * Method that checks Token type.
+	 *
+	 * @param s
 	 * in param, gives the searched type.
-	 * 
-	 * @return 
+	 *
+	 * @return
 	 * if it's the type searched, returns true and advances to next token
 	 * returns false otherwise
 	 */
@@ -158,12 +160,12 @@ public class SyntacticAnalizer {
 	}
 
 	/**
-	 * Method that checks Token type.  
-	 * 
-	 * @param s 
+	 * Method that checks Token type.
+	 *
+	 * @param s
 	 * in param, gives the searched type.
-	 * 
-	 * @return 
+	 *
+	 * @return
 	 * if it's the type searched, returns true
 	 * returns false otherwise
 	 * (Without advancing token)
@@ -180,11 +182,11 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Method that checks Token attribute.
-	 * 
+	 *
 	 * @param s
 	 * input parameter, which gives the attribute you want.
-	 * 
-	 * @return 
+	 *
+	 * @return
 	 * returns true if this token and advances have the same attribute expected,
 	 * otherwise returns false.
 	 */
@@ -204,9 +206,9 @@ public class SyntacticAnalizer {
 	 *
 	 * @param s
 	 * input parameter, which gives the attribute you want.
-	 * 
+	 *
 	 * @return
-	 * returns true if the token has the same attribute 
+	 * returns true if the token has the same attribute
      * the expected, otherwise returns false.
 	 */
 	@SuppressWarnings("unused")
@@ -221,7 +223,7 @@ public class SyntacticAnalizer {
 
 
 	/**
-	 * 
+	 *
 	 * @param error
 	 */
 	public void setError(Errors errors) {
@@ -230,16 +232,16 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 * - R1: program → (statement ';' )*
 	 * - R2: statement → filter | binding
 	 * - R3: binding→ id ':=' Exp0
 	 * - R4: filter → '#' Exp0
-	 * 
-	 * 
+	 *
+	 *
 	 * @param throwError
-	 * 
-	 * 
+	 *
+	 *
 	 * @return
 	 */
 	public void program(boolean throwError) {
@@ -251,7 +253,7 @@ public class SyntacticAnalizer {
 
 		if (checkAtribute("#")) {//Begin filter
 			/*	if (checkTokenType("identificator")) {//Begin assignment
-				sentenceDeclared = true;	
+				sentenceDeclared = true;
 				if (checkTypeWithoutAdvancing(":=")) {
 					String s =  tok.readAtribute();
 					Expression_Boolean result = assignment();
@@ -259,7 +261,7 @@ public class SyntacticAnalizer {
 						correct = result.isCorrect();
 						e = result.getExpression();
 
-						Binding b = new Binding(e,s);					
+						Binding b = new Binding(e,s);
 						statement.add(b);
 					}
 
@@ -288,7 +290,7 @@ public class SyntacticAnalizer {
 			}
 			//	}
 		} else if (checkTokenType("identificator")) {//Begin assignment
-			sentenceDeclared = true;	
+			sentenceDeclared = true;
 			if (checkTypeWithoutAdvancing(":=")) {
 				String s =  tok.readAtribute();
 				Expression_Boolean result = assignment();
@@ -301,7 +303,7 @@ public class SyntacticAnalizer {
 					Value val = new Value("",e.getType());
 					Variable var = new Variable(s,val);
 					row.add(var);
-					Binding b = new Binding(e,s);					
+					Binding b = new Binding(e,s);
 					statement.add(b);
 				}
 
@@ -326,23 +328,22 @@ public class SyntacticAnalizer {
 			}
 		}
 
-
-
 	}
+
 	public void parser(){
 		program(false);
 		program = new Program(statement);
 		if (!existError) {
 			console.setForeground(Color.blue);
-			console.append("Correct lexical and syntactic analysis.\n");			
+			console.append("Correct lexical and syntactic analysis.\n");
 
 		}
 	}
 
 	/**
-	 * 
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return
 	 * identified returns Expression_Boolean if one of the above rules.
 	 */
@@ -367,15 +368,13 @@ public class SyntacticAnalizer {
 
 
 
-
-
 	/**
 	 * Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 * - R44: IFExpr→ 'if' Exp0 'then'  Exp0 'else' Exp0
-	 * 
-	 * @ param 
-	 * 
+	 *
+	 * @ param
+	 *
 	 * @return Expression_Boolean
 	 */
 
@@ -386,15 +385,15 @@ public class SyntacticAnalizer {
 			if (checkAtribute("if")){
 				Expression_Boolean result1 = exp0(true);
 				correct = result1.isCorrect();
-				if (correct) {	
+				if (correct) {
 					Expression e1 = e.deepCopy();
 					if (checkAtribute("then")) {//THEN
-						System.out.println("THEN read.");	
+						System.out.println("THEN read.");
 						Expression_Boolean result2 = exp0(true);
 						correct = result2.isCorrect();
 						if(correct){
 							Expression e2 = e.deepCopy();;
-							if (checkAtribute("else")) {				
+							if (checkAtribute("else")) {
 								System.out.println("ELSE read.");
 								Expression_Boolean result3 = exp0(true);
 								correct = result3.isCorrect();
@@ -427,15 +426,14 @@ public class SyntacticAnalizer {
 
 
 
-
 	/**
 	 * Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 *  - R5: Exp0 → exp1
 	 *  - R6: Exp0 → exp1 op_log exp1
-	 *  
+	 *
 	 *  @ param throwError
-	 * 
+	 *
 	 * @return Expression_Boolean
 	 */
 	private Expression_Boolean exp0(boolean throwError) {
@@ -447,8 +445,8 @@ public class SyntacticAnalizer {
 			correct = result1.isCorrect();
 			Token op = token_act;
 			if (correct) {
-				Expression e1 = e.deepCopy();			
-				correct = true;				
+				Expression e1 = e.deepCopy();
+				correct = true;
 				if (opLog()) {
 					Expression_Boolean result2 = exp1(true);
 					correct = result2.isCorrect();
@@ -459,9 +457,9 @@ public class SyntacticAnalizer {
 						Expression e2 = e.deepCopy();
 						e = new ExpLog(e1,e2, op.readAtribute());
 						/*if(e.getValue(row).getType().equals("error")){
-							if(!existError){ 
+							if(!existError){
 								int numError = Integer.parseInt(e.getValue(row).getVal());
-								setError(new Errors(numError,tok,throwError,console));													
+								setError(new Errors(numError,tok,throwError,console));
 								existError =true;
 							}
 						}*/
@@ -479,7 +477,7 @@ public class SyntacticAnalizer {
 		Token tok = token_act;
 		boolean correct = false;
 		if (!existError) {
-			System.out.println("***Exp8***");		
+			System.out.println("***Exp8***");
 
 			if (checkTypeWithoutAdvancing(":=")) {
 				String s =  tok.leeAtributo();
@@ -490,7 +488,7 @@ public class SyntacticAnalizer {
 					Value val = e.getValue(row);
 					Variable var = new Variable(s,val);
 					row.put(var, val);
-					Binding b = new Binding(e,s);					
+					Binding b = new Binding(e,s);
 					statement.add(b);
 				}
 
@@ -509,12 +507,12 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 * - R7: exp1 → exp2
 	 * - R8: exp1 → exp2 op_eq exp1
-	 * 
+	 *
 	 * @param  throwError
-	 * 
+	 *
 	 * @return Expression_Boolean
 	 */
 
@@ -527,7 +525,7 @@ public class SyntacticAnalizer {
 			correct = result1.isCorrect();
 			if (correct) {
 				Expression e1 = e.deepCopy();
-				correct = true;	
+				correct = true;
 				Token op = token_act;
 				if (opEq()) {
 					Expression_Boolean result2 = exp1(true);
@@ -539,9 +537,9 @@ public class SyntacticAnalizer {
 						Expression e2 = e.deepCopy();
 						e = new ExpEq(e1,e2,op.readAtribute());
 						/*if(e.getValue(row).getType().equals("error")){
-							if(!existError){ 
+							if(!existError){
 								int numError = Integer.parseInt(e.getValue(row).getVal());
-								setError(new Errors(numError,tok,throwError,console));													
+								setError(new Errors(numError,tok,throwError,console));
 								existError =true;
 							}
 						}*/
@@ -556,18 +554,18 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 * - R9:  exp2 → exp3
 	 * - R10: exp2 → exp3 op_rel exp2
-	 * 
+	 *
 	 * @param throwError
-	 * 
+	 *
 	 * @return Expression_Boolean
 	 */
 
 	private Expression_Boolean exp2(boolean throwError) {
 		boolean correct = false;
-		Token tok = token_act;		
+		Token tok = token_act;
 		if (!existError) {
 			System.out.println("***exp2***");
 			Expression_Boolean result1 = exp3(throwError);
@@ -586,9 +584,9 @@ public class SyntacticAnalizer {
 						Expression e2 = e.deepCopy();
 						e = new ExpRel(e1,e2,op.readAtribute());
 						/*if(e.getValue(row).getType().equals("error")){
-							if(!existError){ 
+							if(!existError){
 								int numError = Integer.parseInt(e.getValue(row).getVal());
-								setError(new Errors(numError,tok,throwError,console));													
+								setError(new Errors(numError,tok,throwError,console));
 								existError =true;
 							}
 						}*/
@@ -603,7 +601,7 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 * - R11: Exp3 → Exp4
 	 * - R12: Exp3 → dist ‘(’ Exp4 ‘,’ Exp4 ‘,’ Exp4 ‘,’ Exp4 ‘)’
 	 * - R13: Exp3 → abs ‘(’ Exp4 ‘)’
@@ -622,9 +620,9 @@ public class SyntacticAnalizer {
 	 * - R26: Exp3 → s2d ‘(’ Exp4 ‘)’
 	 * - R27: Exp3 → d2sra‘(’ Exp4 ‘)’
 	 * - R28: Exp3 → d2sdec'(' Exp4 ')'
-
+	 *
 	 * @param throwError
-	 * 
+	 *
 	 * @return Expression_Boolean
 	 */
 	private Expression_Boolean exp3(boolean throwError) {
@@ -667,12 +665,12 @@ public class SyntacticAnalizer {
 												if (correct4) {
 													Expression e4 = e.deepCopy();
 													if(checkAtribute(")")){
-														correct = true;														
+														correct = true;
 														e = new Distance(e1, e2, e3, e4);
 														/*if(e.getValue(row).getType().equals("error")){
-															if(!existError){ 
+															if(!existError){
 																int numError = Integer.parseInt(e.getValue(row).getVal());
-																setError(new Errors(numError,tok,throwError,console));													
+																setError(new Errors(numError,tok,throwError,console));
 																existError =true;
 															}
 														}*/
@@ -729,16 +727,16 @@ public class SyntacticAnalizer {
 					//Expression e1 = e.deepCopy();
 					if(checkAtribute("(")){
 						result1 = exp4(throwError);
-						boolean correct1 = result1.isCorrect();							
+						boolean correct1 = result1.isCorrect();
 						if (correct1) {
 							Expression e1 = e.deepCopy();
 							if(checkAtribute(")")){
-								correct = true;	
+								correct = true;
 								e = new Abs(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -763,7 +761,7 @@ public class SyntacticAnalizer {
 					}
 				}else if (checkAtribute("sind")){
 					//Expression e1 = e.deepCopy();
-					if(checkAtribute("(")){		
+					if(checkAtribute("(")){
 
 						result1 = exp4(throwError);
 						boolean correct1 = result1.isCorrect();
@@ -773,9 +771,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Sind(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -808,9 +806,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Cosd(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -843,9 +841,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Sins(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -878,9 +876,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Coss(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -913,9 +911,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Tans(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -948,9 +946,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Tand(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -983,9 +981,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Arcsins(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -1018,9 +1016,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Arcsind(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -1053,9 +1051,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Arccoss(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -1088,9 +1086,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Arccosd(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -1123,9 +1121,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Arctans(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -1158,9 +1156,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new Arctand(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -1193,9 +1191,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new SexaToDec(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -1228,9 +1226,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new DecToSexaDecl(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -1263,9 +1261,9 @@ public class SyntacticAnalizer {
 								correct = true;
 								e = new DecToSexaRa(e1);
 								/*if(e.getValue(row).getType().equals("error")){
-									if(!existError){ 
+									if(!existError){
 										int numError = Integer.parseInt(e.getValue(row).getVal());
-										setError(new Errors(numError,tok,throwError,console));													
+										setError(new Errors(numError,tok,throwError,console));
 										existError =true;
 									}
 								}*/
@@ -1297,12 +1295,12 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Method that evaluates the following grammar rules:
-	 *  
+	 *
 	 *  - R29: exp4 → exp5
 	 *  - R30: exp4 → exp5 op_adit exp4
-	 *  
-	 * @param throwsError 
-	 *  
+	 *
+	 * @param throwsError
+	 *
 	 * @return Expression_Boolean
 	 */
 	private Expression_Boolean exp4(boolean throwError) {
@@ -1313,7 +1311,7 @@ public class SyntacticAnalizer {
 			Expression_Boolean result1 = exp5(throwError);
 			boolean correct1 = result1.isCorrect();
 			if (correct1) {
-				Expression e1 = e.deepCopy();		
+				Expression e1 = e.deepCopy();
 				correct = true;
 				Token op = token_act;
 				if (opAdit()) {
@@ -1323,16 +1321,16 @@ public class SyntacticAnalizer {
 						setError(new Errors(44,tok,throwError,console));
 						existError =true;
 					} else {
-						Expression e2 = e.deepCopy();										
+						Expression e2 = e.deepCopy();
 						e = new ExpAdit(e1,e2,op.readAtribute());
 						/*if(e.getValue(row).getType().equals("error")){
-							if(!existError){ 
+							if(!existError){
 								int numError = Integer.parseInt(e.getValue(row).getVal());
-								setError(new Errors(numError,tok,throwError,console));													
+								setError(new Errors(numError,tok,throwError,console));
 								existError =true;
 							}
 						}*/
-						correct = true;	
+						correct = true;
 					}
 				}
 			}
@@ -1343,12 +1341,12 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 *  - R31: exp5 → exp6
 	 *  - R32: exp5 → exp6 op_mult exp5
-	 *  
+	 *
 	 * @param throwsError
-	 *  
+	 *
 	 * @return Expression_Boolean
 	 */
 	private Expression_Boolean exp5(boolean throwError) {
@@ -1373,16 +1371,16 @@ public class SyntacticAnalizer {
 						correct = true;
 						e = new ExpMult(e1,e2,op.readAtribute());
 						/*if(e.getValue(row).getType().equals("error")){
-							if(!existError){ 
+							if(!existError){
 								int numError = Integer.parseInt(e.getValue(row).getVal());
-								setError(new Errors(numError,tok,throwError,console));													
+								setError(new Errors(numError,tok,throwError,console));
 								existError =true;
 							}
 						}*/
 
 					}
 				}
-			}		
+			}
 
 		}
 		return new Expression_Boolean(e, correct);
@@ -1391,14 +1389,14 @@ public class SyntacticAnalizer {
 
 	/**
 	 *  Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 *  - R33: exp6 → exp7
 	 *  - R34: exp6 → exp7 ^ exp6
-	 *  
+	 *
 	 * @param throwsError
-	 *  
+	 *
 	 * @return Expression_Boolean
-	 * 
+	 *
 	 */
 	private Expression_Boolean exp6(boolean throwError) {
 		boolean correct = false;
@@ -1409,7 +1407,7 @@ public class SyntacticAnalizer {
 			boolean correct1 = result1.isCorrect();
 			if (correct1) {
 				Expression e1 = e.deepCopy();
-				correct = true;				
+				correct = true;
 				if (checkAtribute("^")) {
 					Expression_Boolean result2 = exp6(throwError);
 					boolean correct2 = result2.isCorrect();
@@ -1421,13 +1419,13 @@ public class SyntacticAnalizer {
 						correct = true;
 						e = new ExpExponential(e1,e2);
 						/*if(e.getValue(row).getType().equals("error")){
-							if(!existError){ 
+							if(!existError){
 								int numError = Integer.parseInt(e.getValue(row).getVal());
-								setError(new Errors(numError,tok,throwError,console));													
+								setError(new Errors(numError,tok,throwError,console));
 								existError =true;
 							}
 						}*/
-					}	
+					}
 				}
 			}
 		}
@@ -1437,20 +1435,20 @@ public class SyntacticAnalizer {
 
 	/**
 	 *  Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 * - R35: exp7 → neg exp5
-	 * - R36: exp7 → men exp5 
+	 * - R36: exp7 → men exp5
 	 * - R37: exp7 → numbers
 	 * - R38: exp7 → booleans
 	 * - R39: exp7 → strings
-	 * - R40: exp7 → ( Exp0 ) 
-	 * - R41: exp7 → QFieldName 
-	 * - R42: exp7 → id 
+	 * - R40: exp7 → ( Exp0 )
+	 * - R41: exp7 → QFieldName
+	 * - R42: exp7 → id
 	 * - R43: exp7 → IfExpr
-	 * 
-	 * 
-	 * @param throwError 
-	 * 
+	 *
+	 *
+	 * @param throwError
+	 *
 	 * @return Expression_Boolean
 	 */
 
@@ -1460,16 +1458,16 @@ public class SyntacticAnalizer {
 		if (!existError) {
 			System.out.println("***exp7***");
 			if(checkTokenType("EOF")){
-				setError(new Errors(49,tok,true,console));													
+				setError(new Errors(49,tok,true,console));
 				existError =true;
 			}
-			if (checkTokenType("integer")){	
+			if (checkTokenType("integer")){
 				System.out.println("Es un entero");
 				e = new Int(tok.readAtribute());
 				/*if(e.getValue(row).getType().equals("error")){
-					if(!existError){ 
+					if(!existError){
 						int numError = Integer.parseInt(e.getValue(row).getVal());
-						setError(new Errors(numError,tok,throwError,console));													
+						setError(new Errors(numError,tok,throwError,console));
 						existError =true;
 					}
 				}*/
@@ -1477,9 +1475,9 @@ public class SyntacticAnalizer {
 			} else if (checkTokenType("real")){
 				e = new Real(tok.readAtribute());
 				/*if(e.getValue(row).getType().equals("error")){
-					if(!existError){ 
+					if(!existError){
 						int numError = Integer.parseInt(e.getValue(row).getVal());
-						setError(new Errors(numError,tok,throwError,console));													
+						setError(new Errors(numError,tok,throwError,console));
 						existError =true;
 					}
 				}*/
@@ -1489,9 +1487,9 @@ public class SyntacticAnalizer {
 				//Expression e1 = e.deepCopy();
 				e = new Exponential(tok.readAtribute());////DUDA EL ERROR
 				/*if(e.getValue(row).getType().equals("error")){
-					if(!existError){ 
+					if(!existError){
 						int numError = Integer.parseInt(e.getValue(row).getVal());
-						setError(new Errors(numError,tok,throwError,console));													
+						setError(new Errors(numError,tok,throwError,console));
 						existError =true;
 					}
 				}*/
@@ -1499,9 +1497,9 @@ public class SyntacticAnalizer {
 			} else if (checkTokenType("string")){
 				e = new Str(tok.readAtribute());
 				/*if(e.getValue(row).getType().equals("error")){
-					if(!existError){ 
+					if(!existError){
 						int numError = Integer.parseInt(e.getValue(row).getVal());
-						setError(new Errors(numError,tok,throwError,console));													
+						setError(new Errors(numError,tok,throwError,console));
 						existError =true;
 					}
 				}*/
@@ -1516,7 +1514,7 @@ public class SyntacticAnalizer {
 					Variable v = new Variable(tok.readAtribute(),"","");
 					if(!row.contains(v)){
 						correct = false;
-						if(!existError){ 
+						if(!existError){
 							setError(new Errors(48,tok,throwError,console));
 							existError =true;
 						}
@@ -1525,23 +1523,23 @@ public class SyntacticAnalizer {
 
 						//Value v1 = row.get(v);
 						String name = tok.readAtribute();
-						
+
 						//Get Variable
 						Variable variableRow = null;
 						for(int i=0; i<row.size(); i++){
 							if(v.equals(row.get(i))){
 								variableRow = row.get(i);
 							}
-							
+
 						}
 						String type = variableRow.getType();
 						String val = variableRow.getValue();
 						//String value = v.getString();
 						e = new Id(name,type,val);
 						/*if(e.getValue(row).getType().equals("error")){
-							if(!existError){ 
+							if(!existError){
 								int numError = Integer.parseInt(e.getValue(row).getVal());
-								setError(new Errors(numError,tok,throwError,console));													
+								setError(new Errors(numError,tok,throwError,console));
 								existError =true;
 							}
 						}*/
@@ -1555,7 +1553,7 @@ public class SyntacticAnalizer {
 				Variable v = new Variable(tok.readAtribute(),"","");
 				if(!row.contains(v)){
 					correct = false;
-					if(!existError){ 
+					if(!existError){
 						setError(new Errors(48,tok,throwError,console));
 						existError =true;
 					}
@@ -1563,23 +1561,23 @@ public class SyntacticAnalizer {
 				else{
 					//Value v1 = row.get(v);
 					String name = tok.readAtribute();
-					
+
 					//Get Variable
 					Variable variableRow = null;
 					for(int i=0; i<row.size(); i++){
 						if(v.equals(row.get(i))){
 							variableRow = row.get(i);
 						}
-						
+
 					}
 					String type = variableRow.getType();
 					String val = variableRow.getValue();
 					//String value = v.getString();
 					e = new Id(name,type,val);
 					/*if(e.getValue(row).getType().equals("error")){
-						if(!existError){ 
+						if(!existError){
 							int numError = Integer.parseInt(e.getValue(row).getVal());
-							setError(new Errors(numError,tok,throwError,console));													
+							setError(new Errors(numError,tok,throwError,console));
 							existError =true;
 						}
 					}*/
@@ -1590,18 +1588,18 @@ public class SyntacticAnalizer {
 				if(tok.readAtribute().equals("true")){
 					e = new True("boolean");
 					/*if(e.getValue(row).getType().equals("error")){
-						if(!existError){ 
+						if(!existError){
 							int numError = Integer.parseInt(e.getValue(row).getVal());
-							setError(new Errors(numError,tok,throwError,console));													
+							setError(new Errors(numError,tok,throwError,console));
 							existError =true;
 						}
 					}*/
 				} else if (tok.readAtribute().equals("false")) {
 					e = new False("boolean");
 					/*if(e.getValue(row).getType().equals("error")){
-						if(!existError){ 
+						if(!existError){
 							int numError = Integer.parseInt(e.getValue(row).getVal());
-							setError(new Errors(numError,tok,throwError,console));													
+							setError(new Errors(numError,tok,throwError,console));
 							existError =true;
 						}
 					}*/
@@ -1616,31 +1614,31 @@ public class SyntacticAnalizer {
 					correct = true;
 					e = new Negation(e1);
 					/*if(e.getValue(row).getType().equals("error")){
-						if(!existError){ 
+						if(!existError){
 							int numError = Integer.parseInt(e.getValue(row).getVal());
-							setError(new Errors(numError,tok,throwError,console));													
+							setError(new Errors(numError,tok,throwError,console));
 							existError =true;
 						}
 					}*/
 				} else {
 					correct = false;
-					if(!existError){ 
+					if(!existError){
 						setError(new Errors(50,tok,throwError,console));
 						existError =true;
 					}
 				}
-			} else if (checkAtribute("-")) {				
+			} else if (checkAtribute("-")) {
 				Expression_Boolean result1 = exp5(throwError);
 				boolean correct1 = result1.isCorrect();
 				//Expression e1 = e.deepCopy();
 				if (correct1){
-					Expression e1 = e.deepCopy();				
+					Expression e1 = e.deepCopy();
 					correct = true;
 					e = new Less(e1);
 					/*if(e.getValue(row).getType().equals("error")){
-						if(!existError){ 
+						if(!existError){
 							int numError = Integer.parseInt(e.getValue(row).getVal());
-							setError(new Errors(numError,tok,throwError,console));													
+							setError(new Errors(numError,tok,throwError,console));
 							existError =true;
 						}
 					}*/
@@ -1683,11 +1681,11 @@ public class SyntacticAnalizer {
 
 	/**
 	 *   Method that evaluates the following grammar rules:
-	 * 
-	 * - R45:	op_adit → + | -	
-	 * 
+	 *
+	 * - R45:	op_adit → + | -
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return boolean
 	 */
 	private boolean opAdit(){
@@ -1695,7 +1693,7 @@ public class SyntacticAnalizer {
 		if (!existError) {
 			System.out.println("***OpAdit***");
 			if (checkAtribute("+") || checkAtribute("-")){
-				correct = true;		
+				correct = true;
 			}
 		}
 		return correct;
@@ -1704,11 +1702,11 @@ public class SyntacticAnalizer {
 
 	/**
 	 *  Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 * - R46:	op_mult → * | / | div | mod
-	 * 
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return boolean
 	 */
 	private boolean opMult(){
@@ -1726,11 +1724,11 @@ public class SyntacticAnalizer {
 
 	/**
 	 *  Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 * - R47: op_rel →  '>' | '<' | '>=' | '<='
-	 * 
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return boolean
 	 */
 	private boolean opRel() {
@@ -1750,9 +1748,9 @@ public class SyntacticAnalizer {
 	 *  Method that evaluates the following grammar rules:
 	 *
 	 * - R48: op_eq → <> | =
-	 * 
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return boolean
 	 */
 	private boolean opEq() {
@@ -1769,11 +1767,11 @@ public class SyntacticAnalizer {
 
 	/**
 	 * Method that evaluates the following grammar rules:
-	 * 
+	 *
 	 * - R49: 	op_log → and | or
-	 * 
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return boolean
 	 */
 	private boolean opLog(){
@@ -1781,7 +1779,7 @@ public class SyntacticAnalizer {
 		if (!existError) {
 			System.out.println("***OpLog***");
 			if(checkAtribute("and") || (checkAtribute("or"))){
-				correct=true;		
+				correct=true;
 			}
 		}
 		return correct;

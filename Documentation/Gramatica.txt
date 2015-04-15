@@ -1,6 +1,9 @@
 Gramática final (reutilizando gramática de PLG):
 Importante: se ignorarán mayúsculas y minúsculas
 
+Final grammar (using PLG grammar)
+Important: upper or lower case will be ignored
+
  program - (statement ';' )*
  statement - filter | binding
  binding- id ':=' Exp0

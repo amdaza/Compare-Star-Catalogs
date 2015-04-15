@@ -16,13 +16,13 @@ public class Statement {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	protected Expression expr;
-	
-	
+
+
 	public Statement (boolean binding, Expression expr){
 		this.expr=expr;
 		this.binding=binding;
 	}
-	
+
 	/**
 	 * @return
 	 * @uml.property  name="binding"
@@ -33,7 +33,7 @@ public class Statement {
 	public Value getValue(HashMap<Variable,Value> localVar){
 		return expr.getValue(localVar);
 	}
-	
+
 	/**
 	 * @param binding
 	 * @uml.property  name="binding"
@@ -41,8 +41,8 @@ public class Statement {
 	public void setBinding(boolean binding) {
 		this.binding = binding;
 	}
-	
 
 
-	
+
+
 }

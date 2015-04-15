@@ -19,11 +19,11 @@ public class Arctans extends Expression {
 		this.type = e.type;
 	}
 	public Arctans(Arctans exp){
-		this.type = exp.type;	
+		this.type = exp.type;
 		this.e = exp.e.deepCopy();
 	}
 
-	public Value getValue(HashMap<Variable,Value> localvar )  { 
+	public Value getValue(HashMap<Variable,Value> localvar )  {
 		Value result=null;
 		type = e.getType();
 		Value v = e.getValue(localvar);

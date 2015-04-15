@@ -4,7 +4,7 @@ package parser.elements;
 
 
 public class Variable {
-	
+
 	/**
 	 * @uml.property  name="name"
 	 */
@@ -17,26 +17,26 @@ public class Variable {
 	 * @uml.property  name="value"
 	 */
 	private String value;
-	
+
 	public Variable(String name, String type, String value){
 		this.name = name;
 		this.type=type;
 		this.value=value;
-		
+
 	}
-	
+
 	public Variable(String name, Value value){
 		this.name = name;
 		this.type= value.getType();
 		this.value=value.getVal();
-		
+
 	}
-	
+
 	public Variable(String name, String type, Value value) {
 		this.name = name;
 		this.type= value.getType();
 		this.value=value.getVal();
-		
+
 	}
 
 	/**
@@ -81,35 +81,35 @@ public class Variable {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	
+
 	public boolean equals(Object v1){
 		if (v1 == null)
             return false;
         if (this == v1)
             return true;
         if (!(v1 instanceof Variable)) return false;
-        
+
         Variable var = (Variable) v1;
-        
+
         if(var.getName() == null ){
-        	
+
         	if (var.getName() != null) return false;
         }
       else return this.getName().equalsIgnoreCase(var.getName());
-	
+
         return true;
-        	
+
 	}
-	
-	public int hashCode() {		
+
+	public int hashCode() {
 		int hash = 1;
 		if ( name == null )
 			hash = hash * 32;
-		else{ 	
+		else{
 			hash= hash*this.name.length();
 		}
 		return hash;
 	}
-	
+
 
 }

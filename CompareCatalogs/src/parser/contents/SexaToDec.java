@@ -9,7 +9,7 @@ public class SexaToDec extends Expression {
 
 	/**
 	 * @uml.property  name="e"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 	private Expression e;
 
@@ -18,17 +18,17 @@ public class SexaToDec extends Expression {
 		this.e=e.deepCopy();
 		this.type = e.type;
 	}
-	
+
 	public SexaToDec(SexaToDec exp){
-		this.type = exp.type;	
+		this.type = exp.type;
 		this.e = exp.e.deepCopy();
 	}
-	
+
 	public SexaToDec(){
 		super();
 	}
 
-	public Value getValue(HashMap<Variable,Value> localvar )  { 
+	public Value getValue(HashMap<Variable,Value> localvar )  {
 		Value result=null;
 		type = e.getType();
 		Value v = e.getValue(localvar);
@@ -40,7 +40,7 @@ public class SexaToDec extends Expression {
 			}else{
 				result = new Value(String.valueOf(sexaToDecRa(s)), "real");
 			}
-			
+
 		}
 		else {
 			error = true;
@@ -52,15 +52,15 @@ public class SexaToDec extends Expression {
 	private int sexaToDegreeOrHour(String sexa){
 		return Integer.parseInt(sexa.split(" ")[0]);
 	}
-	
+
 	private int sexaToMin(String sexa){
 		return Integer.parseInt(sexa.split(" ")[1]);
 	}
-	
+
 	private double sexaToSec(String sexa){
 		return Double.parseDouble(sexa.split(" ")[2]);
 	}
-	
+
 	public double sexaToDecDecl(String sexa){
 		double res = 0;
 		double deg = sexaToDegreeOrHour(sexa);
@@ -73,7 +73,7 @@ public class SexaToDec extends Expression {
 		}
 		return res;
 	}
-	
+
 	public double sexaToDecRa(String sexa){
 		double res = 0;
 		double hours = sexaToDegreeOrHour(sexa);

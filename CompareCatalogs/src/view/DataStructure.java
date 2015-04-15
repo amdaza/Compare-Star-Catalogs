@@ -7,19 +7,19 @@ public class DataStructure {
 	 */
 	enum Type{/**
 	 * @uml.property  name="a"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 		A, /**
 		 * @uml.property  name="i"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		I, /**
 		 * @uml.property  name="f"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		F, /**
 		 * @uml.property  name="e"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		E};
 
@@ -29,7 +29,7 @@ public class DataStructure {
 		private String mag;
 		/**
 		 * @uml.property  name="type"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		private Type type;
 		/**
@@ -77,8 +77,8 @@ public class DataStructure {
 		}
 		public String getParserType(DataStructure.Type type){
 			String result = null;
-			switch (type) {			
-			case A:		
+			switch (type) {
+			case A:
 				result = "string";
 				break;
 			case F:

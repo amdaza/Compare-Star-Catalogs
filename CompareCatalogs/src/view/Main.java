@@ -10,20 +10,19 @@ public class Main{
 	private static Catalog Info;
 
 	public static void main(String[] args) {
-	
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try{
-					Interface frame = new Interface();				
-					frame.setVisible(true);	
-					
-					
+					Interface frame = new Interface();
+					frame.setVisible(true);
+
 				} catch (Exception e) {
-					e.printStackTrace();				
+					e.printStackTrace();
 				}
-			
+
 			}
-		
+
 		});
 	}
 

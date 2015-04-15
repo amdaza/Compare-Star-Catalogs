@@ -16,12 +16,12 @@ public class Less extends Expression {
 		this.e=e.deepCopy();
 		this.type = e.type;
 	}
-	
+
 	public Less(Less exp){//
-		this.type = exp.type;	
+		this.type = exp.type;
 		this.e = exp.e.deepCopy();
 	}
-	
+
 	/**
 	 * @return
 	 * @uml.property  name="e"
@@ -38,18 +38,18 @@ public class Less extends Expression {
 		this.type = e.type;
 	}
 
-	public Value getValue(HashMap<Variable,Value> localvar )  { 
+	public Value getValue(HashMap<Variable,Value> localvar )  {
 		Value result=null;
 		type = e.getType();
 		Value v = e.getValue(localvar);
 		if (v.isTypeNumeric()) {
 			if(type.equals("integer")){
 				int k = 0 - v.getInt();
-				result = new Value(String.valueOf(k), type); 
+				result = new Value(String.valueOf(k), type);
 			}
 			else{
 				double k = 0 - v.getDouble();
-				result = new Value(String.valueOf(k), type); 
+				result = new Value(String.valueOf(k), type);
 			}
 		}
 		else {

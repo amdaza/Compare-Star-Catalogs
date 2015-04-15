@@ -28,7 +28,7 @@ public class Program {
 		LinkedHashMap<Variable,Value> localvar = new LinkedHashMap<Variable,Value> ( row);
 		Iterator<Statement> i = statement.iterator();
 		while (i.hasNext() && result) {
-					
+
 			Statement s = i.next();
 			Value v = s.getValue(localvar);
 			if(v.getType().equals("error")){
@@ -38,19 +38,19 @@ public class Program {
 				throw new TypeException();
 			}
 
-			else if (s.isBinding ())  {		
+			else if (s.isBinding ())  {
 
-				String vname = ((Binding) s).getName(); 
+				String vname = ((Binding) s).getName();
 				Variable var = new Variable(vname, v.getType(), v.getVal());
 				Value val = new Value(v.getVal(),v.getType() );
-				localvar.put(var, val);  
-			} else {  				
+				localvar.put(var, val);
+			} else {
 				if (v.getType() != "boolean") {
-					result =  false; 
-				} 
+					result =  false;
+				}
 				else  if (v.getVal()=="false")  result =  false;// es un bool
 
-			} 
+			}
 		}
 		return result;
 	}

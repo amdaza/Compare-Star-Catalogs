@@ -16,31 +16,31 @@ public class Id extends Expression {
 	private String name;
 	/**
 	 * @uml.property  name="e"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 	private Expression e;
 
 	public Id(String name, String type, String value){
-		
+
 		this.setName(name);
 		this.type=type;
 		this.value=value;
-		
+
 	}
-	
+
 	public Id (Expression e){
 		super();
 		this.e=e.deepCopy();
 		this.type = e.getType();
 	}
-	
+
 	public Id(Id exp){
 		this.type=exp.type;
 		this.value=exp.value;
 		this.name=exp.name;
 		//this.e = exp.e.deepCopy();
 	}
-	
+
 	public Value getValue(HashMap<Variable,Value> localVar){
 		Value result = null;
 		if (isTypeNumeric()){
@@ -53,7 +53,7 @@ public class Id extends Expression {
 		}
 		return  result;
 	}
-	
+
 	/**
 	 * @return
 	 * @uml.property  name="value"
@@ -61,7 +61,7 @@ public class Id extends Expression {
 	public String getValue() {
 		return value;
 	}
-	
+
 	/**
 	 * @param value
 	 * @uml.property  name="value"
@@ -69,7 +69,7 @@ public class Id extends Expression {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	
+
 	/**
 	 * @return
 	 * @uml.property  name="name"
@@ -77,7 +77,7 @@ public class Id extends Expression {
 	public String getName() {
 		return name;
 	}
-	
+
 	/**
 	 * @param name
 	 * @uml.property  name="name"
@@ -85,7 +85,7 @@ public class Id extends Expression {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	/**
 	 * @return
 	 * @uml.property  name="e"
@@ -93,7 +93,7 @@ public class Id extends Expression {
 	public Expression getE() {
 		return e;
 	}
-	
+
 	/**
 	 * @param e
 	 * @uml.property  name="e"

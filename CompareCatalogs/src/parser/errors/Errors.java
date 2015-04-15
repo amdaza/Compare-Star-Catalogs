@@ -11,7 +11,9 @@ import parser.elements.*;
 public class Errors {
 
 	/**
-	 * attributes: s	- t	-
+	 * attributes:
+	 * s	-
+	 * t	-
 	 * @uml.property  name="s"
 	 */
 	private String s;
@@ -23,7 +25,7 @@ public class Errors {
 
 	/**
 	 * constructor of the class
-	 * 
+	 *
 	 * @param id
 	 * @param t
 	 * @param throwError
@@ -88,12 +90,12 @@ public class Errors {
 			this.s="expecting a boolean";
 		else if (id==129)
 			this.s="expected an integer";
-		
+
 		console.setForeground(Color.red);
-		System.out.println("Type error:\n" + s +"\n");				
+		System.out.println("Type error:\n" + s +"\n");
 		console.append("Type error:\n" + s + "\n" );
-		
-		
+
+
 	}
 	public Errors(int id, Token t, boolean throwError, JTextArea console) {
 		this.t = new Token(t);
@@ -201,9 +203,9 @@ public class Errors {
 		else if (id==48)
 			this.s="identificator not declared before";
 		else if (id==49)
-			this.s="expected Exp0";		
+			this.s="expected Exp0";
 		else if (id==50)
-			this.s="error in not";	
+			this.s="error in not";
 		else if (id==51)
 			this.s="error in '-'";
 		else if (id==100)
@@ -276,7 +278,7 @@ public class Errors {
 					+ " , in the column: " + t.leeColumna());
 			console.append(tError + s + " , in the row: " + t.leeFila()
 					+ " , in the column: " + t.leeColumna()+"\n");
-			
+
 		}
 		throwError = true;
 	}

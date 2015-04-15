@@ -12,10 +12,10 @@ public abstract class Expression  {
 	 *  - integer
 	 *  - real
 	 *  - exponential
-	 * 
+	 *
 	 * - boolean
 	 * - string
-	 * 
+	 *
 	 * - error
 	 */
 	/**
@@ -28,18 +28,18 @@ public abstract class Expression  {
 
 
 	public Expression(){
-		type = "";	
+		type = "";
 		error=false;
 	}
-	
+
 	public Expression(String type) {
 		this.type = type;
 	}
-	
+
 	public Expression (Expression e) {
 		this.type = e.getType();
 	}
-	
+
 
 	public boolean isError() {
 		return error;
@@ -50,7 +50,7 @@ public abstract class Expression  {
 		this.error = error;
 	}
 
-	
+
 	public Expression deepCopy() {
         if (this instanceof Abs) {
             return new Abs((Abs)this);
@@ -122,7 +122,7 @@ public abstract class Expression  {
 
         throw new Error("Unknown type of expression");
     }
-	
+
 	/**
 	 * @return
 	 * @uml.property  name="type"
@@ -140,18 +140,18 @@ public abstract class Expression  {
 	}
 
 	public boolean isTypeNumeric() {
-			
+
 		/*return	(type.equals("integer") || (type.equals("real"))||
 				(type.equals("exponential")));*/
-				
+
 		/* orig*/
 		return this.type.equals("integer") ||
 				this.type.equals("real")   ||
-				this.type.equals("exponential") || 
-				this.type.equals("string")|| 
+				this.type.equals("exponential") ||
+				this.type.equals("string")||
 				this.type.equals("boolean");
-		
-			
+
+
 	}
 	public String finalType(String t1,String t2){
 
@@ -166,7 +166,7 @@ public abstract class Expression  {
 		else if ((t1.equals("integer")) && (t2.equals("exponential")))
 			result="exponential";
 		else if ((t1.equals("exponential")) && (t2.equals("integer")))
-			result="exponential";		
+			result="exponential";
 		else result="error";
 		return result;
 	}

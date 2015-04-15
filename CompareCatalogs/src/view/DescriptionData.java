@@ -10,11 +10,11 @@ import javax.swing.JOptionPane;
 import parser.elements.Variable;
 
 public class DescriptionData{
-	
+
 	/*
 	Modificado el constructor
 	*/
-	
+
 	/**
 	 * @uml.property  name="dt"
 	 */
@@ -45,18 +45,18 @@ public class DescriptionData{
 	 * @uml.property  name="header"
 	 */
 	private String header;
-	
+
 	public DescriptionData(){
 
 		this.setDt(new LinkedHashMap<String, DataStructure>());
-		this.stars = new Vector<StarRow>(); 
+		this.stars = new Vector<StarRow>();
 		header = "";
 	}
-	
+
 	public DescriptionData(String path){
 		this.path = path;
 		this.setDt(new LinkedHashMap<String, DataStructure>());
-		this.stars = new Vector<StarRow>(); 
+		this.stars = new Vector<StarRow>();
 		empty = true;
 		header = "";
 	}
@@ -92,7 +92,7 @@ public class DescriptionData{
 	public void setPath(String path) {
 		this.path = path;
 	}
-	
+
 	/**
 	 * @return
 	 * @uml.property  name="empty"
@@ -124,9 +124,9 @@ public class DescriptionData{
 	public void setHeader(String header) {
 		this.header = header;
 	}
-	
+
 	public LinkedHashMap<String, DataStructure> parser(){
-		
+
 		File archive = null;
 	    FileReader fr = null;
 	    BufferedReader br = null;
@@ -150,7 +150,7 @@ public class DescriptionData{
 		        	 }
 		        	 key = line.substring(4, i);//RAJ2000
 		        	 //System.out.println("key: "+key);
-		        	 
+
 		        	 while(line.charAt(i)== ' '){
 		        		 i++;
 		        	 }
@@ -169,7 +169,7 @@ public class DescriptionData{
 		        	 char type = line.charAt(i+1);
 		        	 value.setType(type);
 		        	// System.out.println("type: "+type);
-		        	 
+
 		        	 if (type == 'F'){
 		        		 if(line.charAt(i+3) == '.'){
 		        			 int lenght = Integer.parseInt(Character.toString(line.charAt(i+2)));
@@ -203,12 +203,12 @@ public class DescriptionData{
 		        	 value.setDescription(description);
 
         			 //System.out.println("description: "+description);
-        			 
+
         			 //Add new element into LinkedHashMap
         			 catalogStructure.put(key, value);
 		         }
 		         //End of description
-		         
+
 		         //Header
 		         header += line + "\n";
 		         while(!(line=br.readLine()).substring(0, 1).equals("-")){
@@ -217,15 +217,15 @@ public class DescriptionData{
 		         header += line + "\n";
 		         //System.out.println("/////////////////////////////////////////////////////");
 		         //System.out.println(header);
-		         
+
 		         //Stars
 		         while((line=br.readLine()).length()!=0){
 		        	int i=0;
-		        	
-		        	
+
+
 		        	String value = "";
 				    StarRow starRow = new StarRow(line);
-				  
+
 		        	for (Map.Entry<String,DataStructure> entry : catalogStructure.entrySet()) {
 					    String key = entry.getKey();
 					    DataStructure dst = entry.getValue();
@@ -234,38 +234,38 @@ public class DescriptionData{
 					    	value= line.substring(i, i+lenght);
 						    i += lenght+1;
 						    DataStructure.Type type = dst.getType();
-						    
+
 					    	if(type != DataStructure.Type.A){//To supress white spaces in numbers
 						    	value.replaceAll("\\s+","");
 					    	}
 						    String_Type st = new  String_Type(value,type);
-						    starRow.getStar().put(key, st); 
-						   
+						    starRow.getStar().put(key, st);
+
 					    }
 					    catch(java.lang.StringIndexOutOfBoundsException ex){
 					    	//i += lenght+1;
 					    	DataStructure.Type type = dst.getType();
 						    String_Type st = new  String_Type("",type);
-						    starRow.getStar().put(key, st); 
+						    starRow.getStar().put(key, st);
 					    }
-					   
-					   
+
+
 					}
-		           stars.add(starRow);	 
-		        	
+		           stars.add(starRow);
+
 		         }
 		         empty = false;
 		         contador=setContador(stars.size());
-		      
+
 	         }catch (java.lang.StringIndexOutOfBoundsException ex){
 	   			 fr.close();
 	   			 br.close();
 	   			 ex.printStackTrace();
 	   			 /*Exception e;
-	   			 throw e= new Exception();*/	   			
+	   			 throw e= new Exception();*/
 	   			 JOptionPane.showMessageDialog(null,ex.getMessage());
 	         }catch (java.lang.NullPointerException ex){
-	        	 //There's no stars for this 
+	        	 //There's no stars for this
 	        	 empty = true;
 	         }
 		 }
@@ -275,17 +275,17 @@ public class DescriptionData{
 	    	  // Here we close file, to make sure that
 	    	  // it closes even if everything's ok
 	    	  // or there is an exception
-	         try{                    
-	            if( null != fr ){  
-	               fr.close();     
-	            }                  
-	         }catch (Exception e2){ 
+	         try{
+	            if( null != fr ){
+	               fr.close();
+	            }
+	         }catch (Exception e2){
 	            e2.printStackTrace();
 	         }
 	      }
-		 
+
 		return catalogStructure;
-		 
+
 	}
 
 	private int setContador(int size) {
@@ -302,16 +302,16 @@ public class DescriptionData{
 		Vector <Variable> variables = new Vector <Variable>();
 		for (Map.Entry<String,DataStructure> entry : catalogStructure.entrySet()) {
 			 String key = entry.getKey();
-			 DataStructure dst = entry.getValue();			 
+			 DataStructure dst = entry.getValue();
 			 String type = dst.getParserType(dst.getType());
 			 System.out.println(key+type);
 			 Variable var= new Variable(catalog + "." + key,type,"");
 			 variables.add(var);
 		}
-	
-		return variables;		
+
+		return variables;
 	}
-	
+
 
 }
 

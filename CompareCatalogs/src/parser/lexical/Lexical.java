@@ -10,168 +10,177 @@ import parser.errors.Errors;
 public class Lexical {
 
 	/**
-	 * attributes: state 	   - contains the current state in which we find ourselves. code 	   - code has to be analyzed. lexeme 	   - accumulate the characters read. row 	       - keeps the row in which the character is read. column 	   - keeps the column in which the character is read. character   - containing the current character. index	   - contains the order of the current character. startRow    - row where the token begins. startColumn - column where the token begins.
+	 * attributes:
+	 * state 	   - contains the current state in which we find ourselves.
+	 * code 	   - code has to be analyzed.
+	 * lexeme 	   - accumulate the characters read.
+	 * row 	       - keeps the row in which the character is read.
+	 * column 	   - keeps the column in which the character is read.
+	 * character   - containing the current character.
+	 * index	   - contains the order of the current character.
+	 * startRow    - row where the token begins.
+	 * startColumn - column where the token begins.
 	 */
 
 
 	enum lexicalStatus {
 		/**
 		 * @uml.property  name="iNITIAL"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		INITIAL, /**
 		 * @uml.property  name="iS_START_ASSIGNMENT"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_START_ASSIGNMENT, /**
 		 * @uml.property  name="iS_NUMBER"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_NUMBER, /**
 		 * @uml.property  name="iS_IDENTIFIER"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_IDENTIFIER,
 		/**
 		 * @uml.property  name="iS_PLUS"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_PLUS, /**
 		 * @uml.property  name="iS_MINUS"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_MINUS, /**
 		 * @uml.property  name="iS_BY"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_BY, /**
 		 * @uml.property  name="iS_DIVIDED"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_DIVIDED, /**
 		 * @uml.property  name="iS_EXPONENTIAL"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_EXPONENTIAL, /**
 		 * @uml.property  name="iS_LESS"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_LESS, /**
 		 * @uml.property  name="iS_MAJOR"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
-		IS_MAJOR, 
+		IS_MAJOR,
 		/**
 		 * @uml.property  name="iS_LESS_EQUAL"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_LESS_EQUAL, /**
 		 * @uml.property  name="iS_MAJOR_EQUAL"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_MAJOR_EQUAL, /**
 		 * @uml.property  name="iS_DIFFERENT"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_DIFFERENT, /**
 		 * @uml.property  name="iS_EQUAL"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_EQUAL, /**
 		 * @uml.property  name="iS_NEGATION"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_NEGATION, /**
 		 * @uml.property  name="eS_CONJUNCION"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
-		ES_CONJUNCION, 
+		ES_CONJUNCION,
 		/**
 		 * @uml.property  name="iS_INITIAL_PARENTHESIS"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_INITIAL_PARENTHESIS, /**
 		 * @uml.property  name="iS_FINAL_PARENTHESIS"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_FINAL_PARENTHESIS, /**
 		 * @uml.property  name="pART_EXPONENTIAL"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		PART_EXPONENTIAL, /**
 		 * @uml.property  name="pART_EXPONENTIAL_2"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		PART_EXPONENTIAL_2, /**
 		 * @uml.property  name="pART_EXPONENTIAL_3"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		PART_EXPONENTIAL_3,
 		/**
 		 * @uml.property  name="iS_COMMA"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_COMMA, /**
 		 * @uml.property  name="iS_POINT"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_POINT, /**
 		 * @uml.property  name="iS_EOF"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_EOF, /**
 		 * @uml.property  name="iS_DOUBLE_QUOTES"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_DOUBLE_QUOTES,
 		/**
 		 * @uml.property  name="iS_INTERROGATION"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_INTERROGATION, /**
 		 * @uml.property  name="iS_ASSIGNMENT"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_ASSIGNMENT, /**
 		 * @uml.property  name="iS_SHARP"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_SHARP, /**
 		 * @uml.property  name="iS_STRING"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_STRING, /**
 		 * @uml.property  name="iS_STRING_END"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 		IS_STRING_END,
 	    /**
 		 * @uml.property  name="dECIMAL_PART"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 	    DECIMAL_PART, /**
 		 * @uml.property  name="dECIMAL_PART_2"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 	    DECIMAL_PART_2, /**
 		 * @uml.property  name="iS_CATALOG_ID"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 	    IS_CATALOG_ID, /**
 		 * @uml.property  name="iS_CATALOG_ID_2"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 	    IS_CATALOG_ID_2, /**
 		 * @uml.property  name="iS_SEMICOLON"
-		 * @uml.associationEnd  
+		 * @uml.associationEnd
 		 */
 	    IS_SEMICOLON
-		
+
 	};
-	
+
 	/**
 	 * @uml.property  name="state"
-	 * @uml.associationEnd  
+	 * @uml.associationEnd
 	 */
 	private lexicalStatus state;
 	/**
@@ -214,9 +223,9 @@ public class Lexical {
 
 	/**
 	 * Constructura the lexical analyzer class, get the code to compile.
-	 * 		
+	 *
 	 * @param input - program source code.
-	 *  
+	 *
 	 */
 	public Lexical(String input) {
 		this.code = input.toLowerCase() + ' ';
@@ -224,16 +233,16 @@ public class Lexical {
 		column = -1;
 		index = 0;
 		character = sigCar();
-		
+
 	}
 
 	/**
 	 * Method to the next token, which will collect characters until a valid token.
-	 * 
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return Token
-	 * 
+	 *
 	 */
 	@SuppressWarnings("incomplete-switch")
 	public Token sigToken() {
@@ -269,7 +278,7 @@ public class Lexical {
 				} else if (character == '>') {
 					transita(lexicalStatus.IS_MAJOR);
 				} else if (character == '=') {
-					transita(lexicalStatus.IS_EQUAL);				
+					transita(lexicalStatus.IS_EQUAL);
 				} else if (character == '(') {
 					transita(lexicalStatus.IS_INITIAL_PARENTHESIS);
 				} else if (character == ')') {
@@ -277,7 +286,7 @@ public class Lexical {
 				}else if (character == ',') {
 					transita(lexicalStatus.IS_COMMA);
 				} else if (character == '.') {
-					transita(lexicalStatus.IS_POINT);} 
+					transita(lexicalStatus.IS_POINT);}
 				else if (character == ';') {
 						transita(lexicalStatus.IS_SEMICOLON);
 				} else if (character == '#') {
@@ -298,7 +307,7 @@ public class Lexical {
 					transita(lexicalStatus.IS_IDENTIFIER);
 				}
 				break;
-				
+
 			case IS_CATALOG_ID_2:
 				if (isLetter(character) || esDigito(character) || character == '_'||character == '.') {
 					transita(lexicalStatus.IS_CATALOG_ID_2);
@@ -313,14 +322,14 @@ public class Lexical {
 
 			case IS_IDENTIFIER:
 				if (isLetter(character) || esDigito(character) || character == '_'){
-						
+
 					transita(lexicalStatus.IS_IDENTIFIER);
-				
+
 				} else {
 					return tokenPalabraReservada();
 				}
 				break;
-			
+
 
 			case IS_NUMBER:
 				if (esDigito(character)) {
@@ -354,7 +363,7 @@ public class Lexical {
 					return new Token(startRow, startColumn, "real",lexeme);
 				}
 				break;
-				
+
 			case PART_EXPONENTIAL:
 				if ((character == '-') || (character == '+')){
 					transita(lexicalStatus.PART_EXPONENTIAL_2);
@@ -372,21 +381,21 @@ public class Lexical {
 					return errorExp2();
 				}
 				break;
-				
+
 			case PART_EXPONENTIAL_3:
 				if (esDigito(character)) {
 					transita(lexicalStatus.PART_EXPONENTIAL_3);
 				} else {
 					return new Token(startRow, startColumn, "exponential",lexeme);
 				}
-				break;				
-		
+				break;
+
 
 			case IS_START_ASSIGNMENT:
 				if (character == '=') {
 					transita(lexicalStatus.IS_ASSIGNMENT);
 				} else {
-					
+
 					return errorAsig();
 				}
 				break;
@@ -410,7 +419,7 @@ public class Lexical {
 				return new Token(startRow, startColumn, "OP_EXP", "^");
 
 			case IS_LESS:
-				
+
 				if (character == '=') {
 					transita(lexicalStatus.IS_LESS_EQUAL);
 				} else if (character == '>') {
@@ -421,7 +430,7 @@ public class Lexical {
 				break;
 
 			case IS_MAJOR:
-				
+
 				if (character == '=') {
 					transita(lexicalStatus.IS_MAJOR_EQUAL);
 				} else {
@@ -445,20 +454,20 @@ public class Lexical {
 				return new Token(startRow, startColumn, "SEPAR", "(");
 
 			case IS_FINAL_PARENTHESIS:
-				return new Token(startRow, startColumn, "SEPAR", ")");			
+				return new Token(startRow, startColumn, "SEPAR", ")");
 
 			case IS_COMMA:
 				return new Token(startRow, startColumn, "SEPAR", ",");
 
-			case IS_POINT:				
-					return new Token(startRow, startColumn, "SEPAR", ".");				
+			case IS_POINT:
+					return new Token(startRow, startColumn, "SEPAR", ".");
 
 			case IS_SHARP:
 				return new Token(startRow, startColumn, "SEPAR", "#");
-				
+
 			case IS_SEMICOLON:
-				return new Token(startRow, startColumn, "SEPAR",";");				
-			
+				return new Token(startRow, startColumn, "SEPAR",";");
+
 			case IS_DOUBLE_QUOTES:
 				if (character != '"') {
 					lexeme = "" + character;
@@ -489,18 +498,18 @@ public class Lexical {
 
 	/**
 	 * Method that tells us if the used token is a reserved word or just a valid ID.
-	 *  
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return returns the token formed.
-	 * 
+	 *
 	 */
-	
+
 	private Token tokenPalabraReservada() {
 		if (lexeme.equalsIgnoreCase("abs")) {
 			return new Token(startRow, startColumn, "PAL_RES","abs");
 		}else if (lexeme.equalsIgnoreCase("and")) {
-			return new Token(startRow, startColumn, "OP_LOG", "and");		
+			return new Token(startRow, startColumn, "OP_LOG", "and");
 		}else if (lexeme.equalsIgnoreCase("arccosd")) {
 			return new Token(startRow, startColumn, "PAL_RES","arccosd");
 		}else if (lexeme.equalsIgnoreCase("arccoss")) {
@@ -562,24 +571,24 @@ public class Lexical {
 	/**
 	 * Method makes transition from one state to another,
 	 * adding character to the current lexeme.
-	 * 
+	 *
 	 * @param  toState state to which it will travel.
-	 * 
+	 *
 	 * @return
 	 */
 	private void transita(lexicalStatus toState) {
 		lexeme += (char) character;
 		transitaIgnorando(toState);
 	}
-	
+
 	/**
-	 * Method that makes moving from one state to another, 
+	 * Method that makes moving from one state to another,
 	 * going on to the next character.
-	 * 
+	 *
 	 * @param toState state to which it will travel.
-	 * 
+	 *
 	 * @return
-	 * 
+	 *
 	 */
 	private void transitaIgnorando(lexicalStatus toState) {
 		state = toState;
@@ -591,9 +600,9 @@ public class Lexical {
 
 	/**
 	 * Method that checks whether the character is a letter received.
-	 * 
+	 *
 	 * @param car input character to analyze.
-	 * 
+	 *
 	 * @return returns true if it is a letter or false otherwise.
 	 */
 	private boolean isLetter(int car) {
@@ -602,9 +611,9 @@ public class Lexical {
 
 	/**
 	 * Method that checks whether the character is a digital received.
-	 * 
+	 *
 	 * @param car
-	 * 
+	 *
 	 * @return returns true if it is a digital or false otherwise.
 	 */
 	private boolean esDigito(int car) {
@@ -613,9 +622,9 @@ public class Lexical {
 
 	/**
 	 * Method that checks if the receiving character is a separator.
-	 * 
+	 *
 	 * @param car input character to analyze.
-	 * 
+	 *
 	 * @return returns true if a separator or false otherwise.
 	 */
 	private boolean isSep(int car) {
@@ -624,9 +633,9 @@ public class Lexical {
 
 	/**
 	 * Method that generates the lexical token mistake.
-	 * 
+	 *
 	 * @param
-	 * 
+	 *
 	 * @return returns the error token.
 	 */
 	private Token errorLexico() {
@@ -638,10 +647,10 @@ public class Lexical {
 		new Errors(201,tok,true,console);
 		return new Token(startRow, startColumn, "Error", error);
 	}
-	
+
 	/**
 	 * Method that generates the lexical token mistake.
-	 * 
+	 *
 	 * @return returns the error token.
 	 */
 	private Token errorAsig() {
@@ -649,14 +658,14 @@ public class Lexical {
 				+ (char) character + "' in linr " + row + ", column "
 				+ column + ".";
 		transita(lexicalStatus.INITIAL);
-		
+
 		return new Token(startRow, startColumn, "Error", error);
-		
+
 	}
-	
+
 	/**
 	 * Method that generates the lexical token mistake.
-	 * 
+	 *
 	 * @return  returns the error token.
 	 */
 	private Token errorDecimal() {
@@ -665,12 +674,12 @@ public class Lexical {
 				+ column + ".";
 		transita(lexicalStatus.INITIAL);
 		return new Token(startRow, startColumn, "Error", error);
-		
+
 	}
-	
+
 	/**
 	 * Method that generates the lexical token mistake.
-	 * 
+	 *
 	 * @return returns the error token.
 	 */
 	private Token errorExp1() {
@@ -683,7 +692,7 @@ public class Lexical {
 
 	/**
 	 * Method that generates the lexical token mistake.
-	 * 
+	 *
 	 * @return returns the error token.
 	 */
 	private Token errorExp2() {
@@ -693,10 +702,10 @@ public class Lexical {
 		transita(lexicalStatus.INITIAL);
 		return new Token(startRow, startColumn, "Error", error);
 	}
-	
+
 	/**
 	 * Method advances to the next character.
-	 * 
+	 *
 	 * @return returns the next character.
 	 */
 	private int sigCar() {
@@ -718,7 +727,7 @@ public class Lexical {
 
 	/**
 	 * Metodo us back to the next character.
-	 * 
+	 *
 	 * @return returns the previous character.
 	 */
 	@SuppressWarnings("unused")

@@ -1,7 +1,7 @@
 package parser.elements;
 
 public class Value {
-	
+
 	/**
 	 * @uml.property  name="val"
 	 */
@@ -14,7 +14,7 @@ public class Value {
 	public Value(String val, String type) {
 		this.val=val;
 		this.type=type;
-		
+
 	}
 
 	/**
@@ -44,24 +44,24 @@ public class Value {
 	}
 
 	public int getInt() {
-		
+
 		return Integer.parseInt(val) ;
 	}
 
 	public double getDouble() {
-		
+
 		return Double.parseDouble(val);
 	}
 
 	public String getString() {
-		
+
 		return val;
 	}
 
 	public boolean isTypeNumeric(){
-		return 	(this.type.equals("integer") || this.type.equals("exponential") 
+		return 	(this.type.equals("integer") || this.type.equals("exponential")
 				|| this.type.equals("real")) || this.type.equals("boolean");
 	}
-	
-	
+
+
 }

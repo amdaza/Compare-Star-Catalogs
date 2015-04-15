@@ -37,34 +37,34 @@ public class ExpAdit extends Expression {
 		this.op = exp.op;
 	}
 
-	public Value getValue(HashMap<Variable,Value> localvar )  { 
+	public Value getValue(HashMap<Variable,Value> localvar )  {
 		Value result=null;
 		Value v1 = e1.getValue(localvar);
 		Value v2 = e2.getValue(localvar);
-		
+
 		switch(op) {
-		case "+": 
+		case "+":
 			result = add(v1,v2);
 			break;
 		case "-":
 			result = sub(v1,v2);
 			break;
-		}		
+		}
 		return result;
 	}
 
 	private Value sub(Value v1, Value v2) {
 
-		Value result= null;			
+		Value result= null;
 		if (isTypeNumeric()) {
 			type = finalType( e1.getType(),e2.getType());
-			
+
 				switch (type){
 
 				case "integer":
 					int exp1 = v1.getInt();
 					int exp2 = v2.getInt();
-					int resul1 = exp1 - exp2;					
+					int resul1 = exp1 - exp2;
 					result = new Value(String.valueOf(resul1), type);
 					break;
 				case "real":
@@ -80,7 +80,7 @@ public class ExpAdit extends Expression {
 					result = new Value(String.valueOf(resul3), type);
 					break;
 				}
-			
+
 		}
 		else {
 			error=true;
@@ -92,15 +92,15 @@ public class ExpAdit extends Expression {
 
 
 	private Value add(Value v1, Value v2) {
-		Value result= null;		
-		
+		Value result= null;
+
 		if (isTypeNumeric()) {
-			type = finalType( e1.getType(),e2.getType());	
+			type = finalType( e1.getType(),e2.getType());
 			switch (type){
 			case "integer":
 				int exp1 = v1.getInt();
 				int exp2 = v2.getInt();
-				int resul1 = exp1 + exp2;					
+				int resul1 = exp1 + exp2;
 				result = new Value(String.valueOf(resul1), type);
 				break;
 			case "real":
@@ -115,7 +115,7 @@ public class ExpAdit extends Expression {
 				double resul3 = exp5 + exp6;
 				result = new Value(String.valueOf(resul3), type);
 				break;
-			
+
 			}
 		}
 		else {
@@ -125,8 +125,8 @@ public class ExpAdit extends Expression {
 		return result;
 	}
 
-	
-	
+
+
 }
 
 

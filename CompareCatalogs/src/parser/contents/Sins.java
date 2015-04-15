@@ -18,13 +18,13 @@ public class Sins  extends Expression {
 		this.e=e.deepCopy();
 		this.type = e.type;
 	}
-	
+
 	public Sins (Sins exp){
-		this.type = exp.type;	
+		this.type = exp.type;
 		this.e = exp.e.deepCopy();
 	}
 
-	public Value getValue(HashMap<Variable,Value> localvar )  { 
+	public Value getValue(HashMap<Variable,Value> localvar )  {
 		Value result=null;
 		type = e.getType();
 		Value v = e.getValue(localvar);

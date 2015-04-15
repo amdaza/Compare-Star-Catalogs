@@ -12,12 +12,12 @@ public class Expression_Boolean {
 	 * @uml.property  name="b"
 	 */
 	private boolean b;
-	
+
 	public Expression_Boolean(Expression e, boolean b){
 		this.e = e;
 		this.b = b;
 	}
-	
+
 	public Expression getExpression() {
 		return e;
 	}
@@ -30,6 +30,6 @@ public class Expression_Boolean {
 	public void setCorrect(boolean b) {
 		this.b = b;
 	}
-	
-	
+
+
 }

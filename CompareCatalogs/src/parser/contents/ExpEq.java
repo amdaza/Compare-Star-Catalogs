@@ -29,7 +29,7 @@ public class ExpEq extends Expression {
 		this.type = "boolean";
 		this.op = op;
 	}
-	
+
 	public ExpEq(ExpEq exp){
 		this.type = exp.type;
 		this.e1 = exp.e1.deepCopy();
@@ -43,18 +43,18 @@ public class ExpEq extends Expression {
 		Value v2 = e2.getValue(localVar);
 		if (v1.getType().equals(v2.getType()) || (v1.isTypeNumeric() && v2.isTypeNumeric())) {
 			switch(op) {
-			case "=": 
+			case "=":
 				result = equal(v1,v2);
 				break;
 			case "<>":
 				result = distinct(v1,v2);
 				break;
-			}	
+			}
 
 		}
 		else {
 			error=true;
-			result = new Value("121", "error");	
+			result = new Value("121", "error");
 		}
 		return result;
 	}
@@ -65,7 +65,7 @@ public class ExpEq extends Expression {
 		Value result = null;
 		if(v1.isTypeNumeric()  && v2.isTypeNumeric()){
 			switch(v1.getType()) {
-			case "integer": 
+			case "integer":
 				if(v2.getType().equals("integer")){
 					int i1 = v1.getInt();
 					int i2 = v2.getInt();
@@ -108,7 +108,7 @@ public class ExpEq extends Expression {
 		Value result = null;
 		if(v1.isTypeNumeric()  && v2.isTypeNumeric()){
 			switch(v1.getType()) {
-			case "integer": 
+			case "integer":
 				if(v2.getType().equals("integer")){
 					int i1 = v1.getInt();
 					int i2 = v2.getInt();
