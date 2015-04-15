@@ -3,59 +3,59 @@ package parser.elements;
 import java.util.LinkedList;
 
 public class TSContent {
-	private String Tipo;
-	private String TipoBase;
+	private String type;
+	private String baseType;
 	private int posIni;
 	private int posFin;
-	private int NumArgs;
-	private LinkedList<String> TipoArgs; // linkedlist por si se trata una
-											// llamada a un metodo o funcion
-	private int PasoArgs;
-	private LinkedList<String> retorno; // linkedlist por si es una funcion que
-										// devuelve mas de un argumento
-	private int tamanio;
-	private SymbolTable TablaHija;
-	private LinkedList<TSContent> puntero; // linkedlist por si es una puntero
+	private int argsNum;
+	private LinkedList<String> argsType; // linkedlist in case of
+											// method or function call
+	private int argsPass;
+	private LinkedList<String> returnList; // linkedlist in case of function which
+										// returns more than one argument
+	private int size;
+	private SymbolTable childTable;
+	private LinkedList<TSContent> pointer; // linkedlist in case it's a pointer
 
 	public TSContent(String tipo, String tipoBase, int posIni, int posFin,
 			int NumArgs, LinkedList<String> TipoArgs, int pasoArgs,
 			LinkedList<String> retorno, int tamanio, SymbolTable th,
 			LinkedList<TSContent> puntero) {
-		this.setTipo(tipo);
-		this.setTipoBase(tipoBase);
+		this.setType(tipo);
+		this.setBaseType(tipoBase);
 		this.setPosIni(posIni);
 		this.setPosFin(posFin);
-		this.setPasoArgs(pasoArgs);
-		this.setRetorno(retorno);
-		this.setTamanio(tamanio);
-		this.setTablaHija(th);
-		this.setTipoArgs(TipoArgs);
-		this.setNumArgs(NumArgs);
-		this.setPuntero(puntero);
+		this.setArgsPass(pasoArgs);
+		this.setReturnList(retorno);
+		this.setSize(tamanio);
+		this.setChildTable(th);
+		this.setArgsType(TipoArgs);
+		this.setArgsNum(NumArgs);
+		this.setPointer(puntero);
 	}
 
-	public int getTamanio() {
-		return tamanio;
+	public int getSize() {
+		return size;
 	}
 
-	public void setTamanio(int tamanio) {
-		this.tamanio = tamanio;
+	public void setSize(int size) {
+		this.size = size;
 	}
 
-	public String getTipo() {
-		return Tipo;
+	public String getType() {
+		return type;
 	}
 
-	public void setTipo(String tipo) {
-		Tipo = tipo;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public String getTipoBase() {
-		return TipoBase;
+	public String getBaseType() {
+		return baseType;
 	}
 
-	public void setTipoBase(String tipoBase) {
-		TipoBase = tipoBase;
+	public void setBaseType(String baseType) {
+		this.baseType = baseType;
 	}
 
 	public int getPosIni() {
@@ -74,51 +74,51 @@ public class TSContent {
 		this.posFin = posFin;
 	}
 
-	public int getNumArgs() {
-		return NumArgs;
+	public int getArgsNum() {
+		return argsNum;
 	}
 
-	public void setNumArgs(int numArgs) {
-		NumArgs = numArgs;
+	public void setArgsNum(int argsNum) {
+		this.argsNum = argsNum;
 	}
 
-	public LinkedList<String> getTipoArgs() {
-		return TipoArgs;
+	public LinkedList<String> getArgsType() {
+		return argsType;
 	}
 
-	public void setTipoArgs(LinkedList<String> tipoArgs) {
-		TipoArgs = tipoArgs;
+	public void setArgsType(LinkedList<String> typeArgs) {
+		this.argsType = typeArgs;
 	}
 
-	public int getPasoArgs() {
-		return PasoArgs;
+	public int getArgsPass() {
+		return argsPass;
 	}
 
-	public void setPasoArgs(int pasoArgs) {
-		PasoArgs = pasoArgs;
+	public void setArgsPass(int argsPass) {
+		this.argsPass = argsPass;
 	}
 
-	public LinkedList<String> getRetorno() {
-		return retorno;
+	public LinkedList<String> getReturnList() {
+		return returnList;
 	}
 
-	public void setRetorno(LinkedList<String> retorno) {
-		this.retorno = retorno;
+	public void setReturnList(LinkedList<String> returnList) {
+		this.returnList = returnList;
 	}
 
-	public SymbolTable getTablaHija() {
-		return TablaHija;
+	public SymbolTable getChildTable() {
+		return childTable;
 	}
 
-	public void setTablaHija(SymbolTable tablaHija) {
-		TablaHija = tablaHija;
+	public void setChildTable(SymbolTable childTable) {
+		this.childTable = childTable;
 	}
 
-	public void setPuntero(LinkedList<TSContent> puntero) {
-		this.puntero = puntero;
+	public void setPointer(LinkedList<TSContent> pointer) {
+		this.pointer = pointer;
 	}
 
-	public LinkedList<TSContent> getPuntero() {
-		return puntero;
+	public LinkedList<TSContent> getPointer() {
+		return pointer;
 	}
 }
