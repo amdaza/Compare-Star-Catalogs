@@ -1,8 +1,5 @@
 package parser.elements;
 
-
-
-
 public class Variable {
 
 	/**
@@ -36,7 +33,6 @@ public class Variable {
 		this.name = name;
 		this.type= value.getType();
 		this.value=value.getVal();
-
 	}
 
 	/**
@@ -46,6 +42,7 @@ public class Variable {
 	public String getName() {
 		return name;
 	}
+
 	/**
 	 * @param name
 	 * @uml.property  name="name"
@@ -53,6 +50,7 @@ public class Variable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * @return
 	 * @uml.property  name="type"
@@ -60,6 +58,7 @@ public class Variable {
 	public String getType() {
 		return type;
 	}
+
 	/**
 	 * @param type
 	 * @uml.property  name="type"
@@ -67,6 +66,7 @@ public class Variable {
 	public void setType(String type) {
 		this.type = type;
 	}
+
 	/**
 	 * @return
 	 * @uml.property  name="value"
@@ -74,6 +74,7 @@ public class Variable {
 	public String getValue() {
 		return value;
 	}
+
 	/**
 	 * @param value
 	 * @uml.property  name="value"
@@ -95,7 +96,7 @@ public class Variable {
 
         	if (var.getName() != null) return false;
         }
-      else return this.getName().equalsIgnoreCase(var.getName());
+        else return this.getName().equalsIgnoreCase(var.getName());
 
         return true;
 
@@ -110,6 +111,5 @@ public class Variable {
 		}
 		return hash;
 	}
-
 
 }
