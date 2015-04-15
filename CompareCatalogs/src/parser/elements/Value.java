@@ -59,8 +59,7 @@ public class Value {
 	}
 
 	public boolean isTypeNumeric(){
-		return //(this.type.equals("string") || this.type.equals("string")) ||
-				(this.type.equals("integer") || this.type.equals("exponential") 
+		return 	(this.type.equals("integer") || this.type.equals("exponential") 
 				|| this.type.equals("real")) || this.type.equals("boolean");
 	}
 	

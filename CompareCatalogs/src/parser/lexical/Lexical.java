@@ -300,7 +300,7 @@ public class Lexical {
 				break;
 				
 			case IS_CATALOG_ID_2:
-				if (isLetter(character) || esDigito(character) || character == '_') {
+				if (isLetter(character) || esDigito(character) || character == '_'||character == '.') {
 					transita(lexicalStatus.IS_CATALOG_ID_2);
 				} else if (character == '?'){
 					//return new Token(startRow, startColumn, "wds_id", lexeme);

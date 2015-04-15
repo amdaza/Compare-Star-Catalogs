@@ -2,7 +2,6 @@ package parser.syntactic;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Vector;
 
 import javax.swing.JTextArea;
@@ -79,6 +78,7 @@ public class SyntacticAnalizer {
 	 * @uml.property  name="i"
 	 * @uml.associationEnd  readOnly="true"
 	 */
+	@SuppressWarnings("unused")
 	private Interface i;
 
 	public Program getProgram() {
@@ -94,6 +94,10 @@ public class SyntacticAnalizer {
 
 	public void setRow(Vector<Variable> row) {
 		this.row = row;
+	}
+
+	public void addToRow(Vector<Variable> row) {
+		this.row.addAll(row);
 	}
 
 /* ESTO ES UNA PRUEBA*/
@@ -221,7 +225,7 @@ public class SyntacticAnalizer {
 	 * @param error
 	 */
 	public void setError(Errors errors) {
-		this.errors = errors;
+		this.setErrors(errors);
 	}
 
 	/**
@@ -1781,5 +1785,13 @@ public class SyntacticAnalizer {
 			}
 		}
 		return correct;
+	}
+
+	public Errors getErrors() {
+		return errors;
+	}
+
+	public void setErrors(Errors errors) {
+		this.errors = errors;
 	}
 }

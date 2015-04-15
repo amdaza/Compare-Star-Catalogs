@@ -35,7 +35,7 @@ public class StarRow {
 		this.star = star;
 	}
 	
-	public  LinkedHashMap<Variable, Value> starRowToVariable(String catalog){//Catalog is P or S
+	public LinkedHashMap<Variable, Value> starRowToVariable(String catalog){//Catalog is P or S
 
 		DataStructure dt = new DataStructure();
 		LinkedHashMap<Variable, Value> result = new LinkedHashMap<Variable, Value>();
