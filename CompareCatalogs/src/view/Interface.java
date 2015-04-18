@@ -1662,15 +1662,24 @@ public class Interface extends JFrame{
 			/*Star One to one: */
 
 			if(chckbxOneToOne.isSelected()==true){
-
-
-
+				int i =0;
+				while(i < primaryData.getStars().size()){			
+				
+					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
+					if (starsS.size()!=1) {
+						arraySecondaryData.remove(i);
+						primaryData.getStars().remove(i);
+						i--;
+					}
+					i++;
+					
+				}
 
 			}
 			/* Star ShowClosestCandidate: */
 
 			else if(chckbxShowClosestCandidate.isSelected()==true){
-
+				
 
 
 			}
@@ -1680,12 +1689,12 @@ public class Interface extends JFrame{
 			Lexical lp= new Lexical(criteriumError);
 			SyntacticAnalizer asE = new SyntacticAnalizer(lp,textAreaConsole);
 			asE.setRow(primaryData.variablesForParser("p"));
-			if(arraySecondaryData.size()==0){
+			if(arraySecondaryData.size() == 0){
 				JOptionPane.showMessageDialog(null,"There is no secondary filter in the catalog p","",JOptionPane.INFORMATION_MESSAGE);
 			}
 			else{
 				
-			
+				
 				asE.addToRow(arraySecondaryData.get(0).variablesForParser("s"));
 				asE.parser();
 				parserCatalogS = asE.getProgram();
