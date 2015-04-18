@@ -1,0 +1,104 @@
+-------------------------------- sáb, abr 18, 2015 04:14:15 PM CEST ---------------------------------
+
+In the directory WDS_18 16 08.80 +03 18 50.5 have generated the following files 
+
+ - File Created ->   Primary.txt ===> Number of stars : 3 
+
+In the directory SECONDARY have generated the following files 
+
+ - File Created ->   Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 7 
+
+ - File Created ->   Stars_of_S_around_18 16 08.80 +03 18 50.5_I.txt ===> Number of stars : 7 
+
+ - File Created ->   Stars_of_S_around_18 16 34.01 +03 16 28.8.txt ===> Number of stars : 7 
+
+In the directory FILTERED_CATALOGP have generated the following files 
+
+ - File Created -> Filtered_Primary.txt ===> Number of stars : 3 
+
+In the directory Filtered_CatalogP/SECONDARY have generated the following files 
+
+ - File Created -> 0_Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 7 
+
+ - File Created -> 1_Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 7 
+
+ - File Created -> 2_Stars_of_S_around_18 16 34.01 +03 16 28.8.txt ===> Number of stars : 7 
+
+In the directory FILTERED_CATALOGS have generated the following files 
+
+ - File Created -> Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 3 
+
+ - File Created -> Stars_of_S_around_18 16 08.80 +03 18 50.5_I.txt ===> Number of stars : 3 
+
+ - File Created -> Stars_of_S_around_18 16 34.01 +03 16 28.8.txt ===> Number of stars : 3 
+
+-------------------------------- sáb, abr 18, 2015 04:14:54 PM CEST ---------------------------------
+
+In the directory WDS_18 16 08.80 +03 18 50.5 have generated the following files 
+
+ - File Created ->   Primary.txt ===> Number of stars : 3 
+
+In the directory SECONDARY have generated the following files 
+
+ - File Created ->   Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 7 
+
+ - File Created ->   Stars_of_S_around_18 16 08.80 +03 18 50.5_I.txt ===> Number of stars : 7 
+
+ - File Created ->   Stars_of_S_around_18 16 34.01 +03 16 28.8.txt ===> Number of stars : 7 
+
+In the directory FILTERED_CATALOGP have generated the following files 
+
+ - File Created -> Filtered_Primary.txt ===> Number of stars : 3 
+
+In the directory Filtered_CatalogP/SECONDARY have generated the following files 
+
+ - File Created -> 0_Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 7 
+
+ - File Created -> 1_Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 7 
+
+ - File Created -> 2_Stars_of_S_around_18 16 34.01 +03 16 28.8.txt ===> Number of stars : 7 
+
+In the directory FILTERED_CATALOGS have generated the following files 
+
+ - File Created -> Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 1 
+
+ - File Created -> Stars_of_S_around_18 16 08.80 +03 18 50.5_I.txt ===> Number of stars : 1 
+
+ - File Created -> Stars_of_S_around_18 16 34.01 +03 16 28.8.txt ===> Number of stars : 2 
+
+-------------------------------- sáb, abr 18, 2015 04:32:56 PM CEST ---------------------------------
+
+In the directory WDS_18 16 08.80 +03 18 50.5 have generated the following files 
+
+ - File Created ->   Primary.txt ===> Number of stars : 3 
+
+In the directory SECONDARY have generated the following files 
+
+ - File Created ->   Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 7 
+
+ - File Created ->   Stars_of_S_around_18 16 08.80 +03 18 50.5_I.txt ===> Number of stars : 7 
+
+ - File Created ->   Stars_of_S_around_18 16 34.01 +03 16 28.8.txt ===> Number of stars : 7 
+
+In the directory FILTERED_CATALOGP have generated the following files 
+
+ - File Created -> Filtered_Primary.txt ===> Number of stars : 3 
+
+In the directory Filtered_CatalogP/SECONDARY have generated the following files 
+
+ - File Created -> 0_Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 7 
+
+ - File Created -> 1_Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 7 
+
+ - File Created -> 2_Stars_of_S_around_18 16 34.01 +03 16 28.8.txt ===> Number of stars : 7 
+
+In the directory FILTERED_CATALOGS have generated the following files 
+
+ - File Created -> Stars_of_S_around_18 16 08.80 +03 18 50.5.txt ===> Number of stars : 1 
+
+ - File Created -> Stars_of_S_around_18 16 08.80 +03 18 50.5_I.txt ===> Number of stars : 1 
+
+ - File Created -> Stars_of_S_around_18 16 34.01 +03 16 28.8.txt ===> Number of stars : 2 
+
+In the directory ERRORS have generated the following files 
+

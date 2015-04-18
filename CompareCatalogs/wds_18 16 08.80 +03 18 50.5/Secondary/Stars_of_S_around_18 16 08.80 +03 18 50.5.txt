@@ -1,0 +1,56 @@
+#  
+#   VizieR Astronomical Server vizier.u-strasbg.fr
+#    Date: 2015-04-18T14:32:58 [V1.99+ (14-Oct-2013)]
+#   In case of problem, please report to: cds-question@unistra.fr
+# 
+#   
+#Coosys J2000: eq_FK5 J2000 
+#INFO votable-version=1.99+ (14-Oct-2013) 
+#INFO -ref=VOTx44851 
+#INFO MaxTuples=50000 
+#INFO queryParameters=4 
+#-oc.form=D.
+#-source=II\246
+#-c=18 16 08.80  03 18 50.5
+#-c.rs=1000
+#
+#INFO CatalogsExamined=4 
+#  4 catalogues with potential matches were examined.
+#
+#INFO -c=274.036667+03.314028,rs=1000. 
+#
+
+#RESOURCE=yCat_7233
+#Name: VII/233
+#Title: The 2MASS Extended sources (IPAC/UMass, 2003-2006)
+#Table VII_233_xsc:
+#Name: VII/233/xsc
+#Title: *The 2MASS Extended Catalog (2MASX)
+#---Details of Columns:
+    2MASX         (a17)   Source name (HHMMSSss+DDMMSSs, J2000) [ucd=meta.id;meta.main]
+    All           (A3)    Display all original 369 columns for this 2MASX source [ucd=meta.ref.url]
+    RAJ2000 (deg) (F10.6) Right ascension (J2000), based on peak pixel [ucd=pos.eq.ra;meta.main]
+    DEJ2000 (deg) (F10.6) Declination (J2000), based on peak pixel [ucd=pos.eq.dec;meta.main]
+    Kb/a          (F6.3)  ? K minor/major axis ratio to 3{sigma} (k_ba) [ucd=phys.size.axisRatio]
+    r.fe (arcsec) (F6.1)  ? K fiducial Kron elliptical aperture semi-major axis (r_fe) [ucd=phys.angSize;src]
+    J.ext (mag)   (F6.3)  ? J magnitude in r.ext (j\_m\_ext) [ucd=phot.mag;em.IR.J]
+    e_J.ext (mag) (F6.3)  ? {sigma}(J.ext) (j\_msig\_ext) [ucd=stat.error]
+    H.ext (mag)   (F6.3)  ? J magnitude in r.ext (h\_m\_ext) [ucd=phot.mag;em.IR.H]
+    e_H.ext (mag) (F6.3)  ? {sigma}(H.ext) (h\_msig\_ext) [ucd=stat.error]
+    K.ext (mag)   (F6.3)  ? J magnitude in r.ext (k\_m\_ext) [ucd=phot.mag;em.IR.K]
+    e_K.ext (mag) (F6.3)  ? {sigma}(K.ext) (k\_msig\_ext) [ucd=stat.error]
+    xid           (I1)    [0,1] Type/galaxy source (id_flg) (7) [ucd=meta.code]
+----------------- --- ---------- ---------- ------ ------ ------ ------ ------ ------ ------ ------ -
+                                                   r             e             e             e      x
+                      RAJ        DEJ               .fe (a J.ext  _J.ext H.ext  _H.ext K.ext  _K.ext i
+2MASX             All 2000 (deg) 2000 (deg) Kb/a   rcsec) (mag)  (mag)  (mag)  (mag)  (mag)  (mag)  d
+----------------- --- ---------- ---------- ------ ------ ------ ------ ------ ------ ------ ------ -
+18163831+0306361  All 274.159637 +03.110030  0.480   10.9 14.362  0.145 13.141  0.104 12.808  0.107 0
+18160339+0309388  All 274.014160 +03.160805  1.000    7.3 14.836  0.190 14.368  0.291 13.846  0.240 0
+18152807+0314574  All 273.866974 +03.249279  0.650    8.6 14.476  0.165 13.984  0.260 13.314  0.194 0
+18170165+0318315  All 274.256897 +03.308773  0.320   23.0 14.040  0.153 13.009  0.129 12.579  0.123 0
+18163496+0320391  All 274.145691 +03.344195  0.513   10.5 15.039  0.230 14.546  0.000 13.783  0.226 0
+18152152+0321234  All 273.839691 +03.356503  0.280   25.6 13.454  0.095 12.744  0.121 12.414  0.124 0
+18165865+0321475  All 274.244385 +03.363215  0.640    9.0 14.835  0.187 14.121  0.210 13.667  0.198 0
+
+#END#  -ref=VOTx44851 ===============================================================================
