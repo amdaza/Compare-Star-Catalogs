@@ -13,7 +13,6 @@ import java.awt.font.TextAttribute;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Toolkit;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -25,12 +24,9 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-
 import java.net.URL;
-
 import java.text.AttributedString;
 import java.text.SimpleDateFormat;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -86,13 +82,13 @@ import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.RollingFileAppender;
 
+import parser.contents.Distance;
 import parser.contents.Program;
 import parser.elements.Value;
 import parser.elements.Variable;
 import parser.errors.TypeException;
 import parser.lexical.Lexical;
 import parser.syntactic.SyntacticAnalizer;
-
 import view.Catalog;
 
 
@@ -1664,7 +1660,7 @@ public class Interface extends JFrame{
 			if(chckbxOneToOne.isSelected()==true){
 				int i =0;
 				while(i < primaryData.getStars().size()){			
-				
+
 					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
 					if (starsS.size()!=1) {
 						arraySecondaryData.remove(i);
@@ -1672,17 +1668,44 @@ public class Interface extends JFrame{
 						i--;
 					}
 					i++;
-					
+
 				}
 
 			}
 			/* Star ShowClosestCandidate: */
 
 			else if(chckbxShowClosestCandidate.isSelected()==true){
-				
 
+				double minDistance = Double.MAX_VALUE;
+				int closestStar = -1;
+
+				for(int i = 0; i < primaryData.getStars().size(); i++){
+					StarRow primary = primaryData.getStars().get(i);
+					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
+					for(int j=0; j < starsS.size(); j++){
+						StarRow secondary = starsS.get(j);
+						double distance = primary.distance(secondary);
+						if (distance < minDistance){
+							minDistance = distance;
+							closestStar = j;
+						}
+					}
+					
+					int k = 0;
+					while(k<starsS.size()){
+						if(k != closestStar){
+							starsS.remove(k);
+							k--;
+						}
+						k++;
+					}
+
+				}
 
 			}
+
+
+
 
 			/*Star criterium*/
 			String criteriumError= textAreaCriteriumErrors.getText();
@@ -1693,8 +1716,8 @@ public class Interface extends JFrame{
 				JOptionPane.showMessageDialog(null,"There is no secondary filter in the catalog p","",JOptionPane.INFORMATION_MESSAGE);
 			}
 			else{
-				
-				
+
+
 				asE.addToRow(arraySecondaryData.get(0).variablesForParser("s"));
 				asE.parser();
 				parserCatalogS = asE.getProgram();
@@ -1709,8 +1732,8 @@ public class Interface extends JFrame{
 				String coordSAnt8 = "y";
 				String coordSAnt9 = "z";
 
-			/*	String read=path3+"\\read.txt";
-				
+				/*	String read=path3+"\\read.txt";
+
 			try {
 
 
@@ -1725,7 +1748,7 @@ public class Interface extends JFrame{
 			catch (IOException e) {
 				e.printStackTrace();
 			}
-			 */
+				 */
 				for(int i=0; i < arraySecondaryData.size();i++){
 					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
 					String coordS = "";
@@ -1760,10 +1783,10 @@ public class Interface extends JFrame{
 						}
 						else aux = "_I";
 					}
-					
+
 					String fileNameError = folderError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
 					String fileNameWithoutError = folderWithoutError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
-					
+
 					try {
 						//file for star with error
 						File fileError = new File(fileNameError);
@@ -1777,11 +1800,11 @@ public class Interface extends JFrame{
 						outputWithoutError.write("This is a list of star rows around " + coordS+aux+ " which haven't error\n\n");
 						outputWithoutError.write(arraySecondaryData.get(i).getHeader());
 						outputWithoutError.flush();
-						
-						
+
+
 						//loop stars
 						try{
-						
+
 							for(int j = 0; j < starsS.size(); j++){
 								LinkedHashMap<Variable, Value> listForParserS = starsS.get(j).starRowToVariable("s"); //modify data for parser
 								LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
@@ -1798,9 +1821,9 @@ public class Interface extends JFrame{
 								}
 
 							}
-							
-							
-							
+
+
+
 							/*linesNumber=(starsS.size()-arraySecondaryData.size())-1;	
 							try {
 
@@ -1816,13 +1839,13 @@ public class Interface extends JFrame{
 							catch (IOException e) {
 								e.printStackTrace();
 							}*/
-							
-							
-							
-							
-							
-							
-						
+
+
+
+
+
+
+
 						}catch (TypeException te){
 							te.printStackTrace();
 
@@ -1831,7 +1854,7 @@ public class Interface extends JFrame{
 						outputError.close();
 						outputWithoutError.flush();
 						outputWithoutError.close();
-						
+
 					}catch (Exception e1) {
 
 						e1.printStackTrace();
@@ -1845,7 +1868,7 @@ public class Interface extends JFrame{
 					coordSAnt3 = coordSAnt2;
 					coordSAnt2 = coordSAnt;
 					coordSAnt = coordS;
-					
+
 				}
 			}
 		}
@@ -2169,11 +2192,10 @@ public class Interface extends JFrame{
 					coordSAnt = coordS;
 
 				}
-		
+
 			}
 		}
-
-
+		
 		private void saveSData(File selectedFile, LinkedHashMap<String, DataStructure> dt,File folder,String pathName) {
 			arraySecondaryData = new Vector<DescriptionData>();
 			//Catalog S
