@@ -111,7 +111,8 @@ public class StarRow {
 		if(stringDec1.indexOf(" ") == -1){
 			dec1 = Double.parseDouble(stringDec1);
 		} else {
-			dec1 = sexaToDecRa(stringDec1);
+			//dec1 = sexaToDecRa(stringDec1);
+			dec1 = sexaToDecDecl(stringDec1);
 		}
 		
 		String stringRa2 = this.getStar().get("RAJ2000").getValue();
@@ -125,7 +126,8 @@ public class StarRow {
 		if(stringDec2.indexOf(" ") == -1){
 			dec2 = Double.parseDouble(stringDec2);
 		} else {
-			dec2 = sexaToDecRa(stringDec2);
+			//dec2 = sexaToDecRa(stringDec2);
+			dec2 = sexaToDecDecl(stringDec2);
 		}
 		
 		return distance(ra1, dec1, ra2, dec2);
