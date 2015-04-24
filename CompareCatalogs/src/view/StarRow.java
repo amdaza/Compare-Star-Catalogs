@@ -116,7 +116,7 @@ public class StarRow {
 		}
 		
 		String stringRa2 = this.getStar().get("RAJ2000").getValue();
-		if(stringRa1.indexOf(" ") == -1){
+		if(stringRa2.indexOf(" ") == -1){
 			ra2 = Double.parseDouble(stringRa2);
 		} else {
 			ra2 = sexaToDecRa(stringRa2);
