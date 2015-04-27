@@ -1687,7 +1687,7 @@ public class Interface extends JFrame{
 				}
 
 				int i =0;
-				while(i < primaryData.getStars().size()){			
+				while(arraySecondaryData.size() > 0 && i < arraySecondaryData.get(i).getStars().size()){			
 
 					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
 					if (starsS.size()>1) {
