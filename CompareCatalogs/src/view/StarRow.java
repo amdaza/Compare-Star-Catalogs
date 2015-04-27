@@ -115,14 +115,14 @@ public class StarRow {
 			dec1 = sexaToDecDecl(stringDec1);
 		}
 		
-		String stringRa2 = this.getStar().get("RAJ2000").getValue();
+		String stringRa2 = star2.getStar().get("RAJ2000").getValue();
 		if(stringRa2.indexOf(" ") == -1){
 			ra2 = Double.parseDouble(stringRa2);
 		} else {
 			ra2 = sexaToDecRa(stringRa2);
 		}
 		
-		String stringDec2 = this.getStar().get("DEJ2000").getValue();
+		String stringDec2 = star2.getStar().get("DEJ2000").getValue();
 		if(stringDec2.indexOf(" ") == -1){
 			dec2 = Double.parseDouble(stringDec2);
 		} else {
