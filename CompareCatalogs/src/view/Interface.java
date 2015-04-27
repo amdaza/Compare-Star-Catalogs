@@ -1650,12 +1650,13 @@ public class Interface extends JFrame{
 
 			File folderWithoutError= new File(folderErrors + "/Without_Error");
 			folderWithoutError.mkdir();
-			
 
-			File folderEliminatedStars= new File(folderErrors + "/Eliminated_Stars");
-			folderEliminatedStars.mkdir();
 			
+			File folderEliminatedInOneToOne= new File(folderErrors + "/EliminatedInOneToOne");
+			//folderEliminatedStars.mkdir();
 			
+			File folderEliminatedInShowClosestCandidate= new File(folderErrors + "/EliminatedInShowClosest");
+
 
 			try {
 
@@ -1663,7 +1664,7 @@ public class Interface extends JFrame{
 				bw.write("In the directory " +folderErrors.getName().toUpperCase()+" have generated the following directories \n\n" );
 				bw.write(" - In the directory " +folderError.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.write(" - In the directory " +folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
-				bw.write(" - In the directory " +folderEliminatedStars.getName().toUpperCase()+" have generated the following files \n\n" );
+				//bw.write(" - In the directory " +folderEliminatedStars.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.close();
 
 			}catch (IOException e) {
@@ -1672,12 +1673,24 @@ public class Interface extends JFrame{
 
 			/*Star One to one: */
 
-			if(chckbxOneToOne.isSelected()==true){
+			if(chckbxOneToOne.isSelected()){
+				// Folder for eliminated stars
+				folderEliminatedInOneToOne.mkdir();
+
+				//Write in read.txt
+				try {
+					bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+					bw.write(" - In the directory " +folderEliminatedInOneToOne.getName().toUpperCase()+" have generated the following files \n\n" );
+					bw.close();
+				}catch (IOException e) {
+					e.printStackTrace();
+				}
+
 				int i =0;
 				while(i < primaryData.getStars().size()){			
 
 					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
-					if (starsS.size()!=1) {
+					if (starsS.size()>1) {
 						arraySecondaryData.remove(i);
 						primaryData.getStars().remove(i);
 						i--;
@@ -1690,7 +1703,18 @@ public class Interface extends JFrame{
 			}
 			/* Star ShowClosestCandidate: */
 
-			else if(chckbxShowClosestCandidate.isSelected()==true){
+			else if(chckbxShowClosestCandidate.isSelected()){
+				// Folder for eliminated stars
+				folderEliminatedInShowClosestCandidate.mkdir();
+
+				//Write in read.txt
+				try {
+					bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+					bw.write(" - In the directory " +folderEliminatedInShowClosestCandidate.getName().toUpperCase()+" have generated the following files \n\n" );
+					bw.close();
+				}catch (IOException e) {
+					e.printStackTrace();
+				}
 
 				double minDistance = Double.MAX_VALUE;
 				int closestStar = -1;
@@ -1749,7 +1773,7 @@ public class Interface extends JFrame{
 				String coordSAnt8 = "y";
 				String coordSAnt9 = "z";
 
-				
+
 				for(int i=0; i < arraySecondaryData.size();i++){
 					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
 					String coordS = "";
@@ -1787,7 +1811,6 @@ public class Interface extends JFrame{
 
 					String fileNameError = folderError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
 					String fileNameWithoutError = folderWithoutError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
-					String fileNameElimitaredStars = folderEliminatedStars+ "\\Stars_of_S_around_"+coordS+aux+".txt";
 
 					try {
 						//file for star with error
@@ -1802,12 +1825,24 @@ public class Interface extends JFrame{
 						outputWithoutError.write("This is a list of star rows around " + coordS+aux+ " which haven't error\n\n");
 						outputWithoutError.write(arraySecondaryData.get(i).getHeader());
 						outputWithoutError.flush();
-						//file for star elimitated star
-						File fileEliminatedStars = new File(fileNameElimitaredStars);
-						BufferedWriter outpuEliminatedStars = new BufferedWriter(new FileWriter(fileEliminatedStars));
-						outpuEliminatedStars.write("This is a list of star rows around " + coordS+aux+ " which have been removed\n\n");
-						outpuEliminatedStars.write(arraySecondaryData.get(i).getHeader());
-						outpuEliminatedStars.flush();
+						if(chckbxOneToOne.isSelected()){
+							//file for star elimitated stars
+							String fileNameElimitaredStars = folderEliminatedInOneToOne+ "\\Stars_of_S_around_"+coordS+aux+".txt";
+							File fileEliminatedStars = new File(fileNameElimitaredStars);
+							BufferedWriter outpuEliminatedStars = new BufferedWriter(new FileWriter(fileEliminatedStars));
+							outpuEliminatedStars.write("This is a list of star rows around " + coordS+aux+ " which have been removed in One to One filter\n\n");
+							outpuEliminatedStars.write(arraySecondaryData.get(i).getHeader());
+							outpuEliminatedStars.flush();
+						}
+						if(chckbxShowClosestCandidate.isSelected()){
+							//file for star elimitated stars
+							String fileNameElimitaredStars = folderEliminatedInShowClosestCandidate+ "\\Stars_of_S_around_"+coordS+aux+".txt";
+							File fileEliminatedStars = new File(fileNameElimitaredStars);
+							BufferedWriter outpuEliminatedStars = new BufferedWriter(new FileWriter(fileEliminatedStars));
+							outpuEliminatedStars.write("This is a list of star rows around " + coordS+aux+ " which have been removed in Show Closest Candidate filter\n\n");
+							outpuEliminatedStars.write(arraySecondaryData.get(i).getHeader());
+							outpuEliminatedStars.flush();
+						}
 
 						//loop stars
 						try{
@@ -1817,7 +1852,7 @@ public class Interface extends JFrame{
 								LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
 								listForParserS.putAll(listForParserP);
 								boolean errorStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter
-								
+
 								if (errorStar){
 									//file for star with error	
 									outputError.write(starsS.get(j).getLine() + "\n");	
@@ -1829,7 +1864,7 @@ public class Interface extends JFrame{
 									outputWithoutError.flush();
 								}								
 							}
-							
+
 
 						}catch (TypeException te){
 							te.printStackTrace();
@@ -1869,7 +1904,7 @@ public class Interface extends JFrame{
 		catch (IOException e) {
 			e.printStackTrace();
 		}*/
-			
+
 		}
 
 
