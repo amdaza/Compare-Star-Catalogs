@@ -1636,7 +1636,7 @@ public class Interface extends JFrame{
 		}
 
 
-		@SuppressWarnings("resource")
+		
 		private void startError(String path3) {
 
 			String read=path3+"\\read.txt";
@@ -1656,14 +1656,16 @@ public class Interface extends JFrame{
 			folderEliminatedStars.mkdir();
 			
 			
+					
+			
 
 			try {
 
 				bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
 				bw.write("In the directory " +folderErrors.getName().toUpperCase()+" have generated the following directories \n\n" );
 				bw.write(" - In the directory " +folderError.getName().toUpperCase()+" have generated the following files \n\n" );
-				bw.write(" - In the directory " +folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
-				bw.write(" - In the directory " +folderEliminatedStars.getName().toUpperCase()+" have generated the following files \n\n" );
+				//bw.write(" - In the directory " +folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
+				//bw.write(" - In the directory " +folderEliminatedStars.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.close();
 
 			}catch (IOException e) {
@@ -1673,21 +1675,37 @@ public class Interface extends JFrame{
 			/*Star One to one: */
 
 			if(chckbxOneToOne.isSelected()==true){
+				
 				int i =0;
 				while(i < primaryData.getStars().size()){			
 
 					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
+					
 					if (starsS.size()!=1) {
 						arraySecondaryData.remove(i);
 						primaryData.getStars().remove(i);
 						i--;
+						//linesNumber=arraySecondaryData.size();
 					}
 					i++;
-					//linesNumber=starsS.size();
-				}
-
+					/*try {/// no es que vaya aqui es para no tener que volver a escribirlo
+					
+						bw = new BufferedWriter(new FileWriter(read,true));
+						bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+								" ===> "+"Number of stars : "+linesNumber+" \n\n");
+						bw.flush();
+						bw.close();
+						//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+					}
+					catch (IOException e) {
+						e.printStackTrace();
+					}*/
+					}
 
 			}
+			
+			
+		
 			/* Star ShowClosestCandidate: */
 
 			else if(chckbxShowClosestCandidate.isSelected()==true){
@@ -1712,9 +1730,10 @@ public class Interface extends JFrame{
 						if(k != closestStar){
 							starsS.remove(k);
 							k--;
-							//linesNumber=(starsS.size());
+							
 						}
 						k++;
+						
 					}
 
 				}
@@ -1787,7 +1806,7 @@ public class Interface extends JFrame{
 
 					String fileNameError = folderError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
 					String fileNameWithoutError = folderWithoutError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
-					String fileNameElimitaredStars = folderEliminatedStars+ "\\Stars_of_S_around_"+coordS+aux+".txt";
+				
 
 					try {
 						//file for star with error
@@ -1802,13 +1821,8 @@ public class Interface extends JFrame{
 						outputWithoutError.write("This is a list of star rows around " + coordS+aux+ " which haven't error\n\n");
 						outputWithoutError.write(arraySecondaryData.get(i).getHeader());
 						outputWithoutError.flush();
-						//file for star elimitated star
-						File fileEliminatedStars = new File(fileNameElimitaredStars);
-						BufferedWriter outpuEliminatedStars = new BufferedWriter(new FileWriter(fileEliminatedStars));
-						outpuEliminatedStars.write("This is a list of star rows around " + coordS+aux+ " which have been removed\n\n");
-						outpuEliminatedStars.write(arraySecondaryData.get(i).getHeader());
-						outpuEliminatedStars.flush();
-
+						
+						
 						//loop stars
 						try{
 
@@ -1817,34 +1831,63 @@ public class Interface extends JFrame{
 								LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
 								listForParserS.putAll(listForParserP);
 								boolean errorStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter
-								
+								linesNumber=starsS.size();								
 								if (errorStar){
 									//file for star with error	
-									outputError.write(starsS.get(j).getLine() + "\n");	
+									outputError.write(starsS.get(j).getLine() + "\n");
+									try {/// no es que vaya aqui es para no tener que volver a escribirlo
+
+										bw = new BufferedWriter(new FileWriter(read,true));
+										bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+												" ===> "+"Number of stars : "+linesNumber+" \n\n");
+										bw.flush();
+										bw.close();
+										//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+									}
+									catch (IOException e) {
+										e.printStackTrace();
+									}
 									outputError.flush();
 								}
 								else {
 									//file for star WithoutError
 									outputWithoutError.write(starsS.get(j).getLine() + "\n");
+									try {/// no es que vaya aqui es para no tener que volver a escribirlo
+
+										bw = new BufferedWriter(new FileWriter(read,true));
+										bw.write(" - In the directory " +folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
+										bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+												" ===> "+"Number of stars : "+linesNumber+" \n\n");
+										bw.flush();
+										bw.close();
+										//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+									}
+									catch (IOException e) {
+										e.printStackTrace();
+									}
+									
 									outputWithoutError.flush();
-								}								
+								}	
 							}
 							
-
+							
 						}catch (TypeException te){
 							te.printStackTrace();
 
 						}
-
+						
 						outputError.flush();
 						outputError.close();
 						outputWithoutError.flush();
-						outputWithoutError.close();
+						outputWithoutError.close();						
+						//outpuEliminatedStars.flush();
+						//outpuEliminatedStars.close();
 
 					}catch (Exception e1) {
 
 						e1.printStackTrace();
 					}
+					
 					coordSAnt9 = coordSAnt8;
 					coordSAnt8 = coordSAnt7;
 					coordSAnt7 = coordSAnt6;
@@ -1854,21 +1897,14 @@ public class Interface extends JFrame{
 					coordSAnt3 = coordSAnt2;
 					coordSAnt2 = coordSAnt;
 					coordSAnt = coordS;
+					
+					
+					
 
 				}
+				
 			}
-			/*try {/// no es que vaya aqui es para no tener que volver a escribirlo
-
-			bw = new BufferedWriter(new FileWriter(read,true));
-			bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
-					" ===> "+"Number of stars : "+linesNumber+" \n\n");
-			bw.flush();
-			bw.close();
-			//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}*/
+			
 			
 		}
 
@@ -2114,12 +2150,14 @@ public class Interface extends JFrame{
 				}catch (IOException e) {
 					e.printStackTrace();
 				}
-
+				
 				for(int i=0; i < arraySecondaryData.size();i++){
+					
 					/*coordS = primaryData.getStars().get(primaryStarIndex).getStar().get("RAJ2000").getValue();
 			coordS += " ";
 			coordS += primaryData.getStars().get(primaryStarIndex).getStar().get("DEJ2000").getValue();*/
 					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
+					System.out.println(arraySecondaryData.get(i).getStars().size());
 					String coordS = "";
 					coordS = primaryData.getStars().get(i).getStar().get("RAJ2000").getValue();
 					coordS += " ";
@@ -2165,16 +2203,18 @@ public class Interface extends JFrame{
 						//loop stars
 						try{
 							boolean deleteSecondaryArray = true;	
-
+							System.out.println(starsS.size());
 							for(int j = 0; j < starsS.size(); j++){		
 								int con=0;
 								LinkedHashMap<Variable, Value> listForParserS = starsS.get(j).starRowToVariable("s"); //modify data for parser
+								System.out.println(listForParserS.size()+"antes de putAll");
 								LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
 								listForParserS.putAll(listForParserP);	
-
-								boolean saveStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter								
+								System.out.println(listForParserS.size()+"despues de putAll");
+								boolean saveStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter	
+								System.out.println(starsS.get(j).getLine() + "\n");
 								if (saveStar){
-
+									System.out.println("guardada");
 									output.write(starsS.get(j).getLine() + "\n");	
 									output.flush();
 									deleteSecondaryArray = false;
@@ -2182,7 +2222,8 @@ public class Interface extends JFrame{
 								}
 								else {//delete Star
 									starsS.remove(j);
-
+									j--;
+									System.out.println("borrada");
 								}
 
 

@@ -11,8 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-//import elements.ContenidoTS;
-//import elements.TablaSimbolo;
+
 
 public class Catalog{
 	/**
@@ -20,7 +19,6 @@ public class Catalog{
 	 * Performs search on any text or by coordinates (right ascension, declination, radius)
 	 *
 	 * @author Alicia Mireya Daza castillo
-	 * @author Jorge González López
 	 * @author Rosa Rodríguez Navarro
 	 * @since 1.1.1
 	 */
