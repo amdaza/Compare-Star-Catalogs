@@ -1543,6 +1543,7 @@ public class Interface extends JFrame{
 						textRadiusS.getText().equals("")){
 
 					JOptionPane.showMessageDialog(null,"Some fields are empty","",JOptionPane.ERROR_MESSAGE);
+					btnButtonFilter.setEnabled(false);
 				}
 				else{
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1618,6 +1619,7 @@ public class Interface extends JFrame{
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 					textAreaConsole.setForeground(Color.blue);
 					textAreaConsole.append("Files created correctly");
+					btnButtonFilter.setEnabled(true);
 				}
 
 
@@ -1625,7 +1627,6 @@ public class Interface extends JFrame{
 			/*Button Filter*/
 			else if (o == btnButtonFilter){
 				textAreaConsole.setText(null);
-				btnButtonFilter.setEnabled(false);
 				if(textAreaFilterP.getText().equals("") && textAreaFilterS.equals("") ||
 						textAreaFilterP.getText().equals("\n") && textAreaFilterS.equals("\n") ||
 						textAreaFilterP.getText().equals("\r") && textAreaFilterS.equals("\r")){
@@ -1635,12 +1636,17 @@ public class Interface extends JFrame{
 				else{
 					//log.info("Filter P: "+filterP);
 					//log.info("Filter S: "+filterS);
+					
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 					String path3=path.concat(path2);		
 					if(filterP(path3) && filterS(path3)){
+						btnButtonFilter.setEnabled(false);
+						textAreaConsole.setForeground(Color.blue);
+						textAreaConsole.setText(null);
 						textAreaConsole.append("Files created correctly");
 					}
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+					
 				}
 				/*Button Star*/
 			}
@@ -1654,7 +1660,7 @@ public class Interface extends JFrame{
 
 					String path3=path.concat(path2);
 					if(startError(path3)){	
-
+						textAreaConsole.setForeground(Color.blue);
 						textAreaConsole.append("Files created correctly");
 					}
 				}
@@ -1712,6 +1718,7 @@ public class Interface extends JFrame{
 					if (starsS.size()!=1) {						
 						//Set star to not valid
 						/*
+						
 						arraySecondaryData.remove(i);
 						primaryData.getStars().remove(i);
 						i--;
@@ -1984,7 +1991,9 @@ public class Interface extends JFrame{
 
 			asP.setRow(primaryData.variablesForParser("p"));
 			textAreaConsole.append("Analyzing filter for catalog P: \n ");
+			
 			correctSyntax=asP.parser();
+			
 			if(correctSyntax){
 				parserCatalogP = asP.getProgram();
 				primaryStars = primaryData.getStars();
@@ -2133,6 +2142,7 @@ public class Interface extends JFrame{
 					e1.printStackTrace();
 				}
 			}
+			
 			return correctSyntax;
 
 		}

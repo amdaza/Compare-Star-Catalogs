@@ -16,69 +16,32 @@ import view.Interface;
 
 public class SyntacticAnalizer {
 
-	/**
-	 * @uml.property  name="token_act"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
+	
 	private Token token_act;
-	/**
-	 * @uml.property  name="lexicalAnalyzer"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
+	
 	private Lexical lexicalAnalyzer;
-	/**
-	 * @uml.property  name="hayTipo"
-	 */
-	boolean hayTipo = false;
-	/**
-	 * @uml.property  name="hayComa"
-	 */
-	boolean hayComa = false;
-	/**
-	 * @uml.property  name="existError"
-	 */
-	boolean existError = false;
-	/**
-	 * @uml.property  name="transit"
-	 */
-	boolean transit = false;
-	//private JTextArea console= new JTextArea();
-	/**
-	 * @uml.property  name="console"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
-	private JTextArea console;
-	/**
-	 * @uml.property  name="errors"
-	 * @uml.associationEnd
-	 */
-	private Errors errors;
-	/**
-	 * @uml.property  name="statement"
-	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="parser.contents.Binding"
-	 */
-	private ArrayList<Statement> statement;
-	/**
-	 * @uml.property  name="row"
-	 * @uml.associationEnd  qualifier="var:parser.elements.Variable parser.elements.Value"
-	 */
-	private Vector<Variable> row;
+	
+	private boolean hasType = false;
+	
+	private boolean hasComma = false;
+	
+	private boolean existError = false;
+	
+	private boolean transit = false;
+	
+	private JTextArea console;	
 
-	/**
-	 * @uml.property  name="program"
-	 * @uml.associationEnd
-	 */
+	private Errors errors;
+	
+	private ArrayList<Statement> statement;
+	
+	private Vector<Variable> row;
+	
 	private Program program;
 
-	/**
-	 * @uml.property  name="e"
-	 * @uml.associationEnd
-	 */
+	
 	private Expression e;
-	/**
-	 * @uml.property  name="i"
-	 * @uml.associationEnd  readOnly="true"
-	 */
+	
 	@SuppressWarnings("unused")
 	private Interface i;
 
@@ -101,7 +64,7 @@ public class SyntacticAnalizer {
 		this.row.addAll(row);
 	}
 
-/* ESTO ES UNA PRUEBA*/
+
 
 	/**
 	 * constructor of the class
@@ -319,7 +282,7 @@ public class SyntacticAnalizer {
 		if (sentenceDeclared){
 			if (!checkAtribute(";")){//Sentence expects ;
 				if (!existError && true) {
-					setError(new Errors(4,tok,throwError,console));
+					setError(new Errors(4,tok,true,console));
 					existError=true;
 				}
 			}else{
@@ -1791,5 +1754,29 @@ public class SyntacticAnalizer {
 
 	public void setErrors(Errors errors) {
 		this.errors = errors;
+	}
+
+	public boolean isHasType() {
+		return hasType;
+	}
+
+	public void setHasType(boolean hasType) {
+		this.hasType = hasType;
+	}
+
+	public boolean isHasComma() {
+		return hasComma;
+	}
+
+	public void setHasComma(boolean hasComma) {
+		this.hasComma = hasComma;
+	}
+
+	public boolean isTransit() {
+		return transit;
+	}
+
+	public void setTransit(boolean transit) {
+		this.transit = transit;
 	}
 }

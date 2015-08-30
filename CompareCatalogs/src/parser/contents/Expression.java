@@ -18,9 +18,7 @@ public abstract class Expression  {
 	 *
 	 * - error
 	 */
-	/**
-	 * @uml.property  name="type"
-	 */
+
 	protected String type;
 	protected boolean error;
 
@@ -125,7 +123,7 @@ public abstract class Expression  {
 
 	/**
 	 * @return
-	 * @uml.property  name="type"
+	 * name="type"
 	 */
 	public String getType() {
 		return type;
@@ -133,7 +131,7 @@ public abstract class Expression  {
 
 	/**
 	 * @param type
-	 * @uml.property  name="type"
+	 * @name="type"
 	 */
 	public void setType(String type) {
 		this.type = type;
