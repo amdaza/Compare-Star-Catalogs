@@ -3,6 +3,7 @@
 bin/**
 *.class
 
+CompareCatalogs/bin/
 CompareCatalogs/bin/log4j.properties
 ^CompareCatalogs/WDS_
 ^CompareCatalogs/wds_
