@@ -5,5 +5,5 @@ bin/**
 
 CompareCatalogs/bin/
 CompareCatalogs/bin/log4j.properties
-^CompareCatalogs/WDS_
-^CompareCatalogs/wds_
+CompareCatalogs/WDS_*/
+CompareCatalogs/wds_*/
