@@ -2147,7 +2147,7 @@ public class Interface extends JFrame{
 
 		}
 
-		private Vector<StarRow> filterPResultS(File folderSecondaryFilteredP, int primaryStarIndex, String pathFilteredP){
+		private void filterPResultS(File folderSecondaryFilteredP, int primaryStarIndex, String pathFilteredP){
 
 			String filterS= textAreaFilterP.getText();
 			Vector<StarRow> primaryStars;
@@ -2184,7 +2184,6 @@ public class Interface extends JFrame{
 				e2.printStackTrace();
 			}
 
-			return starsS;
 
 
 		}
