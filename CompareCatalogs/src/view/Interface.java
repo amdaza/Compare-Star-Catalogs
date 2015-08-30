@@ -1687,22 +1687,12 @@ public class Interface extends JFrame{
 			
 			File folderEliminatedInShowClosestCandidate= new File(folderErrors + "/EliminatedInShowClosest");
 
-			/*File folderEliminatedStars= new File(folderErrors + "/Eliminated_Stars");
-			folderEliminatedStars.mkdir();*/
-
-
-			
-			/*File folderEliminatedStarsShowClosestCandidate= new File(folderErrors + "/Eliminated_Stars_Show_Closet_Candidate");
-			folderEliminatedStarsShowClosestCandidate.mkdir();*/
-
 
 			try {
 
 				bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
 				bw.write("In the directory " +folderErrors.getName().toUpperCase()+" have generated the following directories \n\n" );
 				bw.write(" - In the directory " +folderError.getName().toUpperCase()+" have generated the following files \n\n" );
-				//bw.write(" - In the directory " +folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
-				//bw.write(" - In the directory " +folderEliminatedStars.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.close();
 
 			}catch (IOException e) {
@@ -1848,7 +1838,6 @@ public class Interface extends JFrame{
 
 					String fileNameError = folderError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
 					String fileNameWithoutError = folderWithoutError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
-					//String fileNameEliminatedStars = folderEliminatedStars+"\\Stars_of_S_around_"+coordS+aux+".txt";
 
 					try {
 						//file for star with error
