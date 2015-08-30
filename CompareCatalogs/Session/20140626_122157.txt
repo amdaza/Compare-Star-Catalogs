@@ -1,0 +1,49 @@
+************  Catalog Selection  ************
+
+Catalog P: wds
+Coordinates of Catalog P: 00 02 10.18 +27 04 55.6
+Radius ("): 1000
+Catalog S: I\317
+Radius around each P star ("): 10000
+
+************  Filters  ************
+
+Catalog P:
+#s2d("21 28 19.85");
+
+
+
+
+
+
+
+
+
+
+
+
+
+Catalog S:
+
+
+
+
+
+
+
+
+
+
+
+
+
+************  Criterium for detecting errors  ************
+
+
+
+
+
+
+
+
+
