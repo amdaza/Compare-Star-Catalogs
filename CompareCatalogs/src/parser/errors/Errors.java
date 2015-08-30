@@ -22,7 +22,6 @@ public class Errors {
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private Token t;
-
 	/**
 	 * constructor of the class
 	 *

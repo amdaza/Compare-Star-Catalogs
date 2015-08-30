@@ -364,41 +364,42 @@ public class Interface extends JFrame{
 					//createTable();
 					String fichero =selection.getSelectedFile().getAbsolutePath();
 					Scanner sc = null;
+					String filAux= "";
 					try{
 
 
 						sc = new Scanner(new File(fichero));
-						if(sc.hasNextLine()){
+						if(sc.hasNextLine()){//************  Catalog Selection  ************
 							filFichero=sc.nextLine();
 						}
 						if(sc.hasNextLine()){
 							filFichero=sc.nextLine();
 						}
-						if(sc.hasNextLine()){
+						if(sc.hasNextLine()){//Catalog P: wds
 							filFichero=sc.nextLine();
 							String[] array = filFichero.split(":");
 							String s = array[1].substring(1);
 							textFieldP.setText(s);
 						}
-						if(sc.hasNextLine()){
+						if(sc.hasNextLine()){//Coordinates of Catalog P: 18 16 08.80 +03 18 50.5
 							filFichero=sc.nextLine();
 							String[] array = filFichero.split(":");
 							String s = array[1].substring(1);
 							textCoorP.setText(s);
 						}
-						if(sc.hasNextLine()){
+						if(sc.hasNextLine()){//Radius ("): 1000
 							filFichero=sc.nextLine();
 							String[] array = filFichero.split(":");
 							String s = array[1].substring(1);
 							textRadiusP.setText(s);
 						}
-						if(sc.hasNextLine()){
+						if(sc.hasNextLine()){//Catalog S: II\246
 							filFichero=sc.nextLine();
 							String[] array = filFichero.split(":");
 							String s = array[1].substring(1);
 							textFieldS.setText(s);
 						}
-						if(sc.hasNextLine()){
+						if(sc.hasNextLine()){//Radius around each P star ("): 1000
 							filFichero=sc.nextLine();
 							String[] array = filFichero.split(":");
 							String s = array[1].substring(1);
@@ -407,28 +408,54 @@ public class Interface extends JFrame{
 						if(sc.hasNextLine()){
 							filFichero=sc.nextLine();
 						}
-						if(sc.hasNextLine()){
+						if(sc.hasNextLine()){//************  Filters  ************
 							filFichero=sc.nextLine();
 						}
 						if(sc.hasNextLine()){
 							filFichero=sc.nextLine();
 						}
-						if(sc.hasNextLine()){
+						if(sc.hasNextLine()){//Catalog P:
 							filFichero=sc.nextLine();
 						}
 						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("Catalog S:"))){
-							textAreaFilterP.append(filFichero+"\n");
+							filAux += filFichero+"\n";
 						}
+						if(filAux.lastIndexOf("\n")>0){
+							filAux = filAux.substring(0, filAux.lastIndexOf("\n"));
+							if(filAux.lastIndexOf("\n")>0){
+								filAux = filAux.substring(0, filAux.lastIndexOf("\n"));
+							}
+						}
+						textAreaFilterP.append(filAux);
+						filAux = "";
+						
+						
 						while(sc.hasNextLine() && !((filFichero=sc.nextLine()).equals("************  Criterium for detecting errors  ************"))){
-							textAreaFilterS.append(filFichero+"\n");
+							filAux += filFichero+"\n";
 						}
+
+						if(filAux.lastIndexOf("\n")>0){
+							filAux = filAux.substring(0, filAux.lastIndexOf("\n"));
+							if(filAux.lastIndexOf("\n")>0){
+								filAux = filAux.substring(0, filAux.lastIndexOf("\n"));
+							}
+						}
+						textAreaFilterS.append(filAux);
+						filAux = "";
+						
 						if(sc.hasNextLine()){
 							filFichero=sc.nextLine();
 						}
 						while(sc.hasNextLine()){
-							filFichero=sc.nextLine();
-							textAreaCriteriumErrors.append(filFichero+"\n");
+							filAux += sc.nextLine()+"\n";
 						}
+						if(filAux.lastIndexOf("\n")>0){
+							filAux = filAux.substring(0, filAux.lastIndexOf("\n"));
+							if(filAux.lastIndexOf("\n")>0){
+								filAux = filAux.substring(0, filAux.lastIndexOf("\n"));
+							}
+						}
+						textAreaCriteriumErrors.append(filAux);
 
 					}
 					catch (FileNotFoundException ex){
@@ -1589,7 +1616,8 @@ public class Interface extends JFrame{
 					};
 
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-					textAreaConsole.setText("Files created correctly");
+					textAreaConsole.setForeground(Color.blue);
+					textAreaConsole.append("Files created correctly");
 				}
 
 
@@ -1608,14 +1636,16 @@ public class Interface extends JFrame{
 					//log.info("Filter P: "+filterP);
 					//log.info("Filter S: "+filterS);
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-					String path3=path.concat(path2);
-					filterP(path3);
-					filterS(path3);
+					String path3=path.concat(path2);		
+					if(filterP(path3) && filterS(path3)){
+						textAreaConsole.append("Files created correctly");
+					}
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-					textAreaConsole.setText("Files created correctly");
 				}
 				/*Button Star*/
-			}else if (o == btnStart){
+			}
+			else if (o == btnStart){
+				textAreaConsole.setText(null);
 				if(textAreaCriteriumErrors.getText().equals("")){
 
 					JOptionPane.showMessageDialog(null,"Some fields are empty","",JOptionPane.ERROR_MESSAGE);
@@ -1623,12 +1653,12 @@ public class Interface extends JFrame{
 				else{
 
 					String path3=path.concat(path2);
-					startError(path3);
-					//log.info("Criterium for selecting S rows: "+criteriumS);
-					//log.info("Criterium for detecting errors : "+criteriumError);
-					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-					textAreaConsole.setText("Files created correctly");
+					if(startError(path3)){	
+					
+						textAreaConsole.append("Files created correctly");
+					}
 				}
+					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 			}
 
 
@@ -1636,9 +1666,9 @@ public class Interface extends JFrame{
 		}
 
 
-		@SuppressWarnings("resource")
-		private void startError(String path3) {
 
+		private boolean startError(String path3) {
+			boolean correctSyntax = true;
 			String read=path3+"\\read.txt";
 			String pathErrors = path + path2 + "/Errors";
 
@@ -1663,7 +1693,7 @@ public class Interface extends JFrame{
 				bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
 				bw.write("In the directory " +folderErrors.getName().toUpperCase()+" have generated the following directories \n\n" );
 				bw.write(" - In the directory " +folderError.getName().toUpperCase()+" have generated the following files \n\n" );
-				bw.write(" - In the directory " +folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
+				//bw.write(" - In the directory " +folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
 				//bw.write(" - In the directory " +folderEliminatedStars.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.close();
 
@@ -1686,21 +1716,36 @@ public class Interface extends JFrame{
 					e.printStackTrace();
 				}
 
+
 				int i =0;
 				while(arraySecondaryData.size() > 0 && i < arraySecondaryData.get(i).getStars().size()){			
 
 					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
-					if (starsS.size()>1) {
+					if(starsS.size()!= 1){
 						arraySecondaryData.remove(i);
 						primaryData.getStars().remove(i);
 						i--;
+						//linesNumber=arraySecondaryData.size();
 					}
 					i++;
-					//linesNumber=starsS.size();
+					/*try {/// no es que vaya aqui es para no tener que volver a escribirlo
+
+						bw = new BufferedWriter(new FileWriter(read,true));
+						bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+								" ===> "+"Number of stars : "+linesNumber+" \n\n");
+						bw.flush();
+						bw.close();
+						//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+					}
+					catch (IOException e) {
+						e.printStackTrace();
+					}*/
 				}
 
-
 			}
+
+
+
 			/* Star ShowClosestCandidate: */
 
 			else if(chckbxShowClosestCandidate.isSelected()){
@@ -1736,18 +1781,15 @@ public class Interface extends JFrame{
 						if(k != closestStar){
 							starsS.remove(k);
 							k--;
-							//linesNumber=(starsS.size());
+
 						}
 						k++;
+
 					}
 
 				}
 
 			}
-
-
-
-
 			/*Star criterium*/
 			String criteriumError= textAreaCriteriumErrors.getText();
 			Lexical lp= new Lexical(criteriumError);
@@ -1760,7 +1802,8 @@ public class Interface extends JFrame{
 
 
 				asE.addToRow(arraySecondaryData.get(0).variablesForParser("s"));
-				asE.parser();
+				correctSyntax=asE.parser();
+				if(correctSyntax){
 				parserCatalogS = asE.getProgram();
 
 				String coordSAnt = "x";
@@ -1812,6 +1855,7 @@ public class Interface extends JFrame{
 					String fileNameError = folderError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
 					String fileNameWithoutError = folderWithoutError+ "\\Stars_of_S_around_"+coordS+aux+".txt";
 
+
 					try {
 						//file for star with error
 						File fileError = new File(fileNameError);
@@ -1844,6 +1888,7 @@ public class Interface extends JFrame{
 							outpuEliminatedStars.flush();
 						}
 
+
 						//loop stars
 						try{
 
@@ -1852,17 +1897,43 @@ public class Interface extends JFrame{
 								LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
 								listForParserS.putAll(listForParserP);
 								boolean errorStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter
-
+								linesNumber=starsS.size();								
 								if (errorStar){
 									//file for star with error	
-									outputError.write(starsS.get(j).getLine() + "\n");	
+									outputError.write(starsS.get(j).getLine() + "\n");
+									try {/// no es que vaya aqui es para no tener que volver a escribirlo
+
+										bw = new BufferedWriter(new FileWriter(read,true));
+										bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+												" ===> "+"Number of stars : "+linesNumber+" \n\n");
+										bw.flush();
+										bw.close();
+										//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+									}
+									catch (IOException e) {
+										e.printStackTrace();
+									}
 									outputError.flush();
 								}
 								else {
 									//file for star WithoutError
 									outputWithoutError.write(starsS.get(j).getLine() + "\n");
+									try {/// no es que vaya aqui es para no tener que volver a escribirlo
+
+										bw = new BufferedWriter(new FileWriter(read,true));
+										bw.write(" - In the directory " +folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
+										bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+												" ===> "+"Number of stars : "+linesNumber+" \n\n");
+										bw.flush();
+										bw.close();
+										//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+									}
+									catch (IOException e) {
+										e.printStackTrace();
+									}
+
 									outputWithoutError.flush();
-								}								
+								}	
 							}
 
 
@@ -1874,12 +1945,15 @@ public class Interface extends JFrame{
 						outputError.flush();
 						outputError.close();
 						outputWithoutError.flush();
-						outputWithoutError.close();
+						outputWithoutError.close();						
+						//outpuEliminatedStars.flush();
+						//outpuEliminatedStars.close();
 
 					}catch (Exception e1) {
 
 						e1.printStackTrace();
 					}
+
 					coordSAnt9 = coordSAnt8;
 					coordSAnt8 = coordSAnt7;
 					coordSAnt7 = coordSAnt6;
@@ -1890,65 +1964,61 @@ public class Interface extends JFrame{
 					coordSAnt2 = coordSAnt;
 					coordSAnt = coordS;
 
+
+
+
 				}
 			}
-			/*try {/// no es que vaya aqui es para no tener que volver a escribirlo
+			}
 
-			bw = new BufferedWriter(new FileWriter(read,true));
-			bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
-					" ===> "+"Number of stars : "+linesNumber+" \n\n");
-			bw.flush();
-			bw.close();
-			//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}*/
-
+			return correctSyntax;
 		}
 
 
-		private void filterP(String path3){
-
+		private boolean filterP(String path3){
+			boolean correctSyntax = true;
 			String filterP= textAreaFilterP.getText();
 			Vector<StarRow> primaryStars;
 			Lexical lp= new Lexical(filterP);
+
 			SyntacticAnalizer asP = new SyntacticAnalizer(lp,textAreaConsole);
 
 			asP.setRow(primaryData.variablesForParser("p"));
-			asP.parser();
-			parserCatalogP = asP.getProgram();
-			primaryStars = primaryData.getStars();
+			textAreaConsole.append("Analyzing filter for catalog P: \n ");
+			correctSyntax=asP.parser();
+			if(correctSyntax){
+				parserCatalogP = asP.getProgram();
+				primaryStars = primaryData.getStars();
 
-			//Filter Catalog P
-			String pathFilteredP = path + path2 + "/Filtered_CatalogP";
-			//create directory for filtered P
-			File folderFilteredP= new File(pathFilteredP);
-			folderFilteredP.mkdir();
-
-
-
-			//Create directory for secondary stars around filtered P
-			File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");
-			folderSecondaryFilteredP.mkdir();
-
-			String read=path3+"\\read.txt";
+				//Filter Catalog P
+				String pathFilteredP = path + path2 + "/Filtered_CatalogP";
+				//create directory for filtered P
+				File folderFilteredP= new File(pathFilteredP);
+				folderFilteredP.mkdir();
 
 
-			try {
-				File file = new File(pathFilteredP + "/Filtered_Primary.txt");
-				BufferedWriter output = new BufferedWriter(new FileWriter(file));
-				output.write("This is a list of star rows which passed catalog P filter\n\n");
-				output.write(primaryData.getHeader());					
-				output.flush();
-				//loop stars
-				//bool array for delete after loop
-				boolean[] deleteStars = new boolean[primaryStars.size()];
-				for(int i = 0; i < primaryStars.size(); i++){
-					deleteStars[i] = false;
 
-				}
-				/*try {
+				//Create directory for secondary stars around filtered P
+				File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");
+				folderSecondaryFilteredP.mkdir();
+
+				String read=path3+"\\read.txt";
+
+
+				try {
+					File file = new File(pathFilteredP + "/Filtered_Primary.txt");
+					BufferedWriter output = new BufferedWriter(new FileWriter(file));
+					output.write("This is a list of star rows which passed catalog P filter\n\n");
+					output.write(primaryData.getHeader());					
+					output.flush();
+					//loop stars
+					//bool array for delete after loop
+					boolean[] deleteStars = new boolean[primaryStars.size()];
+					for(int i = 0; i < primaryStars.size(); i++){
+						deleteStars[i] = false;
+
+					}
+					/*try {
 
 					bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
 					bw.write("In the directory " +folderFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
@@ -1973,72 +2043,72 @@ public class Interface extends JFrame{
 					e.printStackTrace();
 				}*/
 
-				try{
+					try{
 
-					for(int i = 0; i < primaryStars.size(); i++){
-						//de prueba
-						String coordS = "";
-						coordS = primaryData.getStars().get(i).getStar().get("RAJ2000").getValue();
-						coordS += " ";
-						coordS += primaryData.getStars().get(i).getStar().get("DEJ2000").getValue();
-						//fin de prueba
-						LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
-						boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
-						if (saveStar){
-							output.write(primaryStars.get(i).getLine() + "\n");
-							filterPResultS(folderSecondaryFilteredP, i,pathFilteredP);								
-							output.flush();
-						} else {
-							deleteStars[i]= true;
+						for(int i = 0; i < primaryStars.size(); i++){
+							//de prueba
+							String coordS = "";
+							coordS = primaryData.getStars().get(i).getStar().get("RAJ2000").getValue();
+							coordS += " ";
+							coordS += primaryData.getStars().get(i).getStar().get("DEJ2000").getValue();
+							//fin de prueba
+							LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
+							boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
+							if (saveStar){
+								output.write(primaryStars.get(i).getLine() + "\n");
+								filterPResultS(folderSecondaryFilteredP, i,pathFilteredP);								
+								output.flush();
+							} else {
+								deleteStars[i]= true;
+							}
+
 						}
 
-					}
+						//Delete stars
+						for(int i = primaryStars.size()-1; i >= 0 ; i--){
+							if(deleteStars[i]){
+								primaryStars.remove(i);
+								arraySecondaryData.remove(i);
+							}
 
-					//Delete stars
-					for(int i = primaryStars.size()-1; i >= 0 ; i--){
-						if(deleteStars[i]){
-							primaryStars.remove(i);
-							arraySecondaryData.remove(i);
+						}
+						try {
+
+							bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+							bw.write("In the directory " +folderFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
+							bw.close();
+
+						}catch (IOException e) {
+							e.printStackTrace();
+						}
+						linesNumber = primaryStars.size();
+
+						try {
+
+
+							bw = new BufferedWriter(new FileWriter(read,true));
+							bw.write(" - File Created -> "+file.getName()+
+									" ===> "+"Number of stars : "+linesNumber+" \n\n");
+							bw.flush();
+							bw.close();
+							//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}			
+						} 
+						catch (IOException e) {						
+							e.printStackTrace();
 						}
 
-					}
-					try {
+						try {
 
-						bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
-						bw.write("In the directory " +folderFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
-						bw.close();
+							bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+							bw.write("In the directory " +folderFilteredP.getName().toUpperCase()+"/"+folderSecondaryFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
 
-					}catch (IOException e) {
-						e.printStackTrace();
-					}
-					linesNumber = primaryStars.size();
+							bw.close();
 
-					try {
+						}catch (IOException e) {
+							e.printStackTrace();
+						}
 
-
-						bw = new BufferedWriter(new FileWriter(read,true));
-						bw.write(" - File Created -> "+file.getName()+
-								" ===> "+"Number of stars : "+linesNumber+" \n\n");
-						bw.flush();
-						bw.close();
-						//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}			
-					} 
-					catch (IOException e) {						
-						e.printStackTrace();
-					}
-
-					try {
-
-						bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
-						bw.write("In the directory " +folderFilteredP.getName().toUpperCase()+"/"+folderSecondaryFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
-
-						bw.close();
-
-					}catch (IOException e) {
-						e.printStackTrace();
-					}
-
-					/*try {
+						/*try {
 						bw = new BufferedWriter(new FileWriter(read,true));
 						bw.write(" - File Created -> "+i + "_"
 								+ "Stars_of_S_around_"+coordS + ".txt"+
@@ -2053,18 +2123,20 @@ public class Interface extends JFrame{
 					}*/
 
 
-					//System.out.println(linesNumber2);
+						//System.out.println(linesNumber2);
 
-				}catch (TypeException te){
-					te.printStackTrace();
+					}catch (TypeException te){
+						te.printStackTrace();
+					}
+					output.flush();
+					output.close();
+
+					//asS.program(false);
+				} catch (IOException e1) {
+					e1.printStackTrace();
 				}
-				output.flush();
-				output.close();
-
-				//asS.program(false);
-			} catch (IOException e1) {
-				e1.printStackTrace();
 			}
+			return correctSyntax;
 
 		}
 
@@ -2106,8 +2178,8 @@ public class Interface extends JFrame{
 
 		}
 
-		private void filterS(String path3){
-
+		private boolean filterS(String path3){
+			boolean correctSyntax=true;
 			String filterS= textAreaFilterS.getText();
 			Lexical lp= new Lexical(filterS);
 			SyntacticAnalizer asS = new SyntacticAnalizer(lp,textAreaConsole);
@@ -2117,157 +2189,158 @@ public class Interface extends JFrame{
 			}
 			else{
 				asS.addToRow(arraySecondaryData.get(0).variablesForParser("s"));
-				asS.parser();
-				parserCatalogS = asS.getProgram();
+				textAreaConsole.append("Analyzing filter for catalog S:\n");
+				correctSyntax =asS.parser();
+				if(correctSyntax){
+					parserCatalogS = asS.getProgram();
 
-				/*boolean[] deleteStars = new boolean[arraySecondaryData.size()];
+					/*boolean[] deleteStars = new boolean[arraySecondaryData.size()];
 			for(int i = 0; i < arraySecondaryData.size(); i++){
 				deleteStars[i] = false;
 			}*/
-				String pathFilteredS = path + path2 + "/Filtered_CatalogS";
-				File folderFilteredS= new File(pathFilteredS);
-				folderFilteredS.mkdir();
+					String pathFilteredS = path + path2 + "/Filtered_CatalogS";
+					File folderFilteredS= new File(pathFilteredS);
+					folderFilteredS.mkdir();
 
 
-				String coordSAnt = "x";
-				String coordSAnt2 = "y";
-				String coordSAnt3 = "z";
-				String coordSAnt4 = "x";
-				String coordSAnt5 = "y";
-				String coordSAnt6 = "z";
-				String coordSAnt7 = "x";
-				String coordSAnt8 = "y";
-				String coordSAnt9 = "z";
+					String coordSAnt = "x";
+					String coordSAnt2 = "y";
+					String coordSAnt3 = "z";
+					String coordSAnt4 = "x";
+					String coordSAnt5 = "y";
+					String coordSAnt6 = "z";
+					String coordSAnt7 = "x";
+					String coordSAnt8 = "y";
+					String coordSAnt9 = "z";
 
-				String read=path3+"\\read.txt";
-				try {
+					String read=path3+"\\read.txt";
+					try {
 
-					bw = new BufferedWriter(new FileWriter(read,true));
-					bw.write("In the directory " +folderFilteredS.getName().toUpperCase()+" have generated the following files \n\n" );
-					bw.close();
+						bw = new BufferedWriter(new FileWriter(read,true));
+						bw.write("In the directory " +folderFilteredS.getName().toUpperCase()+" have generated the following files \n\n" );
+						bw.close();
 
-				}catch (IOException e) {
-					e.printStackTrace();
-				}
+					}catch (IOException e) {
+						e.printStackTrace();
+					}
 
-				for(int i=0; i < arraySecondaryData.size();i++){
-					/*coordS = primaryData.getStars().get(primaryStarIndex).getStar().get("RAJ2000").getValue();
+					for(int i=0; i < arraySecondaryData.size();i++){
+
+						/*coordS = primaryData.getStars().get(primaryStarIndex).getStar().get("RAJ2000").getValue();
 			coordS += " ";
 			coordS += primaryData.getStars().get(primaryStarIndex).getStar().get("DEJ2000").getValue();*/
-					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
-					String coordS = "";
-					coordS = primaryData.getStars().get(i).getStar().get("RAJ2000").getValue();
-					coordS += " ";
-					coordS += primaryData.getStars().get(i).getStar().get("DEJ2000").getValue();
-					String aux = "";
-					if(coordS.equals(coordSAnt)){
-						if (coordSAnt.equals(coordSAnt2)){
-							if (coordSAnt2.equals(coordSAnt3)){
-								if (coordSAnt3.equals(coordSAnt4)){
-									if (coordSAnt4.equals(coordSAnt5)){
-										if (coordSAnt5.equals(coordSAnt6)){
-											if (coordSAnt6.equals(coordSAnt7)){
-												if (coordSAnt7.equals(coordSAnt8)){
-													if (coordSAnt8.equals(coordSAnt9)){
-														aux = "_IX";
+						Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
+						String coordS = "";
+						coordS = primaryData.getStars().get(i).getStar().get("RAJ2000").getValue();
+						coordS += " ";
+						coordS += primaryData.getStars().get(i).getStar().get("DEJ2000").getValue();
+						String aux = "";
+						if(coordS.equals(coordSAnt)){
+							if (coordSAnt.equals(coordSAnt2)){
+								if (coordSAnt2.equals(coordSAnt3)){
+									if (coordSAnt3.equals(coordSAnt4)){
+										if (coordSAnt4.equals(coordSAnt5)){
+											if (coordSAnt5.equals(coordSAnt6)){
+												if (coordSAnt6.equals(coordSAnt7)){
+													if (coordSAnt7.equals(coordSAnt8)){
+														if (coordSAnt8.equals(coordSAnt9)){
+															aux = "_IX";
+														}
+														else aux = "_VIII";
 													}
-													else aux = "_VIII";
+													else aux = "_VII";
 												}
-												else aux = "_VII";
+												else aux = "_VI";
 											}
-											else aux = "_VI";
+											else aux = "_V";
 										}
-										else aux = "_V";
+										else aux = "_IV";
 									}
-									else aux = "_IV";
+									else aux = "_III";
 								}
-								else aux = "_III";
+								else aux = "_II";
 							}
-							else aux = "_II";
+							else aux = "_I";
 						}
-						else aux = "_I";
-					}
 
-					String fileName = folderFilteredS+ "\\Stars_of_S_around_"+coordS+aux+".txt";
+						String fileName = folderFilteredS+ "\\Stars_of_S_around_"+coordS+aux+".txt";
 
-					//DescriptionData secondaryData = new DescriptionData(fileName);
-					try {
-						File file = new File(fileName);
-						BufferedWriter output = new BufferedWriter(new FileWriter(file));
-						output.write("This is a list of star rows around " + coordS+aux+ " which passed catalog S filter\n\n");
-						output.write(arraySecondaryData.get(i).getHeader());						
-						output.flush();
-						//loop stars
-						try{
-							boolean deleteSecondaryArray = true;	
+						//DescriptionData secondaryData = new DescriptionData(fileName);
+						try {
+							File file = new File(fileName);
+							BufferedWriter output = new BufferedWriter(new FileWriter(file));
+							output.write("This is a list of star rows around " + coordS+aux+ " which passed catalog S filter\n\n");
+							output.write(arraySecondaryData.get(i).getHeader());						
+							output.flush();
+							//loop stars
+							try{
+								boolean deleteSecondaryArray = true;							
+								for(int j = 0; j < starsS.size(); j++){		
+									int con=0;
+									LinkedHashMap<Variable, Value> listForParserS = starsS.get(j).starRowToVariable("s"); //modify data for parser								
+									LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
+									listForParserS.putAll(listForParserP);	
+									boolean saveStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter	
 
-							for(int j = 0; j < starsS.size(); j++){		
-								int con=0;
-								LinkedHashMap<Variable, Value> listForParserS = starsS.get(j).starRowToVariable("s"); //modify data for parser
-								LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
-								listForParserS.putAll(listForParserP);	
+									if (saveStar){
+										output.write(starsS.get(j).getLine() + "\n");	
+										output.flush();
+										deleteSecondaryArray = false;
 
-								boolean saveStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter								
-								if (saveStar){
+									}
+									else {//delete Star
+										starsS.remove(j);
+										j--;
+									}
 
-									output.write(starsS.get(j).getLine() + "\n");	
-									output.flush();
-									deleteSecondaryArray = false;
 
 								}
-								else {//delete Star
-									starsS.remove(j);
-
+								if(deleteSecondaryArray){
+									arraySecondaryData.remove(i);								
 								}
 
+								try {
+
+
+									bw = new BufferedWriter(new FileWriter(read,true));
+
+									bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+											" ===> "+"Number of stars : "/*+linesNumber*/+" \n\n");
+									bw.flush();
+									bw.close();
+									//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
+								}
+								catch (IOException e) {
+									e.printStackTrace();
+								}	
+
+							}catch (TypeException te){
+								te.printStackTrace();
 
 							}
-							if(deleteSecondaryArray){
-								arraySecondaryData.remove(i);								
-							}
-
-							try {
+							output.flush();
+							output.close();
 
 
-								bw = new BufferedWriter(new FileWriter(read,true));
+						}catch (Exception e1) {
 
-								bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
-										" ===> "+"Number of stars : "/*+linesNumber*/+" \n\n");
-								bw.flush();
-								bw.close();
-								//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}
-							}
-							catch (IOException e) {
-								e.printStackTrace();
-							}	
-
-						}catch (TypeException te){
-							te.printStackTrace();
-
+							e1.printStackTrace();
 						}
-						output.flush();
-						output.close();
+						coordSAnt9 = coordSAnt8;
+						coordSAnt8 = coordSAnt7;
+						coordSAnt7 = coordSAnt6;
+						coordSAnt6 = coordSAnt5;
+						coordSAnt5 = coordSAnt4;
+						coordSAnt4 = coordSAnt3;
+						coordSAnt3 = coordSAnt2;
+						coordSAnt2 = coordSAnt;
+						coordSAnt = coordS;
 
-
-					}catch (Exception e1) {
-
-						e1.printStackTrace();
 					}
-					coordSAnt9 = coordSAnt8;
-					coordSAnt8 = coordSAnt7;
-					coordSAnt7 = coordSAnt6;
-					coordSAnt6 = coordSAnt5;
-					coordSAnt5 = coordSAnt4;
-					coordSAnt4 = coordSAnt3;
-					coordSAnt3 = coordSAnt2;
-					coordSAnt2 = coordSAnt;
-					coordSAnt = coordS;
 
 				}
-
-
 			}
-
+			return correctSyntax;
 		}
 
 		private void saveSData(File selectedFile, LinkedHashMap<String, DataStructure> dt,File folder,String pathName) {

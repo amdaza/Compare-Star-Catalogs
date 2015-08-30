@@ -330,14 +330,15 @@ public class SyntacticAnalizer {
 
 	}
 
-	public void parser(){
+	public boolean parser(){
 		program(false);
 		program = new Program(statement);
 		if (!existError) {
-			console.setForeground(Color.blue);
+			//console.setForeground(Color.blue);
 			console.append("Correct lexical and syntactic analysis.\n");
-
 		}
+		
+		return !existError;
 	}
 
 	/**
@@ -1515,7 +1516,7 @@ public class SyntacticAnalizer {
 					if(!row.contains(v)){
 						correct = false;
 						if(!existError){
-							setError(new Errors(48,tok,throwError,console));
+							setError(new Errors(48,tok,throwError,console));						
 							existError =true;
 						}
 					}
