@@ -4,20 +4,5 @@ bin/**
 *.class
 
 CompareCatalogs/bin/log4j.properties
-CompareCatalogs/Session/
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Secondary/Stars_of_S_around_00 00 32.59 +59 02 39.6.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Secondary/Stars_of_S_around_00 00 32.59 +59 02 39.6_I.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Secondary/Stars_of_S_around_00 00 51.32 +59 15 18.8.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Secondary/Stars_of_S_around_00 01 44.48 +59 05 27.1.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Secondary/Stars_of_S_around_00 01 44.48 +59 05 27.1_I.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Secondary/Stars_of_S_around_00 03 02.62 +59 07 59.8.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/primary.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/read.txt
-CompareCatalogs/bin/Dependencies.ucd
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Filtered_CatalogP/Filtered_Primary.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Filtered_CatalogP/Secondary/0_Stars_of_S_around_00 01 44.48 +59 05 27.1.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Filtered_CatalogP/Secondary/1_Stars_of_S_around_00 03 02.62 +59 07 59.8.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Filtered_CatalogP/Secondary/3_Stars_of_S_around_00 01 44.48 +59 05 27.1.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Filtered_CatalogP/Secondary/5_Stars_of_S_around_00 03 02.62 +59 07 59.8.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Filtered_CatalogS/Stars_of_S_around_00 01 44.48 +59 05 27.1.txt
-CompareCatalogs/WDS_00 01 44.48 +59 05 27.1/Filtered_CatalogS/Stars_of_S_around_00 03 02.62 +59 07 59.8.txt
+^CompareCatalogs/WDS_
+^CompareCatalogs/wds_
