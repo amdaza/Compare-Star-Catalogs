@@ -1682,9 +1682,7 @@ public class Interface extends JFrame{
 			folderWithoutError.mkdir();
 
 			
-			File folderEliminatedInOneToOne= new File(folderErrors + "/EliminatedInOneToOne");
-			//folderEliminatedStars.mkdir();
-			
+			File folderEliminatedInOneToOne= new File(folderErrors + "/EliminatedInOneToOne");			
 			File folderEliminatedInShowClosestCandidate= new File(folderErrors + "/EliminatedInShowClosest");
 
 
@@ -1704,10 +1702,6 @@ public class Interface extends JFrame{
 			if(chckbxOneToOne.isSelected()){
 				// Folder for eliminated stars
 				folderEliminatedInOneToOne.mkdir();
-
-
-				File folderEliminatedStarsOneToOne= new File(folderErrors + "/Eliminated_Stars_One_To_One");
-				folderEliminatedStarsOneToOne.mkdir();
 				
 				int i =0;
 				while(arraySecondaryData.size() > 0 && i < arraySecondaryData.get(i).getStars().size()){			
@@ -1732,9 +1726,7 @@ public class Interface extends JFrame{
 			else if(chckbxShowClosestCandidate.isSelected()){
 				// Folder for eliminated stars
 				folderEliminatedInShowClosestCandidate.mkdir();
-				
-				File folderEliminatedStarsShowClosestCandidate= new File(folderErrors + "/Eliminated_Stars_Show_Closet_Candidate");
-				folderEliminatedStarsShowClosestCandidate.mkdir();
+							
 				
 				//Write in read.txt
 				try {
@@ -1858,8 +1850,10 @@ public class Interface extends JFrame{
 							File fileEliminatedStars = new File(fileNameElimitaredStars);
 							BufferedWriter outpuEliminatedStars = new BufferedWriter(new FileWriter(fileEliminatedStars));
 							outpuEliminatedStars.write("This is a list of star rows around " + coordS+aux+ " which have been removed in One to One filter\n\n");
-							outpuEliminatedStars.write(arraySecondaryData.get(i).getHeader());
+							outpuEliminatedStars.write(arraySecondaryData.get(i).getHeader());							
 							outpuEliminatedStars.flush();
+							outpuEliminatedStars.close();
+							
 						}
 						if(chckbxShowClosestCandidate.isSelected()){
 							//file for star elimitated stars
@@ -1869,6 +1863,7 @@ public class Interface extends JFrame{
 							outpuEliminatedStars.write("This is a list of star rows around " + coordS+aux+ " which have been removed in Show Closest Candidate filter\n\n");
 							outpuEliminatedStars.write(arraySecondaryData.get(i).getHeader());
 							outpuEliminatedStars.flush();
+							outpuEliminatedStars.close();
 						}
 
 						//loop stars
