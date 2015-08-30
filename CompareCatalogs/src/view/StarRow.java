@@ -7,16 +7,26 @@ import parser.elements.Value;
 import parser.elements.Variable;
 
 public class StarRow {
-	/**
-	 * @uml.property  name="star"
-	 * @uml.associationEnd  qualifier="key:java.lang.String view.String_Type"
-	 */
+
 	private LinkedHashMap<String, String_Type> star;
 	private String line;
+	private boolean validStar = true;
 
 	StarRow(String line){
 		star = new LinkedHashMap<String, String_Type>();
 		this.line = line;
+	}
+
+	public boolean isValidStar() {
+		return validStar;
+	}
+
+	public void setValidStar(boolean validStar) {
+		this.validStar = validStar;
+	}
+	
+	public void notValidStar(){
+		this.validStar = false;
 	}
 
 	public String getLine() {

@@ -11,39 +11,12 @@ import parser.elements.Variable;
 
 public class DescriptionData{
 
-	/*
-	Modificado el constructor
-	*/
-
-	/**
-	 * @uml.property  name="dt"
-	 */
 	private LinkedHashMap<String, DataStructure> catalogStructure;
-	/**
-	 * @uml.property  name="path"
-	 */
 	private String path;
-	/**
-	 * @uml.property  name="init"
-	 */
 	private final String init = "#---Details of Columns:";
-	//private final String end = "#END#";
-	/**
-	 * @uml.property  name="stars"
-	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="view.StarRow"
-	 */
 	private Vector<StarRow> stars;
-	/**
-	 * @uml.property  name="empty"
-	 */
 	private boolean empty;
-	/**
-	 * @uml.property  name="contador"
-	 */
-	private int contador=0;
-	/**
-	 * @uml.property  name="header"
-	 */
+	private int contador = 0;
 	private String header;
 
 	public DescriptionData(){
