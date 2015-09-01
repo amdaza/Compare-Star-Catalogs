@@ -46,7 +46,7 @@ public class Errors {
 		else if (id==107)
 			this.s="coss needs an numeric expression";
 		else if (id==108)
-			this.s="tans needs an sttring expression. Example '17 25 86.5'";
+			this.s="tans needs an string expression. Example '17 25 86.5'";
 		else if (id==109)
 			this.s="tand needs an numeric expression";
 		else if (id==110)

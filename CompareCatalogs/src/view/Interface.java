@@ -1636,7 +1636,7 @@ public class Interface extends JFrame{
 				else{
 					//log.info("Filter P: "+filterP);
 					//log.info("Filter S: "+filterS);
-					
+
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 					String path3=path.concat(path2);		
 					if(filterP(path3) && filterS(path3)){
@@ -1646,7 +1646,7 @@ public class Interface extends JFrame{
 						textAreaConsole.append("Files created correctly");
 					}
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-					
+
 				}
 				/*Button Star*/
 			}
@@ -1688,15 +1688,15 @@ public class Interface extends JFrame{
 			folderWithoutError.mkdir();
 
 
-			File folderEliminatedInOneToOne= new File(folderErrors + "/EliminatedInOneToOne");			
-			File folderEliminatedInShowClosestCandidate= new File(folderErrors + "/EliminatedInShowClosest");
+			File folderEliminatedInOneToOne= new File(folderErrors + "/Eliminated_In_One_To_One");			
+			File folderEliminatedInShowClosestCandidate= new File(folderErrors + "/Eliminated_In_ShowClosest");
 
 
 			try {
 
 				bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
 				bw.write("In the directory " +folderErrors.getName().toUpperCase()+" have generated the following directories \n\n" );
-				bw.write(" - In the directory " +folderError.getName().toUpperCase()+" have generated the following files \n\n" );
+				//bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderError.getName().toUpperCase()+" have generated the following files \n\n" );
 				bw.close();
 
 			}catch (IOException e) {
@@ -1710,15 +1710,22 @@ public class Interface extends JFrame{
 			if(chckbxOneToOne.isSelected()){
 				// Folder for eliminated stars
 				folderEliminatedInOneToOne.mkdir();
+				try {
+					bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+					bw.write(" 	- In the directory " +folderErrors.getName().toUpperCase()+"/"+folderEliminatedInOneToOne.getName().toUpperCase()+" have generated the following files \n\n" );
+					bw.close();
+				}catch (IOException e) {
+					e.printStackTrace();
+				}
 
 				int i =0;
+				try{
 				while(arraySecondaryData.size() > 0 && i < arraySecondaryData.get(i).getStars().size()){			
-
 					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
 					if (starsS.size()!=1) {						
 						//Set star to not valid
 						/*
-						
+
 						arraySecondaryData.remove(i);
 						primaryData.getStars().remove(i);
 						i--;
@@ -1729,6 +1736,10 @@ public class Interface extends JFrame{
 					}
 					i++;
 				}
+			
+			}catch (Exception e1) {
+				e1.printStackTrace();
+			}
 			}
 
 			/* Star ShowClosestCandidate: */
@@ -1741,7 +1752,7 @@ public class Interface extends JFrame{
 				//Write in read.txt
 				try {
 					bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
-					bw.write(" - In the directory " +folderEliminatedInShowClosestCandidate.getName().toUpperCase()+" have generated the following files \n\n" );
+					bw.write(" 	- In the directory " +folderErrors.getName().toUpperCase()+"/"+folderEliminatedInShowClosestCandidate.getName().toUpperCase()+" have generated the following files \n\n" );
 					bw.close();
 				}catch (IOException e) {
 					e.printStackTrace();
@@ -1850,6 +1861,7 @@ public class Interface extends JFrame{
 							File fileError = new File(fileNameError);
 							BufferedWriter outputError = new BufferedWriter(new FileWriter(fileError));
 							outputError.write("This is a list of star rows around " + coordS+aux+ " which have error\n\n");
+							outputError.write(arraySecondaryData.get(i).getHeader());
 
 							//file for star WithoutError
 							File fileWithoutError = new File(fileNameWithoutError);
@@ -1859,6 +1871,7 @@ public class Interface extends JFrame{
 
 							File fileEliminatedStars;
 							BufferedWriter outpuEliminatedStars;
+							
 							if(chckbxOneToOne.isSelected()){
 								//file for star elimitated stars
 								String fileNameElimitaredStars = folderEliminatedInOneToOne+ "\\Stars_of_S_around_"+coordS+aux+".txt";
@@ -1866,17 +1879,30 @@ public class Interface extends JFrame{
 								outpuEliminatedStars = new BufferedWriter(new FileWriter(fileEliminatedStars));
 								outpuEliminatedStars.write("This is a list of star rows around " + coordS+aux+ " which have been removed in One to One filter\n\n");
 								outpuEliminatedStars.write(arraySecondaryData.get(i).getHeader());
-								
+								int contOne=0;
 								for(int j = 0; j < starsS.size(); j++){
 
 									if(!starsS.get(j).isValidStar()){
 										//Write eliminated stars
 										outpuEliminatedStars.write(starsS.get(j).getLine() + "\n");	
-
 										outpuEliminatedStars.flush();
+										contOne=contOne+1;
 									}
 								}
 
+							
+								try {
+
+									bw = new BufferedWriter(new FileWriter(read,true));
+									//bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
+									bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+											" ===> "+"Number of stars : "+contOne+" \n\n");
+									bw.flush();
+									bw.close();
+								}
+								catch (IOException e) {
+									e.printStackTrace();
+								}
 								outpuEliminatedStars.close();
 
 							}else if(chckbxShowClosestCandidate.isSelected()){
@@ -1886,23 +1912,59 @@ public class Interface extends JFrame{
 								outpuEliminatedStars = new BufferedWriter(new FileWriter(fileEliminatedStars));
 								outpuEliminatedStars.write("This is a list of star rows around " + coordS+aux+ " which have been removed in Show Closest Candidate filter\n\n");
 								outpuEliminatedStars.write(arraySecondaryData.get(i).getHeader());
-
+								int contShow=0;
 								for(int j = 0; j < starsS.size(); j++){
 
 									if(!starsS.get(j).isValidStar()){
 										//Write eliminated stars
 										outpuEliminatedStars.write(starsS.get(j).getLine() + "\n");	
-
 										outpuEliminatedStars.flush();
+										contShow=contShow+1;
+										/*try {
+
+											bw = new BufferedWriter(new FileWriter(read,true));
+											//bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
+											bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+													" ===> "+"Number of stars : "+contShow+" \n\n");
+											bw.flush();
+											bw.close();
+										}
+										catch (IOException e) {
+											e.printStackTrace();
+										}*/
 									}
+									
 								}
+								
+								//
+								try {
+
+									bw = new BufferedWriter(new FileWriter(read,true));
+									//bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
+									bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+											" ===> "+"Number of stars : "+contShow+" \n\n");
+									bw.flush();
+									bw.close();
+								}
+								catch (IOException e) {
+									e.printStackTrace();
+								}
+								
+								
+								//
 
 								outpuEliminatedStars.close();
 							}
-
+							
+								
+							int con=0;
+							int cont=0;
+							
 							for(int j = 0; j < starsS.size(); j++){
-
+								
 								if(starsS.get(j).isValidStar()){
+									
+									
 									//loop stars
 									try{
 
@@ -1910,43 +1972,62 @@ public class Interface extends JFrame{
 										LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
 										listForParserS.putAll(listForParserP);
 										boolean errorStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter
-										linesNumber=starsS.size();
+										
+										
 										if (errorStar){
 
-											outputError.write(arraySecondaryData.get(i).getHeader());						
-											outputError.flush();
-											outputError.write(starsS.get(j).getLine() + "\n");									
+											//outputError.write(arraySecondaryData.get(i).getHeader());	
+											outputError.write(starsS.get(j).getLine() + "\n");	
+											outputError.flush();											
+											con=con+1;			
+											try {
+
+												bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+												bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderError.getName().toUpperCase()+" have generated the following files \n\n" );
+												bw.close();
+
+											}catch (IOException e) {
+												e.printStackTrace();
+											}							
 											try {
 
 												bw = new BufferedWriter(new FileWriter(read,true));
-												bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
-														" ===> "+"Number of stars : "+linesNumber+" \n\n");
+												bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+														" ===> "+"Number of stars : "+con+" \n\n");
 												bw.flush();
 												bw.close();
 											}
 											catch (IOException e) {
 												e.printStackTrace();
 											}
-											outputError.flush();
 
 										}
 										else {
-											outputWithoutError.flush();
+											
 											outputWithoutError.write(starsS.get(j).getLine() + "\n");
+											outputWithoutError.flush();
+											cont=cont+1;
 											try {
 
 												bw = new BufferedWriter(new FileWriter(read,true));
-												bw.write(" - In the directory " +folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
-												bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
-														" ===> "+"Number of stars : "+linesNumber+" \n\n");
+												bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
 												bw.flush();
 												bw.close();
 											}
 											catch (IOException e) {
 												e.printStackTrace();
 											}
+											try {
 
-											outputWithoutError.flush();
+												bw = new BufferedWriter(new FileWriter(read,true));
+												bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+														" ===> "+"Number of stars : "+cont+" \n\n");
+												bw.flush();
+												bw.close();
+											}
+											catch (IOException e) {
+												e.printStackTrace();
+											}
 										}
 
 									}catch (Exception e){
@@ -1956,6 +2037,52 @@ public class Interface extends JFrame{
 
 								}
 							}
+							
+							
+							//
+							/*try {
+
+								bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
+								bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderError.getName().toUpperCase()+" have generated the following files \n\n" );
+								bw.close();
+
+							}catch (IOException e) {
+								e.printStackTrace();
+							}							
+							try {
+
+								bw = new BufferedWriter(new FileWriter(read,true));
+								bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+										" ===> "+"Number of stars : "+con+" \n\n");
+								bw.flush();
+								bw.close();
+							}
+							catch (IOException e) {
+								e.printStackTrace();
+							}*/
+							
+							/*try {
+
+								bw = new BufferedWriter(new FileWriter(read,true));
+								bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
+								bw.flush();
+								bw.close();
+							}
+							catch (IOException e) {
+								e.printStackTrace();
+							}
+							try {
+
+								bw = new BufferedWriter(new FileWriter(read,true));
+								bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+										" ===> "+"Number of stars : "+cont+" \n\n");
+								bw.flush();
+								bw.close();
+							}
+							catch (IOException e) {
+								e.printStackTrace();
+							}*/
+										//
 
 							outputError.close();
 							outputWithoutError.close();
@@ -1991,20 +2118,19 @@ public class Interface extends JFrame{
 
 			asP.setRow(primaryData.variablesForParser("p"));
 			textAreaConsole.append("Analyzing filter for catalog P: \n ");
-			
+
 			correctSyntax=asP.parser();
-			
+
 			if(correctSyntax){
 				parserCatalogP = asP.getProgram();
 				primaryStars = primaryData.getStars();
 
 				//Filter Catalog P
 				String pathFilteredP = path + path2 + "/Filtered_CatalogP";
+				
 				//create directory for filtered P
 				File folderFilteredP= new File(pathFilteredP);
 				folderFilteredP.mkdir();
-
-
 
 				//Create directory for secondary stars around filtered P
 				File folderSecondaryFilteredP= new File(pathFilteredP + "/Secondary");
@@ -2026,38 +2152,33 @@ public class Interface extends JFrame{
 						deleteStars[i] = false;
 
 					}
+					String coordS = "";
+					int numStars = 0;
+					
 					try {
 
 						bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
-						bw.write("In the directory " +folderFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
+						bw.write("In the directory " +folderFilteredP.getName()+"/"+folderSecondaryFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
+
 						bw.close();
 
 					}catch (IOException e) {
 						e.printStackTrace();
 					}
-
-
-
 					try{
 
 						for(int i = 0; i < primaryStars.size(); i++){
-							//de prueba
-							String coordS = "";
-							coordS = primaryData.getStars().get(i).getStar().get("RAJ2000").getValue();
-							coordS += " ";
-							coordS += primaryData.getStars().get(i).getStar().get("DEJ2000").getValue();
-							//fin de prueba
-
+							
 							LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
 							boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
 							if (saveStar){
-								output.write(primaryStars.get(i).getLine() + "\n");
-								filterPResultS(folderSecondaryFilteredP, i,pathFilteredP);								
+								output.write(primaryStars.get(i).getLine() + "\n");								
+								numStars = filterPResultS(folderSecondaryFilteredP, i,pathFilteredP,read);						
 								output.flush();
 							} else {
 								deleteStars[i]= true;
 							}
-
+							
 						}
 
 
@@ -2067,70 +2188,29 @@ public class Interface extends JFrame{
 								primaryStars.remove(i);
 								arraySecondaryData.remove(i);
 							}
-
-
 						}
 						linesNumber = arraySecondaryData.size();
-
-						try {
-
-
-							bw = new BufferedWriter(new FileWriter(read,true));
-							bw.write(" - File Created -> "+file.getName()+
-									" ===> "+"Number of stars : "+linesNumber+" \n\n");
-							bw.flush();
-							bw.close();
-							//log.info("Created File "+"Stars_of_S_around_"+ coordS + aux +".txt");	//}			
-						} 
-						catch (IOException e) {						
-							e.printStackTrace();
-						}	
-
 						try {
 
 							bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
-							bw.write("In the directory " +folderFilteredP.getName()+"/"+folderSecondaryFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
-
+							bw.write("In the directory " +folderFilteredP.getName().toUpperCase()+" have generated the following files \n\n" );
 							bw.close();
 
 						}catch (IOException e) {
 							e.printStackTrace();
 						}
-
-						/*linesNumber2=starsS.size();
 						try {
-							bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
-							bw.write(" - File Created -> "+fileName + "_"
-									+ "Stars_of_S_around_"+coordS + ".txt"+
-									" ===> "+"Number of stars : "+linesNumber2+" \n\n");
-							bw.flush();
-							bw.close();
-
-						}
-
-						catch (IOException e) {
-							e.printStackTrace();
-						}*/
 
 
-
-						/*try {
 							bw = new BufferedWriter(new FileWriter(read,true));
-							bw.write(" - File Created -> "+i + "_"
-									+ "Stars_of_S_around_"+coordS + ".txt"+
-									" ===> "+"Number of stars : "+linesNumber2+" \n\n");
+							bw.write(" 		* File Created -> "+file.getName()+
+									" ===> "+"Number of stars : "+linesNumber+" \n\n");
 							bw.flush();
-							bw.close();
-
-						}
-						}
-						catch (IOException e) {
+							bw.close();	
+						} 
+						catch (IOException e) {						
 							e.printStackTrace();
-						}*/
-
-
-						//System.out.println(linesNumber2);
-
+						}	
 					}catch (TypeException te){
 						te.printStackTrace();
 					}
@@ -2142,13 +2222,12 @@ public class Interface extends JFrame{
 					e1.printStackTrace();
 				}
 			}
-			
 			return correctSyntax;
-
 		}
 
-		private void filterPResultS(File folderSecondaryFilteredP, int primaryStarIndex, String pathFilteredP){
-
+		private int filterPResultS(File folderSecondaryFilteredP, int primaryStarIndex, String pathFilteredP,String read){
+			
+		    int numStarsS = 0;
 			String filterS= textAreaFilterP.getText();
 			Vector<StarRow> primaryStars;
 			Vector<StarRow> starsS = arraySecondaryData.get(primaryStarIndex).getStars();
@@ -2159,33 +2238,38 @@ public class Interface extends JFrame{
 			coordS += primaryData.getStars().get(primaryStarIndex).getStar().get("DEJ2000").getValue();
 
 			String fileName = folderSecondaryFilteredP + "\\" + primaryStarIndex + "_"
-					+ "Stars_of_S_around_" + coordS + ".txt";
-
-
+					+ "Stars_of_S_around_" + coordS + ".txt";			
 
 			File file = new File(fileName);
 			try {
 
 				BufferedWriter output = new BufferedWriter(new FileWriter(file));
 				output.write("This is a list of star rows around " + coordS+ " which passed catalog P filter\n\n");
-				output.write(arraySecondaryData.get(primaryStarIndex).getHeader());
+				output.write(arraySecondaryData.get(primaryStarIndex).getHeader());				
 				output.flush();
-
 				//loop stars
 				for(int j = 0; j < starsS.size(); j++){
 					output.write(starsS.get(j).getLine() + "\n");					
 					output.flush();
-
+				}
+				
+				numStarsS =(starsS.size());					
+				try {
+					bw = new BufferedWriter(new FileWriter(read,true));
+					bw.write(" 		* File Created -> "	+ primaryStarIndex+"_"+"Stars_of_S_around_" + coordS +".txt"+
+							" ===> "+"Number of stars : "+numStarsS+" \n\n");
+					bw.flush();
+					bw.close();
+				} 
+				catch (IOException e) {						
+					e.printStackTrace();
 				}
 				output.close();
-
 
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-
-
-
+			return numStarsS;
 		}
 
 		private boolean filterS(String path3){
@@ -2313,7 +2397,7 @@ public class Interface extends JFrame{
 								try {
 
 									bw = new BufferedWriter(new FileWriter(read,true));
-									bw.write(" - File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
+									bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
 											" ===> "+"Number of stars : "+linesNumber+" \n\n");
 									bw.flush();
 									bw.close();
@@ -2425,7 +2509,7 @@ public class Interface extends JFrame{
 					try {
 
 						bw = new BufferedWriter(new FileWriter(read,true));
-						bw.write(" - File Created ->  "+" "+ "Stars_of_S_around_"+ coordS + aux +".txt"+
+						bw.write(" 		* File Created ->  "+" "+ "Stars_of_S_around_"+ coordS + aux +".txt"+
 								" ===> "+"Number of stars : "+linesNumber2+" \n\n");
 						bw.flush();
 						bw.close();
@@ -2566,7 +2650,7 @@ public class Interface extends JFrame{
 
 					else{
 						bw = new BufferedWriter(new FileWriter(path+"\\read.txt",true));
-						bw.write(" - File Created ->  "+" "+ s.getName()+
+						bw.write(" 		* File Created ->  "+" "+ s.getName()+
 								" ===> "+"Number of stars : "+linesNumber+" \n\n");
 						bw.flush();
 						bw.close();
