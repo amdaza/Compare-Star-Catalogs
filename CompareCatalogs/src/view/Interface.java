@@ -1,54 +1,35 @@
 package view;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Cursor;
-import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.font.TextAttribute;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Toolkit;
-import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.InputStreamReader;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.net.URL;
-import java.text.AttributedString;
+
 import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Locale;
-import java.util.logging.FileHandler;
 import java.util.Map;
 import java.util.Scanner;
-import java.util.TimeZone;
 import java.util.Vector;
 
-import javax.swing.AbstractButton;
 import javax.swing.border.BevelBorder;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.event.MenuKeyEvent;
-import javax.swing.event.MenuKeyListener;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -63,15 +44,9 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
-import javax.swing.text.Style;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 
+/*
 import org.apache.log4j.Appender;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.helpers.Loader;
@@ -81,8 +56,8 @@ import org.apache.log4j.PatternLayout;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.PropertyConfigurator;
 import org.apache.log4j.RollingFileAppender;
+ */
 
-import parser.contents.Distance;
 import parser.contents.Program;
 import parser.elements.Value;
 import parser.elements.Variable;
@@ -92,30 +67,14 @@ import parser.syntactic.SyntacticAnalizer;
 import view.Catalog;
 
 
-@SuppressWarnings("unused")
+//@SuppressWarnings("unused")
 public class Interface extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @uml.property  name="contentPane"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JPanel contentPane;
-	/**
-	 * @uml.property  name="console"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JPanel console;
-	/**
-	 * @uml.property  name="panel_2"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JPanel panel_2;
-	/**
-	 * @uml.property  name="panel_4"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JPanel panel_4 ;
 
 	/**
@@ -166,15 +125,6 @@ public class Interface extends JFrame{
 	 * @uml.associationEnd  multiplicity="(1 1)"
 	 */
 	private JTextArea textAreaFilterS;
-	/**
-	 * @uml.property  name="textAreaCriteriumS"
-	 * @uml.associationEnd  readOnly="true"
-	 */
-	private JTextArea textAreaCriteriumS;
-	/**
-	 * @uml.property  name="textAreaCriteriumErrors"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTextArea textAreaCriteriumErrors;
 	/**
 	 * @uml.property  name="textAreaConsole"
@@ -207,15 +157,15 @@ public class Interface extends JFrame{
 	/**
 	 * @uml.property  name="open"
 	 */
-	private boolean open=false;
+	//private boolean open=false;
 	/**
 	 * @uml.property  name="open2"
 	 */
-	private boolean open2=false;
+	//private boolean open2=false;
 	/**
 	 * @uml.property  name="load"
 	 */
-	private boolean load;
+	//private boolean load;
 
 	/**
 	 * @uml.property  name="filFichero"
@@ -257,28 +207,28 @@ public class Interface extends JFrame{
 	/**
 	 * @uml.property  name="fileLog"
 	 */
-	private File fileLog;
+	//private File fileLog;
 
-	private static FileHandler fh;
+	//	private static FileHandler fh;
 	//private static Logger log =null;// Logger.getLogger(Interface.class.getName());
 
 	private static int linesNumber=0;
 	private static int linesNumber2=0;
-	private static int tabCounter = 0;
+	//private static int tabCounter = 0;
 	/**
 	 * @uml.property  name="bw"
 	 */
 	private BufferedWriter bw = null;
-	private BufferedReader br=null;
+	//private BufferedReader br=null;
 	/**
 	 * @uml.property  name="icono"
 	 * @uml.associationEnd  readOnly="true"
 	 */
-	private ImageIcon icono;
+	//private ImageIcon icono;
 
 	private Program parserCatalogP;
 	private Program parserCatalogS;
-	private Program parserCriteriumErrors;
+	//private Program parserCriteriumErrors;
 	private JCheckBox chckbxOneToOne;
 	private JCheckBox chckbxShowClosestCandidate;
 
@@ -294,7 +244,7 @@ public class Interface extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1190, 670);
 		setEnabled(true);
-		load=false;
+		//load=false;
 		validate();
 		setLocationRelativeTo(null);
 
@@ -350,7 +300,7 @@ public class Interface extends JFrame{
 
 				JFileChooser selection = new JFileChooser(folderSession);
 				int i = selection.showOpenDialog(Interface.this);
-				int k=0;
+				//int k=0;
 				if (i == 0){
 					textFieldP.setText(null);
 					textCoorP.setText(null);
@@ -1538,16 +1488,16 @@ public class Interface extends JFrame{
 				btnStart.setEnabled(true);
 				textAreaConsole.setText(null);
 
-				if(textFieldP.getText().equals("") || textCoorP.getText().equals("") ||
-						textRadiusP.getText().equals("") || textFieldS.getText().equals("") ||
-						textRadiusS.getText().equals("")){
+				if(sourceP.equals("") || coordP.equals("") ||
+						radP.equals("") || sourceS.equals("") ||
+						radiusS.equals("")){
 
 					JOptionPane.showMessageDialog(null,"Some fields are empty","",JOptionPane.ERROR_MESSAGE);
 					btnButtonFilter.setEnabled(false);
 				}
 				else{
 					contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-					Map<String,DescriptionData> mp=new LinkedHashMap<String,DescriptionData>();
+					//Map<String,DescriptionData> mp=new LinkedHashMap<String,DescriptionData>();
 
 
 					/*log.info("Pin down load");
@@ -1564,7 +1514,7 @@ public class Interface extends JFrame{
 					File folderSecond = new File(path.concat(path2+"/Secondary"));
 
 					if(folder.exists()){
-						boolean value=false;
+						//	boolean value=false;
 						File folder1 = new File(path.concat(path2));
 						folder1.mkdir();
 						//log.info("Created directory "+folder1);
@@ -1598,7 +1548,7 @@ public class Interface extends JFrame{
 						String pathName = path.concat(path2);
 						Info.saveCatalogFile(path3, sourceP, coordP, radP);
 						Info.setCatalogPath(path3);
-						open = true;
+						//open = true;
 						primaryData = new DescriptionData(path3);
 						primaryData.parser();
 						linesNumber = primaryData.getContador();
@@ -1718,28 +1668,29 @@ public class Interface extends JFrame{
 					e.printStackTrace();
 				}
 
-				int i =0;
+				//int i =0;
 				try{
-				while(arraySecondaryData.size() > 0 && i < arraySecondaryData.get(i).getStars().size()){			
-					Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
-					if (starsS.size()!=1) {						
-						//Set star to not valid
-						/*
+					//while(arraySecondaryData.size() > 0 && i < arraySecondaryData.get(i).getStars().size()){	
+					for(int i= 0; i < arraySecondaryData.size(); i++){
+						Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
+						if (starsS.size()!=1) {						
+							//Set star to not valid
+							/*
 
 						arraySecondaryData.remove(i);
 						primaryData.getStars().remove(i);
 						i--;
-						 */
-						for(int j=0; j< starsS.size(); j++){
-							starsS.get(j).notValidStar();
+							 */
+							for(int j=0; j< starsS.size(); j++){
+								starsS.get(j).notValidStar();
+							}
 						}
+						//i++;
 					}
-					i++;
+
+				}catch (Exception e1) {
+					e1.printStackTrace();
 				}
-			
-			}catch (Exception e1) {
-				e1.printStackTrace();
-			}
 			}
 
 			/* Star ShowClosestCandidate: */
@@ -1871,7 +1822,7 @@ public class Interface extends JFrame{
 
 							File fileEliminatedStars;
 							BufferedWriter outpuEliminatedStars;
-							
+
 							if(chckbxOneToOne.isSelected()){
 								//file for star elimitated stars
 								String fileNameElimitaredStars = folderEliminatedInOneToOne+ "\\Stars_of_S_around_"+coordS+aux+".txt";
@@ -1890,7 +1841,7 @@ public class Interface extends JFrame{
 									}
 								}
 
-							
+
 								try {
 
 									bw = new BufferedWriter(new FileWriter(read,true));
@@ -1933,9 +1884,9 @@ public class Interface extends JFrame{
 											e.printStackTrace();
 										}*/
 									}
-									
+
 								}
-								
+
 								//
 								try {
 
@@ -1949,22 +1900,22 @@ public class Interface extends JFrame{
 								catch (IOException e) {
 									e.printStackTrace();
 								}
-								
-								
+
+
 								//
 
 								outpuEliminatedStars.close();
 							}
-							
-								
+
+
 							int con=0;
 							int cont=0;
-							
+
 							for(int j = 0; j < starsS.size(); j++){
-								
+
 								if(starsS.get(j).isValidStar()){
-									
-									
+
+
 									//loop stars
 									try{
 
@@ -1972,8 +1923,8 @@ public class Interface extends JFrame{
 										LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
 										listForParserS.putAll(listForParserP);
 										boolean errorStar = parserCatalogS.eval(listForParserS, textAreaConsole); //check if this star pass the filter
-										
-										
+
+
 										if (errorStar){
 
 											//outputError.write(arraySecondaryData.get(i).getHeader());	
@@ -2003,7 +1954,7 @@ public class Interface extends JFrame{
 
 										}
 										else {
-											
+
 											outputWithoutError.write(starsS.get(j).getLine() + "\n");
 											outputWithoutError.flush();
 											cont=cont+1;
@@ -2037,8 +1988,8 @@ public class Interface extends JFrame{
 
 								}
 							}
-							
-							
+
+
 							//
 							/*try {
 
@@ -2060,7 +2011,7 @@ public class Interface extends JFrame{
 							catch (IOException e) {
 								e.printStackTrace();
 							}*/
-							
+
 							/*try {
 
 								bw = new BufferedWriter(new FileWriter(read,true));
@@ -2082,7 +2033,7 @@ public class Interface extends JFrame{
 							catch (IOException e) {
 								e.printStackTrace();
 							}*/
-										//
+							//
 
 							outputError.close();
 							outputWithoutError.close();
@@ -2127,7 +2078,7 @@ public class Interface extends JFrame{
 
 				//Filter Catalog P
 				String pathFilteredP = path + path2 + "/Filtered_CatalogP";
-				
+
 				//create directory for filtered P
 				File folderFilteredP= new File(pathFilteredP);
 				folderFilteredP.mkdir();
@@ -2152,9 +2103,9 @@ public class Interface extends JFrame{
 						deleteStars[i] = false;
 
 					}
-					String coordS = "";
+					//String coordS = "";
 					int numStars = 0;
-					
+
 					try {
 
 						bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
@@ -2168,7 +2119,7 @@ public class Interface extends JFrame{
 					try{
 
 						for(int i = 0; i < primaryStars.size(); i++){
-							
+
 							LinkedHashMap<Variable, Value> listForParser = primaryStars.get(i).starRowToVariable("p"); //modify data for parser
 							boolean saveStar = parserCatalogP.eval(listForParser, textAreaConsole); //check if this star pass the filter
 							if (saveStar){
@@ -2178,7 +2129,7 @@ public class Interface extends JFrame{
 							} else {
 								deleteStars[i]= true;
 							}
-							
+
 						}
 
 
@@ -2226,10 +2177,10 @@ public class Interface extends JFrame{
 		}
 
 		private int filterPResultS(File folderSecondaryFilteredP, int primaryStarIndex, String pathFilteredP,String read){
-			
-		    int numStarsS = 0;
-			String filterS= textAreaFilterP.getText();
-			Vector<StarRow> primaryStars;
+
+			int numStarsS = 0;
+			//String filterS= textAreaFilterP.getText();
+			//Vector<StarRow> primaryStars;
 			Vector<StarRow> starsS = arraySecondaryData.get(primaryStarIndex).getStars();
 
 			String coordS = "";
@@ -2252,7 +2203,7 @@ public class Interface extends JFrame{
 					output.write(starsS.get(j).getLine() + "\n");					
 					output.flush();
 				}
-				
+
 				numStarsS =(starsS.size());					
 				try {
 					bw = new BufferedWriter(new FileWriter(read,true));
@@ -2370,7 +2321,7 @@ public class Interface extends JFrame{
 							try{
 								boolean deleteSecondaryArray = true;							
 								for(int j = 0; j < starsS.size(); j++){		
-									int con=0;
+									//int con=0;
 									LinkedHashMap<Variable, Value> listForParserS = starsS.get(j).starRowToVariable("s"); //modify data for parser								
 									LinkedHashMap<Variable, Value> listForParserP = primaryData.getStars().get(i).starRowToVariable("p");
 									listForParserS.putAll(listForParserP);	
@@ -2500,7 +2451,7 @@ public class Interface extends JFrame{
 					String fileName = folder+ "\\Stars_of_S_around_"+ coordS + aux +".txt";
 					Info.saveCatalogFile(fileName,sourceS,coordS,radS);
 					Info.setCatalogPath(fileName);
-					open2=true;
+					//open2=true;
 					DescriptionData secondaryData = new DescriptionData(fileName);
 					secondaryData.parser();
 					linesNumber2=secondaryData.getContador();
@@ -2570,7 +2521,7 @@ public class Interface extends JFrame{
 
 	}
 
-	private  boolean alreadyexists(String file ) {
+	private boolean alreadyexists(String file ) {
 		boolean value = true;
 		File f = new File(file);
 		if (f.exists()) {
