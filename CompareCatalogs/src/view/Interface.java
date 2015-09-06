@@ -1668,24 +1668,15 @@ public class Interface extends JFrame{
 					e.printStackTrace();
 				}
 
-				//int i =0;
 				try{
-					//while(arraySecondaryData.size() > 0 && i < arraySecondaryData.get(i).getStars().size()){	
 					for(int i= 0; i < arraySecondaryData.size(); i++){
 						Vector<StarRow> starsS = arraySecondaryData.get(i).getStars();
 						if (starsS.size()!=1) {						
 							//Set star to not valid
-							/*
-
-						arraySecondaryData.remove(i);
-						primaryData.getStars().remove(i);
-						i--;
-							 */
 							for(int j=0; j< starsS.size(); j++){
 								starsS.get(j).notValidStar();
 							}
 						}
-						//i++;
 					}
 
 				}catch (Exception e1) {
@@ -1724,19 +1715,12 @@ public class Interface extends JFrame{
 						}
 					}
 
-					//Detect not closest stars
-					int k = 0;
-					while(k<starsS.size()){
-
+					//Detect not closest stars	
+					for(int k=0; k<starsS.size(); k++;){
 						if(k != closestStar){
-							/*
-							//Remove star
-							starsS.remove(k);
-							k--;
-							 */
 							starsS.get(k).notValidStar();
 						}
-						k++;
+						
 					}
 				}
 			}
