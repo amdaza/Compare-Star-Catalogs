@@ -1616,11 +1616,7 @@ public class Interface extends JFrame{
 				}
 				contentPane.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 			}
-
-
-
 		}
-
 
 
 		private boolean startError(String path3) {
@@ -1716,7 +1712,7 @@ public class Interface extends JFrame{
 					}
 
 					//Detect not closest stars	
-					for(int k=0; k<starsS.size(); k++;){
+					for(int k=0; k<starsS.size(); k++){
 						if(k != closestStar){
 							starsS.get(k).notValidStar();
 						}
