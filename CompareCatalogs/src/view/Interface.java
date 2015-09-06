@@ -77,136 +77,46 @@ public class Interface extends JFrame{
 	private JPanel panel_2;
 	private JPanel panel_4 ;
 
-	/**
-	 * @uml.property  name="textFieldP"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTextField textFieldP;
-	/**
-	 * @uml.property  name="textCoorP"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTextField textCoorP;
-	/**
-	 * @uml.property  name="textRadiusP"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTextField textRadiusP;
-	/**
-	 * @uml.property  name="textFieldS"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTextField textFieldS;
-	/**
-	 * @uml.property  name="textRadiusS"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTextField textRadiusS;
 
-	/**
-	 * @uml.property  name="table"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTable table;
 
-	/**
-	 * @uml.property  name="tableModel"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private DefaultTableModel tableModel;
 
-	/**
-	 * @uml.property  name="textAreaFilterP"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTextArea textAreaFilterP;
-	/**
-	 * @uml.property  name="textAreaFilterS"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTextArea textAreaFilterS;
 	private JTextArea textAreaCriteriumErrors;
-	/**
-	 * @uml.property  name="textAreaConsole"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JTextArea textAreaConsole;
-
-	/**
-	 * @uml.property  name="btnButtonLoad"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
+	
 	private JButton btnButtonLoad;
-	/**
-	 * @uml.property  name="btnStart"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JButton btnStart;
-	/**
-	 * @uml.property  name="btnButtonFilter"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JButton btnButtonFilter ;
 
-	/**
-	 * @uml.property  name="mntmAbout"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private JMenuItem mntmAbout;
 
-	/**
-	 * @uml.property  name="open"
-	 */
 	//private boolean open=false;
-	/**
-	 * @uml.property  name="open2"
-	 */
-	//private boolean open2=false;
-	/**
-	 * @uml.property  name="load"
-	 */
+	//private boolean open2=false;/
 	//private boolean load;
 
-	/**
-	 * @uml.property  name="filFichero"
-	 */
+
 	private String filFichero;
-	/**
-	 * @uml.property  name="path"
-	 */
 	private String path;
-	/**
-	 * @uml.property  name="timeStamp"
-	 */
-	private String timeStamp=new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-	/**
-	 * @uml.property  name="buttons" multiplicity="(0 -1)" dimension="1"
-	 */
+	private String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+	
 	private String [] buttons = { " Catalog P", " Catalog S", " Criterium for detecting errors "};
-	/**
-	 * @uml.property  name="buttons2" multiplicity="(0 -1)" dimension="1"
-	 */
 	private String [] buttons2 = {"Example", "Aceptar"};
 	private String [] buttons1 = { "Aceptar"};
+	
 	private static Catalog Info;
-
-	/**
-	 * @uml.property  name="primaryData"
-	 * @uml.associationEnd
-	 */
 	private DescriptionData primaryData;
-	/**
-	 * @uml.property  name="arraySecondaryData"
-	 */
 	private Vector<DescriptionData> arraySecondaryData;
 
-	/**
-	 * @uml.property  name="folderSession"
-	 */
 	private File folderSession;
-	/**
-	 * @uml.property  name="fileLog"
-	 */
+
 	//private File fileLog;
 
 	//	private static FileHandler fh;
@@ -215,15 +125,10 @@ public class Interface extends JFrame{
 	private static int linesNumber=0;
 	private static int linesNumber2=0;
 	//private static int tabCounter = 0;
-	/**
-	 * @uml.property  name="bw"
-	 */
+
 	private BufferedWriter bw = null;
 	//private BufferedReader br=null;
-	/**
-	 * @uml.property  name="icono"
-	 * @uml.associationEnd  readOnly="true"
-	 */
+
 	//private ImageIcon icono;
 
 	private Program parserCatalogP;
@@ -1880,9 +1785,6 @@ public class Interface extends JFrame{
 								catch (IOException e) {
 									e.printStackTrace();
 								}
-
-
-								//
 
 								outpuEliminatedStars.close();
 							}
