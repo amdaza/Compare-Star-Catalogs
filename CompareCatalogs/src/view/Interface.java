@@ -1753,7 +1753,8 @@ public class Interface extends JFrame{
 				try {
 					bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
 					bw.write(" 	- In the directory " +folderErrors.getName().toUpperCase()+"/"+folderEliminatedInShowClosestCandidate.getName().toUpperCase()+" have generated the following files \n\n" );
-					bw.close();
+					bw.flush();
+					//bw.close();
 				}catch (IOException e) {
 					e.printStackTrace();
 				}
@@ -1898,7 +1899,7 @@ public class Interface extends JFrame{
 									bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
 											" ===> "+"Number of stars : "+contOne+" \n\n");
 									bw.flush();
-									bw.close();
+									//bw.close();
 								}
 								catch (IOException e) {
 									e.printStackTrace();
@@ -1920,27 +1921,16 @@ public class Interface extends JFrame{
 										outpuEliminatedStars.write(starsS.get(j).getLine() + "\n");	
 										outpuEliminatedStars.flush();
 										contShow=contShow+1;
-										/*try {
-
-											bw = new BufferedWriter(new FileWriter(read,true));
-											//bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
-											bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
-													" ===> "+"Number of stars : "+contShow+" \n\n");
-											bw.flush();
-											bw.close();
-										}
-										catch (IOException e) {
-											e.printStackTrace();
-										}*/
+									
+										
 									}
+								
 									
 								}
 								
-								//
 								try {
 
 									bw = new BufferedWriter(new FileWriter(read,true));
-									//bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
 									bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
 											" ===> "+"Number of stars : "+contShow+" \n\n");
 									bw.flush();
@@ -1950,8 +1940,6 @@ public class Interface extends JFrame{
 									e.printStackTrace();
 								}
 								
-								
-								//
 
 								outpuEliminatedStars.close();
 							}
@@ -1980,54 +1968,14 @@ public class Interface extends JFrame{
 											outputError.write(starsS.get(j).getLine() + "\n");	
 											outputError.flush();											
 											con=con+1;			
-											try {
-
-												bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
-												bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderError.getName().toUpperCase()+" have generated the following files \n\n" );
-												bw.close();
-
-											}catch (IOException e) {
-												e.printStackTrace();
-											}							
-											try {
-
-												bw = new BufferedWriter(new FileWriter(read,true));
-												bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
-														" ===> "+"Number of stars : "+con+" \n\n");
-												bw.flush();
-												bw.close();
-											}
-											catch (IOException e) {
-												e.printStackTrace();
-											}
-
+											
 										}
 										else {
 											
 											outputWithoutError.write(starsS.get(j).getLine() + "\n");
 											outputWithoutError.flush();
 											cont=cont+1;
-											try {
-
-												bw = new BufferedWriter(new FileWriter(read,true));
-												bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
-												bw.flush();
-												bw.close();
-											}
-											catch (IOException e) {
-												e.printStackTrace();
-											}
-											try {
-
-												bw = new BufferedWriter(new FileWriter(read,true));
-												bw.write(" 		* File Created -> "	+ "Stars_of_S_around_" + coordS + aux+".txt"+
-														" ===> "+"Number of stars : "+cont+" \n\n");
-												bw.flush();
-												bw.close();
-											}
-											catch (IOException e) {
-												e.printStackTrace();
-											}
+											
 										}
 
 									}catch (Exception e){
@@ -2040,7 +1988,7 @@ public class Interface extends JFrame{
 							
 							
 							//
-							/*try {
+							try {
 
 								bw = new BufferedWriter(new FileWriter(path3+"\\read.txt",true));
 								bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderError.getName().toUpperCase()+" have generated the following files \n\n" );
@@ -2048,7 +1996,7 @@ public class Interface extends JFrame{
 
 							}catch (IOException e) {
 								e.printStackTrace();
-							}							
+							}					
 							try {
 
 								bw = new BufferedWriter(new FileWriter(read,true));
@@ -2059,9 +2007,9 @@ public class Interface extends JFrame{
 							}
 							catch (IOException e) {
 								e.printStackTrace();
-							}*/
+							}
 							
-							/*try {
+							try {
 
 								bw = new BufferedWriter(new FileWriter(read,true));
 								bw.write(" - In the directory " +folderErrors.getName().toUpperCase()+"/"+folderWithoutError.getName().toUpperCase()+" have generated the following files \n\n" );
@@ -2081,9 +2029,8 @@ public class Interface extends JFrame{
 							}
 							catch (IOException e) {
 								e.printStackTrace();
-							}*/
+							}
 										//
-
 							outputError.close();
 							outputWithoutError.close();
 						}catch (Exception e){
