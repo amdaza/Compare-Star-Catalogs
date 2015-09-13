@@ -5,19 +5,9 @@ import parser.elements.*;
 
 public class ExpMult extends Expression {
 
-	/**
-	 * @uml.property  name="op"
-	 */
+
 	private String op;
-	/**
-	 * @uml.property  name="e1"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private Expression e1;
-	/**
-	 * @uml.property  name="e2"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private Expression e2;
 
 	public ExpMult (Expression e1, Expression e2, String op){
@@ -25,7 +15,7 @@ public class ExpMult extends Expression {
 		this.op=op;
 		this.e1=e1.deepCopy();
 		this.e2=e2.deepCopy();
-		this.type = finalType(e1.getType(),e2.getType());///??????
+		this.type = finalType(e1.getType(),e2.getType());
 	}
 
 	/*public ExpMult (Expression e){

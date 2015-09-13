@@ -10,26 +10,9 @@ import parser.elements.*;
 
 public class Errors {
 
-	/**
-	 * attributes:
-	 * s	-
-	 * t	-
-	 * @uml.property  name="s"
-	 */
 	private String s;
-	/**
-	 * @uml.property  name="t"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	private Token t;
-	/**
-	 * constructor of the class
-	 *
-	 * @param id
-	 * @param t
-	 * @param throwError
-	 * @param console
-	 */
+	
 	public Errors(int id, JTextArea console ){
 		if (id==101)
 			this.s="Negation needs an boolean expression";
@@ -282,34 +265,19 @@ public class Errors {
 		throwError = true;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="s"
-	 */
+
 	public String getS() {
 		return s;
 	}
 
-	/**
-	 * @param  s
-	 * @uml.property  name="s"
-	 */
 	public void setS(String s) {
 		this.s = s;
 	}
 
-	/**
-	 * @return  Token
-	 * @uml.property  name="t"
-	 */
 	public Token getT() {
 		return t;
 	}
 
-	/**
-	 * @param  t
-	 * @uml.property  name="t"
-	 */
 	public void setT(Token t) {
 		this.t = t;
 	}

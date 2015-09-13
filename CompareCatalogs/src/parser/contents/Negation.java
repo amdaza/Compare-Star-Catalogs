@@ -7,10 +7,7 @@ import parser.elements.Variable;
 
 public class Negation extends Expression {
 
-	/**
-	 * @uml.property  name="e"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
+
 	private Expression e;
 
 	public Negation(Expression e){

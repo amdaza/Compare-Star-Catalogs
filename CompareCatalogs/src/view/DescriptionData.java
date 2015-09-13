@@ -50,50 +50,27 @@ public class DescriptionData{
 		this.catalogStructure = dt;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="path"
-	 */
+
 	public String getPath() {
 		return path;
 	}
 
-	/**
-	 * @param path
-	 * @uml.property  name="path"
-	 */
 	public void setPath(String path) {
 		this.path = path;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="empty"
-	 */
 	public boolean isEmpty() {
 		return empty;
 	}
 
-	/**
-	 * @param empty
-	 * @uml.property  name="empty"
-	 */
 	public void setEmpty(boolean empty) {
 		this.empty = empty;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="header"
-	 */
 	public String getHeader() {
 		return header;
 	}
 
-	/**
-	 * @param header
-	 * @uml.property  name="header"
-	 */
 	public void setHeader(String header) {
 		this.header = header;
 	}
@@ -121,8 +98,7 @@ public class DescriptionData{
 		        	 while(line.charAt(i)!= ' '){//R
 		        		 i++;
 		        	 }
-		        	 key = line.substring(4, i);//RAJ2000
-		        	 //System.out.println("key: "+key);
+		        	 key = line.substring(4, i);//RAJ2000		        	 
 
 		        	 while(line.charAt(i)== ' '){
 		        		 i++;
@@ -132,8 +108,7 @@ public class DescriptionData{
 		        		 while(line.charAt(j)!= ' '){
 			        		 j++;
 			        	 }
-		        		 value.setMag(line.substring(i, j));//(deg)
-		        		 //System.out.println("mag: "+line.substring(i, j));
+		        		 value.setMag(line.substring(i, j));//(deg)		        		
 		        		 i=j;
 		        		 while(line.charAt(i)== ' '){
 			        		 i++;
@@ -141,41 +116,34 @@ public class DescriptionData{
 		        	 }
 		        	 char type = line.charAt(i+1);
 		        	 value.setType(type);
-		        	// System.out.println("type: "+type);
 
 		        	 if (type == 'F'){
 		        		 if(line.charAt(i+3) == '.'){
 		        			 int lenght = Integer.parseInt(Character.toString(line.charAt(i+2)));
 		        			 value.setLenght(lenght);
-		        			 //System.out.println("lenght: "+lenght);
 		        			 int dec = Integer.parseInt(Character.toString(line.charAt(i+4)));
 		        			 value.setDecimals(dec);
-		        			 //System.out.println("dec: "+dec);
 		        			 i= i+5;
 		        		 }else{
 		        			 int lenght = Integer.parseInt(line.substring(i+2, i+4));
 		        			 value.setLenght(lenght);
-		        			 //System.out.println("lenght: "+lenght);
 		        			 int dec = Integer.parseInt(Character.toString(line.charAt(i+5)));
 		        			 value.setDecimals(dec);
-		        			 //System.out.println("dec: "+dec);
 		        			 i= i+6;
 		        		 }
 		        	 }else if(line.charAt(i+3) == ')'){
 				        		 int lenght = Integer.parseInt(Character.toString(line.charAt(i+2)));
 			        			 value.setLenght(lenght);
-			        			 //System.out.println("lenght: "+lenght);
 			        			 i= i+3;
 		        	 		}else{
 				        		 int lenght = Integer.parseInt(line.substring(i+2, i+4));
 			        			 value.setLenght(lenght);
-			        			 //System.out.println("lenght: "+lenght);
 			        			 i= i+4;
 		        	 		}
 		        	 String description = line.substring(i+1, line.length());
 		        	 value.setDescription(description);
 
-        			 //System.out.println("description: "+description);
+        			
 
         			 //Add new element into LinkedHashMap
         			 catalogStructure.put(key, value);
@@ -188,8 +156,7 @@ public class DescriptionData{
 		        	 header += line + "\n";
 		         }
 		         header += line + "\n";
-		         //System.out.println("/////////////////////////////////////////////////////");
-		         //System.out.println(header);
+		         
 
 		         //Stars
 		         while((line=br.readLine()).length()!=0){
@@ -264,10 +231,7 @@ public class DescriptionData{
 	private int setContador(int size) {
 		return this.contador= size;
 	}
-	/**
-	 * @return
-	 * @uml.property  name="contador"
-	 */
+
 	public int getContador(){
 		return contador;
 	}

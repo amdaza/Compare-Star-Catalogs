@@ -9,9 +9,7 @@ public class ExpRel extends Expression {
 
 
 	private String op;
-
 	private Expression e1;
-
 	private Expression e2;
 
 	public ExpRel (Expression e1, Expression e2, String op){

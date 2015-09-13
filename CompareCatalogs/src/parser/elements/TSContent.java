@@ -3,6 +3,7 @@ package parser.elements;
 import java.util.LinkedList;
 
 public class TSContent {
+	
 	private String type;
 	private String baseType;
 	private int posIni;

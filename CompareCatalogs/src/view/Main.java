@@ -8,8 +8,6 @@ import javax.swing.WindowConstants;
  * Launch the application.
  */
 public class Main{
-	@SuppressWarnings("unused")
-	private static Catalog Info;
 
 	public static void main(String[] args) {
 

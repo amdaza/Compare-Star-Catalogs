@@ -7,10 +7,7 @@ import parser.elements.Variable;
 
 public class Cosd  extends Expression {
 
-	/**
-	 * @uml.property  name="e"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
+
 	private Expression e;
 
 	public Cosd(Expression e){

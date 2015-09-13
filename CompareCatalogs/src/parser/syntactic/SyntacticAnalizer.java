@@ -11,7 +11,6 @@ import parser.elements.*;
 import parser.errors.*;
 
 import parser.lexical.Lexical;
-import view.Interface;
 
 
 public class SyntacticAnalizer {
@@ -21,12 +20,9 @@ public class SyntacticAnalizer {
 	
 	private Lexical lexicalAnalyzer;
 	
-	private boolean hasType = false;
-	
-	private boolean hasComma = false;
-	
-	private boolean existError = false;
-	
+	private boolean hasType = false;	
+	private boolean hasComma = false;	
+	private boolean existError = false;	
 	private boolean transit = false;
 	
 	private JTextArea console;	
@@ -38,12 +34,8 @@ public class SyntacticAnalizer {
 	private Vector<Variable> row;
 	
 	private Program program;
-
 	
 	private Expression e;
-	
-	@SuppressWarnings("unused")
-	private Interface i;
 
 	public Program getProgram() {
 		return program;
@@ -321,7 +313,7 @@ public class SyntacticAnalizer {
 			}
 			if(!correct){
 				if (!existError) {
-					setError(new Errors(49,token_act,true,console));//antes error3
+					setError(new Errors(49,token_act,true,console));
 					existError=true;
 				}
 			}

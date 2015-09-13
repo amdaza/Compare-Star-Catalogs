@@ -2,17 +2,9 @@ package parser.elements;
 
 public class Variable {
 
-	/**
-	 * @uml.property  name="name"
-	 */
+
 	private String name;
-	/**
-	 * @uml.property  name="type"
-	 */
-	private String type;
-	/**
-	 * @uml.property  name="value"
-	 */
+	private String type;	
 	private String value;
 
 	public Variable(String name, String type, String value){
@@ -35,50 +27,26 @@ public class Variable {
 		this.value=value.getVal();
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="name"
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name
-	 * @uml.property  name="name"
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="type"
-	 */
 	public String getType() {
 		return type;
 	}
 
-	/**
-	 * @param type
-	 * @uml.property  name="type"
-	 */
 	public void setType(String type) {
 		this.type = type;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="value"
-	 */
 	public String getValue() {
 		return value;
 	}
 
-	/**
-	 * @param value
-	 * @uml.property  name="value"
-	 */
 	public void setValue(String value) {
 		this.value = value;
 	}

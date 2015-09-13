@@ -13,10 +13,7 @@ import parser.errors.TypeException;
 
 public class Program {
 
-	/**
-	 * @uml.property  name="statement"
-	 * @uml.associationEnd  multiplicity="(0 -1)" elementType="parser.contents.Statement"
-	 */
+
 	private ArrayList<Statement> statement;
 
 	public Program(ArrayList<Statement> statement){
@@ -48,7 +45,7 @@ public class Program {
 				if (v.getType() != "boolean") {
 					result =  false;
 				}
-				else  if (v.getVal()=="false")  result =  false;// es un bool
+				else  if (v.getVal()=="false")  result =  false;// bool
 
 			}
 		}

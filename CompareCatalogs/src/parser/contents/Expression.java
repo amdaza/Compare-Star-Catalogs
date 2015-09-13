@@ -138,11 +138,7 @@ public abstract class Expression  {
 	}
 
 	public boolean isTypeNumeric() {
-
-		/*return	(type.equals("integer") || (type.equals("real"))||
-				(type.equals("exponential")));*/
-
-		/* orig*/
+	
 		return this.type.equals("integer") ||
 				this.type.equals("real")   ||
 				this.type.equals("exponential") ||

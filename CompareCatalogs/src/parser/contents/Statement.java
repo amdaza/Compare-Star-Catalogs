@@ -7,14 +7,8 @@ import parser.elements.Variable;
 
 public class Statement {
 
-	/**
-	 * @uml.property  name="binding"
-	 */
+
 	protected boolean binding;
-	/**
-	 * @uml.property  name="expr"
-	 * @uml.associationEnd  multiplicity="(1 1)"
-	 */
 	protected Expression expr;
 
 
@@ -23,10 +17,6 @@ public class Statement {
 		this.binding=binding;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="binding"
-	 */
 	public boolean isBinding(){
 		return binding;
 	}
@@ -34,10 +24,6 @@ public class Statement {
 		return expr.getValue(localVar);
 	}
 
-	/**
-	 * @param binding
-	 * @uml.property  name="binding"
-	 */
 	public void setBinding(boolean binding) {
 		this.binding = binding;
 	}

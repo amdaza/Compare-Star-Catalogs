@@ -6,18 +6,9 @@ import parser.elements.Value;
 import parser.elements.Variable;
 
 public class Id extends Expression {
-	/**
-	 * @uml.property  name="value"
-	 */
+
 	private String value;
-	/**
-	 * @uml.property  name="name"
-	 */
-	private String name;
-	/**
-	 * @uml.property  name="e"
-	 * @uml.associationEnd
-	 */
+	private String name;	
 	private Expression e;
 
 	public Id(String name, String type, String value){
@@ -45,7 +36,7 @@ public class Id extends Expression {
 		Value result = null;
 		if (isTypeNumeric()){
 			Variable v = new Variable(name,type,"");
-			result = localVar.get(v);//parece que lo pierde aqui el type devuelve null error en el hasCode
+			result = localVar.get(v);
 		}
 		else{
 			error=true;
@@ -54,50 +45,27 @@ public class Id extends Expression {
 		return  result;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="value"
-	 */
+
 	public String getValue() {
 		return value;
 	}
 
-	/**
-	 * @param value
-	 * @uml.property  name="value"
-	 */
 	public void setValue(String value) {
 		this.value = value;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="name"
-	 */
 	public String getName() {
 		return name;
 	}
 
-	/**
-	 * @param name
-	 * @uml.property  name="name"
-	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	/**
-	 * @return
-	 * @uml.property  name="e"
-	 */
 	public Expression getE() {
 		return e;
 	}
 
-	/**
-	 * @param e
-	 * @uml.property  name="e"
-	 */
 	public void setE(Expression e) {
 		this.e = e;
 	}

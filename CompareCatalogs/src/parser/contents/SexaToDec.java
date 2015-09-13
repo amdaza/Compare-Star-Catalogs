@@ -7,10 +7,7 @@ import parser.elements.Variable;
 
 public class SexaToDec extends Expression {
 
-	/**
-	 * @uml.property  name="e"
-	 * @uml.associationEnd
-	 */
+
 	private Expression e;
 
 	public SexaToDec(Expression e){
@@ -35,7 +32,7 @@ public class SexaToDec extends Expression {
 		if (type.equals("string")) {
 			String s = v.getString();
 			char c = s.charAt(0);
-			if(c == '+' || c == '-'){//DUDA
+			if(c == '+' || c == '-'){
 				result = new Value(String.valueOf(sexaToDecDecl(s)), "real");
 			}else{
 				result = new Value(String.valueOf(sexaToDecRa(s)), "real");
